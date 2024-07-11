@@ -1,14 +1,3 @@
----
-title: SpringBoot之Logback日志文件配置
-cover: 'https://pic.imgdb.cn/item/6123bdb444eaada739c67806.jpg'
-categories:
-  - code
-tags:
-  - SpringBoot
-  - Logback
-abbrlink: 37143
-date: 2021-08-23 23:19:53
----
 
 ## 概述
 

@@ -1,13 +1,3 @@
----
-title: Mybatis 中 ResultMap 的使用
-cover: 'https://pic.imgdb.cn/item/61210de64907e2d39c3f5e62.jpg'
-categories:
-  - code
-tags:
-  - Java
-abbrlink: 35419
-date: 2019-12-13 03:57:27
----
 
 # Mybatis 中 ResultMap 的使用
 

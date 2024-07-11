@@ -1,14 +1,3 @@
----
-title: Java代码的执行顺序
-cover: 'https://pic.imgdb.cn/item/612110284907e2d39c445567.jpg'
-categories:
-  - code
-tags:
-  - Java
-  - 基础
-abbrlink: 10968
-date: 2021-01-31 22:45:23
----
 
 ## Java 代码的执行顺序
 

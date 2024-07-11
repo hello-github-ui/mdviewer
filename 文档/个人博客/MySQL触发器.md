@@ -1,13 +1,3 @@
----
-title: MySQL触发器
-cover: 'https://img.imgdb.cn/item/604b88715aedab222cebf60b.jpg'
-categories:
-  - code
-tags:
-  - MySQL
-abbrlink: 63962
-date: 2019-06-13 04:04:46
----
 
 # MySQL 触发器
 

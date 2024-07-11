@@ -1,15 +1,3 @@
----
-title: Java封装同步锁
-categories: 记事本
-cover: 'https://pic.imgdb.cn/item/621ddc1c2ab3f51d914c66cb.png'
-secret: false
-tags: Java
-abbrlink: 42154
-date: 2022-03-02 20:50:01
-updated: 2022-03-02 20:50:01
-password:
-description:
----
 
 > 先来看一段简单的同步锁代码
 ```java

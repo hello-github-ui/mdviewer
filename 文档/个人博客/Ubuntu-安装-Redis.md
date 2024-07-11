@@ -1,14 +1,3 @@
----
-title: Ubuntu 安装 Redis
-cover: 'https://pic.imgdb.cn/item/612110b04907e2d39c458a3a.jpg'
-categories:
-  - code
-tags:
-  - Ubuntu
-  - Redis
-abbrlink: 9878
-date: 2020-03-22 20:57:52
----
 
 # <font color=#FF8C00>redis是什么</font>
 Redis是常用基于内存的Key-Value数据库，比Memcache更先进，支持多种数据结构，高效，快速。用Redis可以很轻松解决高并发的数据访问问题

@@ -1,16 +1,3 @@
----
-title: Vim配置备份
-cover: 'https://pic.imgdb.cn/item/6183a0732ab3f51d91ca77d6.jpg'
-categories:
-  - 记事本
-tags:
-  - Vim
-secret: false
-abbrlink: 31050
-date: 2021-11-05 11:10:55
-message:
-password:
----
 
 > Vim是我非常喜欢的一款文本编辑器，它虽然没有Emacs那么华丽，但是也有自己的情迷粉丝。由于Vim每次安装都需要大量的个性化配置，这实在是有点浪费时间和精力，因此这里做一下备份。
 

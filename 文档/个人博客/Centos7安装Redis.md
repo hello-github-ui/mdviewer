@@ -1,17 +1,3 @@
----
-title: Centos7安装Redis
-categories:
-  - 记事本
-tags:
-  - Centos
-  - Redis
-secret: false
-abbrlink: 22086
-date: 2022-01-11 00:25:48
-cover:
-password:
-description:
----
 # 1. 下载
 从官网下载redis压缩包到本地
 

@@ -1,13 +1,3 @@
----
-title: Tomcat加载本地静态页面
-categories: 记事本
-tags:
-  - Tomcat
-abbrlink: 49781
-date: 2022-02-23 20:38:48
-cover:
-description:
----
 
 # 加载静态页面
 

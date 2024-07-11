@@ -1,14 +1,3 @@
----
-title: Java中使用HSSFWorkbook生成excel
-cover: 'https://pic.imgdb.cn/item/612111984907e2d39c4793a9.jpg'
-categories:
-  - code
-tags:
-  - Java
-  - Excel
-abbrlink: 53319
-date: 2019-11-12 22:14:11
----
 
 ![](https://img.imgdb.cn/item/604b7e335aedab222ce6192e.jpg)
 

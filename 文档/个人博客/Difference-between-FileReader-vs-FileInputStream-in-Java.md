@@ -1,18 +1,3 @@
----
-title: Difference between FileReader vs FileInputStream in Java
-cover: 'https://pic.imgdb.cn/item/616863312ab3f51d9106e681.jpg'
-secret: false
-categories:
-  - code
-tags:
-  - 基础
-  - 笔记
-  - Java
-abbrlink: 32282
-date: 2021-10-26 01:14:33
-password:
-message:
----
 
 Difference between FileReader vs FileInputStream in Java? Answer
 Even though both FileReader and FileInputStream are used to read data from a file in Java, they are quite different. The main difference between the FileReader and FileInputStream is that one reads data from a character stream while the other reads data from a byte stream. The FileReader automatically converts the raw bytes into characters by using the platform's default character encoding. This means you should use this class if you are reading from a text file that has the same character encoding as the default one.

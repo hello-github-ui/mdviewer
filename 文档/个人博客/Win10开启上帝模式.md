@@ -1,16 +1,3 @@
----
-title: Win10开启上帝模式
-categories: 记事本
-cover: 'https://pic.imgdb.cn/item/621ddc1c2ab3f51d914c66cb.png'
-secret: false
-tags:
-  - Windows
-abbrlink: 43818
-date: 2022-03-08 20:24:42
-updated: 2022-03-08 20:24:42
-password:
-description:
----
 
 > windows 里面有各种各样的设置，有时候我们想要找到一个设置，非常麻烦，记不住位置，比如卸载软件等。别急，其实啊，我们只需要简单的一些设置，就可以开启一种称之为"上帝模式"的功能列表，接下来我们就来看看吧
 

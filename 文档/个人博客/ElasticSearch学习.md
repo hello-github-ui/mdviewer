@@ -1,13 +1,3 @@
----
-title: ElasticSearch学习
-cover: 'https://pic.imgdb.cn/item/612209d34907e2d39cacb8ca.jpg'
-categories:
-  - code
-tags:
-  - ElasticSearch
-abbrlink: 27009
-date: 2021-08-22 16:24:28
----
 
 ## 数据格式
 

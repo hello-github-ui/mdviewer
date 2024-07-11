@@ -1,17 +1,3 @@
----
-title: Centos7安装MySQL8.x
-categories:
-  - 记事本
-tags:
-  - MySQL
-  - Centos7
-cover: 'https://pic.imgdb.cn/item/616eba172ab3f51d91e56531.jpg'
-secret: false
-abbrlink: 8567
-date: 2021-11-16 22:41:43
-password:
-description:
----
 
 # 上传安装包到Linux
 

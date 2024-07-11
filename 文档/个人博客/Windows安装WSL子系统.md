@@ -1,17 +1,3 @@
----
-title: Windows安装WSL子系统
-cover: 'https://pic.imgdb.cn/item/61952c5b2ab3f51d919f8998.jpg'
-categories:
-  - 记事本
-tags:
-  - Linux
-  - WSL
-secret: false
-abbrlink: 22090
-date: 2021-11-18 00:12:04
-message:
-password:
----
 
 1. 控制面板，程序和功能，启用功能，勾选 适用于linux的windows子系统  和 虚拟机平台 选项。
 2. 重启电脑

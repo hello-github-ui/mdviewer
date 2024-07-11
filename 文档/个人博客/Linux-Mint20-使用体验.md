@@ -1,17 +1,3 @@
----
-title: Linux Mint20 使用体验
-categories: 笔记
-tags:
-  - Linux
-  - Mint
-cover: 'https://pic.imgdb.cn/item/61ab5b682ab3f51d9166eeb3.jpg'
-abbrlink: 5426
-date: 2021-12-04 19:10:18
-top_img:
-highlight_shrink:
-aside:
-description:
----
 
 > 上周我把我的华硕笔记本重装成Linux Mint20系统了，以后我就不打算使用windows了，太流氓了。
 > 至于系统怎么装的，就不细说了，因为坑之前装过windows的电脑装想直接装Linux系统坑还是太多了，其因有以下几点：其一，windows系统下基本是

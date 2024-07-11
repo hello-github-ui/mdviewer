@@ -1,13 +1,3 @@
----
-title: Java代码实现裁剪图像
-cover: 'https://pic.imgdb.cn/item/61503a642ab3f51d91207331.jpg'
-categories:
-  - code
-tags:
-  - Java
-abbrlink: 62287
-date: 2021-09-26 17:11:40
----
 
 ## 前言
 前些时候，我在某个网站上注册了一个账号，在修改个人头像时，发现该网站仅支持矩形头像的显示，但是我个人是比较喜欢圆形头像的；
