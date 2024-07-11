@@ -1,5 +1,16 @@
 [
     {
+        "name": "书签",
+        "path": "书签",
+        "children": [
+            {
+                "name": "01-收藏的网站.md",
+                "path": "书签/01-收藏的网站.md"
+            }
+        ],
+        "open": false
+    },
+    {
         "name": "油猴脚本开发教程",
         "path": "油猴脚本开发教程",
         "children": [
