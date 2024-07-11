@@ -1,13 +1,3 @@
----
-title: SSM框架-流程
-cover: 'https://img.imgdb.cn/item/604b93e95aedab222cf35162.jpg'
-categories:
-  - 记事本
-tags:
-  - Java
-abbrlink: 20946
-date: 2018-11-03 18:11:15
----
 
 # springmvc 的配置
 

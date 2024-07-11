@@ -1,16 +1,3 @@
----
-title: BIO-NIO-AIO
-categories:
-  - code
-tags:
-  - Java
-cover: 'https://pic.imgdb.cn/item/60d18f04844ef46bb2bcb39a.jpg'
-secret: false
-abbrlink: 49125
-date: 2021-06-22 15:17:40
-password:
-description:
----
 
 # java共支持三种网络编程模式：BIO，NIO，AIO
 

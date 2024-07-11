@@ -1,16 +1,3 @@
----
-title: MySQL函数、存储过程、索引学习
-cover: 'https://pic.imgdb.cn/item/618233b52ab3f51d912ad7a8.jpg'
-categories:
-  - code
-tags:
-  - MySQL
-secret: false
-abbrlink: 49899
-date: 2021-11-03 14:48:14
-message:
-password:
----
 
 ***在自己的个人项目中，我们可能会需要在表中随机生成一些数据以供我们进行相应的测试。这时候就可以通过存储过程来向表中添加规定条数的数据。***
 

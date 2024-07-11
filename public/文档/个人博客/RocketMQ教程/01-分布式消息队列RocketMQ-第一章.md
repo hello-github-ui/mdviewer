@@ -1,17 +1,3 @@
----
-title: 分布式消息队列RocketMQ-学习文档-第一章
-cover: 'https://pic.imgdb.cn/item/617bf5102ab3f51d9142881a.jpg'
-secret: false
-categories:
-  - code
-tags:
-  - RocketMQ
-abbrlink: 16752
-date: 2021-10-29 21:52:06
-password:
-message:
----
-
 # 分布式消息队列RocketMQ学习文档
 
 > 本文资料来源：尚硅谷 | 本文发表时RocketMQ的版本：`v4.9.2` | 本资料是第一章内容，本文档总共有四章。

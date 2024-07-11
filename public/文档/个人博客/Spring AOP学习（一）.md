@@ -1,15 +1,3 @@
----
-title: Spring AOP学习（一）
-cover: 'https://pic.imgdb.cn/item/61210f024907e2d39c41cafb.jpg'
-draft: false
-categories: code
-tags:
-  - Spring AOP
-  - Java
-  - AOP
-abbrlink: 18315
-date: 2021-03-27 05:57:21
----
 
 ## AOP简介
 

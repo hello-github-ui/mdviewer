@@ -1,16 +1,3 @@
----
-title: Intellij IDEA 常用功能
-cover: 'https://img.imgdb.cn/item/60786c748322e6675cb9449e.jpg'
-secret: false
-categories:
-  - code
-tags:
-  - 工具
-abbrlink: 32650
-date: 2021-04-28 00:07:43
-password:
-message:
----
 
 ## Tab 页
 在 intellij idea 中，直接使用快捷键 `ctrl+e` 来找到最近访问过的文件；

@@ -1,13 +1,3 @@
----
-title: MySQL约束
-cover: 'https://img.imgdb.cn/item/604b88715aedab222cebf608.jpg'
-categories:
-  - code
-tags:
-  - MySQL
-abbrlink: 9528
-date: 2019-04-26 16:54:23
----
 
 # 约束的定义
 

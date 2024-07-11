@@ -1,13 +1,3 @@
----
-title: Git-commit-中添加表情
-cover: 'https://img.imgdb.cn/item/604b88595aedab222cebe8a4.jpg'
-categories:
-  - 记事本
-tags:
-  - Git
-abbrlink: 7204
-date: 2020-06-23 09:23:43
----
 
 # git commit 中使用表情
 我们经常可以在github上看到国外大佬的commit信息中有很多可爱的表情，这是怎么做到的呢？

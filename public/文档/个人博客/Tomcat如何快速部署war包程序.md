@@ -1,13 +1,3 @@
----
-title: Tomcat如何快速部署war包程序
-cover: 'https://pic.imgdb.cn/item/60a283596ae4f77d357d0d2b.jpg'
-categories:
-  - 记事本
-tags:
-  - Tomcat
-abbrlink: 39213
-date: 2021-05-17 22:54:31
----
 
 # Tomcat 中如何部署war包
 这里我使用最快速的一种方式，即通过修改 `conf/server.xml` 文件来实现

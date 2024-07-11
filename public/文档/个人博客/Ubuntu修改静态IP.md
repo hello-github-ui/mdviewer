@@ -1,17 +1,3 @@
----
-title: Ubuntu修改静态IP
-categories: 记事本
-cover: 'https://pic.imgdb.cn/item/621ddc1c2ab3f51d914c66cb.png'
-secret: false
-tags:
-  - Ubuntu
-  - Linux
-abbrlink: 55966
-date: 2022-03-05 00:11:25
-updated: 2022-03-05 00:11:25
-password:
-description:
----
 
 > Ubuntu 修改静态IP的方式与我们常用的‘红帽系linux’（比如centos）有很大区别，因此记录一下。
 

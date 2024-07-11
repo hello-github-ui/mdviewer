@@ -1,16 +1,3 @@
----
-title: 使用Python的you-get下载视频
-cover: 'https://img.imgdb.cn/item/604ba03b5aedab222cf8ce1d.jpg'
-secret: false
-categories:
-  - 记事本
-tags:
-  - Python
-abbrlink: 42943
-date: 2020-07-13 12:06:12
-password:
-message:
----
 
 # You-get 介绍
 You-get是GitHub上的一个项目，也可以说是一个命令行程序，帮助大家下载大多主流网站上的视频、图片及音频。 支持的网站非常多，我们可以先来看一部分：

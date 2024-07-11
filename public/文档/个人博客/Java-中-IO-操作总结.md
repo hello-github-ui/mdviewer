@@ -1,13 +1,3 @@
----
-title: Java 中 IO 操作总结
-cover: 'https://img.imgdb.cn/item/604b7e335aedab222ce6192e.jpg'
-categories:
-  - code
-tags:
-  - Java
-abbrlink: 65533
-date: 2020-01-06 03:35:31
----
 
 # <font color=#FF8C00>java IO 操作分析</font>
 直接看代码吧

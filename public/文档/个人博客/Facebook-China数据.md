@@ -1,16 +1,3 @@
----
-title: Facebook-China数据
-cover: 'https://pic.imgdb.cn/item/61210ed64907e2d39c416c0a.jpg'
-secret: false
-categories:
-  - 随笔
-tags:
-  - 数据
-abbrlink: 9274
-date: 2021-04-10 12:35:04
-password:
-message:
----
 
 最近facebook被爆出数据泄露问题，其中泄露的数据中有67万的来自中国用户的数据，最关键的是竟然有他们的个人电话号码，以下只是一部分数据展示。
 

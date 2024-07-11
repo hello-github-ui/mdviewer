@@ -1,18 +1,3 @@
----
-title: Spring AOP学习（二）
-cover: 'https://pic.imgdb.cn/item/61210f024907e2d39c41cafb.jpg'
-secret: false
-categories:
-  - code
-tags:
-  - Spring AOP
-  - Java
-  - AOP
-abbrlink: 55281
-date: 2021-04-04 13:00:19
-password:
-message:
----
 
 ## 前言
 我们通常在实际开发中有这样的需求场景：我需要在不改动原先的业务代码场景下，实现一些额外的功能，比如我计算一下执行某些代码耗时多久啊，我增加一些额外的日志输出啊，等等。。。

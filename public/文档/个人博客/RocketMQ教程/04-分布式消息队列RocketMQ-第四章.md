@@ -1,16 +1,3 @@
----
-title: 分布式消息队列RocketMQ-学习文档-第四章
-cover: 'https://pic.imgdb.cn/item/617bf8f32ab3f51d914779e4.jpg'
-secret: false
-categories:
-  - code
-tags:
-  - RocketMQ
-abbrlink: 46002
-date: 2021-10-29 22:00:19
-password:
-message:
----
 
 # 分布式消息队列RocketMQ学习文档
 

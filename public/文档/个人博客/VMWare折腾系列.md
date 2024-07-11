@@ -1,17 +1,3 @@
----
-title: VMWare折腾系列
-cover: 'https://pic.imgdb.cn/item/61952dbf2ab3f51d91a0a440.jpg'
-categories:
-  - 记事本
-tags:
-  - VMWare
-  - Linux
-secret: false
-abbrlink: 46537
-date: 2021-11-18 00:27:56
-message:
-password:
----
 
 Centos7 安装 NodeJS: https://www.cnblogs.com/zhi-leaf/p/10979629.html
 Centos7 安装 Elasticsearch: https://blog.csdn.net/fjxcsdn/article/details/102002297

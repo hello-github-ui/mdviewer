@@ -1,15 +1,3 @@
----
-title: SpringBoot-Vue-demo-02
-cover: 'https://pic.imgdb.cn/item/612110704907e2d39c44f884.jpg'
-categories:
-  - code
-tags:
-  - Vue
-  - SpringBoot
-  - ElementUI
-abbrlink: 54309
-date: 2020-06-16 22:16:15
----
 
 # Vue + Element UI
 

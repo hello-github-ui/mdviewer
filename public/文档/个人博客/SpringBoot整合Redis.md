@@ -1,15 +1,3 @@
----
-title: SpringBoot整合Redis
-cover: 'https://img.imgdb.cn/item/604b93e95aedab222cf35159.jpg'
-secret: false
-categories: code
-tags:
-  - Redis
-abbrlink: 13813
-date: 2020-07-17 22:03:30
-password:
-message:
----
 
 ## Redis 简介
 

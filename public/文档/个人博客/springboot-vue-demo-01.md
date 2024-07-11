@@ -1,14 +1,3 @@
----
-title: SpringBoot-Vue-demo-01
-cover: 'https://pic.imgdb.cn/item/612110704907e2d39c44f884.jpg'
-categories:
-  - code
-tags:
-  - SpringBoot
-  - Vue
-abbrlink: 54629
-date: 2020-06-14 23:39:28
----
 
 # 新建Vue3前端项目
 

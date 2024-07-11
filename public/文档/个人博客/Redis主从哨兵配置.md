@@ -1,13 +1,3 @@
----
-title: Redis主从哨兵配置
-cover: 'https://pic.imgdb.cn/item/61210fda4907e2d39c439d0c.jpg'
-categories:
-  - 记事本
-tags:
-  - Redis
-abbrlink: 22629
-date: 2021-04-02 00:47:53
----
 
 > 这里由于时间紧张，我就暂时先把自己配置的过程做成截图放在这里供大家使用，之后有时间我会来完善这篇文章的，非常抱歉。
 

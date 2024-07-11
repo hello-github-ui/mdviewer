@@ -1,14 +1,3 @@
----
-title: CSS基本样式设置
-cover: 'https://img.imgdb.cn/item/604b9fb75aedab222cf8a2be.jpg'
-categories:
-  - code
-tags:
-  - CSS
-  - HTML
-abbrlink: 55969
-date: 2020-01-28 14:15:28
----
 
 # <font color=#FF8C00>div中文字居中</font>
 如何让一个div中的文字水平和垂直居中？设置如下：

@@ -1,17 +1,3 @@
----
-title: 用爱发电的Google镜像
-cover: 'https://pic.imgdb.cn/item/61952f5b2ab3f51d91a1e7d4.jpg'
-categories:
-  - 记事本
-tags:
-  - 工具
-  - google
-secret: false
-abbrlink: 30738
-date: 2021-11-18 00:34:48
-message:
-password:
----
 
 
 > 最近发现一个经营多年的公益性质站点，疑似是浙江大学的，比那些三天两头就跑路的镜像站稳定的多，而且没有任何的时间/流量限制，但是有限制规则，只有回答正确的问题证明自己是该校的学生后才能使用。这里老夜也不藏着腋着了，直接公布答案：心灵之约、水朝夕、csxy@123

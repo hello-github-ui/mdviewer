@@ -1,17 +1,3 @@
----
-title: Flink安装部署
-cover: 'https://pic.imgdb.cn/item/61952cd32ab3f51d919fd946.jpg'
-categories:
-  - 记事本
-tags:
-  - Flink
-  - 大数据
-secret: false
-abbrlink: 55503
-date: 2021-11-16 22:49:52
-message:
-password:
----
 
 # windows
 

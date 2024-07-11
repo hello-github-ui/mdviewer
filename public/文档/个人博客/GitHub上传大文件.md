@@ -1,14 +1,3 @@
----
-title: GitHub上传大文件
-cover: 'https://img.imgdb.cn/item/604b9fb75aedab222cf8a2c0.jpg'
-categories:
-  - 记事本
-tags:
-  - GitHub
-  - 视频
-abbrlink: 57223
-date: 2019-12-30 05:17:52
----
 
 # github上传文件限制
 github默认地上传文件限制是不超过100M，注意：是单个文件不能超过100M(注意：本篇的密码必须是SHA256加密后的密文)

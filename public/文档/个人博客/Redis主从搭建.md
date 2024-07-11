@@ -1,14 +1,3 @@
----
-title: Redis主从搭建
-date: '2021-03-128T21:20:13+08:00'
-draft: false
-categories: 记事本
-tags:
-  - Redis
-  - Centos
-cover: 'https://pic.imgdb.cn/item/61210fda4907e2d39c439d0c.jpg'
-abbrlink: 4723
----
 
 ## Redis主从复制
 
