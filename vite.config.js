@@ -1,5 +1,5 @@
-import { defineConfig } from "vite";
-import dotenv, { parse } from 'dotenv';
+import {defineConfig} from "vite";
+import dotenv, {parse} from 'dotenv';
 import vue from "@vitejs/plugin-vue";
 import path from "path"
 
@@ -26,21 +26,21 @@ export default defineConfig({
         outDir: './docs',
         rollupOptions: {
             output: {
-              manualChunks(id) {
-                if (id.includes('node_modules')) {
-                  return 'vendor';
-                }
-              },
-              assetFileNames: (assetInfo) => {
-                if (assetInfo.name.endsWith('.woff') || assetInfo.name.endsWith('.woff2')) {
-                  return 'fonts/[name][extname]';
-                }
-                return 'assets/[name]-[hash][extname]';
-              },
+                manualChunks(id) {
+                    if (id.includes('node_modules')) {
+                        return 'vendor';
+                    }
+                },
+                assetFileNames: (assetInfo) => {
+                    if (assetInfo.name.endsWith('.woff') || assetInfo.name.endsWith('.woff2')) {
+                        return 'fonts/[name][extname]';
+                    }
+                    return 'assets/[name]-[hash][extname]';
+                },
             }
-          },
-          chunkSizeWarningLimit: 1000,
         },
+        chunkSizeWarningLimit: 1000,
+    },
     server: {
         host: '0.0.0.0',
         port: frontEndPort,

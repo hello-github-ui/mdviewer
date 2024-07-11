@@ -1,13 +1,13 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import {fileURLToPath} from 'url';
 
 dotenv.config();
 
 const frontendApp = express();
 
-const frontendPort =  parseInt(process.env.FRONTEND_PORT || 9523, 10);
+const frontendPort = parseInt(process.env.FRONTEND_PORT || 9523, 10);
 
 const __filename = fileURLToPath(import.meta.url);
 
