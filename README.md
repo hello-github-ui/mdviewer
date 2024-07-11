@@ -90,7 +90,11 @@ jobs:
 
 ![image-20240711151150099](./assets/image-20240711151150099.png)
 
-## 提交代码
+## 部署
+
+1、本地先执行 `npm install`安装一下依赖，
+
+2、再执行 `npm run build` 构建一下 `docs` 目录
 
 之后再次提交本地代码即可完成自动部署到 `github pages`。
 
