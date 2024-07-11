@@ -86,6 +86,10 @@ jobs:
 
 ![image-20240711150813093](./assets/image-20240711150813093.png)
 
+配置 `Actions`，允许 `Workflow` 进行读写操作：
+
+![image-20240711151150099](./assets/image-20240711151150099.png)
+
 ## 提交代码
 
 之后再次提交本地代码即可完成自动部署到 `github pages`。
