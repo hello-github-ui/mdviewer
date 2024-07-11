@@ -88,7 +88,7 @@ jobs:
 
 配置 `Actions`，允许 `Workflow` 进行读写操作：
 
-![image-20240711151150099](./assets/image-20240711151150099.png)
+![image-20240711152411674](./assets/image-20240711152411674.png)
 
 ## 部署
 
