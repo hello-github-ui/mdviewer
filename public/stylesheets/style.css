@@ -1,0 +1,58 @@
+html,body,#app {
+    height: 100%;
+    width: 100%;
+    margin: 0 0;
+}
+
+body {
+    /* padding: 50px; */
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.el-header {
+    background-color: #B3C0D1;
+    color: #333;
+    line-height: 60px;
+}
+
+.el-aside {
+    color: #333;
+}
+
+/* markdown 样式设置 start */
+#editor {
+    display: flex;
+    width: 100%;
+}
+
+#md-area {
+    width: 100%;
+    background: #f5f5f5;
+    border: 1px solid #111;
+
+}
+
+#view-area {
+    width: 100%;
+    /* border: 1px solid #111; */
+}
+
+/*Github主题要求的样式引入*/
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    margin: 0 auto;
+    padding: 45px;
+}
+
+@media (max-width: 767px) {
+    .markdown-body {
+        padding: 15px;
+    }
+}
+
+/* markdown 样式设置 end */
