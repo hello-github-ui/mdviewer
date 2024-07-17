@@ -171,8 +171,6 @@ export default {};
 </script>
 ```
 
-## 
-
 ## 3、定义首页面
 
 （不包含幻灯片）
@@ -598,7 +596,7 @@ export default {
 
 **（1）使用router-link构建路由，地址是/course**
 
-![img](./index_files/3171c885-c389-43d9-b141-63c9aef6a701.png)
+![img](./assets/3171c885-c389-43d9-b141-63c9aef6a701-1721229203720-1.png)
 
 **（2）在page目录创建文件夹course ，在****course****目录创建index.vue**
 
@@ -627,8 +625,6 @@ export default {
   </div>
 </template>
 ```
-
-# 
 
 # 三、封装axios
 
