@@ -1,5 +1,16 @@
 [
     {
+        "name": "Git教程",
+        "path": "Git教程",
+        "children": [
+            {
+                "name": "01-基础.md",
+                "path": "Git教程/01-基础.md"
+            }
+        ],
+        "open": false
+    },
+    {
         "name": "个人博客",
         "path": "个人博客",
         "children": [
