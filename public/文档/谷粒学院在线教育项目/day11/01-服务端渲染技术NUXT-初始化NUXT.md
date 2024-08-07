@@ -72,9 +72,7 @@ head: {
 npm install
 ```
 
-## 
-
-![img](./index_files/8e9bcd6d-6161-440b-aac2-bc9af65f5bc7.png)
+![img](./assets/8e9bcd6d-6161-440b-aac2-bc9af65f5bc7-1721229130089-1.png)
 
 ## 8、测试运行
 
