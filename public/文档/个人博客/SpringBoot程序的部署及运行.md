@@ -16,17 +16,202 @@
 
 # 脚本启动
  编写启动脚本
+
+若是供所有的SpringBoot程序使用，则使用下面的脚本：
+
+脚本名：`startApp.sh`
+
  ``` sh
- #!/bin/bash
- PROJECTNAME=目标jar名称(不需要带.jar)
- pid=`ps -ef |grep $PROJECTNAME |grep -v "grep" |awk '{print $2}'`
- if [ $pid ]; then
- ​    echo "$PROJECTNAME  is  running  and pid=$pid"
- else
-    echo "Start success to start $PROJECTNAME ...."
-    nohup java -jar 目标.jar  >> catalina.out  2>&1 &
- fi
+#!/bin/bash
+
+# Java ENV（此处需要修改，需要预先安装JDK）
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-5.b12.el7_4.x86_64
+export JRE_HOME=${JAVA_HOME}/jre
+
+# Apps Info
+# 应用存放地址（此处需要修改）
+APP_HOME=/cvbs/fjsc/r81
+# 应用名称
+APP_NAME=$1
+
+# Shell Info
+
+# 使用说明，用来提示输入参数
+usage() {
+    echo "Usage: sh startApp.sh [APP_NAME] [start|stop|restart|status]"
+    exit 1
+}
+
+# 检查程序是否在运行
+is_exist(){
+        # 获取PID
+        PID=$(ps -ef |grep ${APP_NAME} | grep -v $0 |grep -v grep |awk '{print $2}')
+        # -z "${pid}"判断pid是否存在，如果不存在返回1，存在返回0
+        if [ -z "${PID}" ]; then
+                # 如果进程不存在返回1
+                return 1
+        else
+                # 进程存在返回0
+                return 0
+        fi
+}
+
+# 定义启动程序函数，这里日志输出到空设备了 /dev/null
+start(){
+        is_exist
+        if [ $? -eq "0" ]; then
+                echo "${APP_NAME} is already running, PID=${PID}"
+        else
+                nohup ${JRE_HOME}/bin/java -jar ${APP_HOME}/${APP_NAME} --server.port=8181 >/dev/null 2>&1 &
+                PID=$(echo $!)
+                echo "${APP_NAME} start success, PID=$!"
+        fi
+}
+
+# 停止进程函数
+stop(){
+        is_exist
+        if [ $? -eq "0" ]; then
+                kill -9 ${PID}
+                echo "${APP_NAME} process stop, PID=${PID}"
+        else
+                echo "There is not the process of ${APP_NAME}"
+        fi
+}
+# 重启进程函数
+restart(){
+        stop
+        start
+}
+
+# 查看进程状态
+status(){
+        is_exist
+        if [ $? -eq "0" ]; then
+                echo "${APP_NAME} is running, PID=${PID}"
+        else
+                echo "There is not the process of ${APP_NAME}"
+        fi
+}
+
+case $2 in
+"start")
+        start
+        ;;
+"stop")
+        stop
+        ;;
+"restart")
+        restart
+        ;;
+"status")
+       status
+        ;;
+        *)
+        usage
+        ;;
+esac
+exit 0
+
  ```
+
+若是只供该程序使用，则修改为如下：
+
+脚本名：`startApp.sh`
+
+```bash
+#!/bin/bash
+
+# Java ENV（此处需要修改，需要预先安装JDK）
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-5.b12.el7_4.x86_64
+export JRE_HOME=${JAVA_HOME}/jre
+
+# Apps Info
+# 应用存放地址（此处需要修改）
+APP_HOME=/cvbs/fjsc/r81
+# 应用名称
+APP_NAME=SpringBoot-demo-1.0.0.jar
+
+# Shell Info
+
+# 使用说明，用来提示输入参数
+usage() {
+    echo "Usage: sh startApp.sh [start|stop|restart|status]"
+    exit 1
+}
+
+# 检查程序是否在运行
+is_exist(){
+        # 获取PID
+        PID=$(ps -ef |grep ${APP_NAME} | grep -v $0 |grep -v grep |awk '{print $2}')
+        # -z "${pid}"判断pid是否存在，如果不存在返回1，存在返回0
+        if [ -z "${PID}" ]; then
+                # 如果进程不存在返回1
+                return 1
+        else
+                # 进程存在返回0
+                return 0
+        fi
+}
+
+# 定义启动程序函数，这里日志输出到空设备了 /dev/null
+start(){
+        is_exist
+        if [ $? -eq "0" ]; then
+                echo "${APP_NAME} is already running, PID=${PID}"
+        else
+                nohup ${JRE_HOME}/bin/java -jar ${APP_HOME}/${APP_NAME} --server.port=8181 >/dev/null 2>&1 &
+                PID=$(echo $!)
+                echo "${APP_NAME} start success, PID=$!"
+        fi
+}
+
+# 停止进程函数
+stop(){
+        is_exist
+        if [ $? -eq "0" ]; then
+                kill -9 ${PID}
+                echo "${APP_NAME} process stop, PID=${PID}"
+        else
+                echo "There is not the process of ${APP_NAME}"
+        fi
+}
+# 重启进程函数
+restart(){
+        stop
+        start
+}
+
+# 查看进程状态
+status(){
+        is_exist
+        if [ $? -eq "0" ]; then
+                echo "${APP_NAME} is running, PID=${PID}"
+        else
+                echo "There is not the process of ${APP_NAME}"
+        fi
+}
+
+case $1 in
+"start")
+        start
+        ;;
+"stop")
+        stop
+        ;;
+"restart")
+        restart
+        ;;
+"status")
+       status
+        ;;
+        *)
+        usage
+        ;;
+esac
+exit 0
+
+```
 
  在该 `.sh`(脚本文件)中，使用到了命令 `nohup java -jar  ...` nohup 就是 no hangup（不挂起），即 即使用户登出，
  关闭终端后，该进程还会继续运行；采用 nohup 命令后，那么就会在当前脚本所在的同级目录下生成一个 `nohup.out` 的文件，
