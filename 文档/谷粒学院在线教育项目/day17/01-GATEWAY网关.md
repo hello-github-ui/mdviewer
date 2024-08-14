@@ -198,18 +198,42 @@ public class ApiGatewayApplication {
 ![img](./assets/25718906-9518-4e35-9848-d2f10c079389.png)
 
 ```
+package com.example.gateway.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.reactive.CorsWebFilter;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+
+/**
+ * Created by 19921224 on 2024/8/14 11:36
+ * 跨域配置统一放在网关层配置
+ */
 @Configuration
 public class CorsConfig {
+
+    /**
+     * 添加过滤器
+     */
     @Bean
-    public CorsWebFilter corsFilter() {
-        CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedMethod("*");
-        config.addAllowedOrigin("*");
-        config.addAllowedHeader("*");
+    public CorsWebFilter corsWebFilter() {
+        // 基于url跨域，选择reactive包下的
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(new PathPatternParser());
-        source.registerCorsConfiguration("/**", config);
+        // 配置跨域信息
+        CorsConfiguration configuration = new CorsConfiguration();
+        // 允许跨域的头 *：表示所有
+        configuration.addAllowedHeader("*");
+        // 允许跨域的请求方式
+        configuration.addAllowedMethod("*");
+        // 允许跨域的请求来源
+        configuration.addAllowedOrigin("*");
+        // 是否允许携带cookie跨域
+        configuration.setAllowCredentials(true);
 
+        // `/**` :任意url都要进行跨域配置
+        source.registerCorsConfiguration("/**", configuration);
         return new CorsWebFilter(source);
     }
 }
