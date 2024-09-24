@@ -115,6 +115,21 @@
                 "path": "个人博客/Redis主从搭建.md"
             },
             {
+                "name": "RabbitMQ教程",
+                "path": "个人博客/RabbitMQ教程",
+                "children": [
+                    {
+                        "name": "1-RabbitMQ基础.md",
+                        "path": "个人博客/RabbitMQ教程/1-RabbitMQ基础.md"
+                    },
+                    {
+                        "name": "2-RabbitMQ高级.md",
+                        "path": "个人博客/RabbitMQ教程/2-RabbitMQ高级.md"
+                    }
+                ],
+                "open": false
+            },
+            {
                 "name": "RocketMQ教程",
                 "path": "个人博客/RocketMQ教程",
                 "children": [
