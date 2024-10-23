@@ -24,95 +24,93 @@
  ``` sh
 #!/bin/bash
 
-# Java ENV（此处需要修改，需要预先安装JDK）
-export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-5.b12.el7_4.x86_64
+# Java，需要根据实际情况修改
+export JAVA_HOME=/usr/lib64/jdk8
 export JRE_HOME=${JAVA_HOME}/jre
 
-# Apps Info
-# 应用存放地址（此处需要修改）
-APP_HOME=/cvbs/fjsc/r81
-# 应用名称
-APP_NAME=$1
+# jar包所在的目录，需要根据实际情况修改
+APP_HOME=/app/lqd/apps/retina-app
+# Application，需要根据实际情况修改
+APP_NAME=retina-data-hive-0.0.1.jar
+# 程序运行端口，需要根据实际情况修改
+APP_SERVER_PORT=9009
 
-# Shell Info
-
-# 使用说明，用来提示输入参数
 usage() {
-    echo "Usage: sh startApp.sh [APP_NAME] [start|stop|restart|status]"
+    echo -e "\033[43;37m Usage: sh startApp.sh [start|stop|restart|status] \033[0m"
     exit 1
 }
 
 # 检查程序是否在运行
-is_exist(){
-        # 获取PID
-        PID=$(ps -ef |grep ${APP_NAME} | grep -v $0 |grep -v grep |awk '{print $2}')
-        # -z "${pid}"判断pid是否存在，如果不存在返回1，存在返回0
-        if [ -z "${PID}" ]; then
-                # 如果进程不存在返回1
-                return 1
-        else
-                # 进程存在返回0
-                return 0
-        fi
+is_exist() {
+    # 获取PID
+    PID=$(ps -ef |grep ${APP_NAME} |grep -v $0 |grep -v grep |awk '{print $2}')
+    # 如果"${pid}"类型pid是否存在，如果不存在返回1，存在返回0
+    if [ -z "${PID}" ]; then
+        # 如果进程不存在返回1
+        return 1
+    else
+        # 进程存在返回0
+        return 0
+    fi
 }
 
-# 定义启动程序函数，这里日志输出到空设备了 /dev/null
-start(){
-        is_exist
-        if [ $? -eq "0" ]; then
-                echo "${APP_NAME} is already running, PID=${PID}"
-        else
-                nohup ${JRE_HOME}/bin/java -jar ${APP_HOME}/${APP_NAME} --server.port=8181 >/dev/null 2>&1 &
-                PID=$(echo $!)
-                echo "${APP_NAME} start success, PID=$!"
-        fi
+# 定义启动程序函数，这里已经输出到了 /dev/null
+start() {
+    is_exist
+    if [ $? -eq "0" ]; then
+        echo -e "\033[42;37m ${APP_NAME} is already running, PID=${PID} \033[0m"
+    else
+        nohup ${JRE_HOME}/bin/java -jar ${APP_HOME}/${APP_NAME} --server.port=${APP_SERVER_PORT} >/dev/null 2>&1 &
+        PID=$(echo $!)
+        echo -e "\033[42;37m ${APP_NAME} start success, PID=${PID} \033[0m"
+    fi
 }
 
-# 停止进程函数
-stop(){
-        is_exist
-        if [ $? -eq "0" ]; then
-                kill -9 ${PID}
-                echo "${APP_NAME} process stop, PID=${PID}"
-        else
-                echo "There is not the process of ${APP_NAME}"
-        fi
-}
-# 重启进程函数
-restart(){
-        stop
-        start
+# 停止程序函数
+stop() {
+    is_exist
+    if [ $? -eq "0" ]; then
+        kill -9 ${PID}
+        echo -e "\033[41;37m ${APP_NAME} process stop, PID=${PID} \033[0m"
+    else
+        echo -e "\033[46;37m There is not the process of ${APP_NAME} \033[0m"
+    fi
 }
 
-# 查看进程状态
-status(){
-        is_exist
-        if [ $? -eq "0" ]; then
-                echo "${APP_NAME} is running, PID=${PID}"
-        else
-                echo "There is not the process of ${APP_NAME}"
-        fi
+# 重启程序函数
+restart() {
+    stop
+    start
 }
 
-case $2 in
+# 查看程序状态
+status() {
+    is_exist
+    if [ $? -eq "0" ]; then
+        echo -e "\033[42;37m ${APP_NAME} is running, PID=${PID} \033[0m"
+    else
+        echo -e "\033[45;37m There is not the process of ${APP_NAME} \033[0m"
+    fi
+}
+
+case $1 in
 "start")
-        start
-        ;;
+    start
+    ;;
 "stop")
-        stop
-        ;;
+    stop
+    ;;
 "restart")
-        restart
-        ;;
+    restart
+    ;;
 "status")
-       status
-        ;;
-        *)
-        usage
-        ;;
+    status
+    ;;
+*)
+    usage
+    ;;
 esac
 exit 0
-
  ```
 
 若是只供该程序使用，则修改为如下：
