@@ -11,7 +11,6 @@ dotenv.config();
 
 const frontEndPort = parseInt(process.env.FRONTEND_PORT || 9523, 10);
 
-
 export default defineConfig({
     base: './',
     plugins: [
@@ -31,12 +30,16 @@ export default defineConfig({
                         return 'vendor';
                     }
                 },
-                assetFileNames: (assetInfo) => {
+                assetFileNames(assetInfo) {
+                    let extType = assetInfo.name.split('.')[1];
+                    if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
+                        extType = 'img';
+                    }
                     if (assetInfo.name.endsWith('.woff') || assetInfo.name.endsWith('.woff2')) {
                         return 'fonts/[name][extname]';
                     }
-                    return 'assets/[name]-[hash][extname]';
-                },
+                    return `assets/${extType}/[name]-[hash][extname]`;
+                }
             }
         },
         chunkSizeWarningLimit: 1000,
@@ -44,5 +47,15 @@ export default defineConfig({
     server: {
         host: '0.0.0.0',
         port: frontEndPort,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                changeOrigin: true
+            },
+            '/uploads': {
+                target: 'http://localhost:3000',
+                changeOrigin: true
+            }
+        }
     }
 });
