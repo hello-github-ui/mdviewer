@@ -1,10 +1,11 @@
-
 # windows
 
 ## 下载
 
 > 要想运行flink，前提必须安装 JDK1.8x
-官网下载地址：`https://flink.apache.org/zh/downloads.html`。或者百度云下载：[链接](https://pan.baidu.com/s/1MXBwNuC-_y8tIqaEWCY1og) 提取码: `jw3e`
+> 官网下载地址：
+`https://flink.apache.org/zh/downloads.html`。或者百度云下载：[链接](https://pan.baidu.com/s/1MXBwNuC-_y8tIqaEWCY1og) 提取码: `
+> jw3e`
 
 ## 解压
 
@@ -15,6 +16,7 @@
 直接进入 `${flink-home}/bin` 目录，双击 `start-cluster.bat` 即启动了。
 
 ## 访问
+
 在浏览器中输入：`http://localhost:8081/` 即可访问。
 
 ## 命令查看运行状态
@@ -26,8 +28,12 @@
 > 参考文章：[https://www.cnblogs.com/aibabel/p/10937110.html](https://www.cnblogs.com/aibabel/p/10937110.html)
 
 ## 部署任务
+
 ### 方式一，dashboard 上传jar包
-8081界面，上传jar包后，点击该任务后，输入相关的运行参数配置，如果看到任务直接失败了，那八成原因是当前任务所需的可用 `task Slots` 不够，那怎么办呢？很简单，修改配置文件。进入 flink_home 目录，编辑文件 `vim conf/flink-conf.yaml`，将 `taskmanager.numberOfTaskSlots` 的值设置大一点，比如4，然后再重新上传jar包，启动任务即可。
+
+8081界面，上传jar包后，点击该任务后，输入相关的运行参数配置，如果看到任务直接失败了，那八成原因是当前任务所需的可用
+`task Slots` 不够，那怎么办呢？很简单，修改配置文件。进入 flink_home 目录，编辑文件 `vim conf/flink-conf.yaml`，将
+`taskmanager.numberOfTaskSlots` 的值设置大一点，比如4，然后再重新上传jar包，启动任务即可。
 > 问题：那么 `taskmanager.numberOfTaskSlots` 设置该遵循什么原则呢？或者说怎么设置比较好呢？
 
 ### 方式二，通过手动输入命令启动任务
@@ -45,17 +51,19 @@
 `./bin/flink  cancel 7c0c4254b1e25f0473ce4a9199287744`
 
 ## Flink部署
+
 ### Standalone模式
 
 ### Yarn模式
 
 > 以yarn模式部署Flink任务时，要求**Flink是有Hadoop支持的版本，Hadoop环境需要保证版本在2.2以上，并且集群中安装有HDFS服务**。
 
-
 ### Kubernetes部署
 
 # 运行demo
+
 flink提供两种任务运行入口：
+
 * `flink.bat` 脚本启动任务程序
 * 页面上传任务程序包运行
 
@@ -81,18 +89,18 @@ flink.bat run ../example/batch/WordCount.jar
 
 ![](https://pic.imgdb.cn/item/6193d25f2ab3f51d91bee7f6.jpg)
 
-
 ### JobManager
 
-​	①JobManager控制一个应用程序执行的主进程，每个应用程序都会被一个不同的JobManager所控制执行，
-​	②JobManager会先接收到要执行的应用程序，这个应用程序会包括：作业图（JobGraphy），逻辑数据流图，和打包了所有的类库和其它资源的JAR包。
-​	③JobManager会把JobGraphy转换成一个物理层面的数据流图，这个图被叫做 执行图，包含了所有可以并发执行的任务。
-​	④JobManager会向 resourceManager 申请执行任务所必要的资源，即 taskManager 上的 slot（插槽）。一旦它获取到了足够的资源，就会将执行图分发到真正运行他们的
+​ ①JobManager控制一个应用程序执行的主进程，每个应用程序都会被一个不同的JobManager所控制执行，
+​ ②JobManager会先接收到要执行的应用程序，这个应用程序会包括：作业图（JobGraphy），逻辑数据流图，和打包了所有的类库和其它资源的JAR包。
+​ ③JobManager会把JobGraphy转换成一个物理层面的数据流图，这个图被叫做 执行图，包含了所有可以并发执行的任务。
+​ ④JobManager会向 resourceManager 申请执行任务所必要的资源，即 taskManager 上的 slot（插槽）。一旦它获取到了足够的资源，就会将执行图分发到真正运行他们的
 TaskManager上。（也就是说真正执行任务的是谁？是taskManager）。而在运行过程中，JobManager会负责所有需要中央协调资源的操作，比如说检查点（checkPoint）的协调。
 
 ### TaskManager
 
-* Flink中的工作进程。通常在Flink中会有多个TaskManager运行，每一个TaskManager都包含了一定数量的插槽（slots）。**插槽的数量限制了TaskManager能够执行的任务数量**。
+* Flink中的工作进程。通常在Flink中会有多个TaskManager运行，每一个TaskManager都包含了一定数量的插槽（slots）。*
+  *插槽的数量限制了TaskManager能够执行的任务数量**。
 * 启动之后，TaskManager会向资源管理器注册它的插槽，收到资源管理器的指令后，TaskManager就会将一个或者多个插槽提供给JobManager调用。JobManager就可以向插槽分配任务（tasks）来执行了。
 * 在执行过程中，一个TaskManager可以跟其它运行同一应用程序的TaskManager交换数据。
 
@@ -106,11 +114,10 @@ TaskManager上。（也就是说真正执行任务的是谁？是taskManager）�
 * 并行的任务，需要占用多少slot？跟当前所有任务中最大任务的并行度相关。
 * 一个流处理程序，到底包含多少个任务？
 
-
 ### 并行度（Parallelism）
 
 * 一个特定算子的子任务（subtask）的个数被称之为其并行度（parallelism）。
-一般情况下，一个Stream的并行度，可以认为就是其所有算子中最大的并行度。
+  一般情况下，一个Stream的并行度，可以认为就是其所有算子中最大的并行度。
 
 ## FLink 读取、写入 MySQL 数据
 

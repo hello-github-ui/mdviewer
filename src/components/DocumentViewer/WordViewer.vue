@@ -1,13 +1,13 @@
 <template>
     <div class="word-viewer">
-        <div class="document-content" v-html="content" />
+        <div class="document-content" v-html="content"/>
     </div>
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import {ref, watch} from 'vue'
 import mammoth from 'mammoth'
-import { ElMessage } from 'element-plus'
+import {ElMessage} from 'element-plus'
 
 const props = defineProps({
     fileData: {
@@ -23,7 +23,7 @@ const loadDocument = async () => {
         const response = await fetch(props.fileData.url)
         const arrayBuffer = await response.arrayBuffer()
 
-        const result = await mammoth.convertToHtml({ arrayBuffer })
+        const result = await mammoth.convertToHtml({arrayBuffer})
         content.value = result.value
     } catch (error) {
         ElMessage.error('Word 文档加载失败')
@@ -33,7 +33,7 @@ const loadDocument = async () => {
 
 watch(() => props.fileData, () => {
     loadDocument()
-}, { immediate: true })
+}, {immediate: true})
 </script>
 
 <style scoped>

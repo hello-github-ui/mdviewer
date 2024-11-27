@@ -3,19 +3,27 @@
         <div class="toolbar">
             <el-button-group>
                 <el-button @click="prevPage" :disabled="currentPage === 1">
-                    <el-icon><arrow-left /></el-icon>
+                    <el-icon>
+                        <arrow-left/>
+                    </el-icon>
                 </el-button>
                 <el-button @click="nextPage" :disabled="currentPage === totalPages">
-                    <el-icon><arrow-right /></el-icon>
+                    <el-icon>
+                        <arrow-right/>
+                    </el-icon>
                 </el-button>
             </el-button-group>
             <span class="page-info">{{ currentPage }} / {{ totalPages }}</span>
             <el-button-group>
                 <el-button @click="zoomOut" :disabled="scale <= 0.5">
-                    <el-icon><zoom-out /></el-icon>
+                    <el-icon>
+                        <zoom-out/>
+                    </el-icon>
                 </el-button>
                 <el-button @click="zoomIn" :disabled="scale >= 2">
-                    <el-icon><zoom-in /></el-icon>
+                    <el-icon>
+                        <zoom-in/>
+                    </el-icon>
                 </el-button>
             </el-button-group>
         </div>
@@ -27,10 +35,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import { ArrowLeft, ArrowRight, ZoomIn, ZoomOut } from '@element-plus/icons-vue'
+import {ref, watch} from 'vue'
+import {ArrowLeft, ArrowRight, ZoomIn, ZoomOut} from '@element-plus/icons-vue'
 import * as pdfjsLib from 'pdfjs-dist'
-import { ElMessage } from 'element-plus'
+import {ElMessage} from 'element-plus'
 
 // 配置 PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js'
@@ -64,7 +72,7 @@ const loadPDF = async () => {
 const renderPage = async (num) => {
     try {
         const page = await pdfDoc.getPage(num)
-        const viewport = page.getViewport({ scale: scale.value })
+        const viewport = page.getViewport({scale: scale.value})
 
         const canvas = pdfCanvas.value
         const context = canvas.getContext('2d')
@@ -113,7 +121,7 @@ const zoomOut = () => {
 
 watch(() => props.fileData, () => {
     loadPDF()
-}, { immediate: true })
+}, {immediate: true})
 </script>
 
 <style scoped>

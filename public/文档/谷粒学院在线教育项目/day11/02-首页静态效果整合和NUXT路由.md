@@ -1,8 +1,8 @@
-# 一、页面布局 
+# 一、页面布局
 
 ## 1、复制静态资源
 
-将静态原型中的css、img、js、photo目录拷贝至assets目录下 
+将静态原型中的css、img、js、photo目录拷贝至assets目录下
 
 将favicon.ico复制到static目录下
 
@@ -18,10 +18,10 @@
 <template>
   <div>
     <!-- 页头部分 -->
-      
+
     <!-- 内容的区域 -->
     <nuxt/>
-      
+
     <!-- 页尾部分 -->
   </div>
 </template>
@@ -109,7 +109,7 @@
       </section>
     </header>
     <!-- /公共头引入 -->
-      
+
     <nuxt/>
 
     <!-- 公共底引入 -->
@@ -183,11 +183,11 @@ export default {};
 
 ```
 <template>
-  
+
   <div>
     <!-- 幻灯片 开始 -->
     <!-- 幻灯片 结束 -->
-    
+
      <div id="aCoursesList">
       <!-- 网校课程 开始 -->
       <div>
@@ -537,12 +537,12 @@ export default {};
 
 <script>
 export default {
-  
+
 }
 </script>
 ```
 
-## 4、幻灯片插件 
+## 4、幻灯片插件
 
 ```
 <!-- 幻灯片 开始 -->
@@ -608,9 +608,9 @@ export default {
 </template>
 ```
 
-## 点击导航，测试路由 
+## 点击导航，测试路由
 
-# 2、动态路由 
+# 2、动态路由
 
 ## （1）创建方式
 

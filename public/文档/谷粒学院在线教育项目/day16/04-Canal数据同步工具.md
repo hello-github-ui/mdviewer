@@ -26,14 +26,14 @@ mysql> show variables like 'log_bin';
 
 ```
 1，修改 mysql 的配置文件 my.cnf
-vi /etc/my.cnf 
+vi /etc/my.cnf
 追加内容：
 log-bin=mysql-bin     #binlog文件名
 binlog_format=ROW     #选择row模式
 server_id=1           #mysql实例id,不能和canal的slaveId重复
 
 2，重启 mysql：
-service mysql restart   
+service mysql restart
 
 3，登录 mysql 客户端，查看 log_bin 变量
 mysql> show variables like 'log_bin';
@@ -88,11 +88,11 @@ canal.instance.dbPassword=canal
 canal.instance.filter.regex=guli_ucenter.ucenter_member
 ```
 
-## 注： 
+## 注：
 
 ```
 mysql 数据解析关注的表，Perl正则表达式.
-多个正则之间以逗号(,)分隔，转义符需要双斜杠(\\) 
+多个正则之间以逗号(,)分隔，转义符需要双斜杠(\\)
 常见例子：
 1.  所有表：.*   or  .*\\..*
 2.  canal schema下所有表： canal\\..*
@@ -163,7 +163,7 @@ spring.datasource.username=root
 spring.datasource.password=root
 ```
 
-## 4、编写canal客户端类 
+## 4、编写canal客户端类
 
 ```
 import com.alibaba.otter.canal.client.CanalConnector;

@@ -1,4 +1,3 @@
-
 ## Redis主从复制
 
 redis的主从复制概念和mysql的主从复制大概类似。一台主机master，一台从机slaver。master主机数据更新后根据配置和策略，自动同步到slaver从机，Master以写为主，Slaver以读为主。

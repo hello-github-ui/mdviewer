@@ -1,4 +1,4 @@
-# 一、实现EasyExcel对Excel读操作 
+# 一、实现EasyExcel对Excel读操作
 
 ## 1、创建实体类
 
@@ -8,7 +8,7 @@ public class ReadData {
     //设置列对应的属性
     @ExcelProperty(index = 0)
     private int sid;
-    
+
     //设置列对应的属性
     @ExcelProperty(index = 1)
     private String sname;
@@ -72,7 +72,7 @@ public class ExcelListener extends AnalysisEventListener<ReadData> {
 }
 ```
 
-# 3、调用实现最终的读取 
+# 3、调用实现最终的读取
 
 ```
    public static void main(String[] args) throws Exception {

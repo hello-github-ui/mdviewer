@@ -1,18 +1,21 @@
-
 ![](https://img.imgdb.cn/item/604b7e335aedab222ce6192e.jpg)
 
 # HSSFWorkbook 介绍
 ---
 开发中经常会遇到 Excel 的处理，在 Java 中，操作 excel 目前有两个主流框架，分别是：
+
 * apache 的 poi
 
-> Apache POI [1]  是用Java编写的免费开源的跨平台的 Java API，Apache POI提供API给Java程式对Microsoft Office格式档案读和写的功能。POI为“Poor Obfuscation Implementation”的首字母缩写，意为“简洁版的模糊实现”。
+> Apache POI [1]  是用Java编写的免费开源的跨平台的 Java API，Apache POI提供API给Java程式对Microsoft
+> Office格式档案读和写的功能。POI为“Poor Obfuscation Implementation”的首字母缩写，意为“简洁版的模糊实现”。
 
 * Java Excel
 
-> Java Excel是一开放源码项目，通过它Java开发人员可以读取Excel文件的内容、创建新的Excel文件、更新已经存在的Excel文件。jxl 由于其小巧 易用的特点, 逐渐已经取代了 POI-excel的地位, 成为了越来越多的java开发人员生成excel文件的首选
+> Java Excel是一开放源码项目，通过它Java开发人员可以读取Excel文件的内容、创建新的Excel文件、更新已经存在的Excel文件。jxl
+> 由于其小巧 易用的特点, 逐渐已经取代了 POI-excel的地位, 成为了越来越多的java开发人员生成excel文件的首选
 
-这里提一下：HSSFWorkbook:是操作Excel2003以前（包括2003）的版本，扩展名是.xls；XSSFWorkbook:是操作Excel2007的版本，扩展名是.xlsx。对于不同版本的EXCEL文档要使用不同的工具类，如果使用错了，会提示如下错误信息：org.apache.poi.openxml4j.exceptions.InvalidOperationException，org.apache.poi.poifs.filesystem.OfficeXmlFileException
+这里提一下：HSSFWorkbook:是操作Excel2003以前（包括2003）的版本，扩展名是.xls；XSSFWorkbook:
+是操作Excel2007的版本，扩展名是.xlsx。对于不同版本的EXCEL文档要使用不同的工具类，如果使用错了，会提示如下错误信息：org.apache.poi.openxml4j.exceptions.InvalidOperationException，org.apache.poi.poifs.filesystem.OfficeXmlFileException
 
 ![](https://img.imgdb.cn/item/604b7e335aedab222ce61937.jpg)
 

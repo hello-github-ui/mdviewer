@@ -1,4 +1,3 @@
-
 # 新建Vue3前端项目
 
 ## 先删除之前的vue2版本
@@ -21,7 +20,6 @@
 
 ![](https://img.imgdb.cn/item/604b83285aedab222ce8ebff.png)
 
-
 默认操作即可了
 
 ## 安装依赖
@@ -39,6 +37,7 @@
 单独运行成功，可以在  `/src/views/` 自己再编写一个 Book.vue 页面，然后在 `/src/router/index.js` 中进行注册，使用即可
 
 ```vue
+
 <template>
     <div>
         <table>
@@ -63,8 +62,8 @@
 <script>
     export default {
         name: "Book",
-        data(){ // data是一个函数对象
-            return{
+        data() { // data是一个函数对象
+            return {
                 books: [
                     {
                         id: 1,
@@ -110,29 +109,29 @@ import Book from '../views/Book'
 Vue.use(VueRouter)
 
 const routes = [
-    {
-        path: '/',
-        name: 'Home',
-        component: Home
-    },
-    {
-        path: '/about',
-        name: 'About',
-        // 下面这是 vue3 的写法，这里我们还用vue2的写法注册组件
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-    },
-    {
-        path: '/book',
-        component: Book
-    }
+{
+path: '/',
+name: 'Home',
+component: Home
+},
+{
+path: '/about',
+name: 'About',
+// 下面这是 vue3 的写法，这里我们还用vue2的写法注册组件
+// this generates a separate chunk (about.[hash].js) for this route
+// which is lazy-loaded when the route is visited.
+component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+},
+{
+path: '/book',
+component: Book
+}
 ]
 
 const router = new VueRouter({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes
+mode: 'history',
+base: process.env.BASE_URL,
+routes
 })
 
 export default router
@@ -141,10 +140,8 @@ export default router
 
 ![](https://img.imgdb.cn/item/604b83635aedab222ce90a88.png)
 
-
-
-
 # 编写后端spring boot 代码
+
 ## 新建一个spring boot 工程
 
 ## 按照下图所示完成工程的创建
@@ -178,7 +175,6 @@ server:
 注意这里采用这张表的数据
 
 ![](https://img.imgdb.cn/item/604b82b55aedab222ce8ac29.png)
-
 
 ## 编写实体类
 
@@ -243,8 +239,6 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
 这样就新建了一个测试类
 
-
-
 ```java
 package com.springboot.demo.repository;
 
@@ -272,11 +266,9 @@ class BookRepositoryTest {
 
 ![](https://img.imgdb.cn/item/604b82d95aedab222ce8c0d6.png)
 
-
 ## 编写控制器
 
 ![](https://img.imgdb.cn/item/604b82ee5aedab222ce8cb8a.png)
-
 
 ```java
 package com.springboot.demo.controller;
@@ -317,7 +309,6 @@ public class BookHandler {
 
 ![](https://img.imgdb.cn/item/604b83015aedab222ce8d741.png)
 
-
 # 打通 springboot 和 vue
 
 ## 先在 前端项目中安装 `axios` 模块
@@ -326,11 +317,9 @@ public class BookHandler {
 
 ![](https://img.imgdb.cn/item/604b837c5aedab222ce916de.png)
 
-
 安装成功后，会自动显示在 `/src/plugins/axios.js`
 
 ![](https://img.imgdb.cn/item/604b83895aedab222ce91d67.png)
-
 
 ## 改造 `Book.vue`
 
@@ -338,13 +327,11 @@ public class BookHandler {
 
 ![](https://img.imgdb.cn/item/604b83bb5aedab222ce937a7.png)
 
-
 ## 跨域配置
 
 我们选择在spring boot 后端进行配置
 
 ![](https://img.imgdb.cn/item/604b83a75aedab222ce92c0f.png)
-
 
 ## 运行截图
 

@@ -1,7 +1,5 @@
 # 一、搭建service模块
 
-
-
 ## 1、在父工程guli-parent下面创建模块service
 
 ![img](./assets/8cae3ec0-716b-42a9-ac79-44b600e20ca4.png)

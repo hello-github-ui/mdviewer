@@ -1,4 +1,3 @@
-
 ## 数据格式
 
 Elasticsearch 是面向文档型的数据库，一条数据在这里就是一个文档。es里面的概念和关系型数据库中的概念比对如下，可以依此进行理解：
@@ -32,8 +31,6 @@ http://localhost:9200/_cat/indices?v
 发送DELETE请求：http://localhost:9200/shopping
 
 ![](https://pic.imgdb.cn/item/61220db94907e2d39cb3c261.jpg)
-
-
 
 ## 文档操作
 
@@ -243,10 +240,14 @@ should用来表示多个条件之间 or 的关系
 
 ```json
 {
-    "aggs": { // 表示要进行聚合操作
-        "price_group": {	// 名称，随意起名
-            "terms": { // 表示要进行分组操作
-                "field": "price"	// 分组字段
+    "aggs": {
+        // 表示要进行聚合操作
+        "price_group": {
+            // 名称，随意起名
+            "terms": {
+                // 表示要进行分组操作
+                "field": "price"
+                // 分组字段
             }
         }
     }
@@ -259,14 +260,19 @@ should用来表示多个条件之间 or 的关系
 
 ```json
 {
-    "aggs": { // 表示要进行聚合操作
-        "price_avg": {	// 名称，随意起名
-            "avg": { // 平均值
-                "field": "price"	// 分组字段
+    "aggs": {
+        // 表示要进行聚合操作
+        "price_avg": {
+            // 名称，随意起名
+            "avg": {
+                // 平均值
+                "field": "price"
+                // 分组字段
             }
         }
     },
-    "size": 0	// 这个参数表示去掉原始数据，只显示聚合后的结果，上面的分组中也可以加入这个参数，也可不加
+    "size": 0
+    // 这个参数表示去掉原始数据，只显示聚合后的结果，上面的分组中也可以加入这个参数，也可不加
 }
 ```
 
@@ -284,20 +290,23 @@ should用来表示多个条件之间 or 的关系
 
 ```json
 {
-	"properties": {
-		"name": {
-			"type": "text",
-			"index": true	// 这个index表示该字段可以被索引查询的
-		},
-		"sex": {
-			"type": "keyword",	// 这个keyword表示，该字段不能进行分词，必须完整匹配
-			"index": true
-		},
-		"tel": {
-			"type": "keyword",
-			"index": false	// 表示它不能被索引
-		}
-	}
+    "properties": {
+        "name": {
+            "type": "text",
+            "index": true
+            // 这个index表示该字段可以被索引查询的
+        },
+        "sex": {
+            "type": "keyword",
+            // 这个keyword表示，该字段不能进行分词，必须完整匹配
+            "index": true
+        },
+        "tel": {
+            "type": "keyword",
+            "index": false
+            // 表示它不能被索引
+        }
+    }
 }
 ```
 
@@ -305,15 +314,15 @@ should用来表示多个条件之间 or 的关系
 
 我们来添加三条数据：
 
-PUT	http://localhost:9200/user/_create/1001
+PUT    http://localhost:9200/user/_create/1001
 
-PUT	http://localhost:9200/user/_create/1002
+PUT    http://localhost:9200/user/_create/1002
 
-PUT	http://localhost:9200/user/_create/1003
+PUT    http://localhost:9200/user/_create/1003
 
 ```json
 {
-	"name": "小花",
+    "name": "小花",
     "sex": "女",
     "tel": "18298377557"
 }

@@ -12,10 +12,13 @@
 </ul>
 
 ## 第1章 RocketMQ概述
+
 ### 一、MQ概述
+
 #### 1、MQ简介
 
-MQ，Message Queue，是一种提供<font color="#6495ED">消息队列服务</font>的中间件，也称为消息中间件，是一套提供了消息生产、存储、消费全过程API的软件系统。消息即数据。一般消息的体量不会很大。
+MQ，Message Queue，是一种提供<font color="#6495ED">消息队列服务</font>
+的中间件，也称为消息中间件，是一套提供了消息生产、存储、消费全过程API的软件系统。消息即数据。一般消息的体量不会很大。
 
 #### 2、MQ用途
 
@@ -37,7 +40,7 @@ MQ可以将系统的<font color="#6495ED">超量</font>请求暂存其中，以�
 
 分布式系统会产生海量级数据流，如：业务日志、监控数据、用户行为等。针对这些数据流进行实时或批量采集汇总，然后对这些数据流进行大数据分析，这是当前互联网平台的必备技术。通过MQ完成此类数据收集是最好的选择。
 
-####  3、常见MQ产品
+#### 3、常见MQ产品
 
 ##### ①、ActiveMQ
 
@@ -49,22 +52,24 @@ RabbitMQ是使用ErLang语言开发的一款MQ产品。其吞吐量较Kafka与Ro
 
 ##### ③、Kafka
 
-Kafka是使用Scala/Java语言开发的一款MQ产品。其最大的特点就是高吞吐率，常用于大数据领域的实时计算、日志采集等场景。其没有遵循任何常见的MQ协议，而是使用自研协议。对于Spring Cloud Net ix，其仅支持RabbitMQ与Kafka。
+Kafka是使用Scala/Java语言开发的一款MQ产品。其最大的特点就是高吞吐率，常用于大数据领域的实时计算、日志采集等场景。其没有遵循任何常见的MQ协议，而是使用自研协议。对于Spring
+Cloud Net ix，其仅支持RabbitMQ与Kafka。
 
 ##### ④、RocketMQ
 
-RocketMQ是使用Java语言开发的一款MQ产品。经过数年阿里双11的考验，性能与稳定性非常高。其没有遵循任何常见的MQ协议，而是使用自研协议。对于Spring Cloud Alibaba，其支持RabbitMQ、Kafka，但提倡使用RocketMQ。
+RocketMQ是使用Java语言开发的一款MQ产品。经过数年阿里双11的考验，性能与稳定性非常高。其没有遵循任何常见的MQ协议，而是使用自研协议。对于Spring
+Cloud Alibaba，其支持RabbitMQ、Kafka，但提倡使用RocketMQ。
 
 <hr/>
 
 **对比**
 
-| 关键词     | ActiveMQ | RabbitMQ | Kafka                       | RocketMQ                    |
-| ---------- | -------- | -------- | --------------------------- | --------------------------- |
-| 开发语言   | Java     | Erlang   | Java                        | Java                        |
-| 单机吞吐量 | 万级     | 万级     | 十万级                      | 十万级                      |
-| Topic      | -        | -        | 百级Topic时会影响系统吞吐量 | 千级Topic时会影响系统吞吐量 |
-| 社区活跃度 | 低       | 高       | 高                          | 高                          |
+| 关键词   | ActiveMQ | RabbitMQ | Kafka            | RocketMQ         |
+|-------|----------|----------|------------------|------------------|
+| 开发语言  | Java     | Erlang   | Java             | Java             |
+| 单机吞吐量 | 万级       | 万级       | 十万级              | 十万级              |
+| Topic | -        | -        | 百级Topic时会影响系统吞吐量 | 千级Topic时会影响系统吞吐量 |
+| 社区活跃度 | 低        | 高        | 高                | 高                |
 
 #### 4、MQ常见协议
 
@@ -72,19 +77,25 @@ RocketMQ是使用Java语言开发的一款MQ产品。经过数年阿里双11的�
 
 ##### ①、JMS
 
-JMS，Java Messaging Service（Java消息服务）。是Java平台上有关MOM（Message Oriented Middleware，面向消息的中间件 PO/OO/AO）的技术规范，它便于消息系统中的Java应用程序进行消息交换，并且通过提供标准的产生、发送、接收消息的接口，简化企业应用的开发。ActiveMQ是该协议的典型实现。
+JMS，Java Messaging Service（Java消息服务）。是Java平台上有关MOM（Message Oriented Middleware，面向消息的中间件
+PO/OO/AO）的技术规范，它便于消息系统中的Java应用程序进行消息交换，并且通过提供标准的产生、发送、接收消息的接口，简化企业应用的开发。ActiveMQ是该协议的典型实现。
 
 ##### ②、STOMP
 
-STOMP，Streaming Text Orientated Message Protocol（面向流文本的消息协议），是一种MOM设计的简单文本协议。STOMP提供一个可互操作的连接格式，允许客户端与任意STOMP消息代理（Broker）进行交互。ActiveMQ是该协议的典型实现，RabbitMQ通过插件可以支持该协议。
+STOMP，Streaming Text Orientated Message
+Protocol（面向流文本的消息协议），是一种MOM设计的简单文本协议。STOMP提供一个可互操作的连接格式，允许客户端与任意STOMP消息代理（Broker）进行交互。ActiveMQ是该协议的典型实现，RabbitMQ通过插件可以支持该协议。
 
 ##### ③、AMQP
 
-AMQP，Advanced Message Queuing Protocol（高级消息队列协议），一个提供统一消息服务的应用层标准，是应用层协议的一个开放标准，是一种MOM设计。基于此协议的客户端与消息中间件可传递消息，并不受客户端/中间件不同产品，不同开发语言等条件的限制。 RabbitMQ是该协议的典型实现。
+AMQP，Advanced Message Queuing
+Protocol（高级消息队列协议），一个提供统一消息服务的应用层标准，是应用层协议的一个开放标准，是一种MOM设计。基于此协议的客户端与消息中间件可传递消息，并不受客户端/中间件不同产品，不同开发语言等条件的限制。
+RabbitMQ是该协议的典型实现。
 
 ##### ⑤、MQTT
 
-MQTT，Message Queuing Telemetry Transport（消息队列遥测传输），是IBM开发的一个即时通讯协议，是一种二进制协议，主要用于服务器和低功耗IoT（物联网）设备间的通信。该协议支持所有平台，几乎可以把所有联网物品和外部连接起来，被用来当做传感器和致动器的通信协议。 RabbitMQ通过插件可以支持该协议。
+MQTT，Message Queuing Telemetry
+Transport（消息队列遥测传输），是IBM开发的一个即时通讯协议，是一种二进制协议，主要用于服务器和低功耗IoT（物联网）设备间的通信。该协议支持所有平台，几乎可以把所有联网物品和外部连接起来，被用来当做传感器和致动器的通信协议。
+RabbitMQ通过插件可以支持该协议。
 
 ### 二、RocketMQ概述
 
@@ -94,7 +105,8 @@ MQTT，Message Queuing Telemetry Transport（消息队列遥测传输），是IB
 
 RocketMQ是一个统一消息引擎、轻量级数据处理平台。
 
-RocketMQ是一款阿里巴巴开源的消息中间件。2016年11月28日，阿里巴巴向 Apache 软件基金会捐赠RocketMQ，成为 Apache 孵化项目。2017 年 9 月 25 日，Apache 宣布 RocketMQ孵化成为 Apache 顶级项目（TLP ），成为国内首个互联网中间件在 Apache 上的顶级项目。
+RocketMQ是一款阿里巴巴开源的消息中间件。2016年11月28日，阿里巴巴向 Apache 软件基金会捐赠RocketMQ，成为 Apache 孵化项目。2017
+年 9 月 25 日，Apache 宣布 RocketMQ孵化成为 Apache 顶级项目（TLP ），成为国内首个互联网中间件在 Apache 上的顶级项目。
 
 **官网地址**：<font color="#6495ED">[http://rocketmq.apache.org](http://rocketmq.apache.org/)</font>
 

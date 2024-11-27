@@ -1,4 +1,3 @@
-
 # 分布式消息队列RocketMQ学习文档
 
 > 本文资料来源：尚硅谷 | 本文发表时RocketMQ的版本：`v4.9.2` | 本资料是第三章内容，本文档总共有四章。
@@ -12,7 +11,6 @@
 <li><a target="_blank" href="https://hello-blogger-ui.blogspot.com/2021/10/rocketmq_62.html">分布式消息队列RocketMQ-学习文档-第三章</a></li>
 <li><a target="_blank" href="https://hello-blogger-ui.blogspot.com/2021/10/rocketmq_32.html">分布式消息队列RocketMQ-学习文档-第四章</a></li>
 </ul>
-
 
 ## 第3章 RocketMQ工作原理
 
@@ -28,8 +26,10 @@ Producer可以将消息写入到某Broker中的某Queue中，其经历了如下�
 * Produer对消息做一些特殊处理，例如，消息本身超过4M，则会对其进行压缩
 * Producer向选择出的Queue所在的Broker发出RPC请求，将消息发送到选择出的Queue
 
-> 路由表：实际是一个Map，key为Topic名称，value是一个QueueData实例列表。QueueData并不是一个Queue对应一个QueueData，而是一个Broker中该Topic的所有Queue对应一个QueueData。即，只要涉及到该Topic的Broker，一个Broker对应一个QueueData。QueueData中包含brokerName。简单来说，路由表的key为Topic名称，value则为所有涉及该Topic的BrokerName列表。
-> Broker列表：其实际也是一个Map。key为brokerName，value为BrokerData。一个Broker对应一个BrokerData实例，对吗？不对。一套brokerName名称相同的Master-Slave小集群对应一个BrokerData。BrokerData中包含brokerName及一个map。该map的key为brokerId，value为该broker对应的地址。brokerId为0表示该broker为Master，非0表示Slave。
+>
+路由表：实际是一个Map，key为Topic名称，value是一个QueueData实例列表。QueueData并不是一个Queue对应一个QueueData，而是一个Broker中该Topic的所有Queue对应一个QueueData。即，只要涉及到该Topic的Broker，一个Broker对应一个QueueData。QueueData中包含brokerName。简单来说，路由表的key为Topic名称，value则为所有涉及该Topic的BrokerName列表。
+>
+Broker列表：其实际也是一个Map。key为brokerName，value为BrokerData。一个Broker对应一个BrokerData实例，对吗？不对。一套brokerName名称相同的Master-Slave小集群对应一个BrokerData。BrokerData中包含brokerName及一个map。该map的key为brokerId，value为该broker对应的地址。brokerId为0表示该broker为Master，非0表示Slave。
 
 #### 2、Queue选择算法
 
@@ -70,7 +70,8 @@ RocketMQ中的消息存储在本地文件系统中，这些相关文件默认在
 commitlog目录中存放着很多的mappedFile文件，当前Broker中的所有消息都是落盘到这些mappedFile文件中的。mappedFile文件大小为1G（小于等于1G），文件名由20位十进制数构成，表示当前文件的第一条消息的起始位移偏移量。
 
 > 第一个文件名一定是20位0构成的。因为第一个文件的第一条消息的偏移量commitlog offset为0
-> 当第一个文件放满时，则会自动生成第二个文件继续存放消息。假设第一个文件大小是1073741820字节（1G = 1073741824字节），则第二个文件名就是00000000001073741824。
+> 当第一个文件放满时，则会自动生成第二个文件继续存放消息。假设第一个文件大小是1073741820字节（1G =
+> 1073741824字节），则第二个文件名就是00000000001073741824。
 > 以此类推，第n个文件名应该是前n-1个文件大小之和。
 > 一个Broker中所有mappedFile文件的commitlog offset是连续的
 
@@ -83,7 +84,8 @@ commitlog目录中存放着很多的mappedFile文件，当前Broker中的所有�
 
 ![](https://pic.imgdb.cn/item/617aed852ab3f51d916f3ea4.jpg){width="6.106944444444444in" height="2.1881944444444446in"}
 
-mappedFile文件内容由一个个的<font color="#00CED1">消息单元</font>构成。每个消息单元中包含消息总长度MsgLen、消息的物理位置physicalOffset、消息体内容Body、消息体长度BodyLength、消息主题Topic、Topic长度TopicLength、消息生产者BornHost、消息发送时间戳BornTimestamp、消息所在的队列QueueId、消息在Queue中存储的偏移量QueueOffset等近20余项消息相关属性。
+mappedFile文件内容由一个个的<font color="#00CED1">消息单元</font>
+构成。每个消息单元中包含消息总长度MsgLen、消息的物理位置physicalOffset、消息体内容Body、消息体长度BodyLength、消息主题Topic、Topic长度TopicLength、消息生产者BornHost、消息发送时间戳BornTimestamp、消息所在的队列QueueId、消息在Queue中存储的偏移量QueueOffset等近20余项消息相关属性。
 
 > 需要注意到，消息单元中是包含 相关属性的。所以，我们在后续的学习中，就需要十分留意commitlog与queue间的关系是什么？
 > 一个mappedFile文件中第m+1个消息单元的commitlog offset偏移量
@@ -105,7 +107,8 @@ consumequeue文件名也由20位数字构成，表示当前文件的第一个索
 
 ![](https://pic.imgdb.cn/item/617aeea62ab3f51d916fcf18.jpg){width="3.8868055555555556in" height="2.011111111111111in"}
 
-每个consumequeue文件可以包含30w个索引条目，每个索引条目包含了三个消息重要属性：消息在mappedFile文件中的偏移量CommitLog Offset、消息长度、消息Tag的hashcode值。这三个属性占20个字节，所以每个文件的大小是固定的30w \* 20字节。
+每个consumequeue文件可以包含30w个索引条目，每个索引条目包含了三个消息重要属性：消息在mappedFile文件中的偏移量CommitLog
+Offset、消息长度、消息Tag的hashcode值。这三个属性占20个字节，所以每个文件的大小是固定的30w \* 20字节。
 
 > 一个consumequeue文件中所有消息的Topic一定是相同的。但每条消息的Tag可能是不同的
 
@@ -149,7 +152,8 @@ RocketMQ中，无论是消息本身还是消息索引，都是存储在磁盘上
 
 其次，consumequeue中的数据是顺序存放的，还引入了PageCache的预读取机制，使得对consumequeue文件的读取几乎接近于内存读取，即使在有消息堆积情况下也不会影响性能。
 
-> PageCache机制，页缓存机制，是OS对文件的缓存机制，用于加速对文件的读写操作。一般来说，程序对文件进行顺序读写的速度几乎接近于内存读写速度，主要原因是由于OS使用PageCache机制对读写访问操作进行性能优化，将一部分的内存用作PageCache。
+>
+PageCache机制，页缓存机制，是OS对文件的缓存机制，用于加速对文件的读写操作。一般来说，程序对文件进行顺序读写的速度几乎接近于内存读写速度，主要原因是由于OS使用PageCache机制对读写访问操作进行性能优化，将一部分的内存用作PageCache。
 >
 > * 写操作：OS会先将数据写入到PageCache中，随后会以异步方式由pdflush（page dirty flush)内核线程将Cache中的数据刷盘到物理磁盘
 > * 读操作：若用户要读取数据，其首先会从PageCache中读取，若没有命中，则OS在从物理磁盘上加载该数据到PageCache的同时，也会顺序对其相邻数据块中的数据进行预读取。
@@ -192,7 +196,8 @@ indexFile中最复杂的是Slots与Indexes间的关系。在实际存储时，In
 
 ![](https://pic.imgdb.cn/item/617af2bd2ab3f51d91728a7d.jpg){width="6.106944444444444in" height="4.2625in"}
 
-key的hash值 % 500w 的结果即为slot槽位，然后将该slot值修改为该index索引单元的indexNo，根据这个indexNo可以计算出该index单元在indexFile中的位置。不过，该取模结果的重复率是很高的，为了解决该问题，在每个index索引单元中增加了preIndexNo，用于指定该slot中当前index索引单元的前一个index索引单元。而slot中始终存放的是其下最新的index索引单元的indexNo，这样的话，只要找到了slot就可以找到其最新的index索引单元，而通过这个index索引单元就可以找到其之前的所有index索引单元。
+key的hash值 % 500w
+的结果即为slot槽位，然后将该slot值修改为该index索引单元的indexNo，根据这个indexNo可以计算出该index单元在indexFile中的位置。不过，该取模结果的重复率是很高的，为了解决该问题，在每个index索引单元中增加了preIndexNo，用于指定该slot中当前index索引单元的前一个index索引单元。而slot中始终存放的是其下最新的index索引单元的indexNo，这样的话，只要找到了slot就可以找到其最新的index索引单元，而通过这个index索引单元就可以找到其之前的所有index索引单元。
 
 > indexNo是一个在indexFile中的流水号，从0开始依次递增。即在一个indexFile中所有indexNo是以此递增的。indexNo在index索引单元中是没有体现的，其是通过indexes中依次数出来的。
 
@@ -214,7 +219,9 @@ indexFile的文件名为当前文件被创建时的时间戳。这个时间戳�
 indexFile文件是何时创建的？其创建的条件（时机）有两个：
 
 * 当第一条带key的消息发送来后，系统发现没有indexFile，此时会创建第一个indexFile文件
-* 当一个indexFile中挂载的index索引单元数量超出2000w个时，会创建新的indexFile。当带key的消息发送到来后，系统会找到最新的indexFile，并从其indexHeader的最后4字节中读取到indexCount。若indexCount >= 2000w时，会创建新的indexFile。
+*
+当一个indexFile中挂载的index索引单元数量超出2000w个时，会创建新的indexFile。当带key的消息发送到来后，系统会找到最新的indexFile，并从其indexHeader的最后4字节中读取到indexCount。若indexCount >=
+2000w时，会创建新的indexFile。
 
 > 由于可以推算出，一个indexFile的最大大小是：(40 + 500w * 4 + 2000w * 20)字节
 
@@ -256,7 +263,8 @@ Consumer主动从Broker中拉取消息，主动权由Consumer控制。一旦获�
 
 该模式下Broker收到数据后会主动推送给Consumer。该获取方式一般实时性较高。
 
-该获取方式是典型的<font color="#00FFFF">发布-订阅</font>模式，即Consumer向其关联的Queue注册了监听器，一旦发现有新的消息到来就会触发回调的执行，回调方法是Consumer去Queue中拉取消息。而这些都是基于Consumer与Broker间的长连接的。长连接的维护是需要消耗系统资源的。
+该获取方式是典型的<font color="#00FFFF">发布-订阅</font>
+模式，即Consumer向其关联的Queue注册了监听器，一旦发现有新的消息到来就会触发回调的执行，回调方法是Consumer去Queue中拉取消息。而这些都是基于Consumer与Broker间的长连接的。长连接的维护是需要消耗系统资源的。
 
 ##### ③、对比
 
@@ -269,18 +277,21 @@ Consumer主动从Broker中拉取消息，主动权由Consumer控制。一旦获�
 
 ![](https://pic.imgdb.cn/item/617bb3672ab3f51d9101da3c.jpg){width="5.825694444444444in" height="3.5743055555555556in"}
 
-广播消费模式下，相同Consumer Group的每个Consumer实例都接收同一个Topic的全量消息。即每条消息都会被发送到Consumer Group中的<font color="#00FFFF">每个</font>Consumer。
+广播消费模式下，相同Consumer Group的每个Consumer实例都接收同一个Topic的全量消息。即每条消息都会被发送到Consumer
+Group中的<font color="#00FFFF">每个</font>Consumer。
 
 ##### ②、集群消费
 
 ![](https://pic.imgdb.cn/item/617bb3b92ab3f51d9102208c.jpg){width="5.804861111111111in" height="3.490972222222222in"}
 
-集群消费模式下，相同Consumer Group的每个Consumer实例<font color="#00FFFF">平均分摊</font>同一个Topic的消息。即每条消息只会被发送到Consumer Group中的<font color="#00FFFF">某个</font>Consumer。
+集群消费模式下，相同Consumer Group的每个Consumer实例<font color="#00FFFF">平均分摊</font>同一个Topic的消息。即每条消息只会被发送到Consumer
+Group中的<font color="#00FFFF">某个</font>Consumer。
 
 ##### ③、消息进度保存
 
 * 广播模式：消费进度保存在consumer端。因为广播模式下consumer group中每个consumer都会消费所有消息，但它们的消费进度是不同。所以consumer各自保存各自的消费进度。
-* 集群模式：消费进度保存在broker中。consumer group中的所有consumer共同消费同一个Topic中的消息，同一条消息只会被消费一次。消费进度会参与到了消费的负载均衡中，故消费进度是需要共享的。下图是broker中存放的各个Topic的各个Queue的消费进度。
+* 集群模式：消费进度保存在broker中。consumer
+  group中的所有consumer共同消费同一个Topic中的消息，同一条消息只会被消费一次。消费进度会参与到了消费的负载均衡中，故消费进度是需要共享的。下图是broker中存放的各个Topic的各个Queue的消费进度。
 
 ![](https://pic.imgdb.cn/item/617bb4352ab3f51d910279d5.jpg){width="6.106944444444444in" height="3.9805555555555556in"}
 
@@ -294,7 +305,8 @@ Rebalance即再均衡，指的是，将一个Topic下的多个Queue在同一个C
 
 ![](https://pic.imgdb.cn/item/617bb48d2ab3f51d9102bd39.jpg){width="6.106944444444444in" height="3.1680555555555556in"}
 
-Rebalance机制的本意是为了提升消息的<font color="#00FFFF">并行消费能力</font>。例如，一个Topic下5个队列，在只有1个消费者的情况下，这个消费者将负责消费这5个队列的消息。如果此时我们增加一个消费者，那么就可以给其中一个消费者分配2个队列，给另一个分配3个队列，从而提升消息的并行消费能力。
+Rebalance机制的本意是为了提升消息的<font color="#00FFFF">并行消费能力</font>
+。例如，一个Topic下5个队列，在只有1个消费者的情况下，这个消费者将负责消费这5个队列的消息。如果此时我们增加一个消费者，那么就可以给其中一个消费者分配2个队列，给另一个分配3个队列，从而提升消息的并行消费能力。
 
 ##### ②、Rebalance限制
 
@@ -304,9 +316,11 @@ Rebalance机制的本意是为了提升消息的<font color="#00FFFF">并行消�
 
 Rebalance的在提升消费能力的同时，也带来一些问题：
 
-<font color="#FF0000">消费暂停</font>：在只有一个Consumer时，其负责消费所有队列；在新增了一个Consumer后会触发Rebalance的发生。此时原Consumer就需要暂停部分队列的消费，等到这些队列分配给新的Consumer后，这些暂停消费的队列才能继续被消费。
+<font color="#FF0000">消费暂停</font>
+：在只有一个Consumer时，其负责消费所有队列；在新增了一个Consumer后会触发Rebalance的发生。此时原Consumer就需要暂停部分队列的消费，等到这些队列分配给新的Consumer后，这些暂停消费的队列才能继续被消费。
 
-<font color="#FF0000">消费重复</font>：Consumer 在消费新分配给自己的队列时，必须接着之前Consumer 提交的消费进度的offset继续消费。然而默认情况下，offset是异步提交的，这个异步性导致提交到Broker的offset与Consumer实际消费的消息并不一致。这个不一致的差值就是可能会重复消费的消息。
+<font color="#FF0000">消费重复</font>：Consumer 在消费新分配给自己的队列时，必须接着之前Consumer
+提交的消费进度的offset继续消费。然而默认情况下，offset是异步提交的，这个异步性导致提交到Broker的offset与Consumer实际消费的消息并不一致。这个不一致的差值就是可能会重复消费的消息。
 
 > 同步提交： consumer提交了其消费完毕的一批消息的offset给broker后，需要等待broker的成功ACK。当收到ACK后，consumer才会继续获取并消费下一批消息。在等待ACK期间，consumer是阻塞的。
 > 异步提交：consumer提交了其消费完毕的一批消息的offset给broker后，不需要等待broker的成功ACK。consumer可以直接获取并消费下一批消息。
@@ -314,7 +328,8 @@ Rebalance的在提升消费能力的同时，也带来一些问题：
 
 
 
-<font color="#FF0000">消费突刺</font>：由于Rebalance可能导致重复消费，如果需要重复消费的消息过多，或者因为Rebalance暂停时间过长从而导致积压了部分消息。那么有可能会导致在Rebalance结束之后瞬间需要消费很多消息。
+<font color="#FF0000">消费突刺</font>
+：由于Rebalance可能导致重复消费，如果需要重复消费的消息过多，或者因为Rebalance暂停时间过长从而导致积压了部分消息。那么有可能会导致在Rebalance结束之后瞬间需要消费很多消息。
 
 ##### ④、Rebalance产生的原因
 
@@ -326,35 +341,41 @@ Rebalance的在提升消费能力的同时，也带来一些问题：
 > * Broker升级运维
 > * Broker与NameServer间的网络异常
 > * Queue扩容或缩容
->   2）消费者数量发生变化的场景：
+    > 2）消费者数量发生变化的场景：
 > * Consumer Group扩容或缩容
 > * Consumer升级运维
 > * Consumer与NameServer间网络异常
 
-
 ##### ⑤、Rebalance过程
 
-在Broker中维护着多个Map集合，这些集合中动态存放着当前Topic中Queue的信息、Consumer Group 中Consumer实例的信息。一旦发现消费者所订阅的Queue数量发生变化，或消费者组中消费者的数量发生变化，立即向Consumer Group中的每个实例发出Rebalance通知。
+在Broker中维护着多个Map集合，这些集合中动态存放着当前Topic中Queue的信息、Consumer Group
+中Consumer实例的信息。一旦发现消费者所订阅的Queue数量发生变化，或消费者组中消费者的数量发生变化，立即向Consumer
+Group中的每个实例发出Rebalance通知。
 
 > TopicConfigManager：key是topic名称，value是TopicConfig。TopicConfig中维护着该Topic中所有Queue的数据。
 > ConsumerManager：key是Consumser Group Id，value是ConsumerGroupInfo。ConsumerGroupInfo中维护着该Group中所有Consumer实例数据。
-> ConsumerOffsetManager：key为Topic与订阅该Topic的Group的组合,即topic@group，value是一个内层Map。内层Map的key为QueueId，内层Map的value为该Queue的消费进度offset。
+>
+ConsumerOffsetManager：key为Topic与订阅该Topic的Group的组合,即topic@group，value是一个内层Map。内层Map的key为QueueId，内层Map的value为该Queue的消费进度offset。
 
 ##### ⑥、与Kafka对比
 
-在Kafka中，一旦发现出现了Rebalance条件，Broker会调用Group Coordinator来完成Rebalance。Coordinator是Broker中的一个进程。Coordinator会在Consumer Group中选出一个Group Leader。由这个Leader根据自己本身组情况完成Partition分区的再分配。这个再分配结果会上报给Coordinator，并由Coordinator同步给Group中的所有Consumer实例。
+在Kafka中，一旦发现出现了Rebalance条件，Broker会调用Group
+Coordinator来完成Rebalance。Coordinator是Broker中的一个进程。Coordinator会在Consumer Group中选出一个Group
+Leader。由这个Leader根据自己本身组情况完成Partition分区的再分配。这个再分配结果会上报给Coordinator，并由Coordinator同步给Group中的所有Consumer实例。
 
 Kafka中的Rebalance是由Consumer Leader完成的。而RocketMQ中的Rebalance是由每个Consumer自身完成的，Group中不存在Leader。
 
 #### 4、Queue分配算法
 
-一个Topic中的Queue只能由Consumer Group中的一个Consumer进行消费，而一个Consumer可以同时消费多个Queue中的消息。那么Queue与Consumer间的配对关系是如何确定的，即Queue要分配给哪个Consumer进行消费，也是有算法策略的。常见的有四种策略。这些策略是通过在创建Consumer时的构造器传进去的。
+一个Topic中的Queue只能由Consumer
+Group中的一个Consumer进行消费，而一个Consumer可以同时消费多个Queue中的消息。那么Queue与Consumer间的配对关系是如何确定的，即Queue要分配给哪个Consumer进行消费，也是有算法策略的。常见的有四种策略。这些策略是通过在创建Consumer时的构造器传进去的。
 
 ##### ①、平均分配策略
 
 ![](https://pic.imgdb.cn/item/617bb6ff2ab3f51d9104cb00.jpg){width="4.345833333333333in" height="3.1680555555555556in"}
 
-该算法是要根据avg = QueueCount / ConsumerCount 的计算结果进行分配的。如果能够整除，则按顺序将avg个Queue逐个分配Consumer；如果不能整除，则将多余出的Queue按照Consumer顺序逐个分配。
+该算法是要根据avg = QueueCount / ConsumerCount
+的计算结果进行分配的。如果能够整除，则按顺序将avg个Queue逐个分配Consumer；如果不能整除，则将多余出的Queue按照Consumer顺序逐个分配。
 
 > 该算法即，先计算好每个Consumer应该分得几个Consumer，然后再依次将这些数量的Queue逐个分配给Consumer。
 
@@ -531,7 +552,8 @@ consumer.subscribe("jodie_test_A", "TagB", new MessageListener() {
 
 当消费模式为<font color="#00FFFF">广播消费</font>时，offset使用本地模式存储。因为每条消息会被所有的消费者消费，每个消费者管理自己的消费进度，各个消费者之间不存在消费进度的交集。
 
-Consumer在广播消费模式下offset相关数据以json的形式持久化到Consumer本地磁盘文件中，默认文件路径为当前用户主目录下的<font color="#00FFFF">.rocketmq_offsets/\${clientId}/\${group}/Offsets.json</font> 。
+Consumer在广播消费模式下offset相关数据以json的形式持久化到Consumer本地磁盘文件中，默认文件路径为当前用户主目录下的<font color="#00FFFF">
+.rocketmq_offsets/\${clientId}/\${group}/Offsets.json</font> 。
 
 其中\${clientId}为当前消费者id，默认为ip\@DEFAULT；\${group}为消费者组名称。
 
@@ -590,11 +612,14 @@ Broker启动时会加载这个文件，并写入到一个双层Map（ConsumerOff
 
 ##### ①、发送时消息重复
 
-当一条消息已被成功发送到Broker并完成持久化，此时出现了网络闪断，从而导致Broker对Producer应答失败。 如果此时Producer意识到消息发送失败并尝试再次发送消息，此时Broker中就可能会出现两条内容相同并且Message ID也相同的消息，那么后续Consumer就一定会消费两次该消息。
+当一条消息已被成功发送到Broker并完成持久化，此时出现了网络闪断，从而导致Broker对Producer应答失败。
+如果此时Producer意识到消息发送失败并尝试再次发送消息，此时Broker中就可能会出现两条内容相同并且Message
+ID也相同的消息，那么后续Consumer就一定会消费两次该消息。
 
 ##### ②、消费时消息重复
 
-消息已投递到Consumer并完成业务处理，当Consumer给Broker反馈应答时网络闪断，Broker没有接收到消费成功响应。为了保证消息至少被消费一次的原则，Broker将在网络恢复后再次尝试投递之前已被处理过的消息。此时消费者就会收到与之前处理过的内容相同、Message ID也相同的消息。
+消息已投递到Consumer并完成业务处理，当Consumer给Broker反馈应答时网络闪断，Broker没有接收到消费成功响应。为了保证消息至少被消费一次的原则，Broker将在网络恢复后再次尝试投递之前已被处理过的消息。此时消费者就会收到与之前处理过的内容相同、Message
+ID也相同的消息。
 
 ##### ③、Rebalance时消息重复
 
@@ -613,11 +638,14 @@ Broker启动时会加载这个文件，并写入到一个双层Map（ConsumerOff
 
 对于常见的系统，幂等性操作的通用性解决方案是：
 
-* 1.  首先通过缓存去重。在缓存中如果已经存在了某幂等令牌，则说明本次操作是重复性操作；若缓存没有命中，则进入下一步。
+*
+    1. 首先通过缓存去重。在缓存中如果已经存在了某幂等令牌，则说明本次操作是重复性操作；若缓存没有命中，则进入下一步。
 
-* 2.  在唯一性处理之前，先在数据库中查询幂等令牌作为索引的数据是否存在。若存在，则说明本次操作为重复性操作；若不存在，则进入下一步。
+*
+    2. 在唯一性处理之前，先在数据库中查询幂等令牌作为索引的数据是否存在。若存在，则说明本次操作为重复性操作；若不存在，则进入下一步。
 
-* 3.  在同一事务中完成三项操作：唯一性处理后，将幂等令牌写入到缓存，并将幂等令牌作为唯一索引的数据写入到DB中。
+*
+    3. 在同一事务中完成三项操作：唯一性处理后，将幂等令牌写入到缓存，并将幂等令牌作为唯一索引的数据写入到DB中。
 
 > 第1步已经判断过是否是重复性操作了，为什么第2步还要再次判断？能够进入第 2步，说明已经不是重复操作了，第2次判断是否重复？
 > 当然不重复。一般缓存中的数据是具有有效期的。缓存中数据的有效期一旦过期，就是发生缓存穿透，使请求直接就到达了DBMS。
@@ -638,7 +666,8 @@ Broker启动时会加载这个文件，并写入到一个双层Map（ConsumerOff
 
 #### 4、消费幂等的实现
 
-消费幂等的解决方案很简单：为消息指定不会重复的唯一标识。因为Message ID有可能出现重复的情况，所以真正安全的幂等处理，不建议以Message ID作为处理依据。最好的方式是以业务唯一标识作为幂等处理的关键依据，而业务的唯一标识可以通过消息Key设置。
+消费幂等的解决方案很简单：为消息指定不会重复的唯一标识。因为Message ID有可能出现重复的情况，所以真正安全的幂等处理，不建议以Message
+ID作为处理依据。最好的方式是以业务唯一标识作为幂等处理的关键依据，而业务的唯一标识可以通过消息Key设置。
 
 以支付场景为例，可以将消息的Key设置为订单号，作为幂等处理的依据。具体代码示例如下：
 
@@ -697,11 +726,14 @@ Consumer将本地缓存的消息提交到消费线程中，使用业务消费逻
 
 ##### ③、结论
 
-消息堆积的主要瓶颈在于客户端的消费能力，而消费能力由<font color="#0000FF">消费耗时</font>和<font color="#0000FF">消费并发度</font>决定。注意，消费耗时的优先级要高于消费并发度。即在保证了<font color="#0000FF">消费耗时</font>的合理性前提下，再考虑消费并发度问题。
+消息堆积的主要瓶颈在于客户端的消费能力，而消费能力由<font color="#0000FF">消费耗时</font>和<font color="#0000FF">
+消费并发度</font>决定。注意，消费耗时的优先级要高于消费并发度。即在保证了<font color="#0000FF">消费耗时</font>
+的合理性前提下，再考虑消费并发度问题。
 
 #### 3、消费耗时
 
-影响消息处理时长的主要因素是代码逻辑。而代码逻辑中可能会影响处理时长代码主要有两种类型：<font color="#0000FF">CPU内部计算型代码</font>和<font color="#0000FF">外部I/O操作型代码</font>。
+影响消息处理时长的主要因素是代码逻辑。而代码逻辑中可能会影响处理时长代码主要有两种类型：<font color="#0000FF">
+CPU内部计算型代码</font>和<font color="#0000FF">外部I/O操作型代码</font>。
 
 通常情况下代码中如果没有复杂的递归和循环的话，内部计算耗时相对外部I/O操作来说几乎可以忽略。所以外部IO型代码是影响消息处理时长的主要症结所在。
 
@@ -711,30 +743,36 @@ Consumer将本地缓存的消息提交到消费线程中，使用业务消费逻
 > * 读写外部缓存系统，例如对远程Redis的访问
 > * 下游系统调用，例如Dubbo的RPC远程调用，Spring Cloud的对下游系统的Http接口调用
 
-> 关于下游系统调用逻辑需要进行提前梳理，掌握每个调用操作预期的耗时，这样做是为了能够判断消费逻辑中IO操作的耗时是否合理。通常消息堆积是由于下游系统出现了<font color="#0000FF">服务异常</font>或<font color="#0000FF">达到了DBMS容量限制</font>，导致消费耗时增加。
+>
+关于下游系统调用逻辑需要进行提前梳理，掌握每个调用操作预期的耗时，这样做是为了能够判断消费逻辑中IO操作的耗时是否合理。通常消息堆积是由于下游系统出现了<font color="#0000FF">
+服务异常</font>或<font color="#0000FF">达到了DBMS容量限制</font>，导致消费耗时增加。
 
 > 服务异常，并不仅仅是系统中出现的类似500这样的代码错误，而可能是更加隐蔽的问题。例如，网络带宽问题。
 
 > 达到了DBMS容量限制，其也会引发消息的消费耗时增加。
 
-
 #### 4、消费并发度
 
-一般情况下，消费者端的消费并发度由单节点线程数和节点数量共同决定，其值为<font color="#0000FF">单节点线程数</font> * <font color="#0000FF">节点数量</font>。不过，通常需要优先调整单节点的线程数，若单机硬件资源达到了上限，则需要通过横向扩展来提高消费并发度。
+一般情况下，消费者端的消费并发度由单节点线程数和节点数量共同决定，其值为<font color="#0000FF">
+单节点线程数</font> * <font color="#0000FF">节点数量</font>。不过，通常需要优先调整单节点的线程数，若单机硬件资源达到了上限，则需要通过横向扩展来提高消费并发度。
 
 > 单节点线程数，即单个Consumer所包含的线程数量
 
 > 节点数量，即Consumer Group所包含的Consumer数量
 
-> 对于普通消息、延时消息及事务消息，并发度计算都是 <font color="#0000FF">单节点线程数</font> * <font color="#0000FF">节点数量</font> 。但对于顺序消息则是不同的。顺序消息的消费并发度等于 <font color="#0000FF">Topic的Queue分区数量</font> 。
+> 对于普通消息、延时消息及事务消息，并发度计算都是 <font color="#0000FF">单节点线程数</font> * <font color="#0000FF">
+> 节点数量</font> 。但对于顺序消息则是不同的。顺序消息的消费并发度等于 <font color="#0000FF">Topic的Queue分区数量</font> 。
 
-> 1）全局顺序消息：该类型消息的Topic只有一个Queue分区。其可以保证该Topic的所有消息被顺序消费。为了保证这个全局顺序性，Consumer Group中在同一时刻只能有一个Consumer的一个线程进行消费。所以其并发度为1。
+> 1）全局顺序消息：该类型消息的Topic只有一个Queue分区。其可以保证该Topic的所有消息被顺序消费。为了保证这个全局顺序性，Consumer
+> Group中在同一时刻只能有一个Consumer的一个线程进行消费。所以其并发度为1。
 
-> 2）分区顺序消息：该类型消息的Topic有多个Queue分区。其仅可以保证该Topic的每个Queue分区中的消息被顺序消费，不能保证整个Topic中消息的顺序消费。为了保证这个分区顺序性，每个Queue分区中的消息在Consumer Group中的同一时刻只能有一个Consumer的一个线程进行消费。即，在同一时刻最多会出现多个Queue分蘖有多个Consumer的多个线程并行消费。所以其并发度为Topic的分区数量。
+> 2）分区顺序消息：该类型消息的Topic有多个Queue分区。其仅可以保证该Topic的每个Queue分区中的消息被顺序消费，不能保证整个Topic中消息的顺序消费。为了保证这个分区顺序性，每个Queue分区中的消息在Consumer
+> Group中的同一时刻只能有一个Consumer的一个线程进行消费。即，在同一时刻最多会出现多个Queue分蘖有多个Consumer的多个线程并行消费。所以其并发度为Topic的分区数量。
 
 #### 5、单机线程数计算
 
-对于一台主机中线程池中线程数的设置需要谨慎，不能盲目直接调大线程数，设置过大的线程数反而会带来大量的线程切换的开销。<font color="#0000FF">理想环境下单节点的最优线程数计算模型为：C \*（T1 + T2）/ T1</font>。
+对于一台主机中线程池中线程数的设置需要谨慎，不能盲目直接调大线程数，设置过大的线程数反而会带来大量的线程切换的开销。<font color="#0000FF">
+理想环境下单节点的最优线程数计算模型为：C \*（T1 + T2）/ T1</font>。
 
 * C：CPU内核数
 * T1：CPU内部逻辑计算耗时
@@ -748,7 +786,8 @@ Consumer将本地缓存的消息提交到消费线程中，使用业务消费逻
 
 #### 6、如何避免
 
-为了避免在业务使用时出现非预期的消息堆积和消费延迟问题，需要在前期设计阶段对整个业务逻辑进行完善的排查和梳理。其中最重要的就是<font color="#0000FF">梳理消息的消费耗时</font>和<font color="#0000FF">设置消息消费的并发度</font>。
+为了避免在业务使用时出现非预期的消息堆积和消费延迟问题，需要在前期设计阶段对整个业务逻辑进行完善的排查和梳理。其中最重要的就是<font color="#0000FF">
+梳理消息的消费耗时</font>和<font color="#0000FF">设置消息消费的并发度</font>。
 
 ##### ①、梳理消息的消费耗时
 
@@ -781,5 +820,6 @@ commitlog文件存在一个<font color="#0000FF">过期时间</font>，默认为
 * 磁盘占用率达到<font color="#0000FF">系统危险警戒线</font>（默认90%）后，Broker将拒绝消息写入
 
 > 需要注意以下几点：
-> 1）对于RocketMQ系统来说，删除一个1G大小的文件，是一个压力巨大的IO操作。在删除过程中，系统性能会骤然下降。所以，其默认清理时间点为凌晨4点，访问量最小的时间。也正因如果，我们要保障磁盘空间的空闲率，不要使系统出现在其它时间点删除commitlog文件的情况。
+>
+1）对于RocketMQ系统来说，删除一个1G大小的文件，是一个压力巨大的IO操作。在删除过程中，系统性能会骤然下降。所以，其默认清理时间点为凌晨4点，访问量最小的时间。也正因如果，我们要保障磁盘空间的空闲率，不要使系统出现在其它时间点删除commitlog文件的情况。
 > 2）官方建议RocketMQ服务的Linux文件系统采用ext4。因为对于文件删除操作，ext4要比ext3性能更好

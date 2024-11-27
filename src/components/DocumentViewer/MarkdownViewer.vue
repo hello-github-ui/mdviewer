@@ -1,12 +1,12 @@
 <template>
     <div class="markdown-viewer">
-        <div class="markdown-content" v-html="renderedContent" />
+        <div class="markdown-content" v-html="renderedContent"/>
     </div>
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import { marked } from 'marked'
+import {ref, watch} from 'vue'
+import {marked} from 'marked'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css'
 
@@ -23,7 +23,7 @@ const renderedContent = ref('')
 marked.setOptions({
     highlight: function (code, lang) {
         const language = hljs.getLanguage(lang) ? lang : 'plaintext'
-        return hljs.highlight(code, { language }).value
+        return hljs.highlight(code, {language}).value
     },
     langPrefix: 'hljs language-'
 })
@@ -40,7 +40,7 @@ const renderMarkdown = async () => {
 
 watch(() => props.fileData, () => {
     renderMarkdown()
-}, { immediate: true })
+}, {immediate: true})
 </script>
 
 <style scoped>

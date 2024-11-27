@@ -1,16 +1,17 @@
-
 ## 前言
+
 有时候，我们需要对一个目录下的所有图片都进行重命名，如果你选择手动方式进行，在图片少的情况下还可以进行，但是如果一个目录下有几百张图片时，你就会感到无比痛苦了。这时候就会想借助工具来实现了。如下就是一种很简单的实现方式。
 
 ## 实现
+
 可以选择直接下载这个jar包工具，然后通过 `java -jar xxx.jar` 的方式运行，也可以直接看其源代码然后拷贝其rename方法运行即可。
 
 代码已托管在[gitee](https://gitee.com/hello-gitee-ui/batch-rename-picture.git)上，请移步查看。
 
 ![](https://img.imgdb.cn/item/6055ea01524f85ce29e10a4f.jpg)
 
-
 ## 流操作之下载图片
+
 ```java
 @Test
 public void downloadImg() throws Exception{
@@ -40,8 +41,8 @@ public void downloadImg() throws Exception{
 }
 ```
 
-
 ## 流操作之复制图片
+
 ```java
 @Test
 public void copyImg() throws Exception{
@@ -68,6 +69,7 @@ public void copyImg() throws Exception{
 ```
 
 ## 流操作之复制txt
+
 ```java
  @Test
     public void copyTxt() throws Exception{
@@ -88,8 +90,6 @@ public void copyImg() throws Exception{
         System.out.println("txt copy completed");
     }
 ```
-
-
 
 ## 通过工具图片API获取图片
 

@@ -1,4 +1,3 @@
-
 # 上传安装包到Linux
 
 下载 MySQL server 包：[链接](https://pan.baidu.com/s/14y8C5SdgiNtjNlvE9Kow7A) 提取码: `4aqx`
@@ -12,8 +11,6 @@
 ```shell
 tar xvf mysql-8.0.27-linux-glibc2.12-x86_64.tar.xz  -C /opt/apps/
 ```
-
-
 
 # 重命名
 
@@ -75,8 +72,6 @@ ln -s /opt/apps/mysql/bin/mysql  /usr/bin
 /opt/apps/mysql/support-files/mysql.server  start
 ```
 
-
-
 # 修改密码
 
 ```shell
@@ -84,8 +79,6 @@ mysql -uroot  -p
 
 ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
 ```
-
-
 
 # 开启远程访问
 
@@ -104,8 +97,6 @@ systemctl stop firewalld.service #停止firewall
 
 systemctl disable firewalld.service #禁止firewall开机启动
 ```
-
-
 
 # 配置成服务并开机启动
 

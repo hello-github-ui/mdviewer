@@ -2,19 +2,22 @@
 
 **1、Spring Cloud Config**
 
-Spring Cloud Config 为分布式系统的外部配置提供了服务端和客户端的支持方案。在配置的服务端您可以在所有环境中为应用程序管理外部属性的中心位置。客户端和服务端概念上的Spring Environment 和 PropertySource 抽象保持同步, 它们非常适合Spring应用程序，但是可以与任何语言中运行的应用程序一起使用。当应用程序在部署管道中从一个开发到测试直至进入生产时，您可以管理这些环境之间的配置，并确保应用程序在迁移时具有它们需要运行的所有内容。服务器存储后端的默认实现使用git，因此它很容易支持标记版本的配置环境，并且能够被管理内容的各种工具访问。很容易添加替代的实现，并用Spring配置将它们插入。
+Spring Cloud Config 为分布式系统的外部配置提供了服务端和客户端的支持方案。在配置的服务端您可以在所有环境中为应用程序管理外部属性的中心位置。客户端和服务端概念上的Spring
+Environment 和 PropertySource 抽象保持同步,
+它们非常适合Spring应用程序，但是可以与任何语言中运行的应用程序一起使用。当应用程序在部署管道中从一个开发到测试直至进入生产时，您可以管理这些环境之间的配置，并确保应用程序在迁移时具有它们需要运行的所有内容。服务器存储后端的默认实现使用git，因此它很容易支持标记版本的配置环境，并且能够被管理内容的各种工具访问。很容易添加替代的实现，并用Spring配置将它们插入。
 
-Spring Cloud Config 包含了Client和Server两个部分，server提供配置文件的存储、以接口的形式将配置文件的内容提供出去，client通过接口获取数据、并依据此数据初始化自己的应用。Spring cloud使用git或svn存放配置文件，默认情况下使用git。
-
-
+Spring Cloud Config 包含了Client和Server两个部分，server提供配置文件的存储、以接口的形式将配置文件的内容提供出去，client通过接口获取数据、并依据此数据初始化自己的应用。Spring
+cloud使用git或svn存放配置文件，默认情况下使用git。
 
 **2、Nacos替换Config**
 
-Nacos 可以与 Spring, Spring Boot, Spring Cloud 集成，并能代替 Spring Cloud Eureka, Spring Cloud Config。通过 Nacos Server 和 spring-cloud-starter-alibaba-nacos-config 实现配置的动态变更。
+Nacos 可以与 Spring, Spring Boot, Spring Cloud 集成，并能代替 Spring Cloud Eureka, Spring Cloud Config。通过 Nacos Server
+和 spring-cloud-starter-alibaba-nacos-config 实现配置的动态变更。
 
 **（1）应用场景**
 
-在系统开发过程中，开发者通常会将一些需要变更的参数、变量等从代码中分离出来独立管理，以独立的配置文件的形式存在。目的是让静态的系统工件或者交付物（如 WAR，JAR 包等）更好地和实际的物理运行环境进行适配。配置管理一般包含在系统部署的过程中，由系统管理员或者运维人员完成。配置变更是调整系统运行时的行为的有效手段。
+在系统开发过程中，开发者通常会将一些需要变更的参数、变量等从代码中分离出来独立管理，以独立的配置文件的形式存在。目的是让静态的系统工件或者交付物（如
+WAR，JAR 包等）更好地和实际的物理运行环境进行适配。配置管理一般包含在系统部署的过程中，由系统管理员或者运维人员完成。配置变更是调整系统运行时的行为的有效手段。
 
 如果微服务架构中没有使用统一配置中心时，所存在的问题：
 
@@ -25,10 +28,6 @@ Nacos 可以与 Spring, Spring Boot, Spring Cloud 集成，并能代替 Spring C
 \- 更新配置后，项目需要重启
 
 nacos配置中心：系统配置的集中管理（编辑、存储、分发）、动态更新不重启、回滚配置（变更管理、历史版本管理、变更审计）等所有与配置相关的活动。
-
-
-
-
 
 # 二、读取Nacos配置中心的配置文件
 
@@ -49,21 +48,18 @@ nacos配置中心：系统配置的集中管理（编辑、存储、分发）、
 
 **${prefix}-${spring.profile.active}.${file-extension}**
 
-**- prefix** 默认为所属工程配置spring.application.name 的值（即：nacos-provider），也可以通过配置项 spring.cloud.nacos.config.prefix来配置。
+**- prefix** 默认为所属工程配置spring.application.name 的值（即：nacos-provider），也可以通过配置项
+spring.cloud.nacos.config.prefix来配置。
 
-**- spring.profiles.active=dev** 即为当前环境对应的 profile。 注意：当 spring.profiles.active 为空时，对应的连接符 - 也将不存在，dataId 的拼接格式变成 ${prefix}.${file-extension}
+**- spring.profiles.active=dev** 即为当前环境对应的 profile。 注意：当 spring.profiles.active 为空时，对应的连接符 -
+也将不存在，dataId 的拼接格式变成 ${prefix}.${file-extension}
 
-**- file-exetension** 为配置内容的数据格式，可以通过配置项 spring.cloud.nacos.config.file-extension 来配置。目前只支持 properties 和 yaml 类型。
-
-
-
-
+**- file-exetension** 为配置内容的数据格式，可以通过配置项 spring.cloud.nacos.config.file-extension 来配置。目前只支持
+properties 和 yaml 类型。
 
 ## 2、以service-statistics模块为例
 
 **（1）在service中引入依赖**
-
-
 
 ```
 <dependency>
@@ -108,13 +104,10 @@ bootstrap.yml 和application.yml 都可以用来配置参数。
 bootstrap.yml 可以理解成系统级别的一些参数配置，这些参数一般是不会变动的。
 application.yml 可以用来定义应用级别的。
 
-
-
-
-
 # 三、名称空间切换环境
 
-在实际开发中，通常有多套不同的环境（默认只有public），那么这个时候可以根据指定的环境来创建不同的 namespce，例如，开发、测试和生产三个不同的环境，那么使用一套 nacos 集群可以分别建以下三个不同的 namespace。以此来实现多环境的隔离。
+在实际开发中，通常有多套不同的环境（默认只有public），那么这个时候可以根据指定的环境来创建不同的
+namespce，例如，开发、测试和生产三个不同的环境，那么使用一套 nacos 集群可以分别建以下三个不同的 namespace。以此来实现多环境的隔离。
 
 **1、创建命名空间**
 
@@ -148,12 +141,6 @@ application.yml 可以用来定义应用级别的。
 
 在项目模块中，修改bootstrap.properties添加如下配置
 
-
-
-
-
-
-
 ```
 spring.cloud.nacos.config.server-addr=127.0.0.1:8848
 
@@ -165,37 +152,19 @@ spring.application.name=service-statistics
 spring.cloud.nacos.config.namespace=13b5c197-de5b-47e7-9903-ec0538c9db01
 ```
 
-
-
-## **namespace的值为：** 
+## **namespace的值为：**
 
 **![img](./assets/a2eeac43-a089-452a-9228-7fbf23527ded.png)**
 
 **重启服务提供方服务，测试修改之后是否生效**
 
-
-
 # 四、多配置文件加载
 
 在一些情况下需要加载多个配置文件。假如现在dev名称空间下有三个配置文件：service-statistics.properties、redis.properties、jdbc.properties
 
-
-
 ![img](./assets/aa2fe27d-fc96-430c-93c7-159b33bdd23e.png)
 
-
-
-
-
 添加配置，加载多个配置文件
-
-
-
-
-
-
-
-
 
 ```
 spring.cloud.nacos.config.server-addr=127.0.0.1:8848

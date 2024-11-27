@@ -1,10 +1,12 @@
-
 ## 前言
+
 我们通常在实际开发中有这样的需求场景：我需要在不改动原先的业务代码场景下，实现一些额外的功能，比如我计算一下执行某些代码耗时多久啊，我增加一些额外的日志输出啊，等等。。。
 那么我们怎么实现呢？这个时候就可以用到我们的 AOP 了。
-而 AOP 的切面呢，可以是某个类下面的某个方法，也可以是某个包下面的所有方法，还可以是凡是使用到某个注解的地方等，下面呢我们就让 AOP 去切凡是使用了某个注解的地方
+而 AOP 的切面呢，可以是某个类下面的某个方法，也可以是某个包下面的所有方法，还可以是凡是使用到某个注解的地方等，下面呢我们就让
+AOP 去切凡是使用了某个注解的地方
 
 ## 定义注解
+
 ```java
 package com.example.springaopdemo.annotation;
 
@@ -21,6 +23,7 @@ public @interface CalculateExecuteTime{
 ```
 
 ## 定义切面Aspect
+
 ```java
 package com.example.springaopdemo.aspect;
 
@@ -51,6 +54,7 @@ public class CalculateExecuteTimeAspect{
 ```
 
 ## 原先的业务代码层
+
 这里我们模拟一下原先的业务代码，并在此处使用到上面的自定义注解
 
 ```java
@@ -75,8 +79,9 @@ public class TestService {
 ```
 
 ## 调用
+
 因为我们这里没有一个完整的dao，service，controller层业务代码，所以只能采用如下方式测试一下效果
-在我们的spring boot 启动类中获取  service bean来调用
+在我们的spring boot 启动类中获取 service bean来调用
 
 ```java
 package com.example.springaopdemo;
@@ -99,6 +104,7 @@ public class SpringAopDemoApplication {
 ```
 
 ## 运行结果
+
 ![](https://img.imgdb.cn/item/606970d48322e6675c50da2f.jpg)
 
 > 可以看到正如我们预期的那样，输出了原先业务代码的执行耗时时间

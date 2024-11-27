@@ -14,8 +14,6 @@ Node.js 是运行在服务端的 JavaScript，如果你熟悉Javascript，那么
 
 当然，如果你是后端程序员，想部署一些高性能的服务，那么学习Node.js也是一个非常好的选择。
 
-
-
 # 二、安装
 
 ## 1、下载
@@ -30,15 +28,11 @@ Current：最新版
 
 ## 2、安装
 
-
-
 ## 3、查看版本
 
 ```
 node -v
 ```
-
-
 
 # 三、快速入门
 
@@ -75,7 +69,7 @@ Node.js是脱离浏览器环境运行的JavaScript程序，基于V8 引擎（Chr
 ```
 const http = require('http');
 http.createServer(function (request, response) {
-    // 发送 HTTP 头部 
+    // 发送 HTTP 头部
     // HTTP 状态值: 200 : OK
     // 内容类型: text/plain
     response.writeHead(200, {'Content-Type': 'text/plain'});

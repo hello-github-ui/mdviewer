@@ -2,7 +2,7 @@
 
 https://open.weixin.qq.com
 
-## 1、注册 
+## 1、注册
 
 ## 2、邮箱激活
 
@@ -115,7 +115,7 @@ public class WxApiController {
         //键："wechar-open-state-" + httpServletRequest.getSession().getId()
         //值：satte
         //过期时间：30分钟
-        
+
         //生成qrcodeUrl
         String qrcodeUrl = String.format(
                 baseUrl,
@@ -130,15 +130,15 @@ public class WxApiController {
 
 授权url参数说明
 
-| 参数          | 是否必须 | 说明                                                         |
-| ------------- | -------- | ------------------------------------------------------------ |
-| appid         | 是       | 应用唯一标识                                                 |
-| redirect_uri  | 是       | 请使用urlEncode对链接进行处理                                |
-| response_type | 是       | 填code                                                       |
-| scope         | 是       | 应用授权作用域，拥有多个作用域用逗号（,）分隔，网页应用目前仅填写snsapi_login即 |
-| state         | 否       | 用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验 |
+| 参数            | 是否必须 | 说明                                                                                    |
+|---------------|------|---------------------------------------------------------------------------------------|
+| appid         | 是    | 应用唯一标识                                                                                |
+| redirect_uri  | 是    | 请使用urlEncode对链接进行处理                                                                   |
+| response_type | 是    | 填code                                                                                 |
+| scope         | 是    | 应用授权作用域，拥有多个作用域用逗号（,）分隔，网页应用目前仅填写snsapi_login即                                        |
+| state         | 否    | 用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验 |
 
-## 4、测试 
+## 4、测试
 
 访问：[http://localhost:8201/api/ucenter/wx/login](http://localhost:8104/api/ucenter/wx/login)
 

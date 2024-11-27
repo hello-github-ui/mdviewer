@@ -1,4 +1,3 @@
-
 # 分布式消息队列RocketMQ学习文档
 
 > 本文资料来源：尚硅谷 | 本文发表时RocketMQ的版本：`v4.9.2` | 本资料是第四章内容，本文档总共有四章。
@@ -12,7 +11,6 @@
 <li><a target="_blank" href="https://hello-blogger-ui.blogspot.com/2021/10/rocketmq_62.html">分布式消息队列RocketMQ-学习文档-第三章</a></li>
 <li><a target="_blank" href="https://hello-blogger-ui.blogspot.com/2021/10/rocketmq_32.html">分布式消息队列RocketMQ-学习文档-第四章</a></li>
 </ul>
-
 
 ## 第4章 RocketMQ应用
 
@@ -51,6 +49,7 @@ Producer对于消息的发送方式也有多种选择，不同的方式会产生
 导入rocketmq的client依赖。
 
 ```xml
+
 <properties>
     <project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -58,11 +57,11 @@ Producer对于消息的发送方式也有多种选择，不同的方式会产生
 </properties>
 
 <dependencies>
-    <dependency>
-        <groupId>org.apache.rocketmq</groupId>
-        <artifactId>rocketmq-client</artifactId>
-        <version>4.8.0</version>
-    </dependency>
+<dependency>
+    <groupId>org.apache.rocketmq</groupId>
+    <artifactId>rocketmq-client</artifactId>
+    <version>4.8.0</version>
+</dependency>
 </dependencies>
 ```
 
@@ -127,8 +126,6 @@ public enum SendStatus {
 
 ```
 
-
-
 ##### ④、定义异步消息发送生产者
 
 ```java
@@ -184,7 +181,6 @@ public class AsyncProducer {
     }
 }
 ```
-
 
 ##### ⑤、定义单向消息发送生产者
 
@@ -280,15 +276,19 @@ public class SomeConsumer {
 
 顺序消息指的是，严格按照消息的<font color="#0000FF">发送顺序</font>进行<font color="#0000FF">消费</font>的消息(FIFO)。
 
-默认情况下生产者会把消息以Round Robin轮询方式发送到不同的Queue分区队列；而消费消息时会从多个Queue上拉取消息，这种情况下的发送和消费是不能保证顺序的。如果将消息仅发送到同一个Queue中，消费时也只从这个Queue上拉取消息，就严格保证了消息的顺序性。
+默认情况下生产者会把消息以Round
+Robin轮询方式发送到不同的Queue分区队列；而消费消息时会从多个Queue上拉取消息，这种情况下的发送和消费是不能保证顺序的。如果将消息仅发送到同一个Queue中，消费时也只从这个Queue上拉取消息，就严格保证了消息的顺序性。
 
 #### 2、为什么需要顺序消息
 
-例如，现在有TOPIC <font color="#0000FF">ORDER_STATUS</font> (订单状态)，其下有4个Queue队列，该Topic中的不同消息用于描述当前订单的不同状态。假设订单有状态：<font color="#0000FF">未支付、已支付、发货中、发货成功、发货失败</font>。
+例如，现在有TOPIC <font color="#0000FF">ORDER_STATUS</font> (订单状态)
+，其下有4个Queue队列，该Topic中的不同消息用于描述当前订单的不同状态。假设订单有状态：<font color="#0000FF">
+未支付、已支付、发货中、发货成功、发货失败</font>。
 
 根据以上订单状态，生产者从<font color="#0000FF">时序</font>上可以生成如下几个消息：
 
-> <font color="#0000FF">订单T0000001:未支付 --> 订单T0000001:已支付 --> 订单T0000001:发货中 --> 订单T0000001:发货失败</font>
+> <font color="#0000FF">订单T0000001:未支付 --> 订单T0000001:已支付 --> 订单T0000001:发货中 --> 订单T0000001:
+> 发货失败</font>
 
 消息发送到MQ中之后，Queue的选择如果采用轮询策略，消息在MQ的存储可能如下：
 
@@ -302,7 +302,8 @@ public class SomeConsumer {
 
 #### 3、有序性分类
 
-根据有序范围的不同，RocketMQ可以严格地保证两种消息的有序性：<font color="#FF0000">分区有序</font>与<font color="#FF0000">全局有序</font>。
+根据有序范围的不同，RocketMQ可以严格地保证两种消息的有序性：<font color="#FF0000">分区有序</font>与<font color="#FF0000">
+全局有序</font>。
 
 ##### ①、全局有序
 
@@ -316,7 +317,6 @@ public class SomeConsumer {
 > * 2）在RocketMQ可视化控制台中手动创建Topic时指定Queue数量
 > * 3）使用mqadmin命令手动创建Topic时指定Queue数量
 
-
 ##### ②、分区有序
 
 ![](https://pic.imgdb.cn/item/617bd32f2ab3f51d911edee0.jpg){width="6.106944444444444in" height="2.8868055555555556in"}
@@ -326,8 +326,10 @@ public class SomeConsumer {
 > 如何实现Queue的选择？在定义Producer时我们可以指定消息队列选择器，而这个选择器是我们自己实现了MessageQueueSelector接口定义的。
 > 在定义选择器的选择算法时，一般需要使用选择key。这个选择key可以是消息key也可以是其它数据。但无论谁做选择key，都不能重复，都是唯一的。
 > 一般性的选择算法是，让选择key（或其hash值）与该Topic所包含的Queue的数量取模，其结果即为选择出的Queue的QueueId。
-> 取模算法存在一个问题：不同选择key与Queue数量取模结果可能会是相同的，即不同选择key的消息可能会出现在相同的Queue，即同一个Consuemr可能会消费到不同选择key的消息。这个问题如何解决？一般性的作法是，从消息中获取到选择key，对其进行判断。若是当前Consumer需要消费的消息，则直接消费，否则，什么也不做。这种做法要求选择key要能够随着消息一起被Consumer获取到。此时使用消息key作为选择key是比较好的做法。
-> 以上做法会不会出现如下新的问题呢？不属于那个Consumer的消息被拉取走了，那么应该消费该消息的Consumer是否还能再消费该消息呢？同一个Queue中的消息不可能被同一个Group中的不同Consumer同时消费。所以，消费现一个Queue的不同选择key的消息的Consumer一定属于不同的Group。而不同的Group中的Consumer间的消费是相互隔离的，互不影响的。
+>
+取模算法存在一个问题：不同选择key与Queue数量取模结果可能会是相同的，即不同选择key的消息可能会出现在相同的Queue，即同一个Consuemr可能会消费到不同选择key的消息。这个问题如何解决？一般性的作法是，从消息中获取到选择key，对其进行判断。若是当前Consumer需要消费的消息，则直接消费，否则，什么也不做。这种做法要求选择key要能够随着消息一起被Consumer获取到。此时使用消息key作为选择key是比较好的做法。
+>
+以上做法会不会出现如下新的问题呢？不属于那个Consumer的消息被拉取走了，那么应该消费该消息的Consumer是否还能再消费该消息呢？同一个Queue中的消息不可能被同一个Group中的不同Consumer同时消费。所以，消费现一个Queue的不同选择key的消息的Consumer一定属于不同的Group。而不同的Group中的Consumer间的消费是相互隔离的，互不影响的。
 
 #### 4、代码举例
 
@@ -377,15 +379,19 @@ public class OrderedProducer {
 
 当消息写入到Broker后，在指定的时长后才可被消费处理的消息，称为延时消息。
 
-采用RocketMQ的延时消息可以实现<font color="#0000FF">定时任务</font>的功能，而无需使用定时器。典型的应用场景是，电商交易中超时未支付关闭订单的场景，12306平台订票超时未支付取消订票的场景。
+采用RocketMQ的延时消息可以实现<font color="#0000FF">定时任务</font>
+的功能，而无需使用定时器。典型的应用场景是，电商交易中超时未支付关闭订单的场景，12306平台订票超时未支付取消订票的场景。
 
 > 在电商平台中，订单创建时会发送一条延迟消息。这条消息将会在30分钟后投递给后台业务系统（Consumer），后台业务系统收到该消息后会判断对应的订单是否已经完成支付。如果未完成，则取消订单，将商品再次放回到库存；如果完成支付，则忽略。
 
-> 在12306平台中，车票预订成功后就会发送一条延迟消息。这条消息将会在45分钟后投递给后台业务系统（Consumer），后台业务系统收到该消息后会判断对应的订单是否已经完成支付。如果未完成，则取消预订，将车票再次放回到票池；如果完成支付，则忽略。
+>
+在12306平台中，车票预订成功后就会发送一条延迟消息。这条消息将会在45分钟后投递给后台业务系统（Consumer），后台业务系统收到该消息后会判断对应的订单是否已经完成支付。如果未完成，则取消预订，将车票再次放回到票池；如果完成支付，则忽略。
 
 #### 2、延时等级
 
-延时消息的延迟时长<font color="#0000FF">不支持随意时长</font>的延迟，是通过特定的延迟等级来指定的。延时等级定义在RocketMQ服务端的<font color="#0000FF">MessageStoreConfig</font>类中的如下变量中：
+延时消息的延迟时长<font color="#0000FF">不支持随意时长</font>
+的延迟，是通过特定的延迟等级来指定的。延时等级定义在RocketMQ服务端的<font color="#0000FF">MessageStoreConfig</font>
+类中的如下变量中：
 
 ![](https://pic.imgdb.cn/item/617bd5932ab3f51d9120d933.jpg){width="6.106944444444444in" height="0.8444444444444444in"}
 
@@ -415,18 +421,22 @@ Producer将消息发送到Broker后，Broker会首先将消息写入到commitlog
 
 ![](https://pic.imgdb.cn/item/617bd6c22ab3f51d9121c551.jpg){width="6.106944444444444in" height="1.104861111111111in"}
 
-* 修改消息索引单元内容。索引单元中的Message Tag HashCode部分原本存放的是消息的Tag的Hash值。现修改为消息的<font color="#0000FF">投递时间</font>。投递时间是指该消息被重新修改为原Topic后再次被写入到commitlog中的时间。<font color="#0000FF">投递时间 = 消息存储时间 + 延时等级时间</font>。消息存储时间指的是消息被发送到Broker时的时间戳。
+* 修改消息索引单元内容。索引单元中的Message Tag
+  HashCode部分原本存放的是消息的Tag的Hash值。现修改为消息的<font color="#0000FF">投递时间</font>
+  。投递时间是指该消息被重新修改为原Topic后再次被写入到commitlog中的时间。<font color="#0000FF">投递时间 = 消息存储时间 +
+  延时等级时间</font>。消息存储时间指的是消息被发送到Broker时的时间戳。
 * 将消息索引写入到SCHEDULE_TOPIC_XXXX主题下相应的consumequeue中
 
 > SCHEDULE_TOPIC_XXXX目录中各个延时等级Queue中的消息是如何排序的？
-> 是按照消息投递时间排序的。一个Broker中同一等级的所有延时消息会被写入到consumequeue目录中SCHEDULE_TOPIC_XXXX目录下相同Queue中。即一个Queue中消息投递时间的延迟等级时间是相同的。那么投递时间就取决于于消息存储时间了。即按照消息被发送到Broker的时间进行排序的。
-
+>
+是按照消息投递时间排序的。一个Broker中同一等级的所有延时消息会被写入到consumequeue目录中SCHEDULE_TOPIC_XXXX目录下相同Queue中。即一个Queue中消息投递时间的延迟等级时间是相同的。那么投递时间就取决于于消息存储时间了。即按照消息被发送到Broker的时间进行排序的。
 
 ##### ②、投递延时消息
 
 Broker内部有一个延迟消息服务类ScheuleMessageService，其会消费SCHEDULE_TOPIC_XXXX中的消息，即按照每条消息的投递时间，将延时消息投递到目标Topic中。不过，在投递之前会从commitlog中将原来写入的消息再次读出，并将其原来的延时等级设置为0，即原消息变为了一条不延迟的普通消息。然后再次将消息投递到目标Topic中。
 
-> ScheuleMessageService在Broker启动时，会创建并启动一个定时器TImer，用于执行相应的定时任务。系统会根据延时等级的个数，定义相应数量的TimerTask，每个TimerTask负责一个延迟等级消息的消费与投递。每个TimerTask都会检测相应Queue队列的第一条消息是否到期。若第一条消息未到期，则后面的所有消息更不会到期（消息是按照投递时间排序的）；若第一条消息到期了，则将该消息投递到目标Topic，即消费该消息。
+>
+ScheuleMessageService在Broker启动时，会创建并启动一个定时器TImer，用于执行相应的定时任务。系统会根据延时等级的个数，定义相应数量的TimerTask，每个TimerTask负责一个延迟等级消息的消费与投递。每个TimerTask都会检测相应Queue队列的第一条消息是否到期。若第一条消息未到期，则后面的所有消息更不会到期（消息是按照投递时间排序的）；若第一条消息到期了，则将该消息投递到目标Topic，即消费该消息。
 
 ##### ③、将消息重新写入commitlog
 
@@ -500,45 +510,66 @@ public class OtherConsumer {
 
 ![](https://pic.imgdb.cn/item/617bd9902ab3f51d91244406.jpg){width="6.106944444444444in" height="2.4277777777777776in"}
 
-* 1. 工行系统发送一个给B增款1万元的同步消息M给Broker
-* 2. 消息被Broker成功接收后，向工行系统发送成功ACK
-* 3. 工行系统收到成功ACK后从用户A中扣款1万元
-* 4. 建行系统从Broker中获取到消息M
-* 5. 建行系统消费消息M，即向用户B中增加1万元
+*
+    1. 工行系统发送一个给B增款1万元的同步消息M给Broker
+*
+    2. 消息被Broker成功接收后，向工行系统发送成功ACK
+*
+    3. 工行系统收到成功ACK后从用户A中扣款1万元
+*
+    4. 建行系统从Broker中获取到消息M
+*
+    5. 建行系统消费消息M，即向用户B中增加1万元
 
 > 这其中是有问题的：若第3步中的扣款操作失败，但消息已经成功发送到了Broker。对于MQ来说，只要消息写入成功，那么这个消息就可以被消费。此时建行系统中用户B增加了1万元。出现了数据不一致问题。
 
 #### 2、解决思路
 
-解决思路是，让第1、2、3步具有原子性，要么全部成功，要么全部失败。即消息发送成功后，必须要保证扣款成功。如果扣款失败，则回滚发送成功的消息。而该思路即使用<font color="#FF0000">事务消息</font>。这里要使用<font color="#0000FF">分布式事务</font>解决方案。
+解决思路是，让第1、2、3步具有原子性，要么全部成功，要么全部失败。即消息发送成功后，必须要保证扣款成功。如果扣款失败，则回滚发送成功的消息。而该思路即使用<font color="#FF0000">
+事务消息</font>。这里要使用<font color="#0000FF">分布式事务</font>解决方案。
 
 ![](https://pic.imgdb.cn/item/617bda552ab3f51d9124e937.jpg){width="5.783333333333333in" height="5.6375in"}
 
 使用事务消息来处理该需求场景：
 
-* 1. 事务管理器TM向事务协调器TC发起指令，开启<font color="#0000FF">全局事务</font>
-* 2. 工行系统发一个给B增款1万元的事务消息M给TC
-* 3. TC会向Broker发送<font color="#0000FF">半事务消息prepareHalf</font> ，将消息M <font color="#0000FF">预提交</font>到Broker。此时的建行系统是看不到Broker中的消息M的
-* 4. Broker会将预提交执行结果Report给TC。
-* 5. 如果预提交失败，则TC会向TM上报预提交失败的响应，全局事务结束；如果预提交成功，TC会调用工行系统的<font color="#0000FF">回调操作</font>，去完成工行用户A的<font color="#0000FF">预扣款</font>1万元的操作
-* 6. 工行系统会向TC发送预扣款执行结果，即<font color="#0000FF">本地事务</font>的执行状态
-* 7. TC收到预扣款执行结果后，会将结果上报给TM。
+*
+    1. 事务管理器TM向事务协调器TC发起指令，开启<font color="#0000FF">全局事务</font>
+*
+    2. 工行系统发一个给B增款1万元的事务消息M给TC
+*
+    3. TC会向Broker发送<font color="#0000FF">半事务消息prepareHalf</font> ，将消息M <font color="#0000FF">预提交</font>
+       到Broker。此时的建行系统是看不到Broker中的消息M的
+*
+    4. Broker会将预提交执行结果Report给TC。
+*
+    5.
+    如果预提交失败，则TC会向TM上报预提交失败的响应，全局事务结束；如果预提交成功，TC会调用工行系统的<font color="#0000FF">
+    回调操作</font>，去完成工行用户A的<font color="#0000FF">预扣款</font>1万元的操作
+*
+    6. 工行系统会向TC发送预扣款执行结果，即<font color="#0000FF">本地事务</font>的执行状态
+*
+    7. TC收到预扣款执行结果后，会将结果上报给TM。
 
 > 预扣款执行结果存在三种可能性：
 > ![](https://pic.imgdb.cn/item/617bdb612ab3f51d9125b9c6.jpg)
 
-* 8. TM会根据上报结果向TC发出不同的确认指令
+*
+    8. TM会根据上报结果向TC发出不同的确认指令
 
-  - ①若预扣款成功（本地事务状态为COMMIT_MESSAGE），则TM向TC发送Global Commit指令
-  - ②若预扣款失败（本地事务状态为ROLLBACK_MESSAGE），则TM向TC发送Global Rollback指令
-  - ③若现未知状态（本地事务状态为UNKNOW），则会触发工行系统的本地事务状态<font color="#0000FF">回查操作</font>。回查操作会将回查结果，即COMMIT_MESSAGE或ROLLBACK_MESSAGE Report给TC。TC将结果上报给TM，TM会再向TC发送最终确认指令Global Commit或Global Rollback
+    - ①若预扣款成功（本地事务状态为COMMIT_MESSAGE），则TM向TC发送Global Commit指令
+    - ②若预扣款失败（本地事务状态为ROLLBACK_MESSAGE），则TM向TC发送Global Rollback指令
+    - ③若现未知状态（本地事务状态为UNKNOW），则会触发工行系统的本地事务状态<font color="#0000FF">回查操作</font>
+      。回查操作会将回查结果，即COMMIT_MESSAGE或ROLLBACK_MESSAGE Report给TC。TC将结果上报给TM，TM会再向TC发送最终确认指令Global
+      Commit或Global Rollback
 
-* 9. TC在接收到指令后会向Broker与工行系统发出确认指令
+*
+    9. TC在接收到指令后会向Broker与工行系统发出确认指令
 
-  - ①TC接收的若是Global Commit指令，则向Broker与工行系统发送Branch Commit指令。此时Broker中的消息M才可被建行系统看到；此时的工行用户A中的扣款操作才真正被确认
-  - ②TC接收到的若是Global Rollback指令，则向Broker与工行系统发送Branch Rollback指令。此时Broker中的消息M将被撤销；工行用户A中的扣款操作将被回滚
+    - ①TC接收的若是Global Commit指令，则向Broker与工行系统发送Branch Commit指令。此时Broker中的消息M才可被建行系统看到；此时的工行用户A中的扣款操作才真正被确认
+    - ②TC接收到的若是Global Rollback指令，则向Broker与工行系统发送Branch Rollback指令。此时Broker中的消息M将被撤销；工行用户A中的扣款操作将被回滚
 
-> 以上方案就是为了确保<font color="#0000FF">消息投递</font> 与<font color="#0000FF">扣款操作</font> 能够在一个事务中，要成功都成功，有一个失败，则全部回滚。
+> 以上方案就是为了确保<font color="#0000FF">消息投递</font> 与<font color="#0000FF">扣款操作</font>
+> 能够在一个事务中，要成功都成功，有一个失败，则全部回滚。
 > 以上方案并不是一个典型的XA模式。因为XA模式中的分支事务是异步的，而事务消息方案中的消息预提交与预扣款操作间是同步的。
 
 #### 3、基础
@@ -553,7 +584,8 @@ RocketMQ提供了类似X/Open XA的分布式事务功能，通过事务消息能
 
 ##### ③、半事务消息
 
-暂不能投递的消息，发送方已经成功地将消息发送到了Broker，但是Broker未收到最终确认指令，此时该消息被标记成"暂不能投递"状态，即不能被消费者看到。处于该种状态下的消息即半事务消息。
+暂不能投递的消息，发送方已经成功地将消息发送到了Broker，但是Broker未收到最终确认指令，此时该消息被标记成"暂不能投递"
+状态，即不能被消费者看到。处于该种状态下的消息即半事务消息。
 
 ##### ④、本地事务状态
 
@@ -582,12 +614,12 @@ Producer <font color="#0000FF">回调操作</font>执行的结果为本地事务
 * transactionCheckMax=5，指定最多回查5次，超过后将丢弃消息并记录错误日志。默认15次。
 * transactionCheckInterval=10，指定设置的多次消息回查的时间间隔为10秒。默认为60秒。
 
-
 #### 4、XA模式三剑客
 
 ##### ①、XA协议
 
-XA（Unix Transaction）是一种分布式事务解决方案，一种分布式事务处理模式，是基于XA协议的。XA协议由Tuxedo（Transaction for Unix has been Extended for Distributed Operation，分布式操作扩展之后的Unix事务系统）首先提出的，并交给X/Open组织，作为资源管理器与事务管理器的接口标准。
+XA（Unix Transaction）是一种分布式事务解决方案，一种分布式事务处理模式，是基于XA协议的。XA协议由Tuxedo（Transaction for Unix
+has been Extended for Distributed Operation，分布式操作扩展之后的Unix事务系统）首先提出的，并交给X/Open组织，作为资源管理器与事务管理器的接口标准。
 
 XA模式中有三个重要组件：TC、TM、RM。
 
@@ -615,14 +647,14 @@ Resource Manager，资源管理器。管理分支事务处理的资源，与TC�
 
 XA模式是一个典型的2PC，其执行原理如下：
 
-1.  TM向TC发起指令，开启一个全局事务。
-2.  根据业务要求，各个RM会逐个向TC注册分支事务，然后TC会逐个向RM发出预执行指令。
-3.  各个RM在接收到指令后会在进行本地事务预执行。
-4.  RM将预执行结果Report给TC。当然，这个结果可能是成功，也可能是失败。
-5.  TC在接收到各个RM的Report后会将汇总结果上报给TM，根据汇总结果TM会向TC发出确认指令。
+1. TM向TC发起指令，开启一个全局事务。
+2. 根据业务要求，各个RM会逐个向TC注册分支事务，然后TC会逐个向RM发出预执行指令。
+3. 各个RM在接收到指令后会在进行本地事务预执行。
+4. RM将预执行结果Report给TC。当然，这个结果可能是成功，也可能是失败。
+5. TC在接收到各个RM的Report后会将汇总结果上报给TM，根据汇总结果TM会向TC发出确认指令。
     * 若所有结果都是成功响应，则向TC发送Global Commit指令。
     * 只要有结果是失败响应，则向TC发送Global Rollback指令。
-6.  TC在接收到指令后再次向RM发送确认指令。
+6. TC在接收到指令后再次向RM发送确认指令。
 
 > 事务消息方案并不是一个典型的XA模式。因为XA模式中的分支事务是异步的，而事务消息方案中的消息预提交与预扣款操作间是同步的。
 
@@ -786,7 +818,8 @@ public class SomeConsumer {
 
 ![](https://pic.imgdb.cn/item/617be2cc2ab3f51d912d47c0.jpg){width="5.064583333333333in" height="1.9590277777777778in"}
 
-生产者通过send()方法发送的Message，并不是直接将Message序列化后发送到网络上的，而是通过这个Message生成了一个字符串发送出去的。这个字符串由四部分构成：Topic、消息Body、消息日志（占20字节），及用于描述消息的一堆属性key-value。这些属性中包含例如生产者地址、生产时间、要发送的QueueId等。最终写入到Broker中消息单元中的数据都是来自于这些属性。
+生产者通过send()
+方法发送的Message，并不是直接将Message序列化后发送到网络上的，而是通过这个Message生成了一个字符串发送出去的。这个字符串由四部分构成：Topic、消息Body、消息日志（占20字节），及用于描述消息的一堆属性key-value。这些属性中包含例如生产者地址、生产时间、要发送的QueueId等。最终写入到Broker中消息单元中的数据都是来自于这些属性。
 
 #### 2、批量消费消息
 
@@ -794,14 +827,16 @@ public class SomeConsumer {
 
 ![](https://pic.imgdb.cn/item/617be3282ab3f51d912dc898.jpg){width="6.106944444444444in" height="2.167361111111111in"}
 
-Consumer的MessageListenerConcurrently监听接口的consumeMessage()方法的第一个参数为消息列表，但默认情况下每次只能消费一条消息。若要使其一次可以消费多条消息，则可以通过修改Consumer的consumeMessageBatchMaxSize属性来指定。不过，该值不能超过32。因为默认情况下消费者每次可以拉取的消息最多是32条。若要修改一次拉取的最大值，则可通过修改Consumer的pullBatchSize属性来指定。
+Consumer的MessageListenerConcurrently监听接口的consumeMessage()
+方法的第一个参数为消息列表，但默认情况下每次只能消费一条消息。若要使其一次可以消费多条消息，则可以通过修改Consumer的consumeMessageBatchMaxSize属性来指定。不过，该值不能超过32。因为默认情况下消费者每次可以拉取的消息最多是32条。若要修改一次拉取的最大值，则可通过修改Consumer的pullBatchSize属性来指定。
 
 ##### ②、存在的问题
 
 Consumer的pullBatchSize属性与consumeMessageBatchMaxSize属性是否设置的越大越好？当然不是。
 
 * pullBatchSize值设置的越大，Consumer每拉取一次需要的时间就会越长，且在网络上传输出现问题的可能性就越高。若在拉取过程中若出现了问题，那么本批次所有消息都需要全部重新拉取。
-* consumeMessageBatchMaxSize值设置的越大，Consumer的消息并发消费能力越低，且这批被消费的消息具有相同的消费结果。因为consumeMessageBatchMaxSize指定的一批消息只会使用一个线程进行处理，且在处理过程中只要有一个消息处理异常，则这批消息需要全部重新再次消费处理。
+*
+consumeMessageBatchMaxSize值设置的越大，Consumer的消息并发消费能力越低，且这批被消费的消息具有相同的消费结果。因为consumeMessageBatchMaxSize指定的一批消息只会使用一个线程进行处理，且在处理过程中只要有一个消息处理异常，则这批消息需要全部重新再次消费处理。
 
 #### 3、代码举例
 
@@ -1089,13 +1124,15 @@ Producer对发送失败的消息进行重新发送的机制，称为消息发送
 
 对于消息重投，需要注意以下几点：
 
-* 生产者在发送消息时，若采用<font color="#0000FF">同步或异步发送</font>方式，发送失败会<font color="#0000FF">重试</font>，但oneway消息发送方式发送失败是没有重试机制的
+* 生产者在发送消息时，若采用<font color="#0000FF">同步或异步发送</font>方式，发送失败会<font color="#0000FF">重试</font>
+  ，但oneway消息发送方式发送失败是没有重试机制的
 * 只有普通消息具有发送重试机制，顺序消息是没有的
 * 消息重投机制可以保证消息尽可能发送成功、不丢失，但可能会造成消息重复。消息重复在RocketMQ中是无法避免的问题
 * 消息重复在一般情况下不会发生，当出现消息量大、网络抖动，消息重复就会成为大概率事件
 * producer主动重发、consumer负载变化（发生Rebalance，不会导致消息重复，但可能出现重复消费）也会导致重复消息
 * 消息重复无法避免，但要避免消息的重复消费。
-* 避免消息重复消费的解决方案是，为消息添加<font color="#0000FF">唯一标识</font>（例如消息key），使消费者对消息进行消费判断来<font color="#FF0000">避免重复消费</font>
+* 避免消息重复消费的解决方案是，为消息添加<font color="#0000FF">唯一标识</font>
+  （例如消息key），使消费者对消息进行消费判断来<font color="#FF0000">避免重复消费</font>
 * 消息发送重试有三种策略可以选择：同步发送失败策略、异步发送失败策略、消息刷盘失败策略
 
 #### 2、同步发送失败策略
@@ -1113,11 +1150,14 @@ producer.setRetryTimeWhenSendFailed(3);
 producer.setSendMsgTimeout(5000);
 ```
 
-同时，Broker还具有<font color="#0000FF">失败隔离</font>功能，使Producer尽量选择未发生过发送失败的Broker作为目标Broker。其可以保证其它消息尽量不发送到问题Broker，为了提升消息发送效率，降低消息发送耗时。
+同时，Broker还具有<font color="#0000FF">失败隔离</font>
+功能，使Producer尽量选择未发生过发送失败的Broker作为目标Broker。其可以保证其它消息尽量不发送到问题Broker，为了提升消息发送效率，降低消息发送耗时。
 
 > 思考：让我们自己实现<font color="#0000FF">失败隔离</font>功能，如何来做？
-> 1）方案一：Producer中维护某JUC的Map集合，其key是发生失败的时间戳，value为Broker实例。Producer中还维护着一个Set集合，其中存放着所有未发生发送异常的Broker实例。选择目标Broker是从该Set集合中选择的。再定义一个定时任务，定期从Map集合中将长期未发生发送异常的Broker清理出去，并添加到Set集合。
-> 2）方案二：为Producer中的Broker实例添加一个标识，例如是一个AtomicBoolean属性。只要该Broker上发生过发送异常，就将其置为true。选择目标Broker就是选择该属性值为false的Broker。再定义一个定时任务，定期将Broker的该属性置为false。
+>
+1）方案一：Producer中维护某JUC的Map集合，其key是发生失败的时间戳，value为Broker实例。Producer中还维护着一个Set集合，其中存放着所有未发生发送异常的Broker实例。选择目标Broker是从该Set集合中选择的。再定义一个定时任务，定期从Map集合中将长期未发生发送异常的Broker清理出去，并添加到Set集合。
+>
+2）方案二：为Producer中的Broker实例添加一个标识，例如是一个AtomicBoolean属性。只要该Broker上发生过发送异常，就将其置为true。选择目标Broker就是选择该属性值为false的Broker。再定义一个定时任务，定期将Broker的该属性置为false。
 > 3）方案三：为Producer中的Broker实例添加一个标识，例如是一个AtomicLong属性。只要该Broker上发生过发送异常，就使其值增一。选择目标Broker就是选择该属性值最小的Broker。若该值相同，采用轮询方式选择。
 
 如果超过重试次数，则抛出异常，由Producer去保证消息不丢。当然当生产者出现RemotingException、MQClientException和MQBrokerException时，Producer会自动重投消息。
@@ -1155,24 +1195,26 @@ consumer.setSuspendCurrentQueueTimeMillis(100);
 
 #### 2、无序消息的消费重试
 
-对于无序消息（普通消息、延时消息、事务消息），当Consumer消费消息失败时，可以通过设置返回状态达到消息重试的效果。不过需要注意，无序消息的重试<font color="#0000FF">只对集群消费方式生效</font>，广播消费方式不提供失败重试特性。即对于广播消费，消费失败后，失败消息不再重试，继续消费后续消息。
+对于无序消息（普通消息、延时消息、事务消息），当Consumer消费消息失败时，可以通过设置返回状态达到消息重试的效果。不过需要注意，无序消息的重试<font color="#0000FF">
+只对集群消费方式生效</font>，广播消费方式不提供失败重试特性。即对于广播消费，消费失败后，失败消息不再重试，继续消费后续消息。
 
 #### 3、消费重试次数与间隔
 
 对于<font color="#0000FF">无序消息集群消费</font>下的重试消费，每条消息默认最多重试16次，但每次重试的间隔时间是不同的，会逐渐变长。每次重试的间隔时间如下表。
 
 | 重试次数 | 与上次重试的间隔时间 | 重试次数 | 与上次重试的间隔时间 |
-| -------- | -------------------- | -------- | -------------------- |
-| 1        | 10秒                 | 9        | 7分钟                |
-| 2        | 30秒                 | 10       | 8分钟                |
-| 3        | 1分钟                | 11       | 9分钟                |
-| 4        | 2分钟                | 12       | 10分钟               |
-| 5        | 3分钟                | 13       | 20分钟               |
-| 6        | 4分钟                | 14       | 30分钟               |
-| 7        | 5分钟                | 15       | 1小时                |
-| 8        | 6分钟                | 16       | 2小时                |
+|------|------------|------|------------|
+| 1    | 10秒        | 9    | 7分钟        |
+| 2    | 30秒        | 10   | 8分钟        |
+| 3    | 1分钟        | 11   | 9分钟        |
+| 4    | 2分钟        | 12   | 10分钟       |
+| 5    | 3分钟        | 13   | 20分钟       |
+| 6    | 4分钟        | 14   | 30分钟       |
+| 7    | 5分钟        | 15   | 1小时        |
+| 8    | 6分钟        | 16   | 2小时        |
 
-> 若一条消息在一直消费失败的前提下，将会在正常消费后的第<font color="#0000FF">4小时46分</font>后进行第16次重试若仍然失败，则将消息投递到<font color="#0000FF">死信队列</font>
+> 若一条消息在一直消费失败的前提下，将会在正常消费后的第<font color="#0000FF">4小时46分</font>
+> 后进行第16次重试若仍然失败，则将消息投递到<font color="#0000FF">死信队列</font>
 
 > 修改消费重试次数
 
@@ -1186,9 +1228,8 @@ consumer.setMaxReconsumeTimes(10);
 >
 > * 若修改值小于16，则按照指定间隔进行重试
 > * 若修改值大于16，则超过16次的重试时间间隔均为2小时
->   对于Consumer Group，若仅修改了一个Consumer的消费重试次数，则会应用到该Group中所有其它Consumer实例。若出现多个Consumer均做了修改的情况，则采用覆盖方式生效。即最后被修改的值会覆盖前面设置的值。
-
-
+    > 对于Consumer
+    Group，若仅修改了一个Consumer的消费重试次数，则会应用到该Group中所有其它Consumer实例。若出现多个Consumer均做了修改的情况，则采用覆盖方式生效。即最后被修改的值会覆盖前面设置的值。
 
 #### 4、重试队列
 
@@ -1204,7 +1245,8 @@ consumer.setMaxReconsumeTimes(10);
 
 > 注意，消费重试的时间间隔与 延时消费 的 延时等级 十分相似，除了没有延时等级的前两个时间外，其它的时间都是相同的
 
-> Broker对于重试消息的处理是通过<font color="#FF0000">延时消息</font>实现的。先将消息保存到SCHEDULE_TOPIC_XXXX延迟队列中，延迟时间到后，会将消息投递到%RETRY%consumerGroup\@consumerGroup重试队列中。
+> Broker对于重试消息的处理是通过<font color="#FF0000">延时消息</font>
+> 实现的。先将消息保存到SCHEDULE_TOPIC_XXXX延迟队列中，延迟时间到后，会将消息投递到%RETRY%consumerGroup\@consumerGroup重试队列中。
 
 #### 5、消费重试配置方式
 
@@ -1226,7 +1268,8 @@ consumer.setMaxReconsumeTimes(10);
 
 #### 1、什么是死信队列
 
-当一条消息初次消费失败，消息队列会自动进行消费重试；达到最大重试次数后，若消费依然失败，则表明消费者在正常情况下无法正确地消费该消息，此时，消息队列不会立刻将消息丢弃，而是将其发送到该消费者对应的特殊队列中。这个队列就是死信队列（Dead-Letter Queue，DLQ），而其中的消息则称为死信消息（Dead-Letter Message，DLM）。
+当一条消息初次消费失败，消息队列会自动进行消费重试；达到最大重试次数后，若消费依然失败，则表明消费者在正常情况下无法正确地消费该消息，此时，消息队列不会立刻将消息丢弃，而是将其发送到该消费者对应的特殊队列中。这个队列就是死信队列（Dead-Letter
+Queue，DLQ），而其中的消息则称为死信消息（Dead-Letter Message，DLM）。
 
 > 死信队列是用于处理无法被正常消费的消息的。
 

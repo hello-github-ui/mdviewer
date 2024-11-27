@@ -1,4 +1,4 @@
-# 一、创建项目，实现EasyExcel对Excel写操作 
+# 一、创建项目，实现EasyExcel对Excel写操作
 
 ## 1、创建一个普通的maven项目
 
@@ -17,7 +17,7 @@
 </dependencies>
 ```
 
-# 3、创建实体类 
+# 3、创建实体类
 
 **设置表头和添加的数据字段**
 
@@ -29,7 +29,7 @@ public class DemoData {
     //设置表头名称
     @ExcelProperty("学生编号")
     private int sno;
-    
+
     //设置表头名称
     @ExcelProperty("学生姓名")
     private String sname;
@@ -60,7 +60,7 @@ public class DemoData {
 }
 ```
 
-## 
+##
 
 ## 4 、实现写操作
 

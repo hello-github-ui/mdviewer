@@ -1,7 +1,5 @@
 1. 准备 Git 仓库
 
-
-
 码云：https://gitee.com
 
 ## 1.1. 通过网站右上角的「+」号，选择「新建仓库」，进入新建仓库页面
@@ -18,8 +16,6 @@
 
 ## 1.4. 在打开的【Create Git Repository】对话框内选择本地仓库的位置，这里我选择项目的根目录。
 
- 
-
 ![img](./assets/clip_image010d500df72-c9c1-4b2a-9283-5dc2bb30dc7c.jpg)
 
 ## 1.5. 右击项目点击【Git】--》【Add】，接着点击【Git】--》【Commit Directory】在打开的窗口中选择要上传到本地仓库的代码并添加注释后提交到本地仓库内。
@@ -33,8 +29,6 @@
 ![img](./assets/clip_image01648cd4d21-1c9b-4d09-98c7-7ad8ff18bec2.jpg)
 
 ![img](./assets/clip_image018728b2f64-1e62-41ec-9f93-9230a17f08e9.jpg)
-
- 
 
 ## 1.7. 点击【OK】后接着输入码云的账号密码。
 

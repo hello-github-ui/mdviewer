@@ -1,9 +1,10 @@
-
 ## AOP简介
 
 来自于官方的定义：
 
-> Aspect-oriented Programming (AOP) complements Object-oriented Programming (OOP) by providing another way of thinking about program structure. The key unit of modularity in OOP is the class, whereas in AOP the unit of modularity is the aspect. Aspects enable the modularization of concerns that cut across multiple types and objects.
+> Aspect-oriented Programming (AOP) complements Object-oriented Programming (OOP) by providing another way of thinking
+> about program structure. The key unit of modularity in OOP is the class, whereas in AOP the unit of modularity is the
+> aspect. Aspects enable the modularization of concerns that cut across multiple types and objects.
 
 面向切面编程，是spring框架中的一个重要内容。利用 aop 可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高代码的可重用性，提高开发效率。
 
@@ -16,19 +17,22 @@
 我们先来学习 Spring AOP，在学习之前，先学习几个 AOP 中的知识点：
 
 * Aspect：即切面，切面一般定义为一个java类，切面在 ApplicationContext 中的 `<aop:aspect>` 来配置。
-* Joinpoint：即连接点，程序执行的某个点，比如方法执行。构造函数调用或者字段赋值等。在Spring AOP中，连接点只会有 方法调用（method execution）。
-* Advice：即通知，切面对于某个连接点所产生的动作，可以理解位：在连接点处要执行的代码，例如 TestAspect 对 com.spring.service 包下所有类的方法进行日志记录的动作就是一个Advice。其中一个切面可以包含多个Advice。Advice总共有如下5种类型：
+* Joinpoint：即连接点，程序执行的某个点，比如方法执行。构造函数调用或者字段赋值等。在Spring AOP中，连接点只会有 方法调用（method
+  execution）。
+* Advice：即通知，切面对于某个连接点所产生的动作，可以理解位：在连接点处要执行的代码，例如 TestAspect 对 com.spring.service
+  包下所有类的方法进行日志记录的动作就是一个Advice。其中一个切面可以包含多个Advice。Advice总共有如下5种类型：
 
-		1. 前置通知（Before advice）：在某个连接点（joinpoint）之前执行，xml中在<aop:aspect>里面使用<aop:before>元素进行声明；注解中使用@Before声明。
-	 	2. 后置通知（After advice）：在某个连接点退出的时候执行，xml中在<aop:aspect>里面使用<aop:after>元素进行声明；注解中使用@After声明。
-	 	3. 返回后通知（After return advice）：在某个连接点正常完成后执行的通知，不包括抛出异常的情况。xml中在<aop:aspect>里面使用<after-returning>元素进行声明。注解中使用@AfterReturning声明。
-		4. 环绕通知（Around advice）：包围一个连接点的通知，可以在方法的调用前后完成自定义的行为，也可以选择不执行。xml中在<aop:aspect>里面使用<aop:around>元素进行声明；注解中使用@Around声明。
-	 	5. 抛出异常后通知（After throwing advice）：在方法抛出异常退出时执行的通知。xml中在<aop:aspect>里面使用<aop:after-throwing>元素进行声明；注解中使用@AfterThrowing声明。
+  	1. 前置通知（Before advice）：在某个连接点（joinpoint）之前执行，xml中在<aop:aspect>里面使用<aop:before>元素进行声明；注解中使用@Before声明。
+   	2. 后置通知（After advice）：在某个连接点退出的时候执行，xml中在<aop:aspect>里面使用<aop:after>元素进行声明；注解中使用@After声明。
+   	3. 返回后通知（After return advice）：在某个连接点正常完成后执行的通知，不包括抛出异常的情况。xml中在<aop:aspect>里面使用<after-returning>元素进行声明。注解中使用@AfterReturning声明。
+  	4. 环绕通知（Around advice）：包围一个连接点的通知，可以在方法的调用前后完成自定义的行为，也可以选择不执行。xml中在<aop:aspect>里面使用<aop:around>元素进行声明；注解中使用@Around声明。
+   	5. 抛出异常后通知（After throwing advice）：在方法抛出异常退出时执行的通知。xml中在<aop:aspect>里面使用<aop:after-throwing>元素进行声明；注解中使用@AfterThrowing声明。
 
 * Pointcut：即切点，一个匹配连接点的正则表达式。当一个连接点匹配到切点时，一个关联到这个切点的特定的通知（Advice）会被执行。
 * Weaving：即编织，负责将切面和目标对象链接，以创建通知对象，在Spring AOP中没有这个东西
 
-在spring框架中，aop有两种动态代理方式，其一是基于JDK的动态代理，需要代理的类实现某一个接口，其二是基于CGLIB 的方式，该方式不需要类实现接口就能进行代理。
+在spring框架中，aop有两种动态代理方式，其一是基于JDK的动态代理，需要代理的类实现某一个接口，其二是基于CGLIB
+的方式，该方式不需要类实现接口就能进行代理。
 
 ## 实操
 
@@ -92,17 +96,17 @@
 
 ```
 
-
-
 ### 创建业务对象
 
-业务对象就是一个普通的Java类，然后有自己的一些业务逻辑。我们就以下面这个<strong>微信服务</strong>对象为例，这个对象只有一个简单的业务逻辑就是：分享文章到朋友圈。
+业务对象就是一个普通的Java类，然后有自己的一些业务逻辑。我们就以下面这个<strong>微信服务</strong>
+对象为例，这个对象只有一个简单的业务逻辑就是：分享文章到朋友圈。
 
 在如下图所示位置创建对象：
 
 ![](https://img.imgdb.cn/item/605ed9da8322e6675c26b157.jpg)
 
-<mark>注意，上面使用到了 `@Service`  注解，表示将这个类注入到 spring ioc 中，成为spring容器中的一个  bean（只有这样后，才会在下面使用 getBean 获取到这个  bean 对象）</mark>
+<mark>注意，上面使用到了 `@Service`  注解，表示将这个类注入到 spring ioc 中，成为spring容器中的一个 bean（只有这样后，才会在下面使用
+getBean 获取到这个 bean 对象）</mark>
 
 在该类中定义如上的方法。
 
@@ -131,8 +135,6 @@ public class SpringAopDemoApplication {
 之后点击运行按钮，启动程序后在控制台可以看到如下输出：
 
 ![](https://img.imgdb.cn/item/605edaba8322e6675c275584.jpg)
-
-
 
 ### 定义切面（Aspect）
 
@@ -200,15 +202,15 @@ public class WeixinServiceAspect {
 
 * 若要将具体的通知 Advice 关联在某个切点上，只需要在 Advice 的注解上写上切点的名称就可以了，如下：
 
-	```java
-	// 使用返回后通知（Advice）
-	// 连接点有多个，通过名称就将通知与某个切点关联起来了
-	    @AfterReturning("shareCut()")
-	    public void log(JoinPoint joinPoint){   //JoinPoint连接点
+  ```java
+  // 使用返回后通知（Advice）
+  // 连接点有多个，通过名称就将通知与某个切点关联起来了
+      @AfterReturning("shareCut()")
+      public void log(JoinPoint joinPoint){   //JoinPoint连接点
 
-	        System.out.println(joinPoint.getSignature() + " executed");
-	    }
-	```
+          System.out.println(joinPoint.getSignature() + " executed");
+      }
+  ```
 
 #### Pointcut 指示器
 
@@ -239,7 +241,8 @@ public class WeixinServiceAspect {
 @Pointcut("execution(* com.example.springaopdemo.UserDao.*(..))")
 ```
 
-上面的表达式中，第一个宽字符 * 匹配 任何返回类型，第二个宽字符 * 匹配 任何方法名，最后的参数 (..) 表达式匹配 <strong>任意数量任意类型</strong> 的参数，也就是说该切点会匹配类中所有方法的调用。
+上面的表达式中，第一个宽字符 * 匹配 任何返回类型，第二个宽字符 * 匹配 任何方法名，最后的参数 (..) 表达式匹配 <strong>
+任意数量任意类型</strong> 的参数，也就是说该切点会匹配类中所有方法的调用。
 
 **within**
 如果要匹配一个类中所有方法的调用，便可以用 within 指示器
@@ -446,5 +449,6 @@ public class WeixinService {
 
 可以看到该 Advice 已经生效了。
 
-<i>本文参考于: [Spring AOP 教程](https://www.jianshu.com/p/a21256903fdd) 和 [Spring AOP 自定义注解实现](https://juejin.cn/post/6944382595434020877/) </i>
+<i>本文参考于:[Spring AOP 教程](https://www.jianshu.com/p/a21256903fdd)
+和[Spring AOP 自定义注解实现](https://juejin.cn/post/6944382595434020877/)</i>
 

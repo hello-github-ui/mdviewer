@@ -1,4 +1,4 @@
-# 一、简介  
+# 一、简介
 
 Babel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从而在现有环境执行执行。
 
@@ -17,7 +17,7 @@ npm install --global babel-cli
 babel --version
 ```
 
-# 
+#
 
 # **三、Babel的使用**
 
@@ -70,7 +70,7 @@ presets字段设定转码规则，将es2015规则加入 .babelrc：
 npm install --save-dev babel-preset-es2015
 ```
 
-## 
+##
 
 ## 4、转码
 

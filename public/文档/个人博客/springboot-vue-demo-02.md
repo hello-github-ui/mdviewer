@@ -1,10 +1,12 @@
-
 # Vue + Element UI
 
-先在<mark>[上一期](https://my-hugo-blog-latin-xiao-mao.vercel.app/springboot-vue%E4%B9%8Bcrud%E5%B0%8Fdemo%E4%B8%80/)</mark>的文章基础上引入 `element-ui` 依赖
+先在<mark>[上一期](https://my-hugo-blog-latin-xiao-mao.vercel.app/springboot-vue%E4%B9%8Bcrud%E5%B0%8Fdemo%E4%B8%80/)</mark>
+的文章基础上引入 `element-ui` 依赖
 
 ## 添加 Element-UI依赖
+
 ##
+
 `yarn add element-ui`
 
 ## 在 main.js 中注册组件，并使用
@@ -41,7 +43,8 @@
 
 ![](https://img.imgdb.cn/item/604b85265aedab222cea1298.png)
 
-当我们的访问路径是：http://localhost:8080/pageTwo 或者 http://localhost:8080/pageOne 时是没有问题的，但是当是 http://localhost:8080/ 时会出现嵌套页面App.vue
+当我们的访问路径是：http://localhost:8080/pageTwo 或者 http://localhost:8080/pageOne
+时是没有问题的，但是当是 http://localhost:8080/ 时会出现嵌套页面App.vue
 
 这是我们需要解决的地方
 
@@ -49,7 +52,8 @@
 
 ## router-view 分析
 
-我们当前的 应用程序是 spa 应用，原理就是在于这个 router-view。而这个和我们的 `/src/router/index.js` 相对应；当我们的访问路径是 `/` 时，路由视图会渲染如下页面：
+我们当前的 应用程序是 spa 应用，原理就是在于这个 router-view。而这个和我们的 `/src/router/index.js` 相对应；当我们的访问路径是
+`/` 时，路由视图会渲染如下页面：
 
 ![](https://img.imgdb.cn/item/604b85405aedab222cea2276.png)
 
@@ -68,7 +72,7 @@ const routes = [
         children: [
             {
                 path: '/pageOne',
-                name:　'页面一',
+                name: '页面一',
                 component: PageOne
             },
             {
@@ -104,7 +108,8 @@ const routes = [
 
 ![](https://img.imgdb.cn/item/604b855b5aedab222cea30d5.png)
 
-因为我们需要遍历循环 `/src/router/index.js` 中的 routes 数组，所以通过上面的写法就可以实现了，同时菜单的名字也只能是动态获取 routes 数组里面的name属性了
+因为我们需要遍历循环 `/src/router/index.js` 中的 routes 数组，所以通过上面的写法就可以实现了，同时菜单的名字也只能是动态获取
+routes 数组里面的name属性了
 
 但是现在又有一个问题了，就是上图显示的这两个导航同时会打开关闭，也就是没有给导航设置 index 属性值，所以我们就给他们设置一下index：
 
@@ -126,8 +131,6 @@ const routes = [
 
 ![](https://img.imgdb.cn/item/604b859c5aedab222cea55d7.png)
 
-
-
 ## 页面一替换为我们要展示的数据
 
 ## 添加分页
@@ -138,14 +141,14 @@ https://element.eleme.cn/#/zh-CN/component/pagination，复制代码到页面一
 
 ```html
 <!--    添加分页 -->
-        <el-pagination
-            background
-            layout="prev, pager, next"
-            page-size="5"
-            :total="50"
-            @current-change="page"
-        >
-        </el-pagination>
+<el-pagination
+    background
+    layout="prev, pager, next"
+    page-size="5"
+    :total="50"
+    @current-change="page"
+>
+</el-pagination>
 
 ```
 
@@ -172,8 +175,6 @@ import org.springframework.data.domain.Pageable;
 
 ![](https://img.imgdb.cn/item/604b85b15aedab222cea6189.png)
 
-
-
 ## 添加数据
 
 ### 后端修改
@@ -195,6 +196,7 @@ JPA 已经封装了 save 方法，所以直接使用即可
 从 element ui 官网上，查看 form 表单的使用
 
 ```html
+
 <template>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="书名" prop="title">
@@ -229,13 +231,13 @@ JPA 已经封装了 save 方法，所以直接使用即可
                 },
                 rules: {
                     title: [
-                        { required: true, message: '请输入书名', trigger: 'blur' }
+                        {required: true, message: '请输入书名', trigger: 'blur'}
                     ],
                     author: [
-                        { required: true, message: '请输入作者', trigger: 'blur' }
+                        {required: true, message: '请输入作者', trigger: 'blur'}
                     ],
                     abs: [
-                        { required: true, message: '请输入内容简介', trigger: 'blur' }
+                        {required: true, message: '请输入内容简介', trigger: 'blur'}
                     ]
                 }
             };
@@ -246,8 +248,8 @@ JPA 已经封装了 save 方法，所以直接使用即可
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
                         //
-                        axios.post('http://localhost:8181/book/save', _this.ruleForm).then( (resp) => {
-                            if (resp != null){
+                        axios.post('http://localhost:8181/book/save', _this.ruleForm).then((resp) => {
+                            if (resp != null) {
                                 // _this.$message({
                                 //     message: '恭喜你，添加成功',
                                 //     type: 'success'
@@ -268,7 +270,7 @@ JPA 已经封装了 save 方法，所以直接使用即可
                                 // 添加成功后，我们让页面自动跳转到 查询列表页面
                                 // 先获取 当前路由 对象，然后 push 进你跳转的目标页面 路由即可
                                 // _this.$router.push('/list');
-                            }else
+                            } else
                                 this.$message.error('添加失败');
                         })
                     } else {
@@ -291,8 +293,11 @@ JPA 已经封装了 save 方法，所以直接使用即可
 ```
 
 ## 修改数据
+
 ### 新建修改组件
+
 `Update.vue`
+
 ```html
 
 ```

@@ -21,7 +21,6 @@
     })
 
 
-
     // <div class="y">
     // <a href="https://bbs.tampermonkey.net.cn/forum.php?mod=guide&amp;view=my" title="我的帖子">我的帖子</a><span class="pipe">|</span><a href="https://bbs.tampermonkey.net.cn/forum.php?mod=guide&amp;view=new" title="最新回复">最新回复</a></div>
     // <div class="z">

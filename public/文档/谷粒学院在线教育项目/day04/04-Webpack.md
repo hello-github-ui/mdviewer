@@ -2,7 +2,7 @@
 
 Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。
 
-从图中我们可以看出，Webpack 可以将多种静态资源 js、css、less 转换成一个静态文件，减少了页面的请求。 
+从图中我们可以看出，Webpack 可以将多种静态资源 js、css、less 转换成一个静态文件，减少了页面的请求。
 
 ![img](./assets/what-is-webpack.png)
 
@@ -107,9 +107,9 @@ npm run dev
 </body>
 ```
 
-## 
+##
 
-# 
+#
 
 ## 4、浏览器中查看index.html
 
@@ -124,7 +124,7 @@ Loader 可以理解为是模块和资源的转换器。
 首先我们需要安装相关Loader插件，css-loader 是将 css 装载到 javascript；style-loader 是让 javascript 认识css
 
 ```
-npm install --save-dev style-loader css-loader 
+npm install --save-dev style-loader css-loader
 ```
 
 ## **2、修改webpack.config.js**
@@ -135,12 +135,12 @@ module.exports = {
     //...,
     output:{},
     module: {
-        rules: [  
-            {  
+        rules: [
+            {
                 test: /\.css$/,    //打包规则应用到以css结尾的文件上
                 use: ['style-loader', 'css-loader']
-            }  
-        ]  
+            }
+        ]
     }
 }
 ```
@@ -153,7 +153,7 @@ body{
 }
 ```
 
-## **4、修改main.js** 
+## **4、修改main.js**
 
 在第一行引入style.css
 
@@ -161,6 +161,6 @@ body{
 require('./style.css');
 ```
 
-## 5、浏览器中查看index.html 
+## 5、浏览器中查看index.html
 
 看看背景是不是变成粉色啦？

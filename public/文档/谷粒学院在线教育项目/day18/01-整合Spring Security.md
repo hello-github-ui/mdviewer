@@ -2,7 +2,8 @@
 
 **1、框架介绍**
 
-Spring 是一个非常流行和成功的 Java 应用开发框架。Spring Security 基于 Spring 框架，提供了一套 Web 应用安全性的完整解决方案。一般来说，Web 应用的安全性包括**用户认证****（****Authentication****）和用户授权（****Authorization****）**两个部分。
+Spring 是一个非常流行和成功的 Java 应用开发框架。Spring Security 基于 Spring 框架，提供了一套 Web 应用安全性的完整解决方案。一般来说，Web
+应用的安全性包括**用户认证****（****Authentication****）和用户授权（****Authorization****）**两个部分。
 
 （1）用户认证指的是：验证某个用户是否为系统中的合法主体，也就是说用户能否访问该系统。用户认证一般要求用户提供用户名和密码。系统通过校验用户名和密码来完成认证过程。
 
@@ -33,7 +34,7 @@ Spring 是一个非常流行和成功的 Java 应用开发框架。Spring Securi
         <artifactId>common_utils</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </dependency>
-    
+
     <!-- Spring Security依赖 -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -528,9 +529,8 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
 }
 ```
 
-***\**\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*`（2）TokenAuthenticationFilter：`\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\****
-
-
+***\**\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+`（2）TokenAuthenticationFilter：`\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\****
 
 ```
 授权filter

@@ -36,7 +36,7 @@ spring.application.name=service-oss
 
 #环境设置：dev、test、prod
 spring.profiles.active=dev
-        
+
 #阿里云 OSS
 #不同的服务器，地址不同
 aliyun.oss.file.endpoint=your endpoint
@@ -72,7 +72,8 @@ public class OssApplication {
 
 spring boot 会默认加载org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration这个类，
 
-而DataSourceAutoConfiguration类使用了@Configuration注解向spring注入了dataSource bean，又因为项目（oss模块）中并没有关于dataSource相关的配置信息，所以当spring创建dataSource bean时因缺少相关的信息就会报错。
+而DataSourceAutoConfiguration类使用了@Configuration注解向spring注入了dataSource
+bean，又因为项目（oss模块）中并没有关于dataSource相关的配置信息，所以当spring创建dataSource bean时因缺少相关的信息就会报错。
 
 **解决办法：**
 
@@ -247,14 +248,14 @@ public class FileController {
 
 ## **4、重启oss服务**
 
-## 5、Swagger中测试文件上传 
+## 5、Swagger中测试文件上传
 
 ## 6、配置nginx反向代理
 
 将接口地址加入nginx配置
 
 ```
-location ~ /eduoss/ {           
+location ~ /eduoss/ {
     proxy_pass http://localhost:8001;
 }
 ```

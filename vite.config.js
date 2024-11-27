@@ -1,5 +1,5 @@
 import {defineConfig} from "vite";
-import dotenv, {parse} from 'dotenv';
+import dotenv from 'dotenv';
 import vue from "@vitejs/plugin-vue";
 import path from "path"
 

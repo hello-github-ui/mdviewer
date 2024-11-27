@@ -1,12 +1,9 @@
-# 一、简介 
+# 一、简介
 
 ## 1、什么是NPM
 
-NPM全称Node Package Manager，是Node.js包管理工具，是全球最大的模块生态系统，里面所有的模块都是开源免费的；也是Node.js的包管理工具，相当于前端的Maven 。
-
-
-
-
+NPM全称Node Package
+Manager，是Node.js包管理工具，是全球最大的模块生态系统，里面所有的模块都是开源免费的；也是Node.js的包管理工具，相当于前端的Maven 。
 
 ## 2、NPM工具的安装位置
 
@@ -15,8 +12,6 @@ NPM全称Node Package Manager，是Node.js包管理工具，是全球最大的�
 Node.js默认安装的npm包和工具的位置：Node.js目录\node_modules
 
 - 在这个目录下你可以看见 npm目录，npm本身就是被NPM包管理器管理的一个工具，说明 Node.js已经集成了npm工具
-
-
 
 ```
 #在命令提示符输入 npm -v 可查看当前npm版本
@@ -47,13 +42,14 @@ npm init -y
 
 NPM官方的管理的包都是从 http://npmjs.com下载的，但是这个网站在国内速度很慢。
 
-这里推荐使用淘宝 NPM 镜像 http://npm.taobao.org/ ，淘宝 NPM 镜像是一个完整 npmjs.com 镜像，同步频率目前为 10分钟一次，以保证尽量与官方服务同步。
+这里推荐使用淘宝 NPM 镜像 http://npm.taobao.org/ ，淘宝 NPM 镜像是一个完整 npmjs.com 镜像，同步频率目前为
+10分钟一次，以保证尽量与官方服务同步。
 
 **设置镜像地址：**
 
 ```
 #经过下面的配置，以后所有的 npm install 都会经过淘宝的镜像地址下载
-npm config set registry https://registry.npm.taobao.org 
+npm config set registry https://registry.npm.taobao.org
 
 #查看npm配置信息
 npm config list

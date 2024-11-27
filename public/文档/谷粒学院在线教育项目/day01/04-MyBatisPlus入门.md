@@ -14,13 +14,13 @@ mybatis_plus
 
 其表结构如下：
 
-| id   | name   | age  | email              |
-| ---- | ------ | ---- | ------------------ |
-| 1    | Jone   | 18   | test1@baomidou.com |
-| 2    | Jack   | 20   | test2@baomidou.com |
-| 3    | Tom    | 28   | test3@baomidou.com |
-| 4    | Sandy  | 21   | test4@baomidou.com |
-| 5    | Billie | 24   | test5@baomidou.com |
+| id | name   | age | email              |
+|----|--------|-----|--------------------|
+| 1  | Jone   | 18  | test1@baomidou.com |
+| 2  | Jack   | 20  | test2@baomidou.com |
+| 3  | Tom    | 28  | test3@baomidou.com |
+| 4  | Sandy  | 21  | test4@baomidou.com |
+| 5  | Billie | 24  | test5@baomidou.com |
 
 其对应的数据库 Schema 脚本如下：
 
@@ -145,11 +145,13 @@ spring.datasource.password=123456
 
 **注意：**
 
-1、这里的 url 使用了 ?serverTimezone=GMT%2B8 后缀，因为Spring Boot 2.1 集成了 8.0版本的jdbc驱动，这个版本的 jdbc 驱动需要添加这个后缀，否则运行测试用例报告如下错误：
+1、这里的 url 使用了 ?serverTimezone=GMT%2B8 后缀，因为Spring Boot 2.1 集成了 8.0版本的jdbc驱动，这个版本的 jdbc
+驱动需要添加这个后缀，否则运行测试用例报告如下错误：
 
-java.sql.SQLException: The server time zone value 'ÖÐ¹ú±ê×¼Ê±¼ä' is unrecognized or represents more 
+java.sql.SQLException: The server time zone value 'ÖÐ¹ú±ê×¼Ê±¼ä' is unrecognized or represents more
 
-2、这里的 driver-class-name 使用了 com.mysql.cj.jdbc.Driver ，在 jdbc 8 中 建议使用这个驱动，之前的 com.mysql.jdbc.Driver 已经被废弃，否则运行测试用例的时候会有 WARN 信息
+2、这里的 driver-class-name 使用了 com.mysql.cj.jdbc.Driver ，在 jdbc 8 中 建议使用这个驱动，之前的 com.mysql.jdbc.Driver
+已经被废弃，否则运行测试用例的时候会有 WARN 信息
 
 # 五、编写代码
 

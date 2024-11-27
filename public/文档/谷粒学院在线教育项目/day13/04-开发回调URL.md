@@ -7,7 +7,7 @@
 wx.open.redirect_url=http://回调地址/api/ucenter/wx/callback
 ```
 
-## 2、修改当前项目启动端口号为8150 
+## 2、修改当前项目启动端口号为8150
 
 ## 3、测试回调是否可用
 

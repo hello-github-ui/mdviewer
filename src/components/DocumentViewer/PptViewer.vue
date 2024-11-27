@@ -3,25 +3,29 @@
         <div class="toolbar">
             <el-button-group>
                 <el-button @click="prevSlide" :disabled="currentSlide === 1">
-                    <el-icon><arrow-left /></el-icon>
+                    <el-icon>
+                        <arrow-left/>
+                    </el-icon>
                 </el-button>
                 <el-button @click="nextSlide" :disabled="currentSlide === totalSlides">
-                    <el-icon><arrow-right /></el-icon>
+                    <el-icon>
+                        <arrow-right/>
+                    </el-icon>
                 </el-button>
             </el-button-group>
             <span class="slide-info">{{ currentSlide }} / {{ totalSlides }}</span>
         </div>
 
         <div class="slide-container" ref="container">
-            <div class="slide-content" ref="slideContent" />
+            <div class="slide-content" ref="slideContent"/>
         </div>
     </div>
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue'
-import { ElMessage } from 'element-plus'
+import {ref, watch} from 'vue'
+import {ArrowLeft, ArrowRight} from '@element-plus/icons-vue'
+import {ElMessage} from 'element-plus'
 import JSZip from 'jszip'
 
 const props = defineProps({
@@ -94,7 +98,7 @@ const nextSlide = () => {
 
 watch(() => props.fileData, () => {
     loadPresentation()
-}, { immediate: true })
+}, {immediate: true})
 </script>
 
 <style scoped>

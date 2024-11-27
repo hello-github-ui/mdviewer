@@ -5,10 +5,13 @@
 - Feign是Netflix开发的声明式、模板化的HTTP客户端， Feign可以帮助我们更快捷、优雅地调用HTTP API。
 - Feign支持多种注解，例如Feign自带的注解或者JAX-RS注解等。
 - Spring Cloud对Feign进行了增强，使Feign支持了Spring MVC注解，并整合了Ribbon和Eureka，从而让Feign的使用更加方便。
-- Spring Cloud Feign是基于Netflix feign实现，整合了Spring Cloud Ribbon和Spring Cloud Hystrix，除了提供这两者的强大功能外，还提供了一种声明式的Web服务客户端定义的方式。
-- Spring Cloud Feign帮助我们定义和实现依赖服务接口的定义。在Spring Cloud feign的实现下，只需要创建一个接口并用注解方式配置它，即可完成服务提供方的接口绑定，简化了在使用Spring Cloud Ribbon时自行封装服务调用客户端的开发量。
+- Spring Cloud Feign是基于Netflix feign实现，整合了Spring Cloud Ribbon和Spring Cloud
+  Hystrix，除了提供这两者的强大功能外，还提供了一种声明式的Web服务客户端定义的方式。
+- Spring Cloud Feign帮助我们定义和实现依赖服务接口的定义。在Spring Cloud
+  feign的实现下，只需要创建一个接口并用注解方式配置它，即可完成服务提供方的接口绑定，简化了在使用Spring Cloud
+  Ribbon时自行封装服务调用客户端的开发量。
 
-##  
+##
 
 # 二、实现服务调用
 
@@ -76,7 +79,7 @@ public boolean removeVideoById(String id) {
 }
 ```
 
-## 6、测试 
+## 6、测试
 
 启动相关微服务
 

@@ -6,8 +6,6 @@
 
 组件系统让我们可以用独立可复用的小组件来构建大型应用，几乎任意类型的应用的界面都可以抽象为一个组件树：
 
-
-
 ![img](./assets/0.5887660670164327.png)
 
 ## 1、局部组件
@@ -192,7 +190,7 @@ Vue.js 路由需要载入 vue-router 库
 </script>
 ```
 
-# 
+#
 
 # 五、axios
 
@@ -201,7 +199,7 @@ axios是独立于vue的一个项目，基于promise用于浏览器和node.js的h
 - 在浏览器中可以帮助我们完成 ajax请求的发送
 - 在node.js中可以向远程接口发送请求
 
-## 获取数据 
+## 获取数据
 
 ```
 <script src="vue.min.js"></script>
@@ -257,7 +255,7 @@ var app = new Vue({
 </div>
 ```
 
-### 六、element-ui： 
+### 六、element-ui：
 
 element-ui 是饿了么前端出品的基于 Vue.js的 后台组件库，方便程序员进行页面快速布局和构建
 

@@ -1,4 +1,3 @@
-
 ## Redis 简介
 
 基于内存进行存储，支持key-value的存储形式，底层是用C语言编写的
@@ -71,7 +70,7 @@ spring data Redis 操作 redis
     <artifactId>springbootredis</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-<!--    切记先引入springboot工程的  parent-->
+    <!--    切记先引入springboot工程的  parent-->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -80,25 +79,25 @@ spring data Redis 操作 redis
 
     <dependencies>
 
-<!--        web依赖-->
+        <!--        web依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-<!--        springboot 整合redis，使用的是spring data 来操作redis -->
+        <!--        springboot 整合redis，使用的是spring data 来操作redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
-<!--        连接池是 apache 提供的 -->
+        <!--        连接池是 apache 提供的 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
         </dependency>
 
-<!--        lombok 简化代码，主要是简化entity 与 数据库的映射代码-->
+        <!--        lombok 简化代码，主要是简化entity 与 数据库的映射代码-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -334,7 +333,6 @@ public String hashTest(){
 ```
 
 ![](https://img.imgdb.cn/item/604b878c5aedab222ceb7daa.png)
-
 
 ![](https://img.imgdb.cn/item/604b88385aedab222cebd92b.jpg)
 ![](https://img.imgdb.cn/item/604b88385aedab222cebd92d.jpg)

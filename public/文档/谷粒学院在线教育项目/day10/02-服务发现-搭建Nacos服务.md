@@ -2,9 +2,10 @@
 
 ## 1、基本概念
 
-**（1）**Nacos 是阿里巴巴推出来的一个新开源项目，是一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。Nacos 致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您快速实现动态服务发现、服务配置、服务元数据及流量管理。Nacos 帮助您更敏捷和容易地构建、交付和管理微服务平台。 Nacos 是构建以“服务”为中心的现代应用架构 (例如微服务范式、云原生范式) 的服务基础设施。
-
-
+**（1）**Nacos 是阿里巴巴推出来的一个新开源项目，是一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。Nacos
+致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您快速实现动态服务发现、服务配置、服务元数据及流量管理。Nacos
+帮助您更敏捷和容易地构建、交付和管理微服务平台。 Nacos 是构建以“服务”为中心的现代应用架构 (例如微服务范式、云原生范式)
+的服务基础设施。
 
 **（2）**常见的注册中心：
 
@@ -15,11 +16,9 @@
 
 相对于 Spring Cloud Eureka 来说，Nacos 更强大。Nacos = Spring Cloud Eureka + Spring Cloud Config
 
- Nacos 可以与 Spring, Spring Boot, Spring Cloud 集成，并能代替 Spring Cloud Eureka, Spring Cloud Config
+Nacos 可以与 Spring, Spring Boot, Spring Cloud 集成，并能代替 Spring Cloud Eureka, Spring Cloud Config
 
 \- 通过 Nacos Server 和 spring-cloud-starter-alibaba-nacos-discovery 实现服务的注册与发现。
-
-
 
 **（3）**Nacos是以服务为主要服务对象的中间件，Nacos支持所有主流的服务发现、配置和管理。
 
@@ -50,8 +49,6 @@ Nacos主要提供以下四大功能：
 
 启动命令：sh startup.sh -m standalone
 
- 
-
 \- Windows
 
 启动命令：cmd startup.cmd 或者双击startup.cmd运行文件。
@@ -59,8 +56,6 @@ Nacos主要提供以下四大功能：
 访问：http://localhost:8848/nacos
 
 用户名密码：nacos/nacos
-
-
 
 ![img](./assets/61a73801-aa89-43d2-ae67-1f66e9e862e2.png)
 

@@ -1,8 +1,8 @@
-# **一、vue-element-admin** 
+# **一、vue-element-admin**
 
 ## **1、简介**
 
-# 
+#
 
 而vue-element-admin是基于element-ui 的一套后台管理系统集成方案。
 
@@ -10,7 +10,8 @@
 
 **GitHub地址：**https://github.com/PanJiaChen/vue-element-admin
 
-**项目在线预览：**[https://panjiachen.gitee.io/vue-element-admin](https://panjiachen.gitee.io/vue-element-admin/#/login?redirect=%2Fdashboard)
+**项目在线预览：
+**[https://panjiachen.gitee.io/vue-element-admin](https://panjiachen.gitee.io/vue-element-admin/#/login?redirect=%2Fdashboard)
 
 ## 2、安装
 
@@ -34,9 +35,8 @@ vueAdmin-template是基于vue-element-admin的一套后台管理系统基础模�
 
 **GitHub地址：**https://github.com/PanJiaChen/vue-admin-template
 
-**建议：**你可以在 `vue-admin-template` 的基础上进行二次开发，把 `vue-element-admin`当做工具箱，想要什么功能或者组件就去 `vue-element-admin` 那里复制过来。
-
-
+**建议：**你可以在 `vue-admin-template` 的基础上进行二次开发，把 `vue-element-admin`当做工具箱，想要什么功能或者组件就去
+`vue-element-admin` 那里复制过来。
 
 ## 2、安装
 

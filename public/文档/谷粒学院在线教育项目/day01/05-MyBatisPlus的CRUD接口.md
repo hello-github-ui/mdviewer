@@ -40,8 +40,8 @@ MyBatis-Plus默认的主键策略是：ID_WORKER  *全局唯一ID*
 **（2）自增策略**
 
 - 要想主键自增需要配置如下主键策略
-  - 需要在创建数据表的时候设置主键自增
-  - 实体字段中配置 @TableId(type = IdType.AUTO)
+    - 需要在创建数据表的时候设置主键自增
+    - 实体字段中配置 @TableId(type = IdType.AUTO)
 
 ```java
 @TableId(type = IdType.AUTO)
@@ -100,7 +100,7 @@ public enum IdType {
 
 ## **1、根据Id更新操作**
 
-**注意：**update时生成的sql自动是动态sql：UPDATE user SET age=? WHERE id=? 
+**注意：**update时生成的sql自动是动态sql：UPDATE user SET age=? WHERE id=?
 
 ```java
 @Test
@@ -132,7 +132,7 @@ public void testUpdateById(){
 @Data
 public class User {
     ......
-        
+
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
@@ -194,8 +194,6 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
 ALTER TABLE `user` ADD COLUMN `version` INT
 ```
 
-
-
 ![img](./assets/7bf260f8-d483-49fe-b448-b2fbea3dddaf-1720537120209-3.png)
 
 ***\*（2）实体类添加version字段\****
@@ -220,7 +218,9 @@ public void insertFill(MetaObject metaObject) {
 
 **特别说明:**
 
-支持的数据类型只有 int,Integer,long,Long,Date,Timestamp,LocalDateTime整数类型下 `newVersion = oldVersion + 1``newVersion` 会回写到 `entity` 中仅支持 `updateById(id)` 与 `update(entity, wrapper)` 方法在 `update(entity, wrapper)` 方法下, `wrapper` 不能复用!!!
+支持的数据类型只有 int,Integer,long,Long,Date,Timestamp,LocalDateTime整数类型下
+`newVersion = oldVersion + 1``newVersion` 会回写到 `entity` 中仅支持 `updateById(id)` 与 `update(entity, wrapper)` 方法在
+`update(entity, wrapper)` 方法下, `wrapper` 不能复用!!!
 
 **（4）\**在 MybatisPlusConfig 中注册 Bean\****
 
@@ -379,7 +379,7 @@ public void testSelectPage() {
 }
 ```
 
-控制台sql语句打印：SELECT id,name,age,email,create_time,update_time FROM user LIMIT 0,5 
+控制台sql语句打印：SELECT id,name,age,email,create_time,update_time FROM user LIMIT 0,5
 
 **（3）测试selectMapsPage分页：结果集是Map**
 
@@ -527,7 +527,7 @@ public void testLogicDeleteSelect() {
 }
 ```
 
-测试后分析打印的sql语句，包含 WHERE deleted=0 
+测试后分析打印的sql语句，包含 WHERE deleted=0
 
 SELECT id,name,age,email,create_time,update_time,deleted FROM user WHERE deleted=0
 
@@ -601,7 +601,7 @@ public void testPerformance() {
 performanceInterceptor.setMaxTime(5);//ms，超过此处设置的ms不执行
 ```
 
-如果执行时间过长，则抛出异常：The SQL execution time is too large, 
+如果执行时间过长，则抛出异常：The SQL execution time is too large,
 
 **输出：**
 

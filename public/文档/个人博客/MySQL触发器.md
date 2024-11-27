@@ -1,9 +1,10 @@
-
 # MySQL 触发器
 
 ## 前言
 
-这里呢，有两张表，分别是 `CXY_TS_ORDER_TICKET ` 和 `CXY_TS_ORDER_TICKET_STATUS` 表，在 `CXY_TS_ORDER_TICKET ` ` 表里面有一个 `get_status` 字段，现在呢，我们想在该字段发生变化时，在 `CXY_TS_ORDER_TICKET_STATUS` 表中，将该字段插入，并且记录变化时间以及发生变化的记录的主键。因此呢，我打算用触发器去实现这个需求
+这里呢，有两张表，分别是 `CXY_TS_ORDER_TICKET ` 和 `CXY_TS_ORDER_TICKET_STATUS` 表，在 `CXY_TS_ORDER_TICKET ` ` 表里面有一个 `
+get_status` 字段，现在呢，我们想在该字段发生变化时，在 `CXY_TS_ORDER_TICKET_STATUS`
+表中，将该字段插入，并且记录变化时间以及发生变化的记录的主键。因此呢，我打算用触发器去实现这个需求
 
 ## 实现
 
@@ -25,7 +26,8 @@ END$$
 
 ## 解释
 
-> 在 mysql 中，`new`、`old`都是内置的，分别表示一个字段发生变化前、后的值（当然也包括插入操作前后的变化），此处呢，因为我们需要根据 `CXY_TS_ORDER_TICKET`表的 `get_status`字段来插入记录到 `CXY_TS_ORDER_TICKET_STATUS` 表，因此呢，new 和 old 都取该字段即可。
+> 在 mysql 中，`new`、`old`都是内置的，分别表示一个字段发生变化前、后的值（当然也包括插入操作前后的变化），此处呢，因为我们需要根据
+`CXY_TS_ORDER_TICKET`表的 `get_status`字段来插入记录到 `CXY_TS_ORDER_TICKET_STATUS` 表，因此呢，new 和 old 都取该字段即可。
 >
 > `mysql` 中的触发器呢，大致分为三类：`insert` 型、`update` 型、`delete` 型。
 >

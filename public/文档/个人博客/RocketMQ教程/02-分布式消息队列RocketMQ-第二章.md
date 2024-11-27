@@ -1,4 +1,3 @@
-
 # 分布式消息队列RocketMQ学习文档
 
 > 本文资料来源：尚硅谷 | 本文发表时RocketMQ的版本：`v4.9.2` | 本资料是第二章内容，本文档总共有四章。
@@ -12,8 +11,6 @@
 <li><a target="_blank" href="https://hello-blogger-ui.blogspot.com/2021/10/rocketmq_32.html">分布式消息队列RocketMQ-学习文档-第四章</a></li>
 </ul>
 
-
-
 ## 第2章 RocketMQ的安装与启动
 
 ### 一、基本概念
@@ -26,9 +23,11 @@
 
 ![](https://pic.imgdb.cn/item/617ac1bc2ab3f51d9143e847.jpg){width="5.575in" height="5.533333333333333in"}
 
-Topic表示一类消息的集合，每个主题包含若干条消息，每条消息只能属于一个主题，是RocketMQ进行消息订阅的基本单位。 topic:message 1:n message:topic 1:1
+Topic表示一类消息的集合，每个主题包含若干条消息，每条消息只能属于一个主题，是RocketMQ进行消息订阅的基本单位。 topic:message
+1:n message:topic 1:1
 
-一个生产者可以同时发送多种Topic的消息；而一个消费者只对某种特定的Topic感兴趣，即只可以订阅和消费一种Topic的消息。 producer:topic 1:n consumer:topic 1:1
+一个生产者可以同时发送多种Topic的消息；而一个消费者只对某种特定的Topic感兴趣，即只可以订阅和消费一种Topic的消息。 producer:
+topic 1:n consumer:topic 1:1
 
 #### 3、标签（Tag）
 
@@ -66,10 +65,13 @@ topic=货物 tag = *
 
 #### 5、消息标识（MessageId/Key）
 
-RocketMQ中每个消息拥有唯一的MessageId，且可以携带具有业务标识的Key，以方便对消息的查询。不过需要注意的是，MessageId有两个：在生产者send()消息时会自动生成一个MessageId（msgId)，当消息到达Broker后，Broker也会自动生成一个MessageId(offsetMsgId)。msgId、offsetMsgId与key都称为消息标识。
+RocketMQ中每个消息拥有唯一的MessageId，且可以携带具有业务标识的Key，以方便对消息的查询。不过需要注意的是，MessageId有两个：在生产者send()
+消息时会自动生成一个MessageId（msgId)，当消息到达Broker后，Broker也会自动生成一个MessageId(offsetMsgId)
+。msgId、offsetMsgId与key都称为消息标识。
 
 - msgId：由producer端生成，其生成规则为：
-  <font color="#00CED1">producerIp + 进程pid + MessageClientIDSetter类的ClassLoader的hashCode + 当前时间 + AutomicInteger自增计数器</font>
+  <font color="#00CED1">producerIp + 进程pid + MessageClientIDSetter类的ClassLoader的hashCode + 当前时间 +
+  AutomicInteger自增计数器</font>
 
 - offsetMsgId：由broker端生成，其生成规则为：<font color="#00CED1">brokerIp + 物理分区的offset（Queue中的偏移量）</font>
 
@@ -101,7 +103,11 @@ RocketMQ中的消息生产者都是以生产者组（Producer Group）的形式�
 >
 > 再如，电商平台的业务系统从 MQ 中读取到秒杀请求，并对请求进行处理的过程就是消息消费的过程。
 
-RocketMQ中的消息消费者都是以消费者组（Consumer Group）的形式出现的。消费者组是同一类消费者的集合，这类Consumer消费的是同一个Topic类型的消息。消费者组使得在消息消费方面，实现<font color=" #00BFFF">负载均衡</font>（将一个Topic中的不同的Queue平均分配给同一个Consumer Group的不同的Consumer，注意，并不是将消息负载均衡）和<font color=" #00BFFF">容错</font>（一个Consmer挂了，该Consumer Group中的其它Consumer可以接着消费原Consumer消费的Queue）的目标变得非常容易。
+RocketMQ中的消息消费者都是以消费者组（Consumer
+Group）的形式出现的。消费者组是同一类消费者的集合，这类Consumer消费的是同一个Topic类型的消息。消费者组使得在消息消费方面，实现<font color=" #00BFFF">
+负载均衡</font>（将一个Topic中的不同的Queue平均分配给同一个Consumer
+Group的不同的Consumer，注意，并不是将消息负载均衡）和<font color=" #00BFFF">容错</font>（一个Consmer挂了，该Consumer
+Group中的其它Consumer可以接着消费原Consumer消费的Queue）的目标变得非常容易。
 
 ![](https://pic.imgdb.cn/item/617ab2a42ab3f51d9130e7c9.jpg){width="6.106944444444444in" height="2.4381944444444446in"}
 
@@ -122,13 +128,15 @@ RocketMQ中的消息消费者都是以消费者组（Consumer Group）的形式�
 
 NameServer是一个Broker与Topic路由的注册中心，支持Broker的动态注册与发现。
 
- RocketMQ的思想来自于Kafka，而Kafka是依赖了Zookeeper的。所以，在RocketMQ的早期版本，即在 MetaQ v1.0与v2.0版本中，也是依赖于Zookeeper的。从MetaQ v3.0，即RocketMQ开始去掉了Zookeeper依赖，使用了自己的NameServer。
+RocketMQ的思想来自于Kafka，而Kafka是依赖了Zookeeper的。所以，在RocketMQ的早期版本，即在 MetaQ
+v1.0与v2.0版本中，也是依赖于Zookeeper的。从MetaQ v3.0，即RocketMQ开始去掉了Zookeeper依赖，使用了自己的NameServer。
 
 主要包括两个功能：
 
 * <font color="#F00">Broker管理</font>：接受Broker集群的注册信息并且保存下来作为路由信息的基本数据；提供心跳检测机制，检查Broker是否还存活。
 
-* <font color="#F00">路由信息管理</font>：每个NameServer中都保存着Broker集群的整个路由信息和用于客户端查询的队列信息。Producer和Conumser通过NameServer可以获取整个Broker集群的路由信息，从而进行消息的投递和消费。
+* <font color="#F00">路由信息管理</font>
+  ：每个NameServer中都保存着Broker集群的整个路由信息和用于客户端查询的队列信息。Producer和Conumser通过NameServer可以获取整个Broker集群的路由信息，从而进行消息的投递和消费。
 
 ##### ②、路由注册
 
@@ -139,9 +147,12 @@ NameServer通常也是以集群的方式部署，不过，NameServer是无状态
 
 > 优点：NameServer 集群搭建简单，扩容简单。
 
-> 缺点：对于 Broker，必须明确指出所有 NameServer 地址。否则未指出的将> 不会去注册。也正因如此， NameServer并不能随便扩容。因为，若Broker不> 重新配置，新增的NameServer对于Broker来说是不可见的，其不会向这个NameServer进行注册。
+> 缺点：对于 Broker，必须明确指出所有 NameServer 地址。否则未指出的将> 不会去注册。也正因如此，
+> NameServer并不能随便扩容。因为，若Broker不> 重新配置，新增的NameServer对于Broker来说是不可见的，其不会向这个NameServer进行注册。
 
-Broker节点为了证明自己是活着的，为了维护与NameServer间的长连接，会将最新的信息以<font color="#00CED1">心跳包</font>的方式上报给NameServer，每30秒发送一次心跳。心跳包中包含 BrokerId、Broker地址(IP+Port)、Broker名称、Broker所属集群名称等等。NameServer在接收到心跳包后，会更新心跳时间戳，记录这个Broker的最新存活时间。
+Broker节点为了证明自己是活着的，为了维护与NameServer间的长连接，会将最新的信息以<font color="#00CED1">心跳包</font>
+的方式上报给NameServer，每30秒发送一次心跳。心跳包中包含 BrokerId、Broker地址(IP+Port)
+、Broker名称、Broker所属集群名称等等。NameServer在接收到心跳包后，会更新心跳时间戳，记录这个Broker的最新存活时间。
 
 ##### ③、路由剔除
 
@@ -150,11 +161,11 @@ Broker节点为了证明自己是活着的，为了维护与NameServer间的长�
 NameServer中有一个定时任务，每隔10秒就会扫描一次Broker表，查看每一个Broker的最新心跳时间戳距离当前时间是否超过120秒，如果超过，则会判定Broker失效，然后将其从Broker列表中剔除。
 
 > 扩展：对于RocketMQ日常运维工作，例如Broker升级，需要停掉Broker的工作，OP需要怎么做？
-> OP需要将Broker的读写权限禁掉。一旦Client（Consumer或Producer）向broker发送请求，都会收到broker的<font color="#00CED1">NO_PERMISSION</font>响应，然后client会进行对其它Broker的重试。
+> OP需要将Broker的读写权限禁掉。一旦Client（Consumer或Producer）向broker发送请求，都会收到broker的<font color="#00CED1">
+> NO_PERMISSION</font>响应，然后client会进行对其它Broker的重试。
 > 当OP观察到这个Broker没有流量后，再关闭它，实现Broker从NameServer的移除。
 > OP：运维工程师
 > SRE：Site Reliability Engineer，现场可靠性工程师。
-
 
 ##### ④、路由发现
 
@@ -162,7 +173,8 @@ RocketMQ的路由发现采用的是Pull模型。当Topic路由信息出现变化
 
 > 扩展：
 >
-> 1) <font color="#FF6A6A">Push模型</font>：推送模型。其实时性较好，是一个 "发布-订阅" 模型，需要维护一个长连接。而长连接的维护是需要资源成本的。该模型适合于的场景：
+> 1) <font color="#FF6A6A">Push模型</font>：推送模型。其实时性较好，是一个 "发布-订阅"
+     模型，需要维护一个长连接。而长连接的维护是需要资源成本的。该模型适合于的场景：
 >
 > - 实时性要求较高
 > - Client数量不多， Server数据变化较频繁
@@ -180,7 +192,8 @@ RocketMQ的路由发现采用的是Pull模型。当Topic路由信息出现变化
 
 > 扩展：Zookeeper Client是如何选择 Zookeeper Server的？
 > 简单来说就是，经过两次 shuffle，然后选择第一台 Zookeeper Server。
-> 详细说就是，将配置文件中的 zk server地址进行第一次 shuffle，然后随机选择一个。这个选择出的一般都是一个hostname。然后获取到该 hostname对应的所有ip，再对这些ip进行第二次shuffle，从shuffle过的结果中取第一个server地址进行连接。
+> 详细说就是，将配置文件中的 zk server地址进行第一次 shuffle，然后随机选择一个。这个选择出的一般都是一个hostname。然后获取到该
+> hostname对应的所有ip，再对这些ip进行第二次shuffle，从shuffle过的结果中取第一个server地址进行连接。
 
 #### 4 Broker
 
@@ -198,13 +211,16 @@ Broker充当着消息中转角色，负责存储消息、转发消息。Broker�
 
 <font color="#FF0000">Remoting Module</font>：整个Broker的实体，负责处理来自clients端的请求。而这个Broker实体则由以下模块构成。
 
-<font color="#FF0000">Client Manager</font>：客户端管理器。负责接收、解析客户端(Producer/Consumer)请求，管理客户端。例如，维护Consumer的Topic订阅信息
+<font color="#FF0000">Client Manager</font>：客户端管理器。负责接收、解析客户端(Producer/Consumer)
+请求，管理客户端。例如，维护Consumer的Topic订阅信息
 
-<font color="#FF0000">Store Service</font>：存储服务。提供方便简单的API接口，处理<font color="#1E90FF">消息存储到物理硬盘</font>和<font color="#1E90FF">消息查询</font>功能。
+<font color="#FF0000">Store Service</font>：存储服务。提供方便简单的API接口，处理<font color="#1E90FF">
+消息存储到物理硬盘</font>和<font color="#1E90FF">消息查询</font>功能。
 
 <font color="#FF0000">HA Service</font>：高可用服务，提供Master Broker 和 Slave Broker之间的数据同步功能。
 
-<font color="#FF0000">Index Service</font>：索引服务。根据特定的Message key，对投递到Broker的消息进行索引服务，同时也提供根据Message Key对消息进行快速查询的功能。
+<font color="#FF0000">Index Service</font>：索引服务。根据特定的Message key，对投递到Broker的消息进行索引服务，同时也提供根据Message
+Key对消息进行快速查询的功能。
 
 ##### ③、集群部署
 
@@ -212,7 +228,9 @@ Broker充当着消息中转角色，负责存储消息、转发消息。Broker�
 
 为了增强Broker性能与吞吐量，Broker一般都是以集群形式出现的。各集群节点中可能存放着相同Topic的不同Queue。不过，这里有个问题，如果某Broker节点宕机，如何保证数据不丢失呢？其解决方案是，将每个Broker集群节点进行横向扩展，即将Broker节点再建为一个HA集群，解决单点问题。
 
-Broker节点集群是一个主从集群，即集群中具有Master与Slave两种角色。Master负责处理读写操作请求，Slave负责对Master中的数据进行备份。当Master挂掉了，Slave则会自动切换为Master去工作。所以这个Broker集群是主备集群。一个Master可以包含多个Slave，但一个Slave只能隶属于一个Master。Master与Slave 的对应关系是通过指定相同的BrokerName、不同的BrokerId 来确定的。BrokerId为0表示Master，非0表示Slave。每个Broker与NameServer集群中的所有节点建立长连接，定时注册Topic信息到所有NameServer。
+Broker节点集群是一个主从集群，即集群中具有Master与Slave两种角色。Master负责处理读写操作请求，Slave负责对Master中的数据进行备份。当Master挂掉了，Slave则会自动切换为Master去工作。所以这个Broker集群是主备集群。一个Master可以包含多个Slave，但一个Slave只能隶属于一个Master。Master与Slave
+的对应关系是通过指定相同的BrokerName、不同的BrokerId
+来确定的。BrokerId为0表示Master，非0表示Slave。每个Broker与NameServer集群中的所有节点建立长连接，定时注册Topic信息到所有NameServer。
 
 #### 5 工作流程
 
@@ -241,18 +259,21 @@ Broker节点集群是一个主从集群，即集群中具有Master与Slave两种
 
 从物理上来讲，读/写队列是同一个队列。所以，不存在读/写队列数据同步问题。读/写队列是逻辑上进行区分的概念。一般情况下，读/写队列数量是相同的。
 
-> 例如，创建Topic时设置的写队列数量为8，读队列数量为4，此时系统会创建8个Queue，分别是0 1 2 3 4 5 6 7。Producer会将消息写入到这8个队列，但Consumer只会消费0 1 2 3这4个队列中的消息，4 5 6 7中的消息是不会被消费到的。
+> 例如，创建Topic时设置的写队列数量为8，读队列数量为4，此时系统会创建8个Queue，分别是0 1 2 3 4 5 6
+> 7。Producer会将消息写入到这8个队列，但Consumer只会消费0 1 2 3这4个队列中的消息，4 5 6 7中的消息是不会被消费到的。
 
-> 再如，创建Topic时设置的写队列数量为4，读队列数量为8，此时系统会创建8个Queue，分别是0 1 2 3 4 5 6 7。Producer会将消息写入到0 1 2 3 这4个队列，但Consumer只会消费0 1 2 3 4 5 6 7这8个队列中的消息，但是4 5 6 7中是没有消息的。此时假设Consumer Group中包含两个Consuer，Consumer1消费0 1 2 3，而Consumer2消费4 5 6 7。但实际情况是，Consumer2是没有消息可消费的。
+> 再如，创建Topic时设置的写队列数量为4，读队列数量为8，此时系统会创建8个Queue，分别是0 1 2 3 4 5 6 7。Producer会将消息写入到0
+> 1 2 3 这4个队列，但Consumer只会消费0 1 2 3 4 5 6 7这8个队列中的消息，但是4 5 6 7中是没有消息的。此时假设Consumer
+> Group中包含两个Consuer，Consumer1消费0 1 2 3，而Consumer2消费4 5 6 7。但实际情况是，Consumer2是没有消息可消费的。
 
 > 也就是说，当读/写队列数量设置不同时，总是有问题的。那么，为什么要这样设计呢？
 >
 > 其这样设计的目的是为了，方便Topic的Queue的缩容。
 >
-> 例如，原来创建的Topic中包含16个Queue，如何能够使其Queue缩容为8个，还不会丢失消息？可以动态修改写队列数量为8，读队列数量不变。此时新的消息只能写入到前8个队列，而消费都消费的却是16个队列中的数据。当发现后8个Queue中的消息消费完毕后，就可以再将读队列数量动态设置为8。整个缩容过程，没有丢失任何消息。
+>
+例如，原来创建的Topic中包含16个Queue，如何能够使其Queue缩容为8个，还不会丢失消息？可以动态修改写队列数量为8，读队列数量不变。此时新的消息只能写入到前8个队列，而消费都消费的却是16个队列中的数据。当发现后8个Queue中的消息消费完毕后，就可以再将读队列数量动态设置为8。整个缩容过程，没有丢失任何消息。
 >
 > perm用于设置对当前创建Topic的操作权限：2表示只写，4表示只读，6表示读写。
-
 
 ### 三、单机安装与启动
 
@@ -319,13 +340,11 @@ export NAMESRV_ADDR=localhost:9876
 sh bin/tools.sh org.apache.rocketmq.example.quickstart.Producer
 ```
 
-
 ##### ②、接收消息
 
 ```shell
 sh bin/tools.sh org.apache.rocketmq.example.quickstart.Consumer
 ```
-
 
 #### 5、关闭Server
 
@@ -350,7 +369,9 @@ RocketMQ有一个可视化的dashboard，通过该控制台可以直观的查看
 * 原来的端口号为8080，修改为一个不常用的，比如7000
 * 指定RocketMQ的name server地址
 
-<del>其实我不太推荐在配置文件中写死`rocketmq.config.namesrvAddr=192.168.80.6:9876`，更喜欢这里写为null，然后通过`jar -jar rocketmq-console-ng-1.0.0.jar --rocketmq.config.namesrvAddr=192.168.80.6:9876`这种方式，因为其很灵活，不需要每次修改配置文件后再重新打包</del>
+<del>其实我不太推荐在配置文件中写死`rocketmq.config.namesrvAddr=192.168.80.6:9876`，更喜欢这里写为null，然后通过
+`jar -jar rocketmq-console-ng-1.0.0.jar --rocketmq.config.namesrvAddr=192.168.80.6:9876`
+这种方式，因为其很灵活，不需要每次修改配置文件后再重新打包</del>
 
 ![](https://pic.imgdb.cn/item/617acd902ab3f51d9153d65c.jpg){width="5.585416666666666in" height="3.657638888888889in"}
 
@@ -362,26 +383,26 @@ RocketMQ有一个可视化的dashboard，通过该控制台可以直观的查看
 
 ```xml
 <!-- JAXB 可以根据XML Scheme 生成 Java 类的依赖-->
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-core</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
-            <version>1.1.1</version>
-        </dependency>
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.3.0</version>
+</dependency>
+<dependency>
+<groupId>com.sun.xml.bind</groupId>
+<artifactId>jaxb-impl</artifactId>
+<version>2.3.0</version>
+</dependency>
+<dependency>
+<groupId>com.sun.xml.bind</groupId>
+<artifactId>jaxb-core</artifactId>
+<version>2.3.0</version>
+</dependency>
+<dependency>
+<groupId>javax.activation</groupId>
+<artifactId>activation</artifactId>
+<version>1.1.1</version>
+</dependency>
 ```
 
 #### 4、打包
@@ -397,7 +418,8 @@ RocketMQ有一个可视化的dashboard，通过该控制台可以直观的查看
 
 ![](https://pic.imgdb.cn/item/617ad13d2ab3f51d9158cf11.jpg){width="6.106944444444444in" height="5.16875in"}
 
-> 注意：如果此处访问失败，获取不到Topic信息，则很大可能是由于你连接目标mq服务器所在的Linux服务器开启了防火墙导致的，只需要关闭即可。（不确定是这个问题时，可以采取将该console jar 包也上传到服务器上，然后修改namesrvAddr=local host:9876后再访问即可尝试）
+> 注意：如果此处访问失败，获取不到Topic信息，则很大可能是由于你连接目标mq服务器所在的Linux服务器开启了防火墙导致的，只需要关闭即可。（不确定是这个问题时，可以采取将该console
+> jar 包也上传到服务器上，然后修改namesrvAddr=local host:9876后再访问即可尝试）
 
 ### 五、集群搭建理论
 
@@ -448,16 +470,21 @@ broker集群仅由多个master构成，不存在Slave。同一Topic的各个Queu
 
 broker集群由多个master构成，每个master又配置了多个slave（在配置了RAID磁盘阵列的情况下，一个master一般配置一个slave即可）。master与slave的关系是主备关系，即master负责处理消息的读写请求，而slave仅负责消息的备份与master宕机后的角色切换。
 
-异步复制即前面所讲的<font color="#00FFFF">复制策略</font>中的<font color="#00CED1">异步复制策略</font>，即消息写入master成功后，master立即向producer返回成功ACK，无需等待slave同步数据成功。
+异步复制即前面所讲的<font color="#00FFFF">复制策略</font>中的<font color="#00CED1">异步复制策略</font>
+，即消息写入master成功后，master立即向producer返回成功ACK，无需等待slave同步数据成功。
 
-该模式的最大特点之一是，当master宕机后slave能够<font color="#00FFFF">自动切换</font>为master。不过由于slave从master的同步具有短暂的延迟（毫秒级），所以当master宕机后，这种异步复制方式可能会存在少量消息的丢失问题。
+该模式的最大特点之一是，当master宕机后slave能够<font color="#00FFFF">自动切换</font>
+为master。不过由于slave从master的同步具有短暂的延迟（毫秒级），所以当master宕机后，这种异步复制方式可能会存在少量消息的丢失问题。
 
 > Slave从Master同步的延迟越短，其可能丢失的消息就越少
 > 对于Master的RAID磁盘阵列，若使用的也是异步复制策略，同样也存在延迟问题，同样也可能会丢失消息。但RAID阵列的秘诀是微秒级的（因为是由硬盘支持的），所以其丢失的数据量会更少。
 
 ##### ④、多Master多Slave模式-同步双写
 
-该模式是多<font color="#00FFFF">Master多Slave模式</font>的<font color="#FF0000">同步复制</font>实现。所谓<font color="#00FFFF">同步双写</font>，指的是消息写入master成功后，master会等待slave同步数据成功后才向producer返回成功ACK，即master与slave都要写入成功后才会返回成功ACK，也即<font color="#FF0000">双写</font>。
+该模式是多<font color="#00FFFF">Master多Slave模式</font>的<font color="#FF0000">同步复制</font>
+实现。所谓<font color="#00FFFF">同步双写</font>
+，指的是消息写入master成功后，master会等待slave同步数据成功后才向producer返回成功ACK，即master与slave都要写入成功后才会返回成功ACK，也即<font color="#FF0000">
+双写</font>。
 
 该模式与<font color="#00FFFF">异步复制模式</font>相比，优点是消息的安全性更高，不存在消息丢失的情况。但单个消息的RT略高，从而导致性能要略低（大约低10%）。
 
@@ -470,43 +497,60 @@ broker集群由多个master构成，每个master又配置了多个slave（在配
 > 1）RAID磁盘阵列的效率要高于Master-Slave集群。因为RAID是硬件支持的。也正因为如此，所以RAID阵列的搭建成本较高。
 > 2）多Master+RAID阵列，与多Master多Slave集群的区别是什么？
 >
-> > * 多Master+RAID阵列，其仅仅可以保证数据不丢失，即不影响消息写入，但其可能会影响到消息的订阅。但其执行效率要远高于<font color="#00FFFF">多Master多Slave集群</font>
-> > * 多Master多Slave集群，其不仅可以保证数据不丢失，也不会影响消息写入。其运行效率要低于<font color="#00FFFF">多Master+RAID阵列</font>
-
+> > *
+多Master+RAID阵列，其仅仅可以保证数据不丢失，即不影响消息写入，但其可能会影响到消息的订阅。但其执行效率要远高于<font color="#00FFFF">
+多Master多Slave集群</font>
+> > * 多Master多Slave集群，其不仅可以保证数据不丢失，也不会影响消息写入。其运行效率要低于<font color="#00FFFF">
+      多Master+RAID阵列</font>
 
 ### 六、磁盘阵列RAID（补充）
 
 #### 1、RAID历史
 
-1988 年美国加州大学伯克利分校的 D. A. Patterson 教授等首次在论文 "A Case of Redundant Array of Inexpensive Disks" 中提出了 RAID 概念 ，即<font color="#00FFFF">廉价冗余磁盘阵列</font>（ Redundant Array of Inexpensive Disks ）。由于当时大容量磁盘比较昂贵， RAID 的基本思想是将多个容量较小、相对廉价的磁盘进行有机组合，从而以较低的成本获得与昂贵大容量磁盘相当的容量、性能、可靠性。随着磁盘成本和价格的不断降低， "廉价" 已经毫无意义。因此， RAID 咨询委员会（ RAID Advisory Board, RAB ）决定用" 独立 " 替代 " 廉价 " ，于时 RAID 变成了<font color="#00FFFF">独立磁盘冗余阵列</font>（ Redundant Array of Independent Disks ）。但这仅仅是名称的变化，实质内容没有改变。
+1988 年美国加州大学伯克利分校的 D. A. Patterson 教授等首次在论文 "A Case of Redundant Array of Inexpensive Disks" 中提出了
+RAID 概念 ，即<font color="#00FFFF">廉价冗余磁盘阵列</font>（ Redundant Array of Inexpensive Disks ）。由于当时大容量磁盘比较昂贵，
+RAID
+的基本思想是将多个容量较小、相对廉价的磁盘进行有机组合，从而以较低的成本获得与昂贵大容量磁盘相当的容量、性能、可靠性。随着磁盘成本和价格的不断降低， "
+廉价" 已经毫无意义。因此， RAID 咨询委员会（ RAID Advisory Board, RAB ）决定用" 独立 " 替代 " 廉价 " ，于时 RAID
+变成了<font color="#00FFFF">独立磁盘冗余阵列</font>（ Redundant Array of Independent Disks ）。但这仅仅是名称的变化，实质内容没有改变。
 
 > 内存：32m 6.4G （IBM 10.1G）
 
 #### 2、RAID等级
 
-RAID 这种设计思想很快被业界接纳， RAID 技术作为高性能、高可靠的存储技术，得到了非常广泛的应用。 RAID 主要利用镜像、数据条带和数据校验三种技术来获取高性能、可靠性、容错能力和扩展性，根据对这三种技术的使用策略和组合架构，可以把 RAID 分为不同的等级，以满足不同数据应用的需求。
+RAID 这种设计思想很快被业界接纳， RAID 技术作为高性能、高可靠的存储技术，得到了非常广泛的应用。 RAID
+主要利用镜像、数据条带和数据校验三种技术来获取高性能、可靠性、容错能力和扩展性，根据对这三种技术的使用策略和组合架构，可以把
+RAID 分为不同的等级，以满足不同数据应用的需求。
 
-D.A.Patterson 等的论文中定义了 RAID0 \~ RAID6 原始 RAID 等级。随后存储厂商又不断推出 RAID7、RAID10、RAID01 、 RAID50 、 RAID53 、 RAID100 等 RAID 等级，但这些并无统一的标准。目前业界与学术界公认的标准是 RAID0 \~ RAID6 ，而在实际应用领域中使用最多的 RAID 等级是 RAID0 、 RAID1 、 RAID3 、 RAID5 、 RAID6 和 RAID10。
+D.A.Patterson 等的论文中定义了 RAID0 \~ RAID6 原始 RAID 等级。随后存储厂商又不断推出 RAID7、RAID10、RAID01 、 RAID50 、
+RAID53 、 RAID100 等 RAID 等级，但这些并无统一的标准。目前业界与学术界公认的标准是 RAID0 \~ RAID6 ，而在实际应用领域中使用最多的
+RAID 等级是 RAID0 、 RAID1 、 RAID3 、 RAID5 、 RAID6 和 RAID10。
 
-RAID 每一个等级代表一种实现方法和技术，等级之间并无高低之分。在实际应用中，应当根据用户的数据应用特点，综合考虑可用性、性能和成本来选择合适的 RAID 等级，以及具体的实现方式。
+RAID 每一个等级代表一种实现方法和技术，等级之间并无高低之分。在实际应用中，应当根据用户的数据应用特点，综合考虑可用性、性能和成本来选择合适的
+RAID 等级，以及具体的实现方式。
 
 #### 3关键技术
 
 ##### ①、镜像技术
 
-镜像技术是一种冗余技术，为磁盘提供数据备份功能，防止磁盘发生故障而造成数据丢失。对于 RAID 而言，采用镜像技术最典型地的用法就是，同时在磁盘阵列中产生两个完全相同的数据副本，并且分布在两个不同的磁盘上。镜像提供了完全的数据冗余能力，当一个数据副本失效不可用时，外部系统仍可正常访问另一副本，不会对应用系统运行和性能产生影响。而且，镜像不需要额外的计算和校验，故障修复非常快，直接复制即可。镜像技术可以从多个副本进行并发读取数据，提供更高的读 I/O 性能，但不能并行写数据，写多个副本通常会导致一定的 I/O 性能下降。
+镜像技术是一种冗余技术，为磁盘提供数据备份功能，防止磁盘发生故障而造成数据丢失。对于 RAID
+而言，采用镜像技术最典型地的用法就是，同时在磁盘阵列中产生两个完全相同的数据副本，并且分布在两个不同的磁盘上。镜像提供了完全的数据冗余能力，当一个数据副本失效不可用时，外部系统仍可正常访问另一副本，不会对应用系统运行和性能产生影响。而且，镜像不需要额外的计算和校验，故障修复非常快，直接复制即可。镜像技术可以从多个副本进行并发读取数据，提供更高的读
+I/O 性能，但不能并行写数据，写多个副本通常会导致一定的 I/O 性能下降。
 
 镜像技术提供了非常高的数据安全性，其代价也是非常昂贵的，需要至少双倍的存储空间。高成本限制了镜像的广泛应用，主要应用于至关重要的数据保护，这种场合下的数据丢失可能会造成非常巨大的损失。
 
 ##### ②、数据条带技术
 
-数据条带化技术是一种自动将 I/O操作负载均衡到多个物理磁盘上的技术。更具体地说就是，将一块连续的数据分成很多小部分并把它们分别存储到不同磁盘上。这就能使多个进程可以并发访问数据的多个不同部分，从而获得最大程度上的 I/O 并行能力，极大地提升性能。
+数据条带化技术是一种自动将 I/O操作负载均衡到多个物理磁盘上的技术。更具体地说就是，将一块连续的数据分成很多小部分并把它们分别存储到不同磁盘上。这就能使多个进程可以并发访问数据的多个不同部分，从而获得最大程度上的
+I/O 并行能力，极大地提升性能。
 
 ##### ③、数据校验技术
 
-数据校验技术是指， RAID 要在写入数据的同时进行校验计算，并将得到的校验数据存储在 RAID 成员磁盘中。校验数据可以集中保存在某个磁盘或分散存储在多个不同磁盘中。当其中一部分数据出错时，就可以对剩余数据和校验数据进行反校验计算重建丢失的数据。
+数据校验技术是指， RAID 要在写入数据的同时进行校验计算，并将得到的校验数据存储在 RAID
+成员磁盘中。校验数据可以集中保存在某个磁盘或分散存储在多个不同磁盘中。当其中一部分数据出错时，就可以对剩余数据和校验数据进行反校验计算重建丢失的数据。
 
-数据校验技术相对于镜像技术的优势在于节省大量开销，但由于每次数据读写都要进行大量的校验运算，对计算机的运算速度要求很高，且必须使用硬件 RAID 控制器。在数据重建恢复方面，检验技术比镜像技术复杂得多且慢得多。
+数据校验技术相对于镜像技术的优势在于节省大量开销，但由于每次数据读写都要进行大量的校验运算，对计算机的运算速度要求很高，且必须使用硬件
+RAID 控制器。在数据重建恢复方面，检验技术比镜像技术复杂得多且慢得多。
 
 #### 4、RAID分类
 
@@ -524,15 +568,17 @@ RAID 每一个等级代表一种实现方法和技术，等级之间并无高低
 
 具备 RAID 控制处理芯片，但没有专门的I/O 处理芯片，需要 CPU 和驱动程序来完成。性能和成本在软 RAID 和硬 RAID 之间。
 
-####  5、常见RAID等级详解
+#### 5、常见RAID等级详解
 
 ##### ①、JBOD
 
 ![](https://pic.imgdb.cn/item/617ada1f2ab3f51d9162301e.jpg){width="2.6055555555555556in" height="2.3652777777777776in"}
 
-JBOD ，Just a Bunch of Disks，磁盘簇。表示一个没有控制软件提供协调控制的磁盘集合，这是 RAID 区别与 JBOD 的主要因素。 JBOD 将多个物理磁盘串联起来，提供一个巨大的逻辑磁盘。
+JBOD ，Just a Bunch of Disks，磁盘簇。表示一个没有控制软件提供协调控制的磁盘集合，这是 RAID 区别与 JBOD 的主要因素。 JBOD
+将多个物理磁盘串联起来，提供一个巨大的逻辑磁盘。
 
-JBOD 的数据存放机制是由第一块磁盘开始按顺序往后存储，当前磁盘存储空间用完后，再依次往后面的磁盘存储数据。 JBOD 存储性能完全等同于单块磁盘，而且也不提供数据安全保护。
+JBOD 的数据存放机制是由第一块磁盘开始按顺序往后存储，当前磁盘存储空间用完后，再依次往后面的磁盘存储数据。 JBOD
+存储性能完全等同于单块磁盘，而且也不提供数据安全保护。
 
 > 其只是简单提供一种扩展存储空间的机制， 可用存储容量等于所有成员磁盘的存储空间之和
 
@@ -542,9 +588,12 @@ JBOD 常指磁盘柜，而不论其是否提供 RAID 功能。不过，JBOD并�
 
 ![](https://pic.imgdb.cn/item/617ada8a2ab3f51d91628bc8.jpg){width="1.5631944444444446in" height="2.4069444444444446in"}
 
-RAID0 是一种简单的、无数据校验的<font color="#00CED1">数据条带化技术</font>。实际上不是一种真正的 RAID ，因为它并不供任何形式的冗余策略。 RAID0 将所在磁盘条带化后组成大容量的存储空间，将数据分散存储在所有磁盘中，以独立访问方式实现多块磁盘的并读访问。
+RAID0 是一种简单的、无数据校验的<font color="#00CED1">数据条带化技术</font>。实际上不是一种真正的 RAID ，因为它并不供任何形式的冗余策略。
+RAID0 将所在磁盘条带化后组成大容量的存储空间，将数据分散存储在所有磁盘中，以独立访问方式实现多块磁盘的并读访问。
 
-理论上讲，一个由 n 块磁盘组成的 RAID0 ，它的读写性能是单个磁盘性能的 n 倍，但由于总线带宽等多种因素的限制，实际的性能提升低于理论值。由于可以并发执行 I/O 操作，总线带宽得到充分利用。再加上不需要进行数据校验，<font color="#00CED1">RAID0 的性能在所有 RAID 等级中是最高的</font>。
+理论上讲，一个由 n 块磁盘组成的 RAID0 ，它的读写性能是单个磁盘性能的 n 倍，但由于总线带宽等多种因素的限制，实际的性能提升低于理论值。由于可以并发执行
+I/O 操作，总线带宽得到充分利用。再加上不需要进行数据校验，<font color="#00CED1">RAID0 的性能在所有 RAID
+等级中是最高的</font>。
 
 RAID0 具有低成本、高读写性能、 100% 的高存储空间利用率等优点，但是它不提供数据冗余保护，一旦数据损坏，将无法恢复。
 
@@ -561,7 +610,8 @@ RAID0 具有低成本、高读写性能、 100% 的高存储空间利用率等�
 
 ![](https://pic.imgdb.cn/item/617adbe12ab3f51d9163d7f4.jpg){width="1.5631944444444446in" height="2.4069444444444446in"}
 
-RAID1 就是一种<font color="#00CED1">镜像技术</font>，它将数据完全一致地分别写到工作磁盘和镜像磁盘，它的磁盘空间利用率为 50% 。 RAID1 在数据写入时，响应时间会有所影响，但是读数据的时候没有影响。 RAID1 提供了最佳的数据保护，一旦工作磁盘发生故障，系统将自动切换到镜像磁盘，不会影响使用。
+RAID1 就是一种<font color="#00CED1">镜像技术</font>，它将数据完全一致地分别写到工作磁盘和镜像磁盘，它的磁盘空间利用率为
+50% 。 RAID1 在数据写入时，响应时间会有所影响，但是读数据的时候没有影响。 RAID1 提供了最佳的数据保护，一旦工作磁盘发生故障，系统将自动切换到镜像磁盘，不会影响使用。
 
 RAID1是为了增强数据安全性使两块磁盘数据呈现完全镜像，从而达到安全性好、技术简单、管理方便。 RAID1 拥有完全容错的能力，但实现成本高。
 
@@ -581,7 +631,8 @@ RAID10是一个RAID1与RAID0的组合体，所以它继承了RAID0的快速和RA
 
 RAID01是一个RAID0与RAID1的组合体，所以它继承了RAID0的快速和RAID1的安全。
 
-简单来说就是，先做<font color="#00CED1">镜像</font>再做<font color="#00CED1">条带</font>。即将进来的数据先做镜像，再将镜像数据写入到与之前数据不同的磁盘，即再做条带。
+简单来说就是，先做<font color="#00CED1">镜像</font>再做<font color="#00CED1">条带</font>
+。即将进来的数据先做镜像，再将镜像数据写入到与之前数据不同的磁盘，即再做条带。
 
 > RAID10要比RAID01的容错率再高，所以生产环境下一般是不使用RAID01的。
 
@@ -593,12 +644,11 @@ RAID01是一个RAID0与RAID1的组合体，所以它继承了RAID0的快速和RA
 
 这两台主机的功能与broker角色分配如下表。
 
-| 序号 | 主机名/IP   | IP             | 功能                | BROKER角色       |
-| ---- | ----------- | -------------- | ------------------- | ---------------- |
-| 1    | rocketmqOS1 | 192.168.59.164 | NameServer + Broker | Master1 + Slave2 |
-| 2    | rocketmqOS2 | 192.168.59.165 | NameServer + Broker | Master2 + Slave1 |
-|      |             |                |                     |                  |
-
+| 序号 | 主机名/IP      | IP             | 功能                  | BROKER角色         |
+|----|-------------|----------------|---------------------|------------------|
+| 1  | rocketmqOS1 | 192.168.59.164 | NameServer + Broker | Master1 + Slave2 |
+| 2  | rocketmqOS2 | 192.168.59.165 | NameServer + Broker | Master2 + Slave1 |
+|    |             |                |                     |                  |
 
 #### 2、克隆生成rocketmqOS1
 
@@ -825,7 +875,8 @@ tail -f ~/logs/rocketmqlogs/broker.log
 
 #### 1、修改bin/tools.sh
 
-在运行mqadmin命令之前，先要修改mq解压目录下bin/tools.sh配置的JDK的ext目录位置。本机的ext目录在<font color="#00CED1">/usr/java/jdk1.8.0_161/jre/lib/ext</font> 。
+在运行mqadmin命令之前，先要修改mq解压目录下bin/tools.sh配置的JDK的ext目录位置。本机的ext目录在<font color="#00CED1">
+/usr/java/jdk1.8.0_161/jre/lib/ext</font> 。
 
 使用vim命令打开tools.sh文件，并在JAVA_OPT配置的-Djava.ext.dirs这一行的后面添加ext的路径。
 
@@ -845,7 +896,6 @@ JAVA_OPT="${JAVA_OPT} -cp ${CLASSPATH}"
 直接运行该命令，可以看到其可以添加的commands。通过这些commands可以完成很多的功能。
 
 ![](https://pic.imgdb.cn/item/617ae36c2ab3f51d9169cdd2.jpg){width="8.26388888888889in" height="5.439583333333333in"}
-
 
 #### 3、该命令的官网详解
 

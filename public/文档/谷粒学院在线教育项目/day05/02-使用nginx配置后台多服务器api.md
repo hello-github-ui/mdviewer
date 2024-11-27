@@ -6,7 +6,7 @@ config/dev.env.js 中BASE_API 为项目的easymock地址，目前具有模拟登
 BASE_API: '"https://easy-mock.com/mock/5950a2419adc231f356a6636/vue-admin"',
 ```
 
-## 
+##
 
 **登录：**/user/login
 
@@ -42,19 +42,19 @@ http {
         listen       81;
         ......
     }，
-    
+
     ......
     server {
 
         listen 8201;
         server_name localhost;
 
-        location ~ /edu/ {           
+        location ~ /edu/ {
              proxy_pass http://localhost:8101;
         }
-        
-        location ~ /user/ {   
-             rewrite /(.+)$ /mock/5950a2419adc231f356a6636/vue-admin/$1  break; 
+
+        location ~ /user/ {
+             rewrite /(.+)$ /mock/5950a2419adc231f356a6636/vue-admin/$1  break;
              proxy_pass https://www.easy-mock.com;
         }
     }
