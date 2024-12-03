@@ -4,11 +4,26 @@ import path from 'path'
 import {fileURLToPath} from 'url'
 import fs from 'fs'
 import {convertFile} from './services/converter.js'
+import cors from 'cors'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const app = express()
+
+// 配置 CORS
+const corsOptions = {
+    origin: 'http://localhost:9523',  // 允许前端开发服务器的域名
+    methods: ['GET', 'POST', 'OPTIONS'],  // 允许的 HTTP 方法
+    allowedHeaders: ['Content-Type', 'Authorization'],  // 允许的请求头
+    credentials: true,  // 允许发送凭证
+    optionsSuccessStatus: 200  // 对于旧版浏览器的支持
+}
+
+app.use(cors(corsOptions))
+
+// 添加预检请求的处理
+app.options('*', cors(corsOptions))
 
 const uploadsDir = path.join(__dirname, '../uploads')
 if (!fs.existsSync(uploadsDir)) {
@@ -35,18 +50,23 @@ app.use(express.static(path.join(__dirname, '../dist')))
 // 文件上传处理
 app.post('/api/upload', upload.single('file'), async (req, res) => {
     try {
+        console.log('Received upload request')
         if (!req.file) {
+            console.log('No file received')
             return res.status(400).json({error: '没有上传文件'})
         }
 
         const file = req.file
+        console.log('File received:', file)
         const originalName = file.originalname
         const ext = path.extname(originalName).toLowerCase()
 
         // 转换文件
+        console.log('Converting file:', file.path, ext)
         const convertedFile = await convertFile(file.path, ext)
+        console.log('File converted:', convertedFile)
 
-        res.json({
+        const response = {
             success: true,
             data: {
                 id: file.filename,
@@ -55,10 +75,12 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
                 url: `/uploads/${convertedFile}`,
                 originalUrl: `/uploads/${file.filename}`
             }
-        })
+        }
+        console.log('Sending response:', response)
+        res.json(response)
     } catch (error) {
         console.error('File upload error:', error)
-        res.status(500).json({error: '文件上传失败'})
+        res.status(500).json({error: '文件上传失败: ' + error.message})
     }
 })
 

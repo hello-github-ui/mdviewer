@@ -9,6 +9,8 @@ import {ref, watch} from 'vue'
 import {marked} from 'marked'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css'
+import * as pdfjsLib from 'pdfjs-dist/build/pdf';
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
 
 const props = defineProps({
     fileData: {
@@ -32,9 +34,38 @@ const renderMarkdown = async () => {
     try {
         const response = await fetch(props.fileData.url)
         const text = await response.text()
-        renderedContent.value = marked(text)
+        if (props.fileData.type === 'pdf') {
+            // 使用 pdf.js 渲染 PDF
+            const loadingTask = pdfjsLib.getDocument(props.fileData.url);
+            loadingTask.promise.then(pdf => {
+                // 获取第一页
+                pdf.getPage(1).then(page => {
+                    const scale = 1.5;
+                    const viewport = page.getViewport({ scale });
+
+                    // 准备 canvas 用于渲染
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    // 渲染 PDF 页面到 canvas 上
+                    const renderContext = {
+                        canvasContext: context,
+                        viewport: viewport
+                    };
+                    page.render(renderContext);
+
+                    // 将 canvas 内容添加到页面
+                    document.querySelector('.markdown-content').appendChild(canvas);
+                });
+            });
+        } else {
+            // 渲染 Markdown
+            renderedContent.value = marked(text)
+        }
     } catch (error) {
-        console.error('Error rendering markdown:', error)
+        console.error('Error rendering file:', error)
     }
 }
 

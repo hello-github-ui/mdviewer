@@ -7,6 +7,10 @@
             :on-success="handleSuccess"
             :on-error="handleError"
             :before-upload="beforeUpload"
+            :with-credentials="true"
+            :headers="{
+                'Accept': 'application/json'
+            }"
             multiple
         >
             <el-icon class="el-icon--upload">
@@ -50,12 +54,17 @@ const beforeUpload = (file) => {
 }
 
 const handleSuccess = (response) => {
-    ElMessage.success('文件上传成功！')
-    // 触发父组件的更新
-    emit('fileUploaded', response.data)
+    if (response.success) {
+        ElMessage.success('文件上传成功！')
+        // 触发父组件的更新
+        emit('fileUploaded', response.data)
+    } else {
+        ElMessage.error(response.error || '文件上传失败！')
+    }
 }
 
-const handleError = () => {
+const handleError = (error) => {
+    console.error('Upload error:', error)
     ElMessage.error('文件上传失败，请重试！')
 }
 

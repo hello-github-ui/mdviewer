@@ -22,6 +22,7 @@
 import {onMounted, ref} from 'vue'
 import {Document, Folder} from '@element-plus/icons-vue'
 import axios from 'axios'
+import { ElMessage } from 'element-plus'
 
 const treeData = ref([])
 const expandedKeys = ref([])
@@ -33,7 +34,38 @@ const defaultProps = {
 
 const handleNodeClick = (data) => {
     if (data.type !== 'directory') {
-        emit('fileSelected', data)
+        const filePath = getFilePath(data)
+        emit('fileSelected', {
+            url: `/uploads/${filePath}`,
+            type: getFileType(filePath)
+        })
+    }
+}
+
+const getFilePath = (data) => {
+    let path = data.name
+    let parent = data.parent
+    while (parent) {
+        path = parent.name + '/' + path
+        parent = parent.parent
+    }
+    return path
+}
+
+const getFileType = (filePath) => {
+    const extension = filePath.split('.').pop()
+    // Add more file types as needed
+    switch (extension) {
+        case 'pdf':
+            return 'pdf'
+        case 'docx':
+            return 'word'
+        case 'xlsx':
+            return 'excel'
+        case 'pptx':
+            return 'ppt'
+        default:
+            return 'unknown'
     }
 }
 
@@ -45,6 +77,7 @@ const loadTreeData = async () => {
         expandedKeys.value = treeData.value.map(node => node.id)
     } catch (error) {
         console.error('Failed to load file tree:', error)
+        ElMessage.error('加载文件列表失败')
     }
 }
 
