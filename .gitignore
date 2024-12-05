@@ -27,3 +27,6 @@ dist-ssr
 # 忽略构建输出目录
 docs
 package-lock.json
+
+# 忽略上传目录
+uploads
