@@ -45,7 +45,11 @@ const allowedTypes = [
 ]
 
 const beforeUpload = (file) => {
-    const extension = file.name.toLowerCase().slice(file.name.lastIndexOf('.'))
+    // 处理文件名以确保中文字符正常显示
+    const fileName = decodeURIComponent(file.name);
+    console.log(`fileName: ${fileName}`);
+    // 获取文件扩展名
+    const extension = fileName.toLowerCase().slice(fileName.lastIndexOf('.'))
     if (!allowedTypes.includes(extension)) {
         ElMessage.error('不支持的文件格式！')
         return false
@@ -56,6 +60,9 @@ const beforeUpload = (file) => {
 const handleSuccess = (response) => {
     if (response.success) {
         ElMessage.success('文件上传成功！')
+        // 打印输出 response.data
+        console.log(`response.data: ${JSON.stringify(response.data, null, 2)}`);
+        
         // 触发父组件的更新
         emit('fileUploaded', response.data)
     } else {
@@ -65,7 +72,7 @@ const handleSuccess = (response) => {
 
 const handleError = (error) => {
     console.error('Upload error:', error)
-    ElMessage.error('文件上传失败，请重试！')
+    ElMessage.error('文件上传失败，请重试！' + error.message);
 }
 
 const emit = defineEmits(['fileUploaded'])

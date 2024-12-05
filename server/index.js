@@ -1,13 +1,13 @@
+import cors from 'cors'
 import express from 'express'
+import fs from 'fs'
 import multer from 'multer'
 import path from 'path'
-import {fileURLToPath} from 'url'
-import fs from 'fs'
-import {convertFile} from './services/converter.js'
-import cors from 'cors'
+import { fileURLToPath } from 'url'
+import { convertFile } from './services/converter.js'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express()
 
@@ -55,10 +55,14 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
             console.log('No file received')
             return res.status(400).json({error: '没有上传文件'})
         }
-
+        // 处理文件名（针对中文进行处理）
+        const originalName = Buffer.from(req.file.originalname, 'latin1').toString('utf8');
+        console.log('Original name:', originalName);
+        // 同时将 file 中的 originalname 转换为处理后的文件名
+        req.file.originalname = originalName
         const file = req.file
         console.log('File received:', file)
-        const originalName = file.originalname
+        // 获取文件扩展名
         const ext = path.extname(originalName).toLowerCase()
 
         // 转换文件
