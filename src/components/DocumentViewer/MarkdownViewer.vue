@@ -1,12 +1,12 @@
 <template>
     <div class="markdown-viewer">
-        <div class="markdown-content" v-html="renderedContent"/>
+        <div class="markdown-content" v-html="renderedContent" />
     </div>
 </template>
 
 <script setup>
-import {ref, watch} from 'vue'
-import {marked} from 'marked'
+import { ref, watch } from 'vue'
+import { marked } from 'marked'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css'
 import * as pdfjsLib from 'pdfjs-dist/build/pdf';
@@ -25,7 +25,7 @@ const renderedContent = ref('')
 marked.setOptions({
     highlight: function (code, lang) {
         const language = hljs.getLanguage(lang) ? lang : 'plaintext'
-        return hljs.highlight(code, {language}).value
+        return hljs.highlight(code, { language }).value
     },
     langPrefix: 'hljs language-'
 })
@@ -33,6 +33,8 @@ marked.setOptions({
 const renderMarkdown = async () => {
     try {
         const response = await fetch(props.fileData.url)
+        console.log(`response: ${JSON.stringify(response)}`);
+        
         const text = await response.text()
         if (props.fileData.type === 'pdf') {
             // 使用 pdf.js 渲染 PDF
@@ -71,7 +73,7 @@ const renderMarkdown = async () => {
 
 watch(() => props.fileData, () => {
     renderMarkdown()
-}, {immediate: true})
+}, { immediate: true })
 </script>
 
 <style scoped>

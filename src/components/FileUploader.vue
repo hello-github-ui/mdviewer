@@ -31,6 +31,9 @@
 <script setup>
 import {ElMessage} from 'element-plus'
 import {UploadFilled} from '@element-plus/icons-vue'
+import { useFileStore } from '../stores/fileStore'
+
+const fileStore = useFileStore()
 
 const uploadUrl = '/api/upload'
 
@@ -59,12 +62,12 @@ const beforeUpload = (file) => {
 
 const handleSuccess = (response) => {
     if (response.success) {
-        ElMessage.success('文件上传成功！')
-        // 打印输出 response.data
-        console.log(`response.data: ${JSON.stringify(response.data, null, 2)}`);
-        
-        // 触发父组件的更新
-        emit('fileUploaded', response.data)
+        ElMessage({
+            message: '文件上传成功',
+            type: 'success'
+        })
+        // 只触发文件树刷新，移除文件内容加载
+        fileStore.setNeedRefresh(true)
     } else {
         ElMessage.error(response.error || '文件上传失败！')
     }

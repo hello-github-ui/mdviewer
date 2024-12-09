@@ -19,10 +19,13 @@
 </template>
 
 <script setup>
-import {onMounted, ref} from 'vue'
+import {onMounted, ref, watch} from 'vue'
 import {Document, Folder} from '@element-plus/icons-vue'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import { useFileStore } from '../stores/fileStore'
+
+const fileStore = useFileStore()
 
 const treeData = ref([])
 const expandedKeys = ref([])
@@ -83,6 +86,14 @@ const loadTreeData = async () => {
 
 onMounted(() => {
     loadTreeData()
+})
+
+// 监听文件变化
+watch(() => fileStore.needRefresh, (newValue) => {
+    if (newValue) {
+        loadTreeData()
+        fileStore.setNeedRefresh(false)
+    }
 })
 
 const emit = defineEmits(['fileSelected'])
