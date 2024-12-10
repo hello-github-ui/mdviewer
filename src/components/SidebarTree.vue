@@ -38,6 +38,7 @@ const defaultProps = {
 const handleNodeClick = (data) => {
     if (data.type !== 'directory') {
         const filePath = getFilePath(data)
+        console.log('SidebarTree - handleNodeClick:', { filePath, type: getFileType(filePath) });
         emit('fileSelected', {
             url: `/uploads/${filePath}`,
             type: getFileType(filePath)
@@ -56,19 +57,22 @@ const getFilePath = (data) => {
 }
 
 const getFileType = (filePath) => {
-    const extension = filePath.split('.').pop()
-    // Add more file types as needed
+    const extension = filePath.toLowerCase().split('.').pop()
+    // 返回标准的 MIME 类型
     switch (extension) {
+        case 'md':
+        case 'markdown':
+            return 'text/markdown'
         case 'pdf':
-            return 'pdf'
+            return 'application/pdf'
+        case 'doc':
         case 'docx':
-            return 'word'
-        case 'xlsx':
-            return 'excel'
+            return 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        case 'ppt':
         case 'pptx':
-            return 'ppt'
+            return 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
         default:
-            return 'unknown'
+            return 'text/plain'
     }
 }
 

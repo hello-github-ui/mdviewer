@@ -3,19 +3,19 @@
         <el-container>
             <el-aside width="250px">
                 <div class="logo">
-                    <h1>MDViewer</h1>
+                    <h1 @click="goHome()" style="cursor: pointer;">FileViewer</h1>
                 </div>
-                <SidebarTree @file-selected="handleFileSelected"/>
+                <SidebarTree @file-selected="handleFileSelected" />
             </el-aside>
 
             <el-container>
                 <el-main>
                     <div class="main-content">
                         <template v-if="!currentFile">
-                            <FileUploader @file-uploaded="handleFileUploaded"/>
+                            <FileUploader @file-uploaded="handleFileUploaded" />
                         </template>
                         <template v-else>
-                            <FileViewer :file-data="currentFile"/>
+                            <FileViewer :file-data="currentFile" />
                         </template>
                     </div>
                 </el-main>
@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import { ref } from 'vue'
 import FileUploader from './components/FileUploader.vue'
 import SidebarTree from './components/SidebarTree.vue'
 import FileViewer from './components/FileViewer.vue'
@@ -39,6 +39,13 @@ const handleFileSelected = (file) => {
 const handleFileUploaded = (file) => {
     currentFile.value = file
 }
+
+const goHome = () => {
+    // 重置当前文件
+    currentFile.value = null
+    window.location.href = '/'
+}
+
 </script>
 
 <style>

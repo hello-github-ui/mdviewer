@@ -32,10 +32,14 @@ marked.setOptions({
 
 const renderMarkdown = async () => {
     try {
+        console.log('renderMarkdown: coming here!!!')
+        console.log('Rendering file:', props.fileData.url);
         const response = await fetch(props.fileData.url)
-        console.log(`response: ${JSON.stringify(response)}`);
+        console.log('Response status:', response.status);
         
         const text = await response.text()
+        console.log('File content length:', text.length);
+        
         if (props.fileData.type === 'pdf') {
             // 使用 pdf.js 渲染 PDF
             const loadingTask = pdfjsLib.getDocument(props.fileData.url);
@@ -71,9 +75,16 @@ const renderMarkdown = async () => {
     }
 }
 
-watch(() => props.fileData, () => {
-    renderMarkdown()
-}, { immediate: true })
+// 监听 fileData 变化
+watch(() => props.fileData, (newVal, oldVal) => {
+    console.log('MarkdownViewer - fileData changed:', { 
+        new: newVal,
+        old: oldVal 
+    });
+    if (newVal && newVal.url) {
+        renderMarkdown()
+    }
+}, { immediate: true, deep: true })
 </script>
 
 <style scoped>
