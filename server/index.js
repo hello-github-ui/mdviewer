@@ -5,6 +5,7 @@ import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
 import { convertFile } from "./services/converter.js";
+import { processMarkdownImages } from "./services/imageProcessor.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,7 +37,16 @@ if (!fs.existsSync(uploadsDir)) {
  */
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, uploadsDir);
+        // 如果是图片文件，存储到临时目录
+        if (file.mimetype.startsWith('image/')) {
+            const tempDir = path.join(uploadsDir, 'temp');
+            if (!fs.existsSync(tempDir)) {
+                fs.mkdirSync(tempDir, { recursive: true });
+            }
+            cb(null, tempDir);
+        } else {
+            cb(null, uploadsDir);
+        }
     },
     filename: function (req, file, cb) {
         // 处理中文文件名
@@ -89,25 +99,40 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
             console.log("No file received");
             return res.status(400).json({ error: "没有上传文件" });
         }
+        // 打印上传的文件路径
+        console.log("上传的文件路径:", req.file.path);
         // 处理文件名（针对中文进行处理）
         const originalName = Buffer.from(
             req.file.originalname,
             "latin1"
         ).toString("utf8");
-        // console.log('Original name:', originalName);
-        // 将 file 中的 originalname 转换为处理后的文件名
+        
         req.file.originalname = originalName;
-
-        // 回填file
         const file = req.file;
         console.log("File received:", file);
-        // 获取文件扩展名
+        
         const ext = path.extname(originalName).toLowerCase();
+        let convertedFile = file.filename;
 
-        // 转换文件
-        // console.log('Converting file:', file.path, ext)
-        // 需要对 file.path 的中文文件名进行处理
-        const convertedFile = await convertFile(file.path, ext);
+        // 如果是 Markdown 文件，处理其中的图片
+        if (ext === '.md' || ext === '.markdown') {
+            try {
+                // 处理 Markdown 中的图片
+                const newContent = await processMarkdownImages(file.path, uploadsDir);
+                
+                // 更新 Markdown 文件内容
+                await fs.promises.writeFile(file.path, newContent, 'utf8');
+                
+                // 转换文件
+                convertedFile = await convertFile(file.path, ext);
+            } catch (error) {
+                console.error('Error processing markdown images:', error);
+            }
+        } else {
+            // 其他类型文件的转换处理
+            convertedFile = await convertFile(file.path, ext);
+        }
+        
         console.log("File converted:", convertedFile);
 
         const response = {
@@ -122,8 +147,17 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
         };
 
         console.log("Sending response:", response);
-        
         res.json(response);
+        
+        // 清理临时目录
+        const tempDir = path.join(uploadsDir, 'temp');
+        if (fs.existsSync(tempDir)) {
+            fs.rm(tempDir, { recursive: true, force: true }, (err) => {
+                if (err) {
+                    console.error('Error cleaning temp directory:', err);
+                }
+            });
+        }
     } catch (error) {
         console.error("File upload error:", error);
         res.status(500).json({ error: "文件上传失败: " + error.message });

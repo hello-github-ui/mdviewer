@@ -67,8 +67,20 @@ const renderMarkdown = async () => {
                 });
             });
         } else {
-            // 渲染 Markdown
-            renderedContent.value = marked(text)
+            // 配置 marked 的图片渲染器
+            const renderer = new marked.Renderer();
+            const baseUrl = props.fileData.url.substring(0, props.fileData.url.lastIndexOf('/') + 1);
+            
+            renderer.image = (href, title, text) => {
+                // 如果是相对路径，转换为绝对路径
+                if (href && !href.startsWith('http') && !href.startsWith('data:')) {
+                    href = new URL(href, baseUrl).href;
+                }
+                return `<img src="${href}" alt="${text}" title="${title || ''}" style="max-width: 100%;">`;
+            };
+
+            marked.setOptions({ renderer });
+            renderedContent.value = marked(text);
         }
     } catch (error) {
         console.error('Error rendering file:', error)
