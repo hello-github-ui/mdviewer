@@ -99,6 +99,16 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
             console.log("No file received");
             return res.status(400).json({ error: "没有上传文件" });
         }
+        const relativePath = req.body.relativePath; // 获取相对路径
+        console.log("相对路径:", relativePath);
+
+        // 使用相对路径来拼接 assets 目录
+        const mdDirname = path.join(uploadsDir, relativePath);
+        const assetsDir = path.join(mdDirname, 'assets');
+        
+        // 处理 Markdown 文件中的图片
+        const newContent = await processMarkdownImages(req.file.path, assetsDir);
+        
         // 打印上传的文件路径
         console.log("上传的文件路径:", req.file.path);
         // 处理文件名（针对中文进行处理）
@@ -117,12 +127,6 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
         // 如果是 Markdown 文件，处理其中的图片
         if (ext === '.md' || ext === '.markdown') {
             try {
-                // 处理 Markdown 中的图片
-                const newContent = await processMarkdownImages(file.path, uploadsDir);
-                
-                // 更新 Markdown 文件内容
-                await fs.promises.writeFile(file.path, newContent, 'utf8');
-                
                 // 转换文件
                 convertedFile = await convertFile(file.path, ext);
             } catch (error) {

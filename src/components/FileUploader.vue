@@ -92,20 +92,13 @@ const handleChange = (file, fileList) => {
 }
 
 const beforeUpload = (file) => {
-    // 处理文件名以确保中文字符正常显示
-    const fileName = decodeURIComponent(file.name)
-    console.log(`fileName: ${fileName}`)
-    
-    // 获取文件扩展名
-    const extension = fileName.toLowerCase().slice(fileName.lastIndexOf('.'))
-    
-    // 检查是否是支持的文件类型
-    if (!allAllowedTypes.includes(extension)) {
-        ElMessage.error('不支持的文件格式！仅支持 Markdown 文件和图片文件。')
-        return false
+    if (isMarkdownFile(file.name)) {
+        currentMarkdown.value = file;
+        // 将文件的相对路径作为字段附加到上传请求中
+        file.relativePath = file.webkitRelativePath || file.name; // 使用 webkitRelativePath 或文件名
+        return true;
     }
-    
-    return true
+    return false;
 }
 
 const handleSuccess = (response) => {
