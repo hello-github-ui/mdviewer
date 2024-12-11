@@ -45,23 +45,21 @@ async function downloadImage(url, dest) {
  * @returns {string} 处理后的 Markdown 内容
  */
 export async function processMarkdownImages(mdFilePath, uploadDir) {
+    // 处理 Markdown 文件: C:\Users\admin\code\mdviewer\uploads\20241211160652\万能视频倍速播放-1733904412517.md, 
+    // 上传目录: C:\Users\admin\code\mdviewer\uploads\20241211160652
+    // console.log(`处理 Markdown 文件: ${mdFilePath}, 上传目录: ${uploadDir}`);
     // 读取 Markdown 文件内容
     const content = await fs.promises.readFile(mdFilePath, 'utf8');
-    const mdDirname = path.dirname(mdFilePath);
-    
-    // 假设所有本地图片都在与 Markdown 文件同级的 assets 目录中
-    const assetsDir = path.join(mdDirname, 'assets');
     
     // 提取所有图片路径
     const imagePaths = extractImagePaths(content);
-    console.log('提取到的图片路径:', imagePaths.map(imgPath => path.join(assetsDir, imgPath)));
+    // console.log('提取到的图片路径:', imagePaths);
     let newContent = content;
     
     for (const imgPath of imagePaths) {
         try {
-            // 创建图片的新目录
-            const mdFilename = path.basename(mdFilePath, '.md');
-            const imagesDir = path.join(uploadDir, `${mdFilename}_images`);
+            // 使用上传目录作为图片的新目录
+            const imagesDir = uploadDir;
             await fs.promises.mkdir(imagesDir, { recursive: true });
             
             if (imgPath.startsWith('http://') || imgPath.startsWith('https://')) {
@@ -72,27 +70,30 @@ export async function processMarkdownImages(mdFilePath, uploadDir) {
                 await downloadImage(imgPath, newImagePath);
                 
                 // 更新 Markdown 中的图片引用
-                const relativePath = path.relative(uploadDir, newImagePath).replace(/\\/g, '/');
-                newContent = newContent.replace(
-                    new RegExp(escapeRegExp(imgPath), 'g'),
-                    `/uploads/${relativePath}`
-                );
-            } else {
-                // 处理本地图片
-                const fullImagePath = path.join(assetsDir, imgPath);
-                console.log(`处理本地图片: ${fullImagePath}`);
-                if (fs.existsSync(fullImagePath)) {
-                    const newImageName = path.basename(imgPath);
-                    const newImagePath = path.join(imagesDir, newImageName);
-                    console.log(`复制本地图片: ${fullImagePath} 到 ${newImagePath}`);
-                    await fs.promises.copyFile(fullImagePath, newImagePath);
-                    
-                    // 更新 Markdown 中的图片引用
-                    const relativePath = path.relative(uploadDir, newImagePath).replace(/\\/g, '/');
+                const relativePath = `./${newImageName}`;
+                if (newContent.includes(imgPath)) {
+                    console.log(`即将更新网络图片引用: ${imgPath}`);
                     newContent = newContent.replace(
                         new RegExp(escapeRegExp(imgPath), 'g'),
-                        `/uploads/${relativePath}`
+                        relativePath
                     );
+                    console.log(`更新 Markdown 中的图片引用: ${imgPath} -> ${relativePath}`);
+                }
+            } else {
+                // 处理本地图片，本地图片只需要保留文件名和后缀
+                let imgName = imgPath.match(/[^/\\]+$/)[0]
+                const fullImagePath = path.resolve(uploadDir, imgName);
+                // 更新 Markdown 中的图片引用，由于上传后图片和md文件处于同级目录，直接 ./ 即可
+                // console.log('更新 Markdown 中的图片引用，由于上传后图片和md文件处于同级目录，直接 ./ 即可')
+                const relativePath = `./` + imgName;
+                console.log(`imgPath: ${imgPath}`)
+                if (newContent.includes(imgPath)) {
+                    console.log(`即将更新本地图片引用: ${imgPath}`);
+                    newContent = newContent.replace(
+                        new RegExp(escapeRegExp(imgPath), 'g'),
+                        relativePath
+                    );
+                    console.log(`更新 Markdown 中的图片引用: ${imgPath} -> ${relativePath}`);
                 }
             }
         } catch (error) {

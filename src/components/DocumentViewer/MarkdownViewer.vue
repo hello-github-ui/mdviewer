@@ -32,11 +32,16 @@ marked.setOptions({
 
 const renderMarkdown = async () => {
     try {
-        console.log('renderMarkdown: coming here!!!')
-        console.log('Rendering file:', props.fileData.url);
-        const response = await fetch(props.fileData.url)
+        // 使用 encodeURIComponent 确保文件路径正确
+        const filePath = encodeURIComponent(props.fileData.url);
+        console.log('Rendering file:', filePath);
+        const response = await fetch(filePath);
         console.log('Response status:', response.status);
-        
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
         const text = await response.text()
         console.log('File content length:', text.length);
         
@@ -83,7 +88,7 @@ const renderMarkdown = async () => {
             renderedContent.value = marked(text);
         }
     } catch (error) {
-        console.error('Error rendering file:', error)
+        console.error('Error rendering markdown:', error)
     }
 }
 

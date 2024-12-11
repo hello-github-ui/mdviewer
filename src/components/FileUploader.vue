@@ -1,5 +1,6 @@
 <template>
     <div class="file-uploader">
+        <el-input v-model="directoryPath" placeholder="请输入 Markdown 文件所在的目录路径"></el-input>
         <el-upload
             class="upload-demo"
             drag
@@ -15,6 +16,8 @@
             multiple
             :limit="10"
             :file-list="fileList"
+            :data="{ directoryPath: directoryPath }"
+            :disabled="!isPathValid"
         >
             <el-icon class="el-icon--upload">
                 <upload-filled/>
@@ -28,7 +31,6 @@
                 </div>
             </template>
         </el-upload>
-
         <div v-if="currentMarkdown" class="markdown-info">
             <p>当前处理的 Markdown 文件: {{ currentMarkdown.name }}</p>
             <p>已选择的图片文件:</p>
@@ -49,6 +51,7 @@ const fileStore = useFileStore()
 const uploadUrl = '/api/upload'
 const fileList = ref([])
 const currentMarkdown = ref(null)
+const directoryPath = ref('')
 
 // 允许的文件类型
 const allowedTypes = {
@@ -77,9 +80,11 @@ const isImageFile = (filename) => {
     return allowedTypes.images.includes(ext)
 }
 
+const isPathValid = computed(() => directoryPath.value.trim() !== '')
+
 const handleChange = (file, fileList) => {
     fileList.value = fileList
-    console.log('用户选中的文件名称:', file.name);
+    // console.log('用户选中的文件名称:', file.name);
     
     // 如果是 Markdown 文件，更新当前处理的 Markdown 文件
     if (isMarkdownFile(file.name)) {
@@ -92,6 +97,10 @@ const handleChange = (file, fileList) => {
 }
 
 const beforeUpload = (file) => {
+    if (!isPathValid.value) {
+        ElMessage.error('请先输入有效的目录路径')
+        return false
+    }
     if (isMarkdownFile(file.name)) {
         currentMarkdown.value = file;
         // 将文件的相对路径作为字段附加到上传请求中
@@ -102,17 +111,16 @@ const beforeUpload = (file) => {
 }
 
 const handleSuccess = (response) => {
-    if (response.success) {
-        ElMessage({
-            message: '文件上传成功',
-            type: 'success'
-        })
-        // 只触发文件树刷新，移除文件内容加载
-        fileStore.setNeedRefresh(true)
+    console.log('上传成功:', response);
+    if (response.message === '文件上传成功') {
+        ElMessage.success('文件上传成功');
+        // 更新文件树以显示新上传的文件
+        fileStore.setNeedRefresh(true);
+        console.log('更新文件树');
     } else {
-        ElMessage.error(response.error || '文件上传失败！')
+        ElMessage.error('文件上传失败，请重试。');
     }
-}
+};
 
 const handleError = (error) => {
     console.error('Upload error:', error)
