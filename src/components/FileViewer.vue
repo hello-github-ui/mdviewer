@@ -7,8 +7,8 @@
         <div v-else class="viewer-content">
             <component
                 :is="currentViewer"
-                :file-data="fileData"
                 :key="fileData.id"
+                :file-data="fileData"
             />
         </div>
     </div>

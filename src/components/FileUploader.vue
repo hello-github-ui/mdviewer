@@ -2,22 +2,22 @@
     <div class="file-uploader">
         <el-input v-model="directoryPath" placeholder="请输入 Markdown 文件所在的目录路径"></el-input>
         <el-upload
-            class="upload-demo"
-            drag
             :action="uploadUrl"
-            :on-success="handleSuccess"
-            :on-error="handleError"
             :before-upload="beforeUpload"
-            :on-change="handleChange"
-            :with-credentials="true"
+            :data="{ directoryPath: directoryPath }"
+            :disabled="!isPathValid"
+            :file-list="fileList"
             :headers="{
                 'Accept': 'application/json'
             }"
-            multiple
             :limit="10"
-            :file-list="fileList"
-            :data="{ directoryPath: directoryPath }"
-            :disabled="!isPathValid"
+            :on-change="handleChange"
+            :on-error="handleError"
+            :on-success="handleSuccess"
+            :with-credentials="true"
+            class="upload-demo"
+            drag
+            multiple
         >
             <el-icon class="el-icon--upload">
                 <upload-filled/>
@@ -44,8 +44,8 @@
 <script setup>
 import {ElMessage} from 'element-plus'
 import {UploadFilled} from '@element-plus/icons-vue'
-import { useFileStore } from '../stores/fileStore'
-import { ref, computed } from 'vue'
+import {useFileStore} from '../stores/fileStore'
+import {computed, ref} from 'vue'
 
 const fileStore = useFileStore()
 const uploadUrl = '/api/upload'
@@ -85,7 +85,7 @@ const isPathValid = computed(() => directoryPath.value.trim() !== '')
 const handleChange = (file, fileList) => {
     fileList.value = fileList
     // console.log('用户选中的文件名称:', file.name);
-    
+
     // 如果是 Markdown 文件，更新当前处理的 Markdown 文件
     if (isMarkdownFile(file.name)) {
         currentMarkdown.value = file
@@ -110,11 +110,33 @@ const beforeUpload = (file) => {
     return false;
 }
 
+/**
+ * 获取当前时间
+ * @returns {`${number}-${string}-${string} ${string}:${string}:${string}`}
+ */
+const getCurrentTime = () => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    const second = date.getSeconds();
+    return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')} ${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`;
+}
+
 const handleSuccess = (response) => {
     console.log('上传成功:', response);
     if (response.message === '文件上传成功') {
         ElMessage.success('文件上传成功');
-        // 更新文件树以显示新上传的文件
+        // 更新文件数据，确保包含时间目录
+        const timeDir = getCurrentTime(); // 获取当前时间作为目录
+        const filename = response.filePath.split('/').pop(); // 获取文件名
+        fileStore.addFile({
+            url: response.filePath,
+            timeDir: timeDir, // 添加时间目录
+            filename: filename // 添加文件名
+        });
         fileStore.setNeedRefresh(true);
         console.log('更新文件树');
     } else {

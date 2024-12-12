@@ -2,12 +2,12 @@
     <div class="ppt-viewer">
         <div class="toolbar">
             <el-button-group>
-                <el-button @click="prevSlide" :disabled="currentSlide === 1">
+                <el-button :disabled="currentSlide === 1" @click="prevSlide">
                     <el-icon>
                         <arrow-left/>
                     </el-icon>
                 </el-button>
-                <el-button @click="nextSlide" :disabled="currentSlide === totalSlides">
+                <el-button :disabled="currentSlide === totalSlides" @click="nextSlide">
                     <el-icon>
                         <arrow-right/>
                     </el-icon>
@@ -16,8 +16,8 @@
             <span class="slide-info">{{ currentSlide }} / {{ totalSlides }}</span>
         </div>
 
-        <div class="slide-container" ref="container">
-            <div class="slide-content" ref="slideContent"/>
+        <div ref="container" class="slide-container">
+            <div ref="slideContent" class="slide-content"/>
         </div>
     </div>
 </template>

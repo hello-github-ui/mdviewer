@@ -93,7 +93,38 @@ const upload = multer({ storage: storage });
 
 // 静态文件服务
 app.use(express.static(path.join(__dirname, "../dist")));
-app.use("/uploads", express.static(baseUploadsDir));
+app.use(express.static(path.join(__dirname, '../uploads')));
+
+app.use('/uploads', express.static(path.join(__dirname, '../uploads'), {
+    setHeaders: (res, path) => {
+        if (path.endsWith('.md')) {
+            res.set("Content-Type", "text/markdown");
+        }
+    }
+}));
+
+app.get('/uploads/*', (req, res) => {
+    const filePath = path.join(__dirname, '../uploads', req.params[0]);
+    console.log('Received request for:', req.path);
+    console.log('Serving file:', filePath);
+
+    const fileExt = path.extname(filePath);
+    let contentType = 'text/markdown';
+    if (fileExt === '.md') {
+        contentType = 'text/markdown';
+    } else if (fileExt === '.txt') {
+        contentType = 'text/plain';
+    }
+
+    res.sendFile(filePath, { headers: { 'Content-Type': contentType } }, (err) => {
+        if (err) {
+            console.error('File not found:', err);
+            res.status(404).send('File not found');
+        } else {
+            console.log('File sent successfully:', req.params[0]);
+        }
+    });
+});
 
 // 文件上传处理
 app.post("/api/upload", upload.single("file"), async (req, res) => {
@@ -139,9 +170,11 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
             message: "文件上传成功",
             filePath: `/uploads/${getCurrentTime()}/${req.file.filename}`
         });
+        console.log('Upload response sent successfully');
     } catch (error) {
         console.error("File upload error:", error);
         res.status(500).json({ error: "文件上传失败: " + error.message });
+        console.log('Error response sent:', error.message);
     }
 });
 
@@ -150,9 +183,11 @@ app.get("/api/files/tree", (req, res) => {
     try {
         const tree = buildFileTree(baseUploadsDir);
         res.json(tree);
+        console.log('File tree response sent successfully');
     } catch (error) {
         console.error("Error getting file tree:", error);
         res.status(500).json({ error: "获取文件列表失败" });
+        console.log('Error response sent:', error.message);
     }
 });
 

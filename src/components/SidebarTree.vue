@@ -2,10 +2,10 @@
     <div class="sidebar-tree">
         <el-tree
             :data="treeData"
-            :props="defaultProps"
-            @node-click="handleNodeClick"
             :default-expanded-keys="expandedKeys"
             :highlight-current="true"
+            :props="defaultProps"
+            @node-click="handleNodeClick"
         >
             <template #default="{ node, data }">
         <span class="custom-tree-node">
@@ -22,8 +22,8 @@
 import {onMounted, ref, watch} from 'vue'
 import {Document, Folder} from '@element-plus/icons-vue'
 import axios from 'axios'
-import { ElMessage } from 'element-plus'
-import { useFileStore } from '../stores/fileStore'
+import {ElMessage} from 'element-plus'
+import {useFileStore} from '../stores/fileStore'
 
 const fileStore = useFileStore()
 
@@ -38,7 +38,9 @@ const defaultProps = {
 const handleNodeClick = (data) => {
     if (data.type !== 'directory') {
         const filePath = getFilePath(data)
-        console.log('SidebarTree - handleNodeClick:', { filePath, type: getFileType(filePath) });
+        // SidebarTree - handleNodeClick: filePath: 万能视频倍速播放-1733988484117.md
+        console.log(`SidebarTree - handleNodeClick: filePath: ${filePath}`)
+        // 向父组件（App.vue）传递数据
         emit('fileSelected', {
             url: `/uploads/${filePath}`,
             type: getFileType(filePath)

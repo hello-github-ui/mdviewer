@@ -5,7 +5,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import App from './App.vue'
 import './style.css'
 // 导入 VUe 推荐的状态管理方案（Pinia）
-import { createPinia } from 'pinia'
+import {createPinia} from 'pinia'
 
 const app = createApp(App)
 

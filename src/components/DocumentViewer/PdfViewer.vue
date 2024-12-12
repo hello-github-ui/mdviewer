@@ -2,12 +2,12 @@
     <div class="pdf-viewer">
         <div class="toolbar">
             <el-button-group>
-                <el-button @click="prevPage" :disabled="currentPage === 1">
+                <el-button :disabled="currentPage === 1" @click="prevPage">
                     <el-icon>
                         <arrow-left/>
                     </el-icon>
                 </el-button>
-                <el-button @click="nextPage" :disabled="currentPage === totalPages">
+                <el-button :disabled="currentPage === totalPages" @click="nextPage">
                     <el-icon>
                         <arrow-right/>
                     </el-icon>
@@ -15,12 +15,12 @@
             </el-button-group>
             <span class="page-info">{{ currentPage }} / {{ totalPages }}</span>
             <el-button-group>
-                <el-button @click="zoomOut" :disabled="scale <= 0.5">
+                <el-button :disabled="scale <= 0.5" @click="zoomOut">
                     <el-icon>
                         <zoom-out/>
                     </el-icon>
                 </el-button>
-                <el-button @click="zoomIn" :disabled="scale >= 2">
+                <el-button :disabled="scale >= 2" @click="zoomIn">
                     <el-icon>
                         <zoom-in/>
                     </el-icon>
@@ -28,7 +28,7 @@
             </el-button-group>
         </div>
 
-        <div class="pdf-container" ref="container">
+        <div ref="container" class="pdf-container">
             <canvas ref="pdfCanvas"></canvas>
         </div>
     </div>
