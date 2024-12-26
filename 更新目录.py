@@ -35,8 +35,9 @@ def save_to_json(data, filename):
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
-root_directory = "C:\\Users\\admin\\code\\mdviewer\\public"  # 请根据实际情况修改目录
-output_file = root_directory + "\\files.json"
+public_directory = "C:\\Users\\admin\\code\\mdviewer\\public"
+root_directory = public_directory + "\\文档\\"  # 请根据实际情况修改目录
+output_file = public_directory + "\\files.json"
 
 file_structure = generate_file_structure(root_directory)
 save_to_json(file_structure, output_file)
