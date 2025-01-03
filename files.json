@@ -62,6 +62,17 @@
                     }
                 ],
                 "open": false
+            },
+            {
+                "name": "07-字典元组集合",
+                "path": "Python基础/07-字典元组集合",
+                "children": [
+                    {
+                        "name": "01-元组.md",
+                        "path": "Python基础/07-字典元组集合/01-元组.md"
+                    }
+                ],
+                "open": false
             }
         ],
         "open": false
