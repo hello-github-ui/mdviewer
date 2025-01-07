@@ -33,6 +33,17 @@
         "path": "Python基础",
         "children": [
             {
+                "name": "01-虚拟环境",
+                "path": "Python基础/01-虚拟环境",
+                "children": [
+                    {
+                        "name": "01-搭建虚拟环境.md",
+                        "path": "Python基础/01-虚拟环境/01-搭建虚拟环境.md"
+                    }
+                ],
+                "open": false
+            },
+            {
                 "name": "06-字符串列表",
                 "path": "Python基础/06-字符串列表",
                 "children": [
