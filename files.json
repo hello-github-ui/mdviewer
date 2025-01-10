@@ -108,6 +108,17 @@
                     }
                 ],
                 "open": false
+            },
+            {
+                "name": "08-类型转换深浅复制",
+                "path": "Python基础/08-类型转换深浅复制",
+                "children": [
+                    {
+                        "name": "01-类型转换.md",
+                        "path": "Python基础/08-类型转换深浅复制/01-类型转换.md"
+                    }
+                ],
+                "open": false
             }
         ],
         "open": false
