@@ -139,6 +139,17 @@
                     }
                 ],
                 "open": false
+            },
+            {
+                "name": "09-函数基础",
+                "path": "Python基础/09-函数基础",
+                "children": [
+                    {
+                        "name": "05-函数的参数.md",
+                        "path": "Python基础/09-函数基础/05-函数的参数.md"
+                    }
+                ],
+                "open": false
             }
         ],
         "open": false
