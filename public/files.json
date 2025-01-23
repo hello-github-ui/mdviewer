@@ -162,6 +162,17 @@
                     }
                 ],
                 "open": false
+            },
+            {
+                "name": "10-函数进阶",
+                "path": "Python基础/10-函数进阶",
+                "children": [
+                    {
+                        "name": "04-内置函数.md",
+                        "path": "Python基础/10-函数进阶/04-内置函数.md"
+                    }
+                ],
+                "open": false
             }
         ],
         "open": false
