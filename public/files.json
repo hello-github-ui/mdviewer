@@ -179,12 +179,12 @@
                 "open": false
             },
             {
-                "name": "11-异常",
-                "path": "Python基础/11-异常",
+                "name": "11-异常模块包",
+                "path": "Python基础/11-异常模块包",
                 "children": [
                     {
                         "name": "01-异常.md",
-                        "path": "Python基础/11-异常/01-异常.md"
+                        "path": "Python基础/11-异常模块包/01-异常.md"
                     }
                 ],
                 "open": false
