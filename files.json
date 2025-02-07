@@ -185,6 +185,10 @@
                     {
                         "name": "01-异常.md",
                         "path": "Python基础/11-异常模块包/01-异常.md"
+                    },
+                    {
+                        "name": "03-模块.md",
+                        "path": "Python基础/11-异常模块包/03-模块.md"
                     }
                 ],
                 "open": false
