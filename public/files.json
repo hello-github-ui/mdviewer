@@ -192,6 +192,17 @@
                     }
                 ],
                 "open": false
+            },
+            {
+                "name": "12-闭包和装饰器",
+                "path": "Python基础/12-闭包和装饰器",
+                "children": [
+                    {
+                        "name": "03-闭包.md",
+                        "path": "Python基础/12-闭包和装饰器/03-闭包.md"
+                    }
+                ],
+                "open": false
             }
         ],
         "open": false
