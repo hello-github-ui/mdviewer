@@ -247,6 +247,10 @@
                     {
                         "name": "07-多态.md",
                         "path": "Python基础/13-面向对象/07-多态.md"
+                    },
+                    {
+                        "name": "08-类方法.md",
+                        "path": "Python基础/13-面向对象/08-类方法.md"
                     }
                 ],
                 "open": false
