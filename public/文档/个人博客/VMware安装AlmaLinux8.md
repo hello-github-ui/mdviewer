@@ -191,6 +191,10 @@ sudo vi /etc/yum.conf
 gpgcheck=0
 ```
 
+> 临时禁用某个软件下载时的 校验：
+>
+> `sudo yum install -y git --nogpgcheck`
+
 2️⃣ 禁用单个仓库的 GPG 校验（更推荐这种方法，只对某个特定仓库禁用）：
 比如针对 AlmaLinux 官方源：
 
