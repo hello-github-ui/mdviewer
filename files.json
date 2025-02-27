@@ -247,6 +247,10 @@
                     {
                         "name": "07-多态.md",
                         "path": "Python基础/13-面向对象/07-多态.md"
+                    },
+                    {
+                        "name": "08-类方法.md",
+                        "path": "Python基础/13-面向对象/08-类方法.md"
                     }
                 ],
                 "open": false
@@ -447,6 +451,10 @@
             {
                 "name": "VMWare折腾系列.md",
                 "path": "个人博客/VMWare折腾系列.md"
+            },
+            {
+                "name": "VMware安装AlmaLinux8.md",
+                "path": "个人博客/VMware安装AlmaLinux8.md"
             },
             {
                 "name": "Vim配置备份.md",
