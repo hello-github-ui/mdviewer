@@ -263,6 +263,10 @@
         "path": "个人博客",
         "children": [
             {
+                "name": "AlmaLinux8安装PostgreSQL.md",
+                "path": "个人博客/AlmaLinux8安装PostgreSQL.md"
+            },
+            {
                 "name": "BIO-NIO-AIO.md",
                 "path": "个人博客/BIO-NIO-AIO.md"
             },
