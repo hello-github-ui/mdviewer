@@ -1,5 +1,16 @@
 [
     {
+        "name": "Docker教程",
+        "path": "Docker教程",
+        "children": [
+            {
+                "name": "01-使用docker-desktop安装AlmaLinux8教程.md",
+                "path": "Docker教程/01-使用docker-desktop安装AlmaLinux8教程.md"
+            }
+        ],
+        "open": false
+    },
+    {
         "name": "Git教程",
         "path": "Git教程",
         "children": [
