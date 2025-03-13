@@ -1,8 +1,8 @@
-> 前提：已经在windows中安装好 docker-desktop 软件。
+> 前提：已经在 windows 中安装好 docker-desktop 软件。
 
 ## 1.新建 `entrypoint` 脚本
 
-使用 `git bash` 随机进入一个windows下的目录，创建一个新的目录：
+使用 `git bash` 随机进入一个 windows 下的目录，创建一个新的目录：
 
 ```bash
 mkdir alma-docker
@@ -59,18 +59,19 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 ## 3.编写 `docker-compose.yml` 文件
 
-使用下面的 `docker-compose.yml` 文件来构建并运行容器，容器名指定为 `alma-docker`，端口映射为宿主机 2222 对应容器 22 端口：
+使用下面的 `docker-compose.yml` 文件来构建并运行容器，容器名指定为 `alma-docker`，端口映射为宿主机 2222 对应容器 22 端口，并指定 alma-docker 主机名。
 
 ```yaml
-version: '3'
+version: "3"
 services:
-  alma:
-    build: .
-    image: alma-docker
-    container_name: alma-docker
-    ports:
-      - "2222:22"
-    privileged: true
+    alma:
+        build: .
+        image: alma-docker
+        container_name: alma-docker
+        hostname: alma-docker
+        ports:
+            - "2222:22"
+        privileged: true
 ```
 
 ## 4.构建并启动
@@ -83,9 +84,9 @@ docker-compose up -d --build
 
 这样，Docker Compose 会重新构建镜像，并在启动时通过 entrypoint 脚本生成 host keys，然后启动 sshd 服务。
 
-## 5.用Xshell登录
+## 5.用 Xshell 登录
 
-* 主机：宿主机的 IP 地址（localhost也行）
-* 端口：2222
-* 用户名：root
-* 密码：123456
+-   主机：宿主机的 IP 地址（localhost 也行）
+-   端口：2222
+-   用户名：root
+-   密码：123456
