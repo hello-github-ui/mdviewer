@@ -6,6 +6,10 @@
             {
                 "name": "01-使用docker-desktop安装AlmaLinux8教程.md",
                 "path": "Docker教程/01-使用docker-desktop安装AlmaLinux8教程.md"
+            },
+            {
+                "name": "02-AlmaLinux8安装NVM.md",
+                "path": "Docker教程/02-AlmaLinux8安装NVM.md"
             }
         ],
         "open": false
