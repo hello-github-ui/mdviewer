@@ -8,8 +8,12 @@
                 "path": "Docker教程/01-使用docker-desktop安装AlmaLinux8教程.md"
             },
             {
-                "name": "02-AlmaLinux8安装NVM.md",
-                "path": "Docker教程/02-AlmaLinux8安装NVM.md"
+                "name": "02-AlmaLinux8安装Python+Java.md",
+                "path": "Docker教程/02-AlmaLinux8安装Python+Java.md"
+            },
+            {
+                "name": "03-AlmaLinux8安装NVM.md",
+                "path": "Docker教程/03-AlmaLinux8安装NVM.md"
             }
         ],
         "open": false
