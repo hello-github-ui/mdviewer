@@ -187,6 +187,23 @@ https://youtu.be/U-9VvdChGYE
 
 ![](./assets/2.png)
 
+如果执行报如下的错误：
+
+![image-20250322194610384](assets/image-20250322194610384.png)
+
+则执行命令：（参考自：https://stackoverflow.com/questions/73171905/chromium-executable-doesnt-exist-for-running-playwright-within-a-deployed-googl）
+
+```bash
+pip install playwright
+playwright install
+```
+
+![image-20250322194746849](assets/image-20250322194746849.png)
+
+然后再执行命令：`python ./main.py`，继续输入你的 prompt：
+
+![image-20250322195433969](assets/image-20250322195433969.png)
+
 #### 6、下次打开运行的命令如下：
 
 ```bash
