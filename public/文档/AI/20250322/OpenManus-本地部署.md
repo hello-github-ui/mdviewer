@@ -173,7 +173,7 @@ api_key = "sk-..."
 
 最后运行即可
 
-```
+```bash
 python main.py
 ```
 
@@ -189,7 +189,7 @@ https://youtu.be/U-9VvdChGYE
 
 #### 6、下次打开运行的命令如下：
 
-```
+```bash
 conda activate open_manus
 
 cd OpenManus
@@ -197,17 +197,19 @@ cd OpenManus
 python main.py
 ```
 
+![image-20250322192019084](assets/image-20250322192019084.png)
+
 ### 方法 2：使用 uv（适合macOS用户）
 
 #### 1、安装 uv（快速 Python 包安装程序和解析器）：
 
-```
+```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 #### 2、克隆存储库：
 
-```
+```bash
 git clone https://github.com/mannaandpoem/OpenManus.git
 
 cd OpenManus
@@ -217,7 +219,7 @@ cd OpenManus
 
 Windows 系统
 
-```
+```bash
 uv venv
 
 .venv\Scripts\activate
