@@ -303,6 +303,21 @@
                     {
                         "name": "01-初识文件读写.md",
                         "path": "Python基础/14-文件读写/01-初识文件读写.md"
+                    },
+                    {
+                        "name": "02-目录常用操作.md",
+                        "path": "Python基础/14-文件读写/02-目录常用操作.md"
+                    }
+                ],
+                "open": false
+            },
+            {
+                "name": "15-迭代器和生成器",
+                "path": "Python基础/15-迭代器和生成器",
+                "children": [
+                    {
+                        "name": "01-介绍.md",
+                        "path": "Python基础/15-迭代器和生成器/01-介绍.md"
                     }
                 ],
                 "open": false
