@@ -1,5 +1,23 @@
 [
     {
+        "name": "AI",
+        "path": "AI",
+        "children": [
+            {
+                "name": "20250322",
+                "path": "AI/20250322",
+                "children": [
+                    {
+                        "name": "OpenManus-本地部署.md",
+                        "path": "AI/20250322/OpenManus-本地部署.md"
+                    }
+                ],
+                "open": false
+            }
+        ],
+        "open": false
+    },
+    {
         "name": "Docker教程",
         "path": "Docker教程",
         "children": [
