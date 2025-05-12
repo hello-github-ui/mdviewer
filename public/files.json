@@ -1,5 +1,23 @@
 [
     {
+        "name": "AI",
+        "path": "AI",
+        "children": [
+            {
+                "name": "20250322",
+                "path": "AI/20250322",
+                "children": [
+                    {
+                        "name": "OpenManus-本地部署.md",
+                        "path": "AI/20250322/OpenManus-本地部署.md"
+                    }
+                ],
+                "open": false
+            }
+        ],
+        "open": false
+    },
+    {
         "name": "Docker教程",
         "path": "Docker教程",
         "children": [
@@ -14,6 +32,14 @@
             {
                 "name": "03-AlmaLinux8安装NVM.md",
                 "path": "Docker教程/03-AlmaLinux8安装NVM.md"
+            },
+            {
+                "name": "04-Ubuntu安装和使用1Panel.md",
+                "path": "Docker教程/04-Ubuntu安装和使用1Panel.md"
+            },
+            {
+                "name": "05-Ubuntu部署飞讯应用.md",
+                "path": "Docker教程/05-Ubuntu部署飞讯应用.md"
             }
         ],
         "open": false
