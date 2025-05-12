@@ -161,7 +161,7 @@ export default {
 }
 
 .header {
-    background-color: #6bd2cf;
+    background-color: #e5ebe2;
     color: white;
     display: flex;
     align-items: center;
@@ -171,10 +171,12 @@ export default {
 
 .toggle-button {
     margin-left: 10px;
+    background-color: #67C23A;
+    border-color: #67C23A;
 }
 
 .sidebar {
-    background-color: #6bd2cf;
+    background-color: #e5ebe2;
     color: white;
     transition: width 0.3s;
     height: calc(100vh - 56px); /* Adjust height to fit screen */

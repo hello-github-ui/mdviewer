@@ -67,7 +67,7 @@ PS D:\software\ollama> .\OllamaSetup.exe /DIR="D:\software\ollama"
 变量值：D:\ollama_models
 ```
 
-![image-20250322114814584](assets/image-20250322114814584.png)
+![image-20250322114814584](./assets/image-20250322114814584.png)
 
 * 配置监听地址：
 
@@ -76,7 +76,7 @@ PS D:\software\ollama> .\OllamaSetup.exe /DIR="D:\software\ollama"
 变量值：127.0.0.1
 ```
 
-![image-20250322114940042](assets/image-20250322114940042.png)
+![image-20250322114940042](./assets/image-20250322114940042.png)
 
 * 配置监听端口：
 
@@ -85,7 +85,7 @@ PS D:\software\ollama> .\OllamaSetup.exe /DIR="D:\software\ollama"
 变量值：11438
 ```
 
-![image-20250322115041147](assets/image-20250322115041147.png)
+![image-20250322115041147](./assets/image-20250322115041147.png)
 
 * 为HTTP开放请求
 
@@ -94,19 +94,19 @@ PS D:\software\ollama> .\OllamaSetup.exe /DIR="D:\software\ollama"
 变量值：*
 ```
 
-![image-20250322115151544](assets/image-20250322115151544.png)
+![image-20250322115151544](./assets/image-20250322115151544.png)
 
 ##### 4.3 验证安装成功否
 
 打开CMD，输入 `ollama`，是否显示如下：
 
-![image-20250322115449882](assets/image-20250322115449882.png)
+![image-20250322115449882](./assets/image-20250322115449882.png)
 
 ##### 4.4 下载大模型（以qwen2.5-coder:14b为例）
 
 下载地址：https://ollama.com/search
 
-![image-20250322115847020](assets/image-20250322115847020.png)
+![image-20250322115847020](./assets/image-20250322115847020.png)
 
 安装：
 
@@ -128,11 +128,11 @@ ollama run minicpm-v
 
 如果遇到这样的报错：
 
-![image-20250322143446723](assets/image-20250322143446723.png)
+![image-20250322143446723](./assets/image-20250322143446723.png)
 
 你只需要修改一下你代理软件的端口即可：
 
-![image-20250322143515416](assets/image-20250322143515416.png)
+![image-20250322143515416](./assets/image-20250322143515416.png)
 
 
 
@@ -183,13 +183,13 @@ https://youtu.be/U-9VvdChGYE
 
 运行以后就可以进行使用了！它就可以完全自动调用浏览器，打开并浏览，查询并收集需要的信息
 
-![](./assets/1.png)
+![](././assets/1.png)
 
-![](./assets/2.png)
+![](././assets/2.png)
 
 如果执行报如下的错误：
 
-![image-20250322194610384](assets/image-20250322194610384.png)
+![image-20250322194610384](./assets/image-20250322194610384.png)
 
 则执行命令：（参考自：https://stackoverflow.com/questions/73171905/chromium-executable-doesnt-exist-for-running-playwright-within-a-deployed-googl）
 
@@ -198,11 +198,11 @@ pip install playwright
 playwright install
 ```
 
-![image-20250322194746849](assets/image-20250322194746849.png)
+![image-20250322194746849](./assets/image-20250322194746849.png)
 
 然后再执行命令：`python ./main.py`，继续输入你的 prompt：
 
-![image-20250322195433969](assets/image-20250322195433969.png)
+![image-20250322195433969](./assets/image-20250322195433969.png)
 
 #### 6、下次打开运行的命令如下：
 
@@ -214,7 +214,7 @@ cd OpenManus
 python main.py
 ```
 
-![image-20250322192019084](assets/image-20250322192019084.png)
+![image-20250322192019084](./assets/image-20250322192019084.png)
 
 ### 方法 2：使用 uv（适合macOS用户）
 
@@ -269,7 +269,7 @@ ollama list  # 查询已安装的模型
 ollama rm 模型名称  # 卸载并删除模型
 ```
 
-![image-20250322113304884](./assets/image-20250322113304884.png)
+![image-20250322113304884](././assets/image-20250322113304884.png)
 
 比如需要删除gemma2:27b 模型，那么只需输入：
 

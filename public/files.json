@@ -311,6 +311,40 @@
                     {
                         "name": "01-初识文件读写.md",
                         "path": "Python基础/14-文件读写/01-初识文件读写.md"
+                    },
+                    {
+                        "name": "02-目录常用操作.md",
+                        "path": "Python基础/14-文件读写/02-目录常用操作.md"
+                    }
+                ],
+                "open": false
+            },
+            {
+                "name": "15-迭代器和生成器",
+                "path": "Python基础/15-迭代器和生成器",
+                "children": [
+                    {
+                        "name": "01-介绍.md",
+                        "path": "Python基础/15-迭代器和生成器/01-介绍.md"
+                    },
+                    {
+                        "name": "02-将一个类修改为迭代器.md",
+                        "path": "Python基础/15-迭代器和生成器/02-将一个类修改为迭代器.md"
+                    },
+                    {
+                        "name": "03-生成器.md",
+                        "path": "Python基础/15-迭代器和生成器/03-生成器.md"
+                    }
+                ],
+                "open": false
+            },
+            {
+                "name": "16-多线程",
+                "path": "Python基础/16-多线程",
+                "children": [
+                    {
+                        "name": "01-多线程.md",
+                        "path": "Python基础/16-多线程/01-多线程.md"
                     }
                 ],
                 "open": false
