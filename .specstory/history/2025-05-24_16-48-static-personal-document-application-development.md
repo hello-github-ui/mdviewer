@@ -3159,6 +3159,294 @@ _**User**_
 
 _**Assistant**_
 
+Read file: docusaurus.config.js
+
+---
+
+你的 Docusaurus 配置有一个**严重错误**，导致构建失败：
+
+---
+
+## 你的配置问题
+
+```js
+url: 'https://hello-github-ui.github.io/mdviewer/docs/intro', // 错误！
+baseUrl: '/mdviewer/',
+```
+
+- `url` 字段**只能是你的 GitHub Pages 主页地址**，不能带子路径或文档路径。
+- 正确写法应该是：
+  ```js
+  url: 'https://hello-github-ui.github.io',
+  baseUrl: '/mdviewer/',
+  ```
+
+---
+
+## 官方说明
+
+- `url`：你的网站主域名（不带任何子路径！）
+- `baseUrl`：你的项目在主域名下的子路径（你的仓库名，必须以 `/` 开头和结尾）
+
+---
+
+## 你的修正方案
+
+请将 `docusaurus.config.js` 的前几行改为：
+
+```js
+const config = {
+    title: '我的文档站',
+    tagline: '个人知识库',
+    url: 'https://hello-github-ui.github.io', // 只写到 .io
+    baseUrl: '/mdviewer/',                    // 仓库名
+    // 其它配置不变
+```
+
+---
+
+## 结论
+
+- 只要把 `url` 改成主域名，`baseUrl` 保持 `/mdviewer/`，就能正常构建和访问了。
+- 你现在的报错正是因为 `url` 配置了 `/mdviewer/docs/intro` 这样的子路径，Docusaurus 明确禁止这样写。
+
+---
+
+请立即修正后重新推送，GitHub Actions 就会通过，页面也能正常访问！
+
+---
+
+_**User**_
+
+还是有问题，当部署到github pages 后，默认的项目url地址是：hello-github-ui.github.io/mdviewer/，但是我访问这个后，它竟然会自动跳转到 @https://hello-github-ui.github.io/docs/intro  地址，然后报错 Page Not Found。
+
+---
+
+_**Assistant**_
+
+你的问题非常典型，根本原因是**首页跳转逻辑写死了 `/docs/intro` 路径**，而你部署在子路径 `/mdviewer/` 下，导致跳转到根域名下的 `/docs/intro`，从而 404。
+
+---
+
+## 详细原因
+
+你在 `src/pages/index.js` 里写了：
+
+```js
+return <Redirect to="/docs/intro" />;
+```
+
+这会导致**无论 baseUrl 是什么，都会跳转到根域名下的 `/docs/intro`**，而不是 `/mdviewer/docs/intro`。
+
+---
+
+## 解决方法
+
+### 1. 使用 Docusaurus 的 `useBaseUrl` 辅助函数
+
+你应该这样写：
+
+```js
+import React from 'react';
+import { Redirect } from '@docusaurus/router';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+export default function Home() {
+  return <Redirect to={useBaseUrl('/docs/intro')} />;
+}
+```
+
+这样，Docusaurus 会自动根据你的 `baseUrl` 配置拼接正确的路径，无论本地开发还是 GitHub Pages 部署都不会出错。
+
+---
+
+## 总结
+
+- **不要写死 `/docs/intro` 路径！**
+- 用 `useBaseUrl('/docs/intro')` 动态生成跳转路径。
+
+---
+
+请修改 `src/pages/index.js`，重新部署即可解决自动跳转 404 的问题！
+
+如需我帮你自动生成完整代码，请告诉我！
+
+---
+
+_**User**_
+
+那我想修改 intro.mdx 中的图片资源地址，可以用这种方式么？
+
+---
+
+_**Assistant**_
+
+你的思路非常好！在 Docusaurus 的 `.mdx` 文件中，**图片等静态资源的路径也推荐用 `useBaseUrl` 辅助函数**，这样无论本地开发还是部署到 GitHub Pages 子路径下都不会出错。
+
+---
+
+## 在 MDX 文件中使用 `useBaseUrl` 引用图片
+
+你可以这样写：
+
+```mdx
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<img src={useBaseUrl('/assets/2024/06/img1.png')} alt="示例图片" />
+```
+
+- 这样写，Docusaurus 会自动根据 `baseUrl` 拼接正确的路径。
+- 适用于所有静态资源（如 `/assets/xxx`、`/avatar.jpg` 等）。
+
+---
+
+## 注意事项
+
+- 只有 `.mdx` 文件（不是 `.md`）才能用这种 JSX 语法。
+- 普通 Markdown 语法的图片（`![]()`）不能用 `useBaseUrl`，只能写相对路径或绝对路径（如 `/assets/xxx`），但这样在子路径部署时容易出错。
+
+---
+
+## 推荐做法
+
+- **所有需要兼容 baseUrl 的图片、视频等资源，在 `.mdx` 文件中都用 `useBaseUrl`。**
+- 例如：
+
+  ```mdx
+  import useBaseUrl from '@docusaurus/useBaseUrl';
+
+  <img src={useBaseUrl('/avatar.jpg')} alt="头像" />
+  <img src={useBaseUrl('/wechat.jpg')} alt="微信二维码" />
+  ```
+
+---
+
+如需批量替换或有特殊用法，随时告诉我！
+
+---
+
+_**User**_
+
+你再看下我这个配置文件写的对么？
+// @ts-check
+// Docusaurus 配置文件
+
+const config = {
+    title: '我的文档站',
+    tagline: '个人知识库',
+    url: 'https://hello-github-ui.github.io', // 修改为你的GitHub Pages地址
+    baseUrl: '/mdviewer/',
+    onBrokenLinks: 'throw',
+    onBrokenMarkdownLinks: 'warn',
+    favicon: '/mdviewer/system/logo.png',
+    organizationName: 'hello-github-ui', // GitHub 用户名
+    projectName: 'mdviewer', // 仓库名
+    presets: [
+        [
+            'classic',
+            /** @type {import('@docusaurus/preset-classic').Options} */
+            ({
+                docs: {
+                    sidebarPath: require.resolve('./sidebars.js'),
+                    editUrl: 'https://github.com/hello-github-ui/mdviewer/edit/main/',
+                },
+                theme: {
+                    customCss: require.resolve('./src/css/custom.css'),
+                },
+            }),
+        ],
+    ],
+};
+
+module.exports = config; 
+
+---
+
+_**Assistant**_
+
+你的 `docusaurus.config.js` 配置**基本正确**，但有两个细节建议优化，确保在 GitHub Pages 子路径下（`/mdviewer/`）一切正常：
+
+---
+
+## 1. favicon 路径建议
+
+你现在写的是：
+```js
+favicon: '/mdviewer/system/logo.png',
+```
+- 这样写在本地开发时会 404，因为本地没有 `/mdviewer/` 前缀。
+- 推荐直接写成：
+  ```js
+  favicon: 'system/logo.png',
+  ```
+  Docusaurus 会自动加上 `baseUrl` 前缀，线上线下都能访问。
+
+---
+
+## 2. 其它配置项
+
+- `url` 和 `baseUrl` 都是正确的。
+- 其它配置项没有问题。
+
+---
+
+## 3. 推荐最终配置
+
+```js
+// @ts-check
+// Docusaurus 配置文件
+
+const config = {
+    title: '我的文档站',
+    tagline: '个人知识库',
+    url: 'https://hello-github-ui.github.io', // 你的GitHub Pages主域名
+    baseUrl: '/mdviewer/',                     // 仓库名
+    onBrokenLinks: 'throw',
+    onBrokenMarkdownLinks: 'warn',
+    favicon: 'system/logo.png',                // 推荐写法
+    organizationName: 'hello-github-ui',       // GitHub 用户名
+    projectName: 'mdviewer',                   // 仓库名
+    presets: [
+        [
+            'classic',
+            /** @type {import('@docusaurus/preset-classic').Options} */
+            ({
+                docs: {
+                    sidebarPath: require.resolve('./sidebars.js'),
+                    editUrl: 'https://github.com/hello-github-ui/mdviewer/edit/main/',
+                },
+                theme: {
+                    customCss: require.resolve('./src/css/custom.css'),
+                },
+            }),
+        ],
+    ],
+};
+
+module.exports = config;
+```
+
+---
+
+## 4. 总结
+
+- favicon 路径不要加 `/mdviewer/` 前缀，直接写相对路径即可。
+- 其它配置都没问题。
+
+---
+
+如有其它疑问或需要进一步优化，随时告诉我！
+
+---
+
+_**User**_
+
+如果写成 /system/logo.png 会有问题么？
+
+---
+
+_**Assistant**_
+
 
 
 ---

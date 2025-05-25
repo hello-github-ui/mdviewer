@@ -8,7 +8,7 @@ const config = {
     baseUrl: '/mdviewer/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
-    favicon: '/mdviewer/system/logo.png',
+    favicon: 'system/logo.png', // 注意：这里不要写成 /system/logo.pn，因为所有写成 / 开头的都表示是从 根目录开始查找，而此处是需要拼接 baseUrl 的
     organizationName: 'hello-github-ui', // GitHub 用户名
     projectName: 'mdviewer', // 仓库名
     presets: [
