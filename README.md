@@ -105,3 +105,43 @@ my-docs/
 - [Docusaurus 官方文档](https://docusaurus.io/)
 
 如有更多需求或问题，欢迎随时提问！ 
+
+## 加入搜索
+
+#### 方案一：官方推荐的 Algolia DocSearch（最稳定、体验最佳）
+
+##### 优点
+
+- 支持 Docusaurus 3.x
+
+- 体验极佳，速度快，支持中文、拼音、分词
+
+- 免费用于开源/公开文档
+
+##### 缺点
+
+- 需要到 Algolia DocSearch 申请索引（需公开仓库）
+
+- 需要配置 API Key
+
+##### 配置步骤
+
+1. 到 [Algolia DocSearch](https://docsearch.algolia.com/apply/) 申请账号和索引
+
+   填写你的文档站点信息，等待官方邮件回复（通常1-2天）。
+
+2. 获得 appId、apiKey、indexName 后，在 `docusaurus.config.js` 配置：
+
+```js
+  themeConfig: {
+     algolia: {
+       appId: '你的appId',
+       apiKey: '你的apiKey',
+       indexName: '你的indexName',
+       contextualSearch: true,
+       // 其它可选配置
+     },
+   },
+```
+
+3. 重启项目，右上角会自动出现搜索框。
