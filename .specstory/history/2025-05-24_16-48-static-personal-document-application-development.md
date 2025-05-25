@@ -3447,6 +3447,55 @@ _**User**_
 
 _**Assistant**_
 
+你的问题很专业，下面详细说明：
+
+---
+
+## 1. favicon 写成 `/system/logo.png` 的效果
+
+- **本地开发（npm run start）**：  
+  访问 `http://localhost:3000/system/logo.png`，能正常显示 favicon。
+- **GitHub Pages 部署（如 `https://hello-github-ui.github.io/mdviewer/`）**：  
+  访问 `https://hello-github-ui.github.io/system/logo.png`，**会 404**，因为静态资源实际在 `https://hello-github-ui.github.io/mdviewer/system/logo.png`。
+
+---
+
+## 2. 原因
+
+- 以 `/` 开头的路径是**绝对路径**，会从网站根目录查找资源。
+- 你部署在子路径 `/mdviewer/` 下，所有静态资源都应该以 `/mdviewer/` 为前缀，或者用**相对路径**（推荐）。
+
+---
+
+## 3. 推荐写法
+
+- **不要写 `/system/logo.png`**，而是写成 `system/logo.png`。
+- Docusaurus 会自动在前面加上 `baseUrl`，本地和线上都能访问。
+
+---
+
+## 4. 总结
+
+- `/system/logo.png` 只适用于根域名部署，不适用于 GitHub Pages 子路径部署。
+- **正确写法：**
+  ```js
+  favicon: 'system/logo.png'
+  ```
+
+---
+
+如需进一步解释或有其它路径相关问题，随时告诉我！
+
+---
+
+_**User**_
+
+好像不识别？
+
+---
+
+_**Assistant**_
+
 
 
 ---
