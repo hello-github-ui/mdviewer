@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([[634],{9179:(e,s,o)=>{o.r(s),o.d(s,{default:()=>d});o(6540);var c=o(6347),n=o(4848);function d(){return console.log("coming index.js..."),(0,n.jsx)(c.rd,{to:"/mdviewer/docs/intro"})}}}]);

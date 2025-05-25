@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([[634],{9179:(s,o,c)=>{c.r(o),c.d(o,{default:()=>d});c(6540);var e=c(6347),n=c(4848);function d(){return console.log("coming index.js..."),(0,n.jsx)(e.rd,{to:"/docs/intro"})}}}]);
