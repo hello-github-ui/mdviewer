@@ -27,6 +27,20 @@ export default {
       }
     ]
   ],
+  "plugins": [
+    [
+      "D:\\code\\my-docs\\node_modules\\@cmfcmf\\docusaurus-search-local\\lib\\server\\index.js",
+      {
+        "indexDocs": true,
+        "indexBlog": false,
+        "indexPages": true,
+        "language": [
+          "zh",
+          "en"
+        ]
+      }
+    ]
+  ],
   "baseUrlIssueBanner": true,
   "i18n": {
     "defaultLocale": "en",
@@ -36,28 +50,11 @@ export default {
     ],
     "localeConfigs": {}
   },
-  "future": {
-    "experimental_faster": {
-      "swcJsLoader": false,
-      "swcJsMinimizer": false,
-      "swcHtmlMinimizer": false,
-      "lightningCssMinimizer": false,
-      "mdxCrossCompilerCache": false,
-      "rspackBundler": false
-    },
-    "experimental_storage": {
-      "type": "localStorage",
-      "namespace": false
-    },
-    "experimental_router": "browser"
-  },
-  "onBrokenAnchors": "warn",
   "onDuplicateRoutes": "warn",
   "staticDirectories": [
     "static"
   ],
   "customFields": {},
-  "plugins": [],
   "themes": [],
   "themeConfig": {
     "colorMode": {
@@ -70,11 +67,6 @@ export default {
       "sidebar": {
         "hideable": false,
         "autoCollapseCategories": false
-      }
-    },
-    "blog": {
-      "sidebar": {
-        "groupByYear": true
       }
     },
     "metadata": [],
@@ -236,15 +228,6 @@ export default {
   "titleDelimiter": "|",
   "noIndex": false,
   "markdown": {
-    "format": "mdx",
-    "mermaid": false,
-    "mdx1Compat": {
-      "comments": true,
-      "admonitions": true,
-      "headingIds": true
-    },
-    "anchors": {
-      "maintainCase": false
-    }
+    "mermaid": false
   }
 };
