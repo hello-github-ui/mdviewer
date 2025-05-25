@@ -5538,6 +5538,211 @@ _**User**_
 
 _**Assistant**_
 
+<details>
+            <summary>Listed directory docs/个人博客 • **60** results</summary>
+        
+| Name |
+|-------|
+| 📄 `Facebook-China数据.md` |
+| 📄 `面试题泛谈.md` |
+| 📁 `RocketMQ教程` |
+| 📄 `Socket编程学习-一.md` |
+| 📄 `全局异常处理.md` |
+| 📄 `CSS基本样式设置.md` |
+| 📄 `MySQL函数、存储过程、索引学习.md` |
+| 📄 `Socket编程学习-二.md` |
+| 📄 `多线程安全学习之售票案例.md` |
+| 📄 `Java代码实现裁剪图像.md` |
+| 📄 `面试专题一.md` |
+| 📄 `用爱发电的Google镜像.md` |
+| 📄 `统计某个文件中数字、字母等出现的次数.md` |
+| 📄 `统计某个目录下所有的文件及文件夹（包括子目录）等相关操作.md` |
+| 📄 `更好地使用搜索引擎.md` |
+| 📄 `初识大数据(一).md` |
+| 📄 `合并多个有序数组.md` |
+| 📄 `使用python的you-get下载视频.md` |
+| 📄 `二零一九年快要过去了.md` |
+| 📄 `Win10开启上帝模式.md` |
+| 📄 `Windows安装WSL子系统.md` |
+| 📄 `VMware安装AlmaLinux8.md` |
+| 📄 `VMWare折腾系列.md` |
+| 📄 `Ubuntu-安装-Redis.md` |
+| 📄 `Ubuntu修改静态IP.md` |
+| 📄 `Vim配置备份.md` |
+| 📄 `SpringBoot之Logback日志文件配置.md` |
+| 📄 `SpringBoot整合Redis.md` |
+| 📄 `SpringBoot程序的部署及运行.md` |
+| 📄 `SSM框架-流程.md` |
+| 📄 `Tomcat加载本地静态页面.md` |
+| 📄 `Tomcat如何快速部署war包程序.md` |
+| 📄 `Spring AOP学习（二）.md` |
+| 📄 `springboot-vue-demo-01.md` |
+| 📄 `springboot-vue-demo-02.md` |
+| 📄 `Spring AOP学习（一）.md` |
+| 📄 `Redis主从哨兵配置.md` |
+| 📄 `Redis主从搭建.md` |
+| 📄 `MySQL触发器.md` |
+| 📄 `Linux-Mint20-使用体验.md` |
+| 📄 `Mybatis-中-resultMap-的使用.md` |
+| 📄 `MySQL约束.md` |
+| 📄 `Java代码执行顺序.md` |
+| 📄 `Java实现批量重命名文件.md` |
+| 📄 `Java封装同步锁.md` |
+| 📄 `Java-中-IO-操作总结.md` |
+| 📄 `Java中使用HSSFWorkbook生成excel.md` |
+| 📄 `Git进阶宝典.md` |
+| 📄 `Intellij-IDEA-常用功能.md` |
+| 📄 `Git-commit-中添加表情.md` |
+| 📄 `GitHub上传大文件.md` |
+| 📄 `ElasticSearch学习.md` |
+| 📄 `Flink安装部署.md` |
+| 📄 `Difference-between-FileReader-vs-FileInputStream-in-Java.md` |
+| 📄 `BIO-NIO-AIO.md` |
+| 📄 `Centos7安装MySQL8-x.md` |
+| 📄 `Centos7安装Redis.md` |
+| 📄 `AlmaLinux8安装PostgreSQL.md` |
+| 📁 `RabbitMQ教程` |
+| 📁 `assets` |
+
+</details>
+
+---
+
+Read file: docs/个人博客/Facebook-China数据.md
+
+---
+
+Read file: docs/个人博客/面试题泛谈.md
+
+---
+
+你的需求是将“个人博客”下的所有 `.md` 文件批量修正为**合乎 MDX 解析器语法**，以便 Docusaurus 能正常解析和构建。  
+下面是**自动化和手动修正的建议与方法**：
+
+---
+
+## 1. 常见不兼容点及修正方法
+
+### 1.1 自闭合标签
+- `<br>` → `<br />`
+- `<hr>` → `<hr />`
+- `<img ...>` → `<img ... />`
+- `<input ...>` → `<input ... />`
+
+### 1.2 HTML标签嵌套
+- 所有 HTML 标签都必须成对出现，不能缺少闭合标签。
+- 不能有嵌套错误，如 `<details><summary>xxx</summary>内容</details>`
+
+### 1.3 代码块
+- 代码块用标准 Markdown 语法：  
+  <code>```语言名 ... ```</code>
+- 不要在代码块内写未闭合的 HTML 标签。
+
+### 1.4 其它
+- 不要在 Markdown 里写 `<select>...</details>` 这种不规范标签。
+- 不能有未闭合的 `<details>`、`<summary>`、`<table>`、`<tr>`、`<td>` 等。
+
+---
+
+## 2. 自动批量修正建议
+
+### 2.1 批量替换（推荐用 VSCode 全局替换）
+
+- 查找 `<br>`，替换为 `<br />`
+- 查找 `<hr>`，替换为 `<hr />`
+- 查找 `<img `，替换为 `<img `
+- 查找所有 `<input`，替换为 `<input`
+- 检查所有 `<details>`、`<summary>`、`<select>`、`<table>` 等标签是否成对闭合
+
+### 2.2 检查未闭合标签
+
+- 用 VSCode 插件如 “Highlight Matching Tag” 或 “Auto Rename Tag” 辅助检查
+- 或用正则查找 `<[a-zA-Z]+[^>]*>(?![\s\S]*?<\/\1>)` 检查未闭合标签
+
+---
+
+## 3. 针对你的文件夹
+
+- 你可以先**全局批量替换**自闭合标签
+- 然后**逐个 build**，根据报错行号定位并修正未闭合标签
+
+---
+
+## 4. 示例修正
+
+### 错误写法
+```md
+<details>
+内容
+</details>
+
+<br>
+```
+
+### 正确写法
+```mdx
+<details>
+内容
+</details>
+
+<br />
+```
+
+---
+
+## 5. 自动化脚本（可选）
+
+如你熟悉 Node.js，可以用如下脚本批量修正：
+
+```js
+const fs = require('fs');
+const path = require('path');
+
+function fixFile(filePath) {
+  let content = fs.readFileSync(filePath, 'utf-8');
+  content = content.replace(/<br>/g, '<br />');
+  content = content.replace(/<hr>/g, '<hr />');
+  content = content.replace(/<img ([^>]+)>/g, '<img $1 />');
+  content = content.replace(/<input ([^>]+)>/g, '<input $1 />');
+  fs.writeFileSync(filePath, content, 'utf-8');
+}
+
+function walk(dir) {
+  fs.readdirSync(dir).forEach(file => {
+    const fullPath = path.join(dir, file);
+    if (fs.statSync(fullPath).isDirectory()) {
+      walk(fullPath);
+    } else if (file.endsWith('.md')) {
+      fixFile(fullPath);
+    }
+  });
+}
+
+walk('./docs/个人博客');
+```
+
+---
+
+## 6. 总结
+
+- 先全局批量替换自闭合标签
+- 再根据 build 报错定位未闭合标签手动修正
+- 不能禁用 Docusaurus 的语法检查，必须保证语法规范
+
+---
+
+如需我帮你自动修正某个具体文件，请告诉我文件名，我可以帮你直接输出修正后的内容！
+
+---
+
+_**User**_
+
+那目前的这个项目，我在部署到 render 中该如何设置配置呢？
+
+---
+
+_**Assistant**_
+
 
 
 ---

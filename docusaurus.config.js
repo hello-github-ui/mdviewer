@@ -1,11 +1,15 @@
 // @ts-check
 // Docusaurus 配置文件
 
+// 该配置是为了 同时支持 github pages 和 render 部署
+// 需要在 render 中部署时 的 环境变量中设置 RENDER=true
+const isRender = process.env.RENDER === 'true';
+
 const config = {
     title: '我的文档站',
     tagline: '个人知识库',
     url: 'https://hello-github-ui.github.io', // 修改为你的GitHub Pages地址
-    baseUrl: '/mdviewer/',
+    baseUrl: isRender ? '/' : '/mdviewer/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'system/logo.png', // 注意：这里不要写成 /system/logo.pn，因为所有写成 / 开头的都表示是从 根目录开始查找，而此处是需要拼接 baseUrl 的
