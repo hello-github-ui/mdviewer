@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmdviewer=self.webpackChunkmdviewer||[]).push([[89],{7525:e=>{e.exports=JSON.parse('{"tags":[{"label":"Ai","permalink":"/mdviewer/docs/tags/ai","count":1},{"label":"\u4eba\u5de5\u667a\u80fd","permalink":"/mdviewer/docs/tags/\u4eba\u5de5\u667a\u80fd","count":1}]}')}}]);
