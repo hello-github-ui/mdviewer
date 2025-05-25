@@ -25,7 +25,6 @@ dist-ssr
 
 
 # 忽略构建输出目录
-docs
 package-lock.json
 # SpecStory explanation file
 .specstory/.what-is-this.md

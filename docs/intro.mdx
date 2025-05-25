@@ -1,0 +1,100 @@
+---
+id: intro
+title: 介绍
+---
+
+# 欢迎来到我的个人文档站
+
+你可以在左侧选择系列文档或单篇文章进行阅读。
+
+- 支持系列文档（如 Python 系列）
+- 支持标签检索
+- 支持图片、视频等静态资源引用
+
+如需添加新文档，只需将 Markdown 文件放入 docs 目录即可。
+
+
+import React from 'react';
+
+{/* 诗词美化展示 */}
+<div
+    style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "stretch",
+        gap: "2.5em",
+        margin: "3em 0 2em 0"
+    }}
+>
+    {/* 头像 */}
+    <div style={{
+        display: "flex",
+        alignItems: "stretch",
+        width: "30%"
+    }}>
+        <img
+            src="/system/avatar.jpg"
+            alt="头像"
+            style={{
+                height: "100%",
+                width: "auto",
+                borderRadius: "16px",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                background: "#fff",
+                objectFit: "cover",
+                display: "block",
+                margin: "0 auto"
+            }}
+        />
+    </div>
+    {/* 诗词卡片 */}
+    <div style={{
+        flex: 1,
+        background: "#fffbe6",
+        borderLeft: "6px solid #007acc",
+        borderRadius: "16px",
+        padding: "2em 2em 1.5em 2em",
+        boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+        fontFamily: "STKaiti, KaiTi, serif",
+        fontSize: "1.25em",
+        color: "#444",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center"
+    }}>
+        <div style={{marginBottom: "1em", lineHeight: "2", textAlign: "center"}}>
+            <div>《虞美人·听雨》</div>
+            <div>少年听雨歌楼上，红烛昏罗帐。壮年听雨客舟中，江阔云低，断雁叫西风。</div>
+            <div>而今听雨僧庐下，鬓已星星也。悲欢离合总无情，一任阶前，点滴到天明。</div>
+        </div>
+        <div style={{textAlign: "right", color: "#888", fontSize: "1em", marginTop: "1em"}}>
+            —— 蒋捷
+        </div>
+    </div>
+</div>
+
+{/* 社交链接 */}
+<div style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "2em",
+    margin: "1.5em 0 2em 0"
+}}>
+    {/* 微信 */}
+    <a href="#" title="微信" style={{textDecoration: "none"}}>
+        <img src="/system/wechat.jpg" alt="微信" style={{width: 40, height: 40, borderRadius: "8px", boxShadow: "0 2px 8px rgba(0,0,0,0.08)"}} />
+    </a>
+    {/* Twitter */}
+    <a href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter" style={{textDecoration: "none"}}>
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" style={{width: 40, height: 40, filter: "grayscale(0.2)"}} />
+    </a>
+    {/* YouTube */}
+    <a href="https://youtube.com/" target="_blank" rel="noopener" title="YouTube" style={{textDecoration: "none"}}>
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" style={{width: 40, height: 40, filter: "grayscale(0.2)"}} />
+    </a>
+    {/* Instagram */}
+    <a href="https://instagram.com/" target="_blank" rel="noopener" title="Instagram" style={{textDecoration: "none"}}>
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style={{width: 40, height: 40, filter: "grayscale(0.2)"}} />
+    </a>
+</div>
