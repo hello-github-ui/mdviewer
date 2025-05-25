@@ -1,23 +1,23 @@
 {
   "docusaurus-plugin-content-docs": {
     "default": {
-      "path": "/docs",
+      "path": "/mdviewer/docs",
       "versions": [
         {
           "name": "current",
           "label": "Next",
           "isLast": true,
-          "path": "/docs",
+          "path": "/mdviewer/docs",
           "mainDocId": "AI/AI",
           "docs": [
             {
               "id": "AI/AI",
-              "path": "/docs/AI/AI",
+              "path": "/mdviewer/docs/AI/AI",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "intro",
-              "path": "/docs/intro",
+              "path": "/mdviewer/docs/intro",
               "sidebar": "tutorialSidebar"
             }
           ],
@@ -25,8 +25,8 @@
           "sidebars": {
             "tutorialSidebar": {
               "link": {
-                "path": "/docs/AI/AI",
-                "label": "Ai"
+                "path": "/mdviewer/docs/AI/AI",
+                "label": "AI/AI"
               }
             }
           }

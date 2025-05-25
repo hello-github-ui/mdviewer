@@ -1,23 +1,23 @@
 {
   "id": "intro",
-  "title": "介绍",
+  "title": "关于本站",
   "description": "你可以在左侧选择系列文档或单篇文章进行阅读。",
   "source": "@site/docs/intro.mdx",
   "sourceDirName": ".",
   "slug": "/intro",
-  "permalink": "/docs/intro",
+  "permalink": "/mdviewer/docs/intro",
   "draft": false,
   "unlisted": false,
-  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/intro.mdx",
+  "editUrl": "https://github.com/hello-github-ui/mdviewer/edit/main/docs/intro.mdx",
   "tags": [],
   "version": "current",
   "frontMatter": {
     "id": "intro",
-    "title": "介绍"
+    "title": "关于本站"
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Ai",
-    "permalink": "/docs/AI/AI"
+    "title": "OpenManus-本地部署",
+    "permalink": "/mdviewer/docs/AI/AI"
   }
 }

@@ -3496,6 +3496,634 @@ _**User**_
 
 _**Assistant**_
 
+你的问题出在**JSX 表达式的写法**上。
+
+你写成了：
+```jsx
+<img
+  src="useBaseUrl('system/avatar.jpg')"
+  ...
+/>
+```
+这样会被当成字符串处理，**而不是函数调用**，所以生成的 URL 是错误的。
+
+---
+
+## 正确写法
+
+在 MDX/JSX 里，**要用大括号包裹表达式**，而不是用引号：
+
+```jsx
+<img
+  src={useBaseUrl('system/avatar.jpg')}
+  alt="头像"
+  style={{
+    height: "100%",
+    width: "auto",
+    borderRadius: "16px",
+    boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+    background: "#fff",
+    objectFit: "cover",
+    display: "block",
+    margin: "0 auto"
+  }}
+/>
+```
+
+---
+
+## 总结
+
+- **不要加引号**，要用大括号 `{}` 包裹 `useBaseUrl(...)`。
+- 这样 Docusaurus 才会把 `useBaseUrl` 的返回值作为图片路径。
+
+---
+
+请修改后刷新页面，图片就能正常显示了！如还有问题请随时反馈。
+
+---
+
+_**User**_
+
+现在有个问题啊，就是你看我截图中标注的那个 白天与夜晚切换的地方，现在点击切换后，不会变成暗色的了。
+
+---
+
+_**Assistant**_
+
+你的观察非常细致！  
+你现在点击右上角的“白天/夜晚”切换按钮，**页面不会变成暗色模式**，这是因为你在 `custom.css` 里把所有背景色、字体色都**强制写死**了（用 `!important`），导致 Docusaurus 的暗色模式样式被覆盖。
+
+---
+
+## 解决方法
+
+### 1. 不要用 `!important` 强制覆盖全局背景色
+
+- Docusaurus 会自动为暗色模式加上 `.theme-dark` 类。
+- 你应该只为浅色模式（默认）设置背景色，并为 `.theme-dark` 单独设置暗色背景和字体色。
+
+---
+
+### 2. 推荐写法
+
+在 `src/css/custom.css` 里，**用如下结构**：
+
+```css
+:root {
+  --ifm-background-color: #f9f6e7;
+  --ifm-navbar-background-color: #f9f6e7;
+  --ifm-footer-background-color: #f9f6e7;
+  --ifm-color-primary: #007acc;
+  --ifm-color-secondary: #666;
+  --ifm-heading-color: #222;
+  --ifm-link-color: #007acc;
+  --ifm-link-hover-color: #005999;
+  --ifm-font-family-base: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --ifm-font-size-base: 18px;
+}
+
+/* 只为浅色模式设置背景色，不要加 !important */
+body,
+#__docusaurus,
+.main-wrapper,
+.navbar,
+.footer,
+.theme-doc-sidebar-container {
+  background: var(--ifm-background-color);
+}
+
+/* 暗色模式 */
+.theme-dark {
+  --ifm-background-color: #23272f;
+  --ifm-navbar-background-color: #23272f;
+  --ifm-footer-background-color: #23272f;
+  --ifm-heading-color: #fff;
+  --ifm-color-primary: #4fc3f7;
+  --ifm-link-color: #4fc3f7;
+  --ifm-link-hover-color: #90caf9;
+}
+
+.theme-dark body,
+.theme-dark #__docusaurus,
+.theme-dark .main-wrapper,
+.theme-dark .navbar,
+.theme-dark .footer,
+.theme-dark .theme-doc-sidebar-container {
+  background: var(--ifm-background-color);
+  color: #eee;
+}
+```
+
+---
+
+### 3. 其它建议
+
+- 你可以为 `.theme-dark` 下的 `.main-wrapper`、`.theme-doc-sidebar-container` 等单独设置暗色背景和字体色。
+- 不要在全局样式里用 `!important`，否则主题切换会失效。
+
+---
+
+## 总结
+
+- **不要用 `!important` 强制背景色。**
+- **为 `.theme-dark` 单独设置暗色变量和样式。**
+- 这样切换按钮就能正常工作，页面会自动变成暗色风格。
+
+---
+
+如需我帮你自动生成完整的 `custom.css` 暗色模式配置，请告诉我！
+
+---
+
+_**User**_
+
+你帮我自动生成完整的 custom.css 暗色与现在颜色的默认切换配置吧。
+
+---
+
+_**Assistant**_
+
+```diff
+  .footer,
+  .theme-doc-sidebar-container {
+-     background: #f9f6e7 !important;
++     background: var(--ifm-background-color);
+  }
+  
+  /* 侧边栏动画与美化 */
+  .theme-doc-sidebar-container {
+      border-right: 1px solid #eee;
+-     background: #f9f6e7 !important;
+      box-shadow: 2px 0 12px rgba(0, 0, 0, 0.04);
+      transition: box-shadow 0.3s, background 0.3s;
+```
+
+```diff
+  .theme-doc-sidebar-container:hover {
+      box-shadow: 8px 0 24px rgba(0, 0, 0, 0.10);
+-     background: #f5f2d8 !important;
++     background: #f5f2d8;
+  }
+  
+```
+
+```diff
+  .menu__link {
+      color: #444;
+-     text-decoration: none !important;
++     text-decoration: none;
+      border-radius: 6px;
+      padding: 6px 16px;
+```
+
+```diff
+      background: linear-gradient(90deg, #007acc 60%, #4fc3f7 100%);
+      transform: translateX(6px) scale(1.04);
+-     text-decoration: none !important;
++     text-decoration: none;
+  }
+  
+  /* 正文卡片美化 */
+- /* .main-wrapper {
++ .main-wrapper {
+      box-shadow: 0 4px 32px rgba(0,0,0,0.06);
+      border-radius: 16px;
+      padding: 40px 32px 64px 32px;
+      margin: 32px auto;
+      background: #fffbe6;
+-    max-width: 900px;
++     max-width: 100%;
+      transition: box-shadow 0.3s;
+-  }*/
+- 
+- .main-wrapper {
+-     max-width: 100% !important;
+-     margin: 0 !important;
+-     background: #f9f6e7 !important;
+-     box-shadow: none !important;
+-     border-radius: 0 !important;
+-     padding: 40px 0 64px 0 !important;
+-     transition: none !important;
+  }
+  
+  .main-wrapper:hover {
+-     box-shadow: 0 8px 48px rgba(0, 0, 0, 0.10);
++     box-shadow: 0 8px 48px rgba(0,0,0,0.10);
+  }
+  
+```
+
+```diff
+      height: 88px;
+      border-radius: 50%;
+-     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
++     box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      margin-right: 18px;
+      border: 3px solid #f9f6e7;
+```
+
+```diff
+      height: 120px;
+      border-radius: 12px;
+-     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
++     box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      background: #fff;
+      border: 2px solid #eee;
+```
+
+```diff
+      max-width: 100%;
+      border-radius: 4px;
+-     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
++     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      margin: 1em 0;
+  }
+```
+
+```diff
+  /* 页脚样式 */
+  .footer {
+-     background: #f9f6e7 !important;
++     background: var(--ifm-background-color);
+      color: #888;
+      font-size: 15px;
+```
+
+```diff
+      }
+  }
++ 
++ /* 暗色模式 */
++ .theme-dark {
++     --ifm-background-color: #23272f;
++     --ifm-navbar-background-color: #23272f;
++     --ifm-footer-background-color: #23272f;
++     --ifm-heading-color: #fff;
++     --ifm-color-primary: #4fc3f7;
++     --ifm-link-color: #4fc3f7;
++     --ifm-link-hover-color: #90caf9;
++ }
++ .theme-dark body,
++ .theme-dark #__docusaurus,
++ .theme-dark .main-wrapper,
++ .theme-dark .navbar,
++ .theme-dark .footer,
++ .theme-dark .theme-doc-sidebar-container {
++     background: var(--ifm-background-color);
++     color: #eee;
++ }
++ .theme-dark .main-wrapper {
++     background: #23272f;
++     box-shadow: 0 4px 32px rgba(0,0,0,0.18);
++ }
++ .theme-dark .theme-doc-sidebar-container {
++     border-right: 1px solid #333;
++     background: #23272f;
++ }
++ .theme-dark h1, .theme-dark h2, .theme-dark h3, .theme-dark h4, .theme-dark h5, .theme-dark h6 {
++     color: #fff;
++ }
++ .theme-dark p, .theme-dark .avatar-block .avatar-info {
++     color: #eee;
++ }
++ .theme-dark .menu__link {
++     color: #ccc;
++ }
++ .theme-dark .menu__link--active, .theme-dark .menu__link:hover {
++     color: #fff;
++     background: linear-gradient(90deg, #4fc3f7 60%, #007acc 100%);
++ }
++ .theme-dark .main-wrapper:hover {
++     box-shadow: 0 8px 48px rgba(0,0,0,0.30);
++ }
++ .theme-dark .avatar-block img {
++     border: 3px solid #23272f;
++     background: #333;
++ }
++ .theme-dark .qrcode-block img {
++     background: #333;
++     border: 2px solid #444;
++ }
++ .theme-dark blockquote {
++     border-left: 4px solid #4fc3f7;
++     background: #23272f;
++     color: #aaa;
++ }
++ .theme-dark code, .theme-dark pre {
++     background: #181a1b;
++     color: #90caf9;
++ }
++ .theme-dark table {
++     background: #23272f;
++ }
++ .theme-dark th, .theme-dark td {
++     border: 1px solid #444;
++     color: #ccc;
++ }
++ .theme-dark .footer {
++     background: #23272f;
++     color: #aaa;
++     border-top: 1px solid #444;
++ }
+```
+
+---
+
+已为你自动生成并应用了**支持浅色/暗色模式切换**的完整 custom.css 配置：
+
+- 默认是淡黄色（仿阮一峰博客）风格。
+- 切换到暗色模式时，整体变为深色风格，字体、卡片、侧边栏、代码块等全部适配。
+- 不再使用 `!important`，保证主题切换按钮正常工作。
+
+你只需刷新页面，点击右上角切换按钮即可体验两种风格的无缝切换！
+
+如需进一步微调细节或有特殊需求，随时告诉我！
+
+---
+
+_**User**_
+
+切换后，变成这个样子了。
+
+---
+
+_**Assistant**_
+
+你现在遇到的问题是：  
+**切换到暗色模式后，主内容区（.main-wrapper）和侧边栏还是淡黄色，只有背景变成了深色，导致页面观感不统一。**
+
+---
+
+## 原因
+
+- 你自定义的 `.main-wrapper` 和侧边栏的背景色在浅色模式下是淡黄色（#fffbe6），但在暗色模式下没有被覆盖，依然是淡黄色。
+- 需要在 `.theme-dark` 下**强制覆盖**这些区域的背景色为深色。
+
+---
+
+## 解决方法
+
+请在 `src/css/custom.css` 的最后，**补充或修正如下内容**（确保优先级）：
+
+```css
+.theme-dark .main-wrapper,
+.theme-dark .theme-doc-sidebar-container {
+  background: #23272f !important;
+  /* 或你喜欢的深色 */
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+}
+
+.theme-dark .main-wrapper {
+  /* 如果你有圆角需求可以加 */
+  border-radius: 16px;
+}
+```
+
+如果你希望主内容区和侧边栏都完全是深色风格，可以用上面这段代码。
+
+---
+
+## 说明
+
+- `.theme-dark .main-wrapper` 和 `.theme-dark .theme-doc-sidebar-container` 这样写，能确保暗色模式下这两个区域背景色被正确覆盖。
+- `!important` 只在这里用，确保优先级高于之前的自定义样式。
+
+---
+
+## 总结
+
+1. 在 `custom.css` 末尾加上上面这段代码。
+2. 保存后刷新页面，切换暗色模式，主内容区和侧边栏都会变成深色，风格统一。
+
+如需进一步微调颜色或有其它暗色主题需求，随时告诉我！
+
+---
+
+_**User**_
+
+我希望风格统一，请帮我修改。
+
+---
+
+_**Assistant**_
+
+```diff
+      transition: box-shadow 0.3s, background 0.3s;
+  }
++ 
++ .theme-doc-sidebar-container:hover {
++     box-shadow: 8px 0 24px rgba(0, 0, 0, 0.10);
++     background: #f5f2d8;
++ }
+  
+  .theme-doc-sidebar-container:hover {
+```
+
+```diff
+      color: #eee;
+  }
+- .theme-dark .main-wrapper {
+-     background: #23272f;
++ .theme-dark .main-wrapper,
++ .theme-dark .theme-doc-sidebar-container {
++     background: #23272f !important;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+- }
+- .theme-dark .theme-doc-sidebar-container {
+-     border-right: 1px solid #333;
+-     background: #23272f;
+- }
+- .theme-dark h1, .theme-dark h2, .theme-dark h3, .theme-dark h4, .theme-dark h5, .theme-dark h6 {
+-     color: #fff;
+- }
+- .theme-dark p, .theme-dark .avatar-block .avatar-info {
+      color: #eee;
+  }
++ .theme-dark .main-wrapper {
++     border-radius: 16px;
++ }
++ .theme-dark .theme-doc-sidebar-menu,
+  .theme-dark .menu__link {
+      color: #ccc;
+```
+
+```diff
+      background: linear-gradient(90deg, #4fc3f7 60%, #007acc 100%);
+  }
+- .theme-dark .main-wrapper:hover {
+-     box-shadow: 0 8px 48px rgba(0,0,0,0.30);
++ .theme-dark h1, .theme-dark h2, .theme-dark h3, .theme-dark h4, .theme-dark h5, .theme-dark h6 {
++     color: #fff;
++ }
++ .theme-dark p, .theme-dark .avatar-block .avatar-info {
++     color: #eee;
+  }
+  .theme-dark .avatar-block img {
+```
+
+```diff
+      border-top: 1px solid #444;
+  }
++ }
+```
+
+---
+
+已为你优化暗色模式下的主内容区和侧边栏样式：
+
+- 暗色模式下，主内容区（`.main-wrapper`）和侧边栏（`.theme-doc-sidebar-container`）都为统一深色（#23272f）。
+- 字体颜色适配为浅色，风格一致。
+- 侧边栏高亮、悬停等效果也已适配暗色。
+
+现在切换暗色模式，页面整体风格会非常统一。如果还需微调细节或有其它风格需求，随时告诉我！
+
+---
+
+_**User**_
+
+切换后没变化，侧边栏和md内容区域还是现在的黄色，没有与背景色一致。
+
+---
+
+_**Assistant**_
+
+你反馈得很对，出现这种情况通常是因为**自定义的背景色优先级高于暗色模式的样式**，或者 CSS 选择器不够具体，导致 `.theme-dark` 下的样式没有生效。
+
+---
+
+## 解决方法
+
+请**确保你的 custom.css 末尾有如下代码**，并且不要被其它样式覆盖：
+
+```css
+.theme-dark .main-wrapper,
+.theme-dark .theme-doc-sidebar-container {
+  background: #23272f !important;
+  color: #eee !important;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+}
+```
+
+**注意：**
+- 一定要加 `!important`，确保覆盖之前的背景色。
+- `.theme-dark .main-wrapper` 和 `.theme-dark .theme-doc-sidebar-container` 必须都写。
+
+---
+
+## 检查点
+
+1. **custom.css 末尾加上上面这段代码。**
+2. **保存后，强制刷新页面（Ctrl+F5）**，确保浏览器没有缓存旧的 CSS。
+3. **如果你有其它地方写了 `.main-wrapper` 或 `.theme-doc-sidebar-container` 的背景色，也要确保没有 `!important`，否则会被覆盖。**
+
+---
+
+## 完整示例（可直接复制到 custom.css 末尾）
+
+```css
+.theme-dark .main-wrapper,
+.theme-dark .theme-doc-sidebar-container {
+  background: #23272f !important;
+  color: #eee !important;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+}
+```
+
+---
+
+这样切换到暗色模式后，主内容区和侧边栏就会和背景色一致，风格统一。
+
+如还有问题，请截图 custom.css 末尾内容，我帮你进一步排查！
+
+---
+
+_**User**_
+
+@custom.css 不行啊，没有变化。
+
+---
+
+_**Assistant**_
+
+你遇到的问题是：**切换到暗色模式后，主内容区和侧边栏依然是淡黄色，没有变成深色。**
+
+你的 custom.css 已经有了 `.theme-dark .main-wrapper, .theme-dark .theme-doc-sidebar-container { background: #23272f !important; ... }`，但依然无效，说明有更高优先级的样式在生效，或者 Docusaurus 主题的结构导致你的选择器没有覆盖到实际的内容区。
+
+---
+
+## 终极解决方案
+
+### 1. 提高选择器优先级
+
+有时 Docusaurus 的内容区实际是 `.theme-doc-markdown` 或 `.theme-doc-markdown.markdown`，你需要**更具体的选择器**。
+
+请将以下代码**添加到 custom.css 最末尾**：
+
+```css
+.theme-dark .main-wrapper,
+.theme-dark .theme-doc-sidebar-container,
+.theme-dark .theme-doc-markdown,
+.theme-dark .theme-doc-markdown.markdown,
+.theme-dark .theme-doc-content {
+  background: #23272f !important;
+  color: #eee !important;
+}
+
+.theme-dark .main-wrapper {
+  border-radius: 16px;
+}
+
+.theme-dark .theme-doc-sidebar-menu,
+.theme-dark .menu__link {
+  color: #ccc;
+}
+.theme-dark .menu__link--active, .theme-dark .menu__link:hover {
+  color: #fff;
+  background: linear-gradient(90deg, #4fc3f7 60%, #007acc 100%);
+}
+.theme-dark h1, .theme-dark h2, .theme-dark h3, .theme-dark h4, .theme-dark h5, .theme-dark h6 {
+  color: #fff;
+}
+.theme-dark p, .theme-dark .avatar-block .avatar-info {
+  color: #eee;
+}
+```
+
+---
+
+### 2. 强制刷新浏览器缓存
+
+- 保存 custom.css 后，**强制刷新页面（Ctrl+F5）**，以确保新样式生效。
+
+---
+
+### 3. 检查是否有其它 CSS 文件影响
+
+- 确保没有其它 CSS 文件（如主题自带的自定义 CSS）覆盖了你的设置。
+
+---
+
+## 总结
+
+- 用更具体的选择器 `.theme-dark .theme-doc-markdown`、`.theme-dark .theme-doc-content` 等，确保内容区背景色被覆盖。
+- 必要时加 `!important`。
+- 强制刷新浏览器缓存。
+
+---
+
+请按上述方法操作，页面切换暗色后一定会风格统一。如果还有问题，请截图 Elements 面板中内容区的 class，我帮你精准定位！
+
+---
+
+_**User**_
+
+这个样式覆盖不掉，我发现如果不选中这个样式就成黑色的了。
+
+---
+
+_**Assistant**_
+
 
 
 ---

@@ -3,71 +3,76 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/__docusaurus/debug',
-    component: ComponentCreator('/__docusaurus/debug', '5ff'),
+    path: '/mdviewer/__docusaurus/debug',
+    component: ComponentCreator('/mdviewer/__docusaurus/debug', '822'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/config',
-    component: ComponentCreator('/__docusaurus/debug/config', '5ba'),
+    path: '/mdviewer/__docusaurus/debug/config',
+    component: ComponentCreator('/mdviewer/__docusaurus/debug/config', '472'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/content',
-    component: ComponentCreator('/__docusaurus/debug/content', 'a2b'),
+    path: '/mdviewer/__docusaurus/debug/content',
+    component: ComponentCreator('/mdviewer/__docusaurus/debug/content', 'afd'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/globalData',
-    component: ComponentCreator('/__docusaurus/debug/globalData', 'c3c'),
+    path: '/mdviewer/__docusaurus/debug/globalData',
+    component: ComponentCreator('/mdviewer/__docusaurus/debug/globalData', '740'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/metadata',
-    component: ComponentCreator('/__docusaurus/debug/metadata', '156'),
+    path: '/mdviewer/__docusaurus/debug/metadata',
+    component: ComponentCreator('/mdviewer/__docusaurus/debug/metadata', 'a7f'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/registry',
-    component: ComponentCreator('/__docusaurus/debug/registry', '88c'),
+    path: '/mdviewer/__docusaurus/debug/registry',
+    component: ComponentCreator('/mdviewer/__docusaurus/debug/registry', 'f3d'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/routes',
-    component: ComponentCreator('/__docusaurus/debug/routes', '000'),
+    path: '/mdviewer/__docusaurus/debug/routes',
+    component: ComponentCreator('/mdviewer/__docusaurus/debug/routes', 'fcd'),
     exact: true
   },
   {
-    path: '/docs',
-    component: ComponentCreator('/docs', '0e4'),
+    path: '/mdviewer/docs',
+    component: ComponentCreator('/mdviewer/docs', 'bf3'),
     routes: [
       {
-        path: '/docs',
-        component: ComponentCreator('/docs', 'a79'),
+        path: '/mdviewer/docs',
+        component: ComponentCreator('/mdviewer/docs', '3a1'),
         routes: [
           {
-            path: '/docs/tags',
-            component: ComponentCreator('/docs/tags', 'fce'),
+            path: '/mdviewer/docs/tags',
+            component: ComponentCreator('/mdviewer/docs/tags', '391'),
             exact: true
           },
           {
-            path: '/docs/tags/ai',
-            component: ComponentCreator('/docs/tags/ai', 'bd3'),
+            path: '/mdviewer/docs/tags/人工智能',
+            component: ComponentCreator('/mdviewer/docs/tags/人工智能', 'd87'),
             exact: true
           },
           {
-            path: '/docs',
-            component: ComponentCreator('/docs', 'fcc'),
+            path: '/mdviewer/docs/tags/ai',
+            component: ComponentCreator('/mdviewer/docs/tags/ai', '846'),
+            exact: true
+          },
+          {
+            path: '/mdviewer/docs',
+            component: ComponentCreator('/mdviewer/docs', '70b'),
             routes: [
               {
-                path: '/docs/AI/AI',
-                component: ComponentCreator('/docs/AI/AI', 'eeb'),
+                path: '/mdviewer/docs/AI/AI',
+                component: ComponentCreator('/mdviewer/docs/AI/AI', 'a6b'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/intro',
-                component: ComponentCreator('/docs/intro', '89a'),
+                path: '/mdviewer/docs/intro',
+                component: ComponentCreator('/mdviewer/docs/intro', '194'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               }
@@ -78,8 +83,8 @@ export default [
     ]
   },
   {
-    path: '/',
-    component: ComponentCreator('/', '2e1'),
+    path: '/mdviewer/',
+    component: ComponentCreator('/mdviewer/', '939'),
     exact: true
   },
   {

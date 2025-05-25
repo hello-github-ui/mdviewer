@@ -6,20 +6,20 @@
 export default {
   "title": "我的文档站",
   "tagline": "个人知识库",
-  "url": "https://你的github用户名.github.io",
-  "baseUrl": "/",
+  "url": "https://hello-github-ui.github.io",
+  "baseUrl": "/mdviewer/",
   "onBrokenLinks": "throw",
   "onBrokenMarkdownLinks": "warn",
-  "favicon": "/system/logo.png",
-  "organizationName": "你的github用户名",
-  "projectName": "my-docs",
+  "favicon": "system/logo.png",
+  "organizationName": "hello-github-ui",
+  "projectName": "mdviewer",
   "presets": [
     [
       "classic",
       {
         "docs": {
           "sidebarPath": "D:\\code\\my-docs\\sidebars.js",
-          "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/"
+          "editUrl": "https://github.com/hello-github-ui/mdviewer/edit/main/"
         },
         "theme": {
           "customCss": "D:\\code\\my-docs\\src\\css\\custom.css"

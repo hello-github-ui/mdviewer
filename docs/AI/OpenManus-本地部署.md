@@ -1,8 +1,7 @@
 ---
 id: AI
 title: OpenManus-本地部署
-sidebar_label: Ai
-tags: [Ai]
+tags: [Ai, 人工智能]
 ---
 
 # [OpenManus 本地部署！ 完全免费，对接 Ollama 本地大模型，真香！](https://www.freedidi.com/18739.html)
