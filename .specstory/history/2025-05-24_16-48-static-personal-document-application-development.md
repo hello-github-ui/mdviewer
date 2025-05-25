@@ -5396,6 +5396,148 @@ _**User**_
 
 _**Assistant**_
 
+你的判断很对，`@cmfcmf/docusaurus-search-local` 在 Docusaurus 3.x 及 Node 20+ 下确实兼容性较差，且对中文支持也有限。如果你想在**高版本 Docusaurus**下实现搜索，推荐如下两种主流方案：
+
+---
+
+## 方案一：官方推荐的 Algolia DocSearch（最稳定、体验最佳）
+
+### 优点
+- 支持 Docusaurus 3.x
+- 体验极佳，速度快，支持中文、拼音、分词
+- 免费用于开源/公开文档
+
+### 缺点
+- 需要到 [Algolia DocSearch](https://docsearch.algolia.com/apply/) 申请索引（需公开仓库）
+- 需要配置 API Key
+
+### 配置步骤
+
+1. **到 [Algolia DocSearch](https://docsearch.algolia.com/apply/) 申请账号和索引**  
+   - 填写你的文档站点信息，等待官方邮件回复（通常1-2天）。
+
+2. **获得 `appId`、`apiKey`、`indexName` 后，在 `docusaurus.config.js` 配置：**
+
+   ```js
+   themeConfig: {
+     algolia: {
+       appId: '你的appId',
+       apiKey: '你的apiKey',
+       indexName: '你的indexName',
+       contextualSearch: true,
+       // 其它可选配置
+     },
+   },
+   ```
+
+3. **重启项目，右上角会自动出现搜索框。**
+
+---
+
+## 方案二：自定义客户端搜索（适合个人/私有/小型站点）
+
+如果你只是想**简单支持标题/文件名模糊搜索**，可以用 Docusaurus 的 [@docusaurus/plugin-content-pages](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-pages) 插件+自定义 React 组件实现**前端本地搜索**。
+
+### 实现思路
+
+1. **写一个 React 组件，遍历所有文档的标题和路径，做简单的前端模糊搜索。**
+2. **将该组件放在首页或导航栏。**
+
+这种方式不支持全文检索，但**支持文件名、标题、标签等的模糊查找**，实现简单，兼容性好。
+
+---
+
+## 方案三：第三方服务/插件
+
+- 你也可以用 [Pagefind](https://pagefind.app/) 这类静态站点搜索工具，支持 Docusaurus 3.x，且无需 Algolia，支持中文，部署简单。
+- 只需在构建后运行 Pagefind 的命令即可。
+
+---
+
+## 推荐方案
+
+- **如果你是开源/公开站点，强烈建议用 Algolia DocSearch，体验最佳。**
+- **如果你是私有/个人站点，推荐用 Pagefind 或自定义前端搜索。**
+
+---
+
+## 你想要哪种？  
+1. Algolia DocSearch（需申请，体验最佳）  
+2. Pagefind（本地静态搜索，支持中文，部署简单）  
+3. 简单自定义前端搜索（仅支持标题/文件名模糊）
+
+请告诉我你的选择，我帮你详细配置！
+
+---
+
+_**User**_
+
+如何禁用掉一些 npm run start 的强制规则检查呢？其实感觉是对的啊，比如 md 文件中有 <br/> 这种的。
+
+---
+
+_**Assistant**_
+
+你的问题很常见：  
+Docusaurus（MDX）在 `npm run start` 或 `npm run build` 时会对 Markdown/MDX 文件做**严格的语法检查**，比如标签闭合、嵌套、大小写等，遇到不规范就会报错，哪怕浏览器其实能正常渲染。
+
+---
+
+## 重点说明
+
+- Docusaurus 的 MDX 解析器（基于 remark/rehype）**不允许 HTML 标签不闭合**，比如 `<br>` 必须写成 `<br />`。
+- 不能随意嵌套 HTML/JSX 标签，必须符合 JSX 语法。
+- 不能有未闭合的 `<details>`、`<select>` 等标签，否则会报错。
+
+---
+
+## 解决方法
+
+### 1. **不能禁用这些强制检查**  
+Docusaurus/MDX 的这些语法检查是**强制的**，不能通过配置关闭或跳过。  
+**你必须保证 MDX/JSX/HTML 语法完全正确。**
+
+### 2. **常见修正方法**
+
+- `<br>` → `<br />`
+- `<img ...>` → `<img ... />`
+- 所有自闭合标签都要加 `/`，如 `<input />`、`<hr />`、`<meta />`
+- 所有标签都要成对出现，不能缺少闭合标签
+
+### 3. **遇到报错时的排查建议**
+
+- 按报错行号检查对应标签是否闭合
+- 检查是否有嵌套错误（如 `<select><option>...` 必须成对）
+- 检查是否有拼写错误或大小写不一致
+
+---
+
+## 你的场景举例
+
+- `<br>` 必须写成 `<br />`
+- `<details>` 必须有 `</details>`，且不能嵌套错误
+
+---
+
+## 总结
+
+- **Docusaurus/MDX 的语法检查不能禁用，必须严格遵守 JSX/HTML 规范。**
+- 所有标签都要闭合，所有自闭合标签都要加 `/`。
+
+---
+
+如有具体报错行内容，可以贴出来，我帮你快速定位和修正！
+
+---
+
+_**User**_
+
+请帮我将 个人博客下的 md 文件都修改成合乎 mdx 解析器的语法规则。
+
+---
+
+_**Assistant**_
+
 
 
 ---
