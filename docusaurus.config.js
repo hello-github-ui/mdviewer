@@ -18,7 +18,7 @@ const config = {
             ({
                 docs: {
                     sidebarPath: require.resolve('./sidebars.js'),
-                    editUrl: 'https://github.com/hello-github-ui/mdviewer/edit/master/docs/',
+                    editUrl: 'https://github.com/hello-github-ui/mdviewer/edit/master/',
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
