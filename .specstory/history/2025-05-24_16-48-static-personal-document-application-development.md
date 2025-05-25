@@ -3055,6 +3055,64 @@ _**User**_
 
 _**Assistant**_
 
+你的 GitHub Actions 构建和部署其实已经**成功**了，但你访问页面时出现了如下提示：
+
+```
+Your Docusaurus site did not load properly.
+A very common reason is a wrong site baseUrl configuration.
+Current configured baseUrl = / (default value)
+We suggest trying baseUrl = /mdviewer/
+```
+
+---
+
+## 问题本质
+
+**不是 Actions 配置问题，而是 Docusaurus 的 `baseUrl` 配置不对。**
+
+- 你部署在 `https://hello-github-ui.github.io/mdviewer/`，但 `docusaurus.config.js` 里的 `baseUrl` 还是 `/`。
+- 这样静态资源、路由等都找不到，页面就会报错。
+
+---
+
+## 解决方法
+
+1. **修改 `docusaurus.config.js`：**
+   ```js
+   baseUrl: '/mdviewer/',
+   ```
+   这样所有资源和路由都会以 `/mdviewer/` 为前缀，和你的 GitHub Pages 访问路径一致。
+
+2. **重新构建并推送：**
+   ```bash
+   npm run build
+   git add .
+   git commit -m "fix: set correct baseUrl for GitHub Pages"
+   git push
+   ```
+   然后等待 GitHub Actions 自动部署。
+
+---
+
+## 总结
+
+- 只需把 `docusaurus.config.js` 里的 `baseUrl` 改成 `/mdviewer/`，就能正常访问了。
+- 你的 Actions 配置没问题，不需要改动。
+
+---
+
+如需我帮你自动生成修改内容，请告诉我！
+
+---
+
+_**User**_
+
+我的github仓库名叫 "mdviewer"，也就是说项目部署到 github pages 后，项目根路径是不是应该是 /mdviewer/ ？所有的访问都需要加上这个前缀呢？
+
+---
+
+_**Assistant**_
+
 
 
 ---
