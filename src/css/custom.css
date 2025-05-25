@@ -9,201 +9,212 @@
     --ifm-link-hover-color: #005999;
     --ifm-font-family-base: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
     --ifm-font-size-base: 18px;
-  }
-  
-  /* 全局背景色 */
-  body,
-  #__docusaurus,
-  .main-wrapper,
-  .navbar,
-  .footer,
-  .theme-doc-sidebar-container {
+}
+
+/* 全局背景色 */
+body,
+#__docusaurus,
+.main-wrapper,
+.navbar,
+.footer,
+.theme-doc-sidebar-container {
     background: #f9f6e7 !important;
-  }
-  
-  /* 侧边栏动画与美化 */
-  .theme-doc-sidebar-container {
+}
+
+/* 侧边栏动画与美化 */
+.theme-doc-sidebar-container {
     border-right: 1px solid #eee;
     background: #f9f6e7 !important;
-    box-shadow: 2px 0 12px rgba(0,0,0,0.04);
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.04);
     transition: box-shadow 0.3s, background 0.3s;
-  }
-  .theme-doc-sidebar-container:hover {
-    box-shadow: 8px 0 24px rgba(0,0,0,0.10);
+}
+
+.theme-doc-sidebar-container:hover {
+    box-shadow: 8px 0 24px rgba(0, 0, 0, 0.10);
     background: #f5f2d8 !important;
-  }
-  .theme-doc-sidebar-menu {
+}
+
+.theme-doc-sidebar-menu {
     font-size: 17px;
     padding-top: 10px;
-  }
-  .menu__link {
+}
+
+.menu__link {
     color: #444;
     text-decoration: none !important;
     border-radius: 6px;
     padding: 6px 16px;
     transition: background 0.2s, color 0.2s, transform 0.2s;
-  }
-  .menu__link--active, .menu__link:hover {
+}
+
+.menu__link--active, .menu__link:hover {
     color: #fff;
     background: linear-gradient(90deg, #007acc 60%, #4fc3f7 100%);
     transform: translateX(6px) scale(1.04);
     text-decoration: none !important;
-  }
-  
-  /* 正文卡片美化 */
- /* .main-wrapper {
-    box-shadow: 0 4px 32px rgba(0,0,0,0.06);
-    border-radius: 16px;
-    padding: 40px 32px 64px 32px;
-    margin: 32px auto;
-    background: #fffbe6;
-    max-width: 900px;
-    transition: box-shadow 0.3s;
-  }*/
-
-.main-wrapper{
-  max-width: 100% !important;
-  margin: 0 !important;
-  background: #f9f6e7 !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  padding: 40px 0 64px 0 !important;
-  transition: none !important;
 }
 
-  .main-wrapper:hover {
-    box-shadow: 0 8px 48px rgba(0,0,0,0.10);
-  }
-  
-  /* 头像样式 */
-  .avatar-block {
+/* 正文卡片美化 */
+/* .main-wrapper {
+   box-shadow: 0 4px 32px rgba(0,0,0,0.06);
+   border-radius: 16px;
+   padding: 40px 32px 64px 32px;
+   margin: 32px auto;
+   background: #fffbe6;
+   max-width: 900px;
+   transition: box-shadow 0.3s;
+ }*/
+
+.main-wrapper {
+    max-width: 100% !important;
+    margin: 0 !important;
+    background: #f9f6e7 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 40px 0 64px 0 !important;
+    transition: none !important;
+}
+
+.main-wrapper:hover {
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.10);
+}
+
+/* 头像样式 */
+.avatar-block {
     display: flex;
     align-items: center;
     margin: 2em 0 1em 0;
-  }
-  .avatar-block img {
+}
+
+.avatar-block img {
     width: 88px;
     height: 88px;
     border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
     margin-right: 18px;
     border: 3px solid #f9f6e7;
     background: #fff;
-  }
-  .avatar-block .avatar-info {
+}
+
+.avatar-block .avatar-info {
     font-size: 1.1em;
     color: #444;
-  }
-  
-  /* 二维码样式 */
-  .qrcode-block {
+}
+
+/* 二维码样式 */
+.qrcode-block {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 2em 0 1em 0;
-  }
-  .qrcode-block img {
+}
+
+.qrcode-block img {
     width: 120px;
     height: 120px;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
     background: #fff;
     border: 2px solid #eee;
-  }
-  .qrcode-block .qrcode-label {
+}
+
+.qrcode-block .qrcode-label {
     margin-top: 0.5em;
     color: #888;
     font-size: 0.95em;
-  }
-  
-  /* 标题样式 */
-  h1, h2, h3, h4, h5, h6 {
+}
+
+/* 标题样式 */
+h1, h2, h3, h4, h5, h6 {
     color: #222;
     font-weight: 600;
     margin-top: 1.5em;
     margin-bottom: 0.5em;
-  }
-  
-  /* 段落与行距 */
-  p {
+}
+
+/* 段落与行距 */
+p {
     color: #222;
     line-height: 1.8;
     margin: 1em 0;
-  }
-  
-  /* 链接样式 */
-  a {
+}
+
+/* 链接样式 */
+a {
     color: #007acc;
     text-decoration: none;
     transition: color 0.2s;
-  }
-  a:hover {
+}
+
+a:hover {
     color: #005999;
     text-decoration: underline;
-  }
-  
-  /* 代码块样式 */
-  code, pre {
+}
+
+/* 代码块样式 */
+code, pre {
     font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
     background: #f6f8fa;
     color: #c7254e;
     border-radius: 4px;
-  }
-  pre {
+}
+
+pre {
     padding: 1em;
     overflow-x: auto;
-  }
-  
-  /* 列表样式 */
-  ul, ol {
+}
+
+/* 列表样式 */
+ul, ol {
     margin-left: 2em;
     line-height: 1.8;
-  }
-  
-  /* blockquote 样式 */
-  blockquote {
+}
+
+/* blockquote 样式 */
+blockquote {
     border-left: 4px solid #007acc;
     background: #f6f8fa;
     color: #555;
     margin: 1.5em 0;
     padding: 0.5em 1em;
     font-style: italic;
-  }
-  
-  /* 图片样式 */
-  .markdown img {
+}
+
+/* 图片样式 */
+.markdown img {
     max-width: 100%;
     border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     margin: 1em 0;
-  }
-  
-  /* 表格样式 */
-  table {
+}
+
+/* 表格样式 */
+table {
     border-collapse: collapse;
     width: 100%;
     margin: 1.5em 0;
     background: #fafbfc;
-  }
-  th, td {
+}
+
+th, td {
     border: 1px solid #eee;
     padding: 0.5em 1em;
-  }
-  
-  /* 页脚样式 */
-  .footer {
+}
+
+/* 页脚样式 */
+.footer {
     background: #f9f6e7 !important;
     color: #888;
     font-size: 15px;
     border-top: 1px solid #eee;
     padding: 2em 0 1em 0;
     text-align: center;
-  }
-  
-  /* 响应式优化 */
-  @media (max-width: 900px) {
+}
+
+/* 响应式优化 */
+@media (max-width: 900px) {
     .main-wrapper {
-      max-width: 100%;
-      padding: 16px 4vw 32px 4vw;
+        max-width: 100%;
+        padding: 16px 4vw 32px 4vw;
     }
-  }
+}
