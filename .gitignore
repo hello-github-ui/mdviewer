@@ -10,6 +10,7 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+build
 *.local
 
 # Editor directories and files
@@ -28,3 +29,4 @@ dist-ssr
 package-lock.json
 # SpecStory explanation file
 .specstory/.what-is-this.md
+.docusaurus/
