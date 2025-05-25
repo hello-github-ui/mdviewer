@@ -10,17 +10,17 @@ tags: [尚硅谷]
 
 Wrapper ： 条件构造抽象类，最顶端父类
 
-  AbstractWrapper ： 用于查询条件封装，生成 sql 的 where 条件
+AbstractWrapper ： 用于查询条件封装，生成 sql 的 where 条件
 
-​    QueryWrapper ： Entity 对象封装操作类，不是用lambda语法
+QueryWrapper ： Entity 对象封装操作类，不是用lambda语法
 
-​    UpdateWrapper ： Update 条件封装，用于Entity对象更新操作
+UpdateWrapper ： Update 条件封装，用于Entity对象更新操作
 
-  AbstractLambdaWrapper ： Lambda 语法使用 Wrapper统一处理解析 lambda 获取 column。
+AbstractLambdaWrapper ： Lambda 语法使用 Wrapper统一处理解析 lambda 获取 column。
 
-​    LambdaQueryWrapper ：看名称也能明白就是用于Lambda语法使用的查询Wrapper
+LambdaQueryWrapper ：看名称也能明白就是用于Lambda语法使用的查询Wrapper
 
-​    LambdaUpdateWrapper ： Lambda 更新封装Wrapper
+LambdaUpdateWrapper ： Lambda 更新封装Wrapper
 
 ```
 @RunWith(SpringRunner.class)
@@ -53,7 +53,9 @@ public void testDelete() {
 }
 ```
 
-SQL：UPDATE user SET deleted=1 WHERE deleted=0 AND name IS NULL AND age >= ? AND email IS NOT NULL
+```sql
+UPDATE user SET deleted=1 WHERE deleted=0 AND name IS NULL AND age >= ? AND email IS NOT NULL
+```
 
 ## **2、eq、ne**
 
@@ -71,7 +73,9 @@ public void testSelectOne() {
 }
 ```
 
+```sql
 SELECT id,name,age,email,create_time,update_time,deleted,version FROM user WHERE deleted=0 AND name = ? 
+```
 
 ## **3、between、notBetween**
 
@@ -89,7 +93,9 @@ public void testSelectCount() {
 }
 ```
 
+```sql
 SELECT COUNT(1) FROM user WHERE deleted=0 AND age BETWEEN ? AND ? 
+```
 
 ## **4、allEq**
 
@@ -110,9 +116,11 @@ public void testSelectList() {
 }
 ```
 
+```sql
 SELECT id,name,age,email,create_time,update_time,deleted,version 
 
 FROM user WHERE deleted=0 AND name = ? AND id = ? AND age = ? 
+```
 
 ## **5、like、notLike、likeLeft、likeRight**
 
@@ -132,9 +140,11 @@ public void testSelectMaps() {
 }
 ```
 
+```sql
 SELECT id,name,age,email,create_time,update_time,deleted,version 
 
 FROM user WHERE deleted=0 AND name NOT LIKE ? AND email LIKE ? 
+```
 
 ## **6、in、notIn、inSql、notinSql、exists、notExists**
 
@@ -162,9 +172,11 @@ public void testSelectObjs() {
 }
 ```
 
+```sql
 SELECT id,name,age,email,create_time,update_time,deleted,version 
 
 FROM user WHERE deleted=0 AND id IN (select id from user where id < 3) 
+```
 
 ## **7、or、and**
 
@@ -194,7 +206,9 @@ public void testUpdate1() {
 }
 ```
 
+```sql
 UPDATE user SET name=?, age=?, update_time=? WHERE deleted=0 AND name LIKE ? OR age BETWEEN ? AND ?
+```
 
 ## **8、嵌套or、嵌套and**
 
@@ -222,11 +236,13 @@ public void testUpdate2() {
 }
 ```
 
+```sql
 UPDATE user SET name=?, age=?, update_time=? 
 
 WHERE deleted=0 AND name LIKE ? 
 
 OR ( name = ? AND age <> ? ) 
+```
 
 ## **9、orderBy、orderByDesc、orderByAsc**
 
@@ -242,9 +258,11 @@ public void testSelectListOrderBy() {
 }
 ```
 
+```sql
 SELECT id,name,age,email,create_time,update_time,deleted,version 
 
 FROM user WHERE deleted=0 ORDER BY id DESC 
+```
 
 ## **10、last**
 
@@ -264,9 +282,11 @@ public void testSelectListLast() {
 }
 ```
 
+```sql
 SELECT id,name,age,email,create_time,update_time,deleted,version 
 
 FROM user WHERE deleted=0 limit 1 
+```
 
 ## **11、**指定要查询的列
 
@@ -282,7 +302,9 @@ public void testSelectListColumn() {
 }
 ```
 
+```sql
 SELECT id,name,age FROM user WHERE deleted=0 
+```
 
 ## **12、set、setSql**
 
@@ -307,4 +329,6 @@ public void testUpdateSet() {
 }
 ```
 
+```sql
 UPDATE user SET age=?, update_time=?, name=?, email = '123@qq.com' WHERE deleted=0 AND name LIKE ? 
+```

@@ -36,7 +36,7 @@ https://github.com/nuxt-community/starter-template/archive/master.zip
 
 ## 3、安装ESLint
 
-将guli-admin项目下的.eslintrc.js配置文件复制到当前项目下
+将`guli-admin`项目下的.eslintrc.js配置文件复制到当前项目下
 
 ## 4、修改package.json
 
@@ -51,11 +51,11 @@ name、description、author（必须修改这里，否则项目无法安装）
 
 ## 5、修改nuxt.config.js
 
-修改title: '{{ name }}'、content: '{{escape description }}'
+修改`title: '{{ name }}'、content: '{{escape description }}'`
 
 这里的设置最后会显示在页面标题栏和meta数据中
 
-```
+```html
 head: {
     title: '谷粒学院 - Java视频|HTML5视频|前端视频|Python视频|大数据视频-自学拿1万+月薪的IT在线视频课程，谷粉力挺，老学员为你推荐',
     meta: [
@@ -124,7 +124,7 @@ npm install vue-awesome-swiper
 
 在 plugins 文件夹下新建文件 nuxt-swiper-plugin.js，内容是
 
-```
+```js
 import Vue from 'vue'
 import VueAwesomeSwiper from 'vue-awesome-swiper/dist/ssr'
 
@@ -135,7 +135,7 @@ Vue.use(VueAwesomeSwiper)
 
 将 plugins 和 css节点 复制到 module.exports节点下
 
-```
+```js
 module.exports = {
   // some nuxt config...
   plugins: [
