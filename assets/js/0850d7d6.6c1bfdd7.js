@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([[89],{7525:s=>{s.exports=JSON.parse('{"tags":[{"label":"Ai","permalink":"/mdviewer/docs/tags/ai","count":1}]}')}}]);
