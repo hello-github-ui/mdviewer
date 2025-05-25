@@ -53,11 +53,11 @@ nacos配置中心：系统配置的集中管理（编辑、存储、分发）、
 
 **a）Data ID 的完整规则格式如下**
 
-**${prefix}-${spring.profile.active}.${file-extension}**
+**`${prefix}-${spring.profile.active}.${file-extension}`**
 
 **- prefix** 默认为所属工程配置spring.application.name 的值（即：nacos-provider），也可以通过配置项 spring.cloud.nacos.config.prefix来配置。
 
-**- spring.profiles.active=dev** 即为当前环境对应的 profile。 注意：当 spring.profiles.active 为空时，对应的连接符 - 也将不存在，dataId 的拼接格式变成 ${prefix}.${file-extension}
+**- `spring.profiles.active=dev** 即为当前环境对应的 profile。 注意：当 spring.profiles.active 为空时，对应的连接符 - 也将不存在，dataId 的拼接格式变成 ${prefix}.${file-extension}`
 
 **- file-exetension** 为配置内容的数据格式，可以通过配置项 spring.cloud.nacos.config.file-extension 来配置。目前只支持 properties 和 yaml 类型。
 
