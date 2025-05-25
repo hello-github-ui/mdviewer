@@ -3113,6 +3113,52 @@ _**User**_
 
 _**Assistant**_
 
+完全正确！
+
+你的仓库名是 `mdviewer`，所以部署到 GitHub Pages 后，**项目的根路径就是 `/mdviewer/`**，即：
+
+- 访问地址为：`https://hello-github-ui.github.io/mdviewer/`
+- 所有静态资源、路由、图片等路径都需要以 `/mdviewer/` 为前缀
+
+---
+
+## 你需要做的
+
+1. **在 `docusaurus.config.js` 里设置：**
+   ```js
+   baseUrl: '/mdviewer/',
+   ```
+
+2. **在 Markdown/MDX 文件中引用图片等静态资源时，也建议用绝对路径：**
+   ```md
+   ![图片](/mdviewer/assets/2024/06/img1.png)
+   ```
+   但如果你用的是 `/assets/xxx`，Docusaurus 会自动加上 `baseUrl` 前缀，无需手动加 `/mdviewer/`。
+
+3. **本地开发时（`npm run start`）依然用 `http://localhost:3000/`，不用加 `/mdviewer/`。只有部署到 GitHub Pages 时才有这个前缀。**
+
+---
+
+## 总结
+
+- **GitHub Pages 项目根路径就是 `/mdviewer/`。**
+- **所有访问都需要加上这个前缀。**
+- **`docusaurus.config.js` 的 `baseUrl` 必须设置为 `/mdviewer/`。**
+
+---
+
+如需我帮你自动修改配置，请告诉我！
+
+---
+
+_**User**_
+
+还是报错，请检查我项目中的所有配置i。
+
+---
+
+_**Assistant**_
+
 
 
 ---

@@ -4,11 +4,11 @@
 const config = {
     title: '我的文档站',
     tagline: '个人知识库',
-    url: 'https://hello-github-ui.github.io/mdviewer/docs/intro', // 修改为你的GitHub Pages地址
+    url: 'https://hello-github-ui.github.io', // 修改为你的GitHub Pages地址
     baseUrl: '/mdviewer/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
-    favicon: '/mdviewer/system/logo.png',
+    favicon: '/system/logo.png',
     organizationName: 'hello-github-ui', // GitHub 用户名
     projectName: 'mdviewer', // 仓库名
     presets: [
