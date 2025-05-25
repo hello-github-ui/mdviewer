@@ -1,4 +1,5 @@
 {
+  "unversionedId": "AI/AI",
   "id": "AI/AI",
   "title": "OpenManus-本地部署",
   "description": "短短 3 天，39K Stars，Manus 开源版 OpenManus 彻底爆火！完全免费，无需等待，无需任何费用，无需APIKEY，直接对接我们本地的开源大模型！通过调用本地的 Ollama ，不要太香！",
@@ -7,16 +8,13 @@
   "slug": "/AI/AI",
   "permalink": "/mdviewer/docs/AI/AI",
   "draft": false,
-  "unlisted": false,
   "editUrl": "https://github.com/hello-github-ui/mdviewer/edit/main/docs/AI/OpenManus-本地部署.md",
   "tags": [
     {
-      "inline": true,
       "label": "Ai",
       "permalink": "/mdviewer/docs/tags/ai"
     },
     {
-      "inline": true,
       "label": "人工智能",
       "permalink": "/mdviewer/docs/tags/人工智能"
     }

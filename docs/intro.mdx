@@ -2,6 +2,8 @@
 id: intro
 title: 关于本站
 ---
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 
 # 欢迎来到我的个人文档站
 
@@ -13,19 +15,15 @@ title: 关于本站
 
 如需添加新文档，只需将 Markdown 文件放入 docs 目录即可。
 
-
-import React from 'react';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
-{/* 诗词美化展示 */}
+<!-- 下面是你的 JSX 内容 -->
 <div
-    style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "stretch",
-        gap: "2.5em",
-        margin: "3em 0 2em 0"
-    }}
+        style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "stretch",
+            gap: "2.5em",
+            margin: "3em 0 2em 0"
+        }}
 >
     {/* 头像 */}
     <div style={{
@@ -34,18 +32,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
         width: "30%"
     }}>
         <img
-            src={useBaseUrl('system/avatar.jpg')}
-            alt="头像"
-            style={{
-                height: "100%",
-                width: "auto",
-                borderRadius: "16px",
-                boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
-                background: "#fff",
-                objectFit: "cover",
-                display: "block",
-                margin: "0 auto"
-            }}
+                src={useBaseUrl('system/avatar.jpg')}
+                alt="头像"
+                style={{
+                    height: "100%",
+                    width: "auto",
+                    borderRadius: "16px",
+                    boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                    background: "#fff",
+                    objectFit: "cover",
+                    display: "block",
+                    margin: "0 auto"
+                }}
         />
     </div>
     {/* 诗词卡片 */}
@@ -74,7 +72,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
     </div>
 </div>
 
-{/* 社交链接 */}
 <div style={{
     display: "flex",
     justifyContent: "center",

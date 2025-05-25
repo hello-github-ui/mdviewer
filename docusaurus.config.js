@@ -26,6 +26,17 @@ const config = {
             }),
         ],
     ],
+    plugins: [
+        [
+            require.resolve('@cmfcmf/docusaurus-search-local'),
+            {
+                indexDocs: true,
+                indexBlog: false,
+                indexPages: true,
+                language: ["zh", "en"],
+            },
+        ],
+    ],
 };
 
 module.exports = config; 
