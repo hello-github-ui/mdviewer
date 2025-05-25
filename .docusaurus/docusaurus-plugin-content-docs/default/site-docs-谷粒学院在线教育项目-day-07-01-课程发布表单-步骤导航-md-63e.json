@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day07/课程发布表单-步骤导航",
+  "title": "一、需求",
+  "description": "img",
+  "source": "@site/docs/谷粒学院在线教育项目/day07/01-课程发布表单-步骤导航.md",
+  "sourceDirName": "谷粒学院在线教育项目/day07",
+  "slug": "/谷粒学院在线教育项目/day07/课程发布表单-步骤导航",
+  "permalink": "/docs/谷粒学院在线教育项目/day07/课程发布表单-步骤导航",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day07/01-课程发布表单-步骤导航.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "随堂笔记",
+    "permalink": "/docs/谷粒学院在线教育项目/day06/随堂笔记"
+  },
+  "next": {
+    "title": "一、后台api",
+    "permalink": "/docs/谷粒学院在线教育项目/day07/编辑课程基本信息"
+  }
+}

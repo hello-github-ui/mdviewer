@@ -1,0 +1,24 @@
+{
+  "id": "个人博客/Ubuntu修改静态IP",
+  "title": "Ubuntu修改静态IP",
+  "description": "Ubuntu 修改静态IP的方式与我们常用的‘红帽系linux’（比如centos）有很大区别，因此记录一下。",
+  "source": "@site/docs/个人博客/Ubuntu修改静态IP.md",
+  "sourceDirName": "个人博客",
+  "slug": "/个人博客/Ubuntu修改静态IP",
+  "permalink": "/docs/个人博客/Ubuntu修改静态IP",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/Ubuntu修改静态IP.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "<font color=#FF8C00>redis是什么</font>",
+    "permalink": "/docs/个人博客/Ubuntu-安装-Redis"
+  },
+  "next": {
+    "title": "VMWare折腾系列",
+    "permalink": "/docs/个人博客/VMWare折腾系列"
+  }
+}

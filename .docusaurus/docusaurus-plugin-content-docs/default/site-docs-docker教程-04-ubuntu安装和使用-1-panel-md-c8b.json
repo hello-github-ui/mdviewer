@@ -1,0 +1,25 @@
+{
+  "id": "Docker教程/Ubuntu安装和使用1Panel",
+  "title": "Ubuntu离线安装Docker",
+  "description": "一、离线包制作",
+  "source": "@site/docs/Docker教程/04-Ubuntu安装和使用1Panel.md",
+  "sourceDirName": "Docker教程",
+  "slug": "/Docker教程/Ubuntu安装和使用1Panel",
+  "permalink": "/docs/Docker教程/Ubuntu安装和使用1Panel",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Docker教程/04-Ubuntu安装和使用1Panel.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "AlmaLinux8安装NVM",
+    "permalink": "/docs/Docker教程/AlmaLinux8安装NVM"
+  },
+  "next": {
+    "title": "Ubuntu部署飞讯应用",
+    "permalink": "/docs/Docker教程/Ubuntu部署飞讯应用"
+  }
+}

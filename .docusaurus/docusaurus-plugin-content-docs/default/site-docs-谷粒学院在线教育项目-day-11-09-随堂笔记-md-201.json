@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day11/随堂笔记",
+  "title": "随堂笔记",
+  "description": "1",
+  "source": "@site/docs/谷粒学院在线教育项目/day11/09-随堂笔记.md",
+  "sourceDirName": "谷粒学院在线教育项目/day11",
+  "slug": "/谷粒学院在线教育项目/day11/随堂笔记",
+  "permalink": "/docs/谷粒学院在线教育项目/day11/随堂笔记",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day11/09-随堂笔记.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 9,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、Redis介绍",
+    "permalink": "/docs/谷粒学院在线教育项目/day11/首页数据添加Redis缓存"
+  },
+  "next": {
+    "title": "1.  用户登录业务介绍",
+    "permalink": "/docs/谷粒学院在线教育项目/day12/登录业务介绍"
+  }
+}

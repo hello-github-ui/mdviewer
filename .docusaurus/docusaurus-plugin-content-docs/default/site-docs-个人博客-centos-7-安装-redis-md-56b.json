@@ -1,0 +1,24 @@
+{
+  "id": "个人博客/Centos7安装Redis",
+  "title": "1. 下载",
+  "description": "从官网下载redis压缩包到本地",
+  "source": "@site/docs/个人博客/Centos7安装Redis.md",
+  "sourceDirName": "个人博客",
+  "slug": "/个人博客/Centos7安装Redis",
+  "permalink": "/docs/个人博客/Centos7安装Redis",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/Centos7安装Redis.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "上传安装包到Linux",
+    "permalink": "/docs/个人博客/Centos7安装MySQL8-x"
+  },
+  "next": {
+    "title": "Difference-between-FileReader-vs-FileInputStream-in-Java",
+    "permalink": "/docs/个人博客/Difference-between-FileReader-vs-FileInputStream-in-Java"
+  }
+}

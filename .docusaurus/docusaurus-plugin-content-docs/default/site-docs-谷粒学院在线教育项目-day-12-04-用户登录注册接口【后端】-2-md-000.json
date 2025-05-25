@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day12/用户登录注册接口【后端】_2",
+  "title": "一、新建用户微服务",
+  "description": "1、在service模块下创建子模块service-ucenter",
+  "source": "@site/docs/谷粒学院在线教育项目/day12/04-用户登录注册接口【后端】_2.md",
+  "sourceDirName": "谷粒学院在线教育项目/day12",
+  "slug": "/谷粒学院在线教育项目/day12/用户登录注册接口【后端】_2",
+  "permalink": "/docs/谷粒学院在线教育项目/day12/用户登录注册接口【后端】_2",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day12/04-用户登录注册接口【后端】_2.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、新建短信微服务",
+    "permalink": "/docs/谷粒学院在线教育项目/day12/整合阿里云短信服务"
+  },
+  "next": {
+    "title": "一、在nuxt环境中安装插件",
+    "permalink": "/docs/谷粒学院在线教育项目/day12/用户登录注册【前端】"
+  }
+}

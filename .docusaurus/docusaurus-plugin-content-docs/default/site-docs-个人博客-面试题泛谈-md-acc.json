@@ -1,0 +1,24 @@
+{
+  "id": "个人博客/面试题泛谈",
+  "title": "面试题泛谈",
+  "description": "在程序员的1-3年阶段，我们需要不断努力的学习并积累知识点，那么每个阶段都需要具备什么条件呢？请看下面：",
+  "source": "@site/docs/个人博客/面试题泛谈.md",
+  "sourceDirName": "个人博客",
+  "slug": "/个人博客/面试题泛谈",
+  "permalink": "/docs/个人博客/面试题泛谈",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/面试题泛谈.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "面试专题一",
+    "permalink": "/docs/个人博客/面试专题一"
+  },
+  "next": {
+    "title": "收藏的网站",
+    "permalink": "/docs/书签/收藏的网站"
+  }
+}

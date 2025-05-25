@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day04/vue-element-admin",
+  "title": "**一、vue-element-admin**",
+  "description": "1、简介",
+  "source": "@site/docs/谷粒学院在线教育项目/day04/05-vue-element-admin.md",
+  "sourceDirName": "谷粒学院在线教育项目/day04",
+  "slug": "/谷粒学院在线教育项目/day04/vue-element-admin",
+  "permalink": "/docs/谷粒学院在线教育项目/day04/vue-element-admin",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day04/05-vue-element-admin.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、什么是Webpack",
+    "permalink": "/docs/谷粒学院在线教育项目/day04/Webpack"
+  },
+  "next": {
+    "title": "**一、项目的创建和基本配置**",
+    "permalink": "/docs/谷粒学院在线教育项目/day04/后台系统前端项目创建"
+  }
+}

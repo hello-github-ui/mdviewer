@@ -1,0 +1,25 @@
+{
+  "id": "Python基础/异常模块包/模块",
+  "title": "模块",
+  "description": "模块",
+  "source": "@site/docs/Python基础/11-异常模块包/03-模块.md",
+  "sourceDirName": "Python基础/11-异常模块包",
+  "slug": "/Python基础/异常模块包/模块",
+  "permalink": "/docs/Python基础/异常模块包/模块",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Python基础/11-异常模块包/03-模块.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "异常",
+    "permalink": "/docs/Python基础/异常模块包/异常"
+  },
+  "next": {
+    "title": "闭包",
+    "permalink": "/docs/Python基础/闭包和装饰器/闭包"
+  }
+}

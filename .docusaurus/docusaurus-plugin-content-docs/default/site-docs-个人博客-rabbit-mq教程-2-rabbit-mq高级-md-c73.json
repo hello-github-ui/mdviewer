@@ -1,0 +1,25 @@
+{
+  "id": "个人博客/RabbitMQ教程/RabbitMQ高级",
+  "title": "RabbitMQ高级",
+  "description": "在昨天的练习作业中，我们改造了余额支付功能，在支付成功后利用RabbitMQ通知交易服务，更新业务订单状态为已支付。",
+  "source": "@site/docs/个人博客/RabbitMQ教程/2-RabbitMQ高级.md",
+  "sourceDirName": "个人博客/RabbitMQ教程",
+  "slug": "/个人博客/RabbitMQ教程/RabbitMQ高级",
+  "permalink": "/docs/个人博客/RabbitMQ教程/RabbitMQ高级",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/RabbitMQ教程/2-RabbitMQ高级.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "RabbitMQ基础",
+    "permalink": "/docs/个人博客/RabbitMQ教程/RabbitMQ基础"
+  },
+  "next": {
+    "title": "Redis主从哨兵配置",
+    "permalink": "/docs/个人博客/Redis主从哨兵配置"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "个人博客/使用python的you-get下载视频",
+  "title": "You-get 介绍",
+  "description": "You-get是GitHub上的一个项目，也可以说是一个命令行程序，帮助大家下载大多主流网站上的视频、图片及音频。 支持的网站非常多，我们可以先来看一部分：",
+  "source": "@site/docs/个人博客/使用python的you-get下载视频.md",
+  "sourceDirName": "个人博客",
+  "slug": "/个人博客/使用python的you-get下载视频",
+  "permalink": "/docs/个人博客/使用python的you-get下载视频",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/使用python的you-get下载视频.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "二零一九年快要过去了",
+    "permalink": "/docs/个人博客/二零一九年快要过去了"
+  },
+  "next": {
+    "title": "前言",
+    "permalink": "/docs/个人博客/全局异常处理"
+  }
+}

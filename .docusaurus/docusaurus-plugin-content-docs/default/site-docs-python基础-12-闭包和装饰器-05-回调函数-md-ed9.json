@@ -1,0 +1,25 @@
+{
+  "id": "Python基础/闭包和装饰器/回调函数",
+  "title": "回调函数",
+  "description": "1.什么是回调函数？",
+  "source": "@site/docs/Python基础/12-闭包和装饰器/05-回调函数.md",
+  "sourceDirName": "Python基础/12-闭包和装饰器",
+  "slug": "/Python基础/闭包和装饰器/回调函数",
+  "permalink": "/docs/Python基础/闭包和装饰器/回调函数",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Python基础/12-闭包和装饰器/05-回调函数.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "装饰器",
+    "permalink": "/docs/Python基础/闭包和装饰器/装饰器"
+  },
+  "next": {
+    "title": "递归函数",
+    "permalink": "/docs/Python基础/闭包和装饰器/递归函数"
+  }
+}

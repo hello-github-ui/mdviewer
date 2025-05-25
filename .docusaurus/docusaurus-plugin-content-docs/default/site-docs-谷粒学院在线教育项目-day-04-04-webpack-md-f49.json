@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day04/Webpack",
+  "title": "一、什么是Webpack",
+  "description": "Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。",
+  "source": "@site/docs/谷粒学院在线教育项目/day04/04-Webpack.md",
+  "sourceDirName": "谷粒学院在线教育项目/day04",
+  "slug": "/谷粒学院在线教育项目/day04/Webpack",
+  "permalink": "/docs/谷粒学院在线教育项目/day04/Webpack",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day04/04-Webpack.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、模块化简介",
+    "permalink": "/docs/谷粒学院在线教育项目/day04/模块化"
+  },
+  "next": {
+    "title": "**一、vue-element-admin**",
+    "permalink": "/docs/谷粒学院在线教育项目/day04/vue-element-admin"
+  }
+}

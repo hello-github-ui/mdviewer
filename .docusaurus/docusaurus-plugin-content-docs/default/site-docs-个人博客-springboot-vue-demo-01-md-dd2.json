@@ -1,0 +1,24 @@
+{
+  "id": "个人博客/springboot-vue-demo-01",
+  "title": "新建Vue3前端项目",
+  "description": "先删除之前的vue2版本",
+  "source": "@site/docs/个人博客/springboot-vue-demo-01.md",
+  "sourceDirName": "个人博客",
+  "slug": "/个人博客/springboot-vue-demo-01",
+  "permalink": "/docs/个人博客/springboot-vue-demo-01",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/springboot-vue-demo-01.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Windows安装WSL子系统",
+    "permalink": "/docs/个人博客/Windows安装WSL子系统"
+  },
+  "next": {
+    "title": "Vue + Element UI",
+    "permalink": "/docs/个人博客/springboot-vue-demo-02"
+  }
+}

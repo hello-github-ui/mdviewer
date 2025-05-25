@@ -1,169 +1,107 @@
-# 说明
+# 我的个人文档站
 
-本项目是将本地 `markdown` 文件通过 `vite3`、`vue2`、`github action` `github pages` 静态部署在 `github` 上的一个 Demo。
+本项目基于 [Docusaurus](https://docusaurus.io/) 搭建，支持系列文档、标签、静态资源、自动部署等功能。
 
-# 开始
+---
 
-## 新建仓库
+## 功能特性
+- 支持 Markdown 文档自动渲染
+- 支持系列文档（如 Python 系列）和单篇文章
+- 支持标签检索
+- 支持图片、视频等静态资源引用
+- 支持分页、模糊搜索
+- 支持 GitHub Actions 自动部署到 GitHub Pages
 
-![image-20240711144353151](./assets/image-20240711144353151.png)
+---
 
-## 创建分支
+## 目录结构
 
-在 `github` 上建好仓库后，将代码 `clone` 到本地，然后你开发好相关代码，将代码第一次先推送到 `master` 分支上。
-
-![image-20240711150019477](./assets/image-20240711150019477.png)
-
-然后点击如下地方，在 `github` 上进行创建 `gh-pages` 分支的操作：
-
-![image-20240711150152412](./assets/image-20240711150152412.png)
-
-![image-20240711150243000](./assets/image-20240711150243000.png)
-
-这样 `gh-pages` 分支就创建好了。
-
-## 编写 Action
-
-进入项目目录，手动创建 `.github\workflows` 目录，并在其下新建一个 `autobuild.yml` 文件，写入如下内容：
-
-![image-20240711150541754](./assets/image-20240711150541754.png)
-
-```yaml
-name: Deploy Pages
-
-on:
-  push:
-    branches:
-      - master
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout master branch
-        uses: actions/checkout@v4
-        with:
-          ref: master
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build # 这会生成 docs 目录
-
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Clear old documentation
-        working-directory: gh-pages
-        run: |
-          find . -maxdepth 1 ! -name 'CNAME' ! -name '.git' ! -name '.' ! -name '..' -exec rm -rf {} +
-
-      - name: Copy docs to gh-pages directory
-        run: cp -r docs/* gh-pages/
-
-      - name: Commit and push to gh-pages
-        working-directory: gh-pages
-        run: |
-          git config user.email "util.you.come@github.com"
-          git config user.name "hello-github-ui"
-          git add .
-          git commit -m "Update documentation" -a || echo "No changes to commit"
-          git push --force origin gh-pages
+```
+my-docs/
+  docs/                # 存放所有 Markdown 文档
+    python-series/
+      intro.md
+    single-article.md
+    intro.md           # 文档首页
+  static/
+    assets/            # 存放图片和视频
+      2024/
+        06/
+          img1.png
+  src/
+    css/
+      custom.css       # 自定义样式
+    pages/
+      index.js         # 首页跳转到文档首页
+  .github/
+    workflows/
+      deploy.yml       # GitHub Actions 配置
+  docusaurus.config.js # Docusaurus 配置
+  sidebars.js          # 侧边栏配置
+  package.json
+  README.md
 ```
 
-## 设置仓库
+---
 
-请按照下图进行配置：
+## 快速开始
 
-![image-20240711150813093](./assets/image-20240711150813093.png)
+1. **安装依赖**
+   ```bash
+   npm install
+   ```
+2. **本地启动**（不会自动打开浏览器）
+   ```bash
+   npm run start
+   ```
+   访问 [http://localhost:3000/](http://localhost:3000/) 即可。
 
-配置 `Actions`，允许 `Workflow` 进行读写操作：
+3. **添加/修改文档**
+   - 新建 Markdown 文件放入 `docs/` 目录。
+   - 系列文档可放入子文件夹，如 `docs/python-series/`。
+   - 首页内容为 `docs/intro.md`。
+   - 单篇文章直接放在 `docs/` 下。
+   - 每篇文档建议加上 Frontmatter，例如：
+     ```markdown
+     ---
+     id: python-intro
+     title: Python 入门
+     tags: [Python, 基础]
+     ---
+     ```
 
-![image-20240711152411674](./assets/image-20240711152411674.png)
+4. **添加图片/视频等静态资源**
+   - 放到 `static/assets/YYYY/MM/` 目录下。
+   - Markdown 中引用路径如：`/assets/2024/06/img1.png`
 
-## 部署
+5. **首页自动跳转到文档首页**
+   - `src/pages/index.js` 内容如下：
+     ```js
+     import React from 'react';
+     import { Redirect } from '@docusaurus/router';
+     export default function Home() {
+       return <Redirect to="/docs/intro" />;
+     }
+     ```
 
-1、本地先执行 `npm install`安装一下依赖，
+6. **GitHub Actions 自动部署**
+   - `.github/workflows/deploy.yml` 已配置好自动部署到 GitHub Pages。
+   - 推送到 GitHub 后会自动构建并发布。
 
-2、再执行 `npm run build` 构建一下 `docs` 目录
+---
 
-之后再次提交本地代码即可完成自动部署到 `github pages`。
+## 常见问题
 
-![image-20240711152608501](./assets/image-20240711152608501.png)
+- **首页 404 或 Page Not Found？**
+  - 请确保有 `docs/intro.md` 文件，且 `src/pages/index.js` 跳转到 `/docs/intro`。
+- **图片无法显示？**
+  - 请将图片放在 `static/assets/` 下，引用路径以 `/assets/` 开头。
+- **不想自动打开浏览器？**
+  - `package.json` 的 `start` 脚本加 `--no-open`。
 
-![image-20240711152624454](./assets/image-20240711152624454.png)
+---
 
+## 参考
+- [Docusaurus 官方文档](https://docusaurus.io/)
 
-
-# 添加文档
-
-## 指定位置
-
-后续在添加 `markdown` 文档时，请将文档放入如下地方：
-
-![image-20240711153014455](./assets/image-20240711153014455.png)
-
-方式一二都可以用，目前只支持 `最多两层目录`的嵌套，因此请确保你的 `md` 文件至多嵌套两层目录（多了会报错）
-
-## 更新 files.json
-
-在 `python` 中执行如下代码，使用生成的 `files.json` 覆盖掉 `/public/files.json` 的内容：
-
-```python
-import os
-import json
-
-def generate_file_structure(root_dir):
-    def traverse_dir(directory, parent_path=""):
-        folder_structure = []
-        for item in sorted(os.listdir(directory)):
-            item_path = os.path.join(directory, item)
-            relative_path = os.path.join(parent_path, item)
-
-            # 跳过 "assets" 和含有“随堂笔记”字样的目录
-            if item == "assets" or "随堂笔记" in item:
-                continue
-
-            if os.path.isdir(item_path):
-                children = traverse_dir(item_path, relative_path)
-                if children:  # 仅在有子项时添加目录
-                    folder_structure.append({
-                        "name": item,
-                        "path": relative_path.replace("\\", "/"),
-                        "children": children,
-                        "open": False
-                    })
-            elif item.endswith(".md"):
-                folder_structure.append({
-                    "name": item,
-                    "path": relative_path.replace("\\", "/")
-                })
-        return folder_structure
-
-    structure = traverse_dir(root_dir)
-    return structure
-
-def save_to_json(data, filename):
-    with open(filename, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
-
-root_directory = "E:\\code\\mdviewer\\public"  # 请根据实际情况修改目录
-output_file = "files.json"
-
-file_structure = generate_file_structure(root_directory)
-save_to_json(file_structure, output_file)
-print(f"File structure saved to {output_file}")
-```
-
-## 更新
-
-提交代码即可自动更新。
+如有更多需求或问题，欢迎随时提问！ 

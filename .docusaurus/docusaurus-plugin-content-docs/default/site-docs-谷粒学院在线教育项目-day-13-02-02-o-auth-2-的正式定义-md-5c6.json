@@ -1,0 +1,24 @@
+{
+  "id": "谷粒学院在线教育项目/day13/02-02-OAuth2的正式定义",
+  "title": "一、什么是OAuth2",
+  "description": "1、OAuth2正式定义",
+  "source": "@site/docs/谷粒学院在线教育项目/day13/02-02-OAuth2的正式定义.md",
+  "sourceDirName": "谷粒学院在线教育项目/day13",
+  "slug": "/谷粒学院在线教育项目/day13/02-02-OAuth2的正式定义",
+  "permalink": "/docs/谷粒学院在线教育项目/day13/02-02-OAuth2的正式定义",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day13/02-02-OAuth2的正式定义.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "随堂笔记",
+    "permalink": "/docs/谷粒学院在线教育项目/day13/随堂笔记"
+  },
+  "next": {
+    "title": "一、列表页面",
+    "permalink": "/docs/谷粒学院在线教育项目/day14/名师页面静态效果整合"
+  }
+}

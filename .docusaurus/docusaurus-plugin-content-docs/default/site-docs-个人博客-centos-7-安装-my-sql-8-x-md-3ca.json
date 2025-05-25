@@ -1,0 +1,24 @@
+{
+  "id": "个人博客/Centos7安装MySQL8-x",
+  "title": "上传安装包到Linux",
+  "description": "下载 MySQL server 包：链接 提取码: 4aqx",
+  "source": "@site/docs/个人博客/Centos7安装MySQL8-x.md",
+  "sourceDirName": "个人博客",
+  "slug": "/个人博客/Centos7安装MySQL8-x",
+  "permalink": "/docs/个人博客/Centos7安装MySQL8-x",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/Centos7安装MySQL8-x.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "<font color=#FF8C00>div中文字居中</font>",
+    "permalink": "/docs/个人博客/CSS基本样式设置"
+  },
+  "next": {
+    "title": "1. 下载",
+    "permalink": "/docs/个人博客/Centos7安装Redis"
+  }
+}

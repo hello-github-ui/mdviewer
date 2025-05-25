@@ -1,0 +1,33 @@
+{
+  "id": "AI/AI",
+  "title": "OpenManus-本地部署",
+  "description": "短短 3 天，39K Stars，Manus 开源版 OpenManus 彻底爆火！完全免费，无需等待，无需任何费用，无需APIKEY，直接对接我们本地的开源大模型！通过调用本地的 Ollama ，不要太香！",
+  "source": "@site/docs/AI/OpenManus-本地部署.md",
+  "sourceDirName": "AI",
+  "slug": "/AI/AI",
+  "permalink": "/docs/AI/AI",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/AI/OpenManus-本地部署.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "Ai",
+      "permalink": "/docs/tags/ai"
+    }
+  ],
+  "version": "current",
+  "frontMatter": {
+    "id": "AI",
+    "title": "OpenManus-本地部署",
+    "sidebar_label": "Ai",
+    "tags": [
+      "Ai"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "介绍",
+    "permalink": "/docs/intro"
+  }
+}

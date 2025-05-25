@@ -1,0 +1,25 @@
+{
+  "id": "Python基础/多线程/多线程",
+  "title": "多线程",
+  "description": "Python 的多线程在处理 I/O 密集型任务时非常有用。下面我会系统地讲解 Python 多线程地核心知识点，并重点深入解释你提到地几个关键问题（守护线程、join()等）",
+  "source": "@site/docs/Python基础/16-多线程/01-多线程.md",
+  "sourceDirName": "Python基础/16-多线程",
+  "slug": "/Python基础/多线程/多线程",
+  "permalink": "/docs/Python基础/多线程/多线程",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Python基础/16-多线程/01-多线程.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "生成器",
+    "permalink": "/docs/Python基础/迭代器和生成器/生成器"
+  },
+  "next": {
+    "title": "介绍",
+    "permalink": "/docs/intro"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day06/后端集成OSS",
+  "title": "一、新建云存储微服务",
+  "description": "1、在service模块下创建子模块service-oss",
+  "source": "@site/docs/谷粒学院在线教育项目/day06/02-后端集成OSS.md",
+  "sourceDirName": "谷粒学院在线教育项目/day06",
+  "slug": "/谷粒学院在线教育项目/day06/后端集成OSS",
+  "permalink": "/docs/谷粒学院在线教育项目/day06/后端集成OSS",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day06/02-后端集成OSS.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "**一、****对象存储OSS**",
+    "permalink": "/docs/谷粒学院在线教育项目/day06/阿里云存储OSS"
+  },
+  "next": {
+    "title": "前端整合上传组件",
+    "permalink": "/docs/谷粒学院在线教育项目/day06/前端整合上传组件"
+  }
+}

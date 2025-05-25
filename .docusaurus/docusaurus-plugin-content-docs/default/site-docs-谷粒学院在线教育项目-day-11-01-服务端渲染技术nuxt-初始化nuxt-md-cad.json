@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day11/服务端渲染技术NUXT-初始化NUXT",
+  "title": "一、服务端渲染技术NUXT",
+  "description": "1、什么是服务端渲染",
+  "source": "@site/docs/谷粒学院在线教育项目/day11/01-服务端渲染技术NUXT-初始化NUXT.md",
+  "sourceDirName": "谷粒学院在线教育项目/day11",
+  "slug": "/谷粒学院在线教育项目/day11/服务端渲染技术NUXT-初始化NUXT",
+  "permalink": "/docs/谷粒学院在线教育项目/day11/服务端渲染技术NUXT-初始化NUXT",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day11/01-服务端渲染技术NUXT-初始化NUXT.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "随堂笔记",
+    "permalink": "/docs/谷粒学院在线教育项目/day10/随堂笔记"
+  },
+  "next": {
+    "title": "一、页面布局",
+    "permalink": "/docs/谷粒学院在线教育项目/day11/首页静态效果整合和NUXT路由"
+  }
+}

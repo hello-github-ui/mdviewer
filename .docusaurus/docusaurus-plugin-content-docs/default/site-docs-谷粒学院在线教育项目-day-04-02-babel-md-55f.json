@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day04/Babel",
+  "title": "一、简介",
+  "description": "Babel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从而在现有环境执行执行。",
+  "source": "@site/docs/谷粒学院在线教育项目/day04/02-Babel.md",
+  "sourceDirName": "谷粒学院在线教育项目/day04",
+  "slug": "/谷粒学院在线教育项目/day04/Babel",
+  "permalink": "/docs/谷粒学院在线教育项目/day04/Babel",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day04/02-Babel.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、简介",
+    "permalink": "/docs/谷粒学院在线教育项目/day04/NPM包管理器"
+  },
+  "next": {
+    "title": "一、模块化简介",
+    "permalink": "/docs/谷粒学院在线教育项目/day04/模块化"
+  }
+}

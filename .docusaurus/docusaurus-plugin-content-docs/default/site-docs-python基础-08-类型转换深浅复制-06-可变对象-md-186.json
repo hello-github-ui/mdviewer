@@ -1,0 +1,25 @@
+{
+  "id": "Python基础/类型转换深浅复制/可变对象",
+  "title": "可变对象",
+  "description": "[1, 3]  2685697473280",
+  "source": "@site/docs/Python基础/08-类型转换深浅复制/06-可变对象.md",
+  "sourceDirName": "Python基础/08-类型转换深浅复制",
+  "slug": "/Python基础/类型转换深浅复制/可变对象",
+  "permalink": "/docs/Python基础/类型转换深浅复制/可变对象",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Python基础/08-类型转换深浅复制/06-可变对象.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "不可变对象",
+    "permalink": "/docs/Python基础/类型转换深浅复制/不可变对象"
+  },
+  "next": {
+    "title": "函数的参数",
+    "permalink": "/docs/Python基础/函数基础/函数的参数"
+  }
+}

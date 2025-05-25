@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day14/整合阿里云视频播放器",
+  "title": "**一、后端获取播放凭证**",
+  "description": "1、VideoController",
+  "source": "@site/docs/谷粒学院在线教育项目/day14/08-整合阿里云视频播放器.md",
+  "sourceDirName": "谷粒学院在线教育项目/day14",
+  "slug": "/谷粒学院在线教育项目/day14/整合阿里云视频播放器",
+  "permalink": "/docs/谷粒学院在线教育项目/day14/整合阿里云视频播放器",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day14/08-整合阿里云视频播放器.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 8,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、获取播放地址播放",
+    "permalink": "/docs/谷粒学院在线教育项目/day14/视频播放测试"
+  },
+  "next": {
+    "title": "一、数据库设计",
+    "permalink": "/docs/谷粒学院在线教育项目/day14/课程评论功能"
+  }
+}

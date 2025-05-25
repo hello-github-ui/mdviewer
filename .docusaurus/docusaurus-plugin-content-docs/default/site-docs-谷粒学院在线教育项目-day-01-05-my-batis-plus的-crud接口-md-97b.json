@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day01/MyBatisPlus的CRUD接口",
+  "title": "**一、insert**",
+  "description": "1、插入操作",
+  "source": "@site/docs/谷粒学院在线教育项目/day01/05-MyBatisPlus的CRUD接口.md",
+  "sourceDirName": "谷粒学院在线教育项目/day01",
+  "slug": "/谷粒学院在线教育项目/day01/MyBatisPlus的CRUD接口",
+  "permalink": "/docs/谷粒学院在线教育项目/day01/MyBatisPlus的CRUD接口",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day01/05-MyBatisPlus的CRUD接口.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "MyBatisPlus入门",
+    "permalink": "/docs/谷粒学院在线教育项目/day01/MyBatisPlus入门"
+  },
+  "next": {
+    "title": "**一、wapper介绍**",
+    "permalink": "/docs/谷粒学院在线教育项目/day01/MyBatisPlus条件构造器"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "个人博客/Spring AOP学习（二）",
+  "title": "Spring AOP学习（二）",
+  "description": "前言",
+  "source": "@site/docs/个人博客/Spring AOP学习（二）.md",
+  "sourceDirName": "个人博客",
+  "slug": "/个人博客/Spring AOP学习（二）",
+  "permalink": "/docs/个人博客/Spring AOP学习（二）",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/Spring AOP学习（二）.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Spring AOP学习（一）",
+    "permalink": "/docs/个人博客/Spring AOP学习（一）"
+  },
+  "next": {
+    "title": "SpringBoot之Logback日志文件配置",
+    "permalink": "/docs/个人博客/SpringBoot之Logback日志文件配置"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day02/统一日志处理",
+  "title": "一、日志",
+  "description": "1、配置日志级别",
+  "source": "@site/docs/谷粒学院在线教育项目/day02/10-统一日志处理.md",
+  "sourceDirName": "谷粒学院在线教育项目/day02",
+  "slug": "/谷粒学院在线教育项目/day02/统一日志处理",
+  "permalink": "/docs/谷粒学院在线教育项目/day02/统一日志处理",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day02/10-统一日志处理.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 10,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、什么是统一异常处理",
+    "permalink": "/docs/谷粒学院在线教育项目/day02/统一异常处理"
+  },
+  "next": {
+    "title": "随堂笔记",
+    "permalink": "/docs/谷粒学院在线教育项目/day02/随堂笔记"
+  }
+}

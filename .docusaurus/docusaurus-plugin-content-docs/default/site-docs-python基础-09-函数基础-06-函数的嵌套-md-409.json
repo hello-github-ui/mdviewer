@@ -1,0 +1,25 @@
+{
+  "id": "Python基础/函数基础/函数的嵌套",
+  "title": "函数的嵌套",
+  "description": "在一个函数内部调用另一个函数，即为嵌套。",
+  "source": "@site/docs/Python基础/09-函数基础/06-函数的嵌套.md",
+  "sourceDirName": "Python基础/09-函数基础",
+  "slug": "/Python基础/函数基础/函数的嵌套",
+  "permalink": "/docs/Python基础/函数基础/函数的嵌套",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Python基础/09-函数基础/06-函数的嵌套.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "函数的参数",
+    "permalink": "/docs/Python基础/函数基础/函数的参数"
+  },
+  "next": {
+    "title": "作用域",
+    "permalink": "/docs/Python基础/函数基础/作用域"
+  }
+}

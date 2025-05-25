@@ -1,0 +1,25 @@
+{
+  "id": "Docker教程/使用docker-desktop安装AlmaLinux8教程",
+  "title": "使用docker-desktop安装AlmaLinux8教程",
+  "description": "前提：已经在 windows 中安装好 docker-desktop 软件。",
+  "source": "@site/docs/Docker教程/01-使用docker-desktop安装AlmaLinux8教程.md",
+  "sourceDirName": "Docker教程",
+  "slug": "/Docker教程/使用docker-desktop安装AlmaLinux8教程",
+  "permalink": "/docs/Docker教程/使用docker-desktop安装AlmaLinux8教程",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Docker教程/01-使用docker-desktop安装AlmaLinux8教程.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Ai",
+    "permalink": "/docs/AI/AI"
+  },
+  "next": {
+    "title": "AlmaLinux8安装Python+Java",
+    "permalink": "/docs/Docker教程/AlmaLinux8安装Python+Java"
+  }
+}

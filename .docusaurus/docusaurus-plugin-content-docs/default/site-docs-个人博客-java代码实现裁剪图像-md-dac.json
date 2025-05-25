@@ -1,0 +1,24 @@
+{
+  "id": "个人博客/Java代码实现裁剪图像",
+  "title": "Java代码实现裁剪图像",
+  "description": "前言",
+  "source": "@site/docs/个人博客/Java代码实现裁剪图像.md",
+  "sourceDirName": "个人博客",
+  "slug": "/个人博客/Java代码实现裁剪图像",
+  "permalink": "/docs/个人博客/Java代码实现裁剪图像",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/Java代码实现裁剪图像.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Java中使用HSSFWorkbook生成excel",
+    "permalink": "/docs/个人博客/Java中使用HSSFWorkbook生成excel"
+  },
+  "next": {
+    "title": "Java代码执行顺序",
+    "permalink": "/docs/个人博客/Java代码执行顺序"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day08/课程大纲列表显示",
+  "title": "一、后端实现",
+  "description": "1、定义vo",
+  "source": "@site/docs/谷粒学院在线教育项目/day08/01-课程大纲列表显示.md",
+  "sourceDirName": "谷粒学院在线教育项目/day08",
+  "slug": "/谷粒学院在线教育项目/day08/课程大纲列表显示",
+  "permalink": "/docs/谷粒学院在线教育项目/day08/课程大纲列表显示",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day08/01-课程大纲列表显示.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "随堂笔记",
+    "permalink": "/docs/谷粒学院在线教育项目/day07/随堂笔记"
+  },
+  "next": {
+    "title": "一、新增章节",
+    "permalink": "/docs/谷粒学院在线教育项目/day08/章节管理后端接口开发"
+  }
+}

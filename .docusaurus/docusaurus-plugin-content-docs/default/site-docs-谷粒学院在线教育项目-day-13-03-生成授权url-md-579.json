@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day13/生成授权URL",
+  "title": "**一、准备工作**",
+  "description": "https://open.weixin.qq.com",
+  "source": "@site/docs/谷粒学院在线教育项目/day13/03-生成授权URL.md",
+  "sourceDirName": "谷粒学院在线教育项目/day13",
+  "slug": "/谷粒学院在线教育项目/day13/生成授权URL",
+  "permalink": "/docs/谷粒学院在线教育项目/day13/生成授权URL",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day13/03-生成授权URL.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、OAuth2解决什么问题",
+    "permalink": "/docs/谷粒学院在线教育项目/day13/OAuth2的使用场景"
+  },
+  "next": {
+    "title": "一、准备工作",
+    "permalink": "/docs/谷粒学院在线教育项目/day13/开发回调URL"
+  }
+}

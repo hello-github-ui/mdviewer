@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day04/后台系统前端项目创建",
+  "title": "**一、项目的创建和基本配置**",
+  "description": "1、创建项目",
+  "source": "@site/docs/谷粒学院在线教育项目/day04/06-后台系统前端项目创建.md",
+  "sourceDirName": "谷粒学院在线教育项目/day04",
+  "slug": "/谷粒学院在线教育项目/day04/后台系统前端项目创建",
+  "permalink": "/docs/谷粒学院在线教育项目/day04/后台系统前端项目创建",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day04/06-后台系统前端项目创建.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "**一、vue-element-admin**",
+    "permalink": "/docs/谷粒学院在线教育项目/day04/vue-element-admin"
+  },
+  "next": {
+    "title": "随堂笔记",
+    "permalink": "/docs/谷粒学院在线教育项目/day04/随堂笔记"
+  }
+}

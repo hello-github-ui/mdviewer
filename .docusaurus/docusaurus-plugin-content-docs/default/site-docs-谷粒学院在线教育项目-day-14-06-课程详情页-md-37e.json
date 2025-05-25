@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day14/课程详情页",
+  "title": "一、vo对象的定义",
+  "description": "在项目中很多时候需要把model转换成dto用于网站信息的展示，按前端的需要传递对象的数据，保证model对外是隐私的，例如密码之类的属性能很好地避免暴露在外，同时也会减小数据传输的体积。",
+  "source": "@site/docs/谷粒学院在线教育项目/day14/06-课程详情页.md",
+  "sourceDirName": "谷粒学院在线教育项目/day14",
+  "slug": "/谷粒学院在线教育项目/day14/课程详情页",
+  "permalink": "/docs/谷粒学院在线教育项目/day14/课程详情页",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day14/06-课程详情页.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、课程后端接口",
+    "permalink": "/docs/谷粒学院在线教育项目/day14/课程列表页面"
+  },
+  "next": {
+    "title": "一、获取播放地址播放",
+    "permalink": "/docs/谷粒学院在线教育项目/day14/视频播放测试"
+  }
+}

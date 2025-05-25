@@ -1,0 +1,25 @@
+{
+  "id": "Python基础/面向对象/多态",
+  "title": "多态",
+  "description": "在 Python 中，多态（Polymorphism）是面向对象编程（OOP）中的一个核心概念。它指的是 同一个接口（方法或函数）在不同类的实例上表现出不同的行为。简单来说，多态让不同类型的对象可以使用相同的方法名，但产生不同的结果。",
+  "source": "@site/docs/Python基础/13-面向对象/07-多态.md",
+  "sourceDirName": "Python基础/13-面向对象",
+  "slug": "/Python基础/面向对象/多态",
+  "permalink": "/docs/Python基础/面向对象/多态",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Python基础/13-面向对象/07-多态.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "私有变量和方法",
+    "permalink": "/docs/Python基础/面向对象/私有变量和方法"
+  },
+  "next": {
+    "title": "类方法",
+    "permalink": "/docs/Python基础/面向对象/类方法"
+  }
+}

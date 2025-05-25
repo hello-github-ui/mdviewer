@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day11/首页数据添加Redis缓存",
+  "title": "一、Redis介绍",
+  "description": "Redis是当前比较热门的NOSQL系统之一，它是一个开源的使用ANSI c语言编写的key-value存储系统（区别于MySQL的二维表格的形式存储。）。和Memcache类似，但很大程度补偿了Memcache的不足。和Memcache一样，Redis数据都是缓存在计算机内存中，不同的是，Memcache只能将数据缓存到内存中，无法自动定期写入硬盘，这就表示，一断电或重启，内存清空，数据丢失。所以Memcache的应用场景适用于缓存无需持久化的数据。而Redis不同的是它会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，实现数据的持久化。",
+  "source": "@site/docs/谷粒学院在线教育项目/day11/08-首页数据添加Redis缓存.md",
+  "sourceDirName": "谷粒学院在线教育项目/day11",
+  "slug": "/谷粒学院在线教育项目/day11/首页数据添加Redis缓存",
+  "permalink": "/docs/谷粒学院在线教育项目/day11/首页数据添加Redis缓存",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day11/08-首页数据添加Redis缓存.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 8,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、首页banner数据显示",
+    "permalink": "/docs/谷粒学院在线教育项目/day11/首页显示banner和课程名师数据【前端】"
+  },
+  "next": {
+    "title": "随堂笔记",
+    "permalink": "/docs/谷粒学院在线教育项目/day11/随堂笔记"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day04/模块化",
+  "title": "一、模块化简介",
+  "description": "1、模块化产生的背景",
+  "source": "@site/docs/谷粒学院在线教育项目/day04/03-模块化.md",
+  "sourceDirName": "谷粒学院在线教育项目/day04",
+  "slug": "/谷粒学院在线教育项目/day04/模块化",
+  "permalink": "/docs/谷粒学院在线教育项目/day04/模块化",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day04/03-模块化.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、简介",
+    "permalink": "/docs/谷粒学院在线教育项目/day04/Babel"
+  },
+  "next": {
+    "title": "一、什么是Webpack",
+    "permalink": "/docs/谷粒学院在线教育项目/day04/Webpack"
+  }
+}

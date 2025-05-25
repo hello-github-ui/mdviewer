@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day11/首页显示banner和课程名师数据【前端】",
+  "title": "一、首页banner数据显示",
+  "description": "1、创建api文件夹，创建banner.js文件",
+  "source": "@site/docs/谷粒学院在线教育项目/day11/07-首页显示banner和课程名师数据【前端】.md",
+  "sourceDirName": "谷粒学院在线教育项目/day11",
+  "slug": "/谷粒学院在线教育项目/day11/首页显示banner和课程名师数据【前端】",
+  "permalink": "/docs/谷粒学院在线教育项目/day11/首页显示banner和课程名师数据【前端】",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day11/07-首页显示banner和课程名师数据【前端】.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、新建前端查询课程名师接口",
+    "permalink": "/docs/谷粒学院在线教育项目/day11/首页显示课程名师数据【后端】"
+  },
+  "next": {
+    "title": "一、Redis介绍",
+    "permalink": "/docs/谷粒学院在线教育项目/day11/首页数据添加Redis缓存"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "Python基础/字符串列表/字符串编码",
+  "title": "字符串编码",
+  "description": "b'hello'",
+  "source": "@site/docs/Python基础/06-字符串列表/01-字符串编码.md",
+  "sourceDirName": "Python基础/06-字符串列表",
+  "slug": "/Python基础/字符串列表/字符串编码",
+  "permalink": "/docs/Python基础/字符串列表/字符串编码",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Python基础/06-字符串列表/01-字符串编码.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "虚拟环境",
+    "permalink": "/docs/Python基础/虚拟环境/搭建虚拟环境"
+  },
+  "next": {
+    "title": "字符串的索引和切片",
+    "permalink": "/docs/Python基础/字符串列表/字符串的索引和切片"
+  }
+}

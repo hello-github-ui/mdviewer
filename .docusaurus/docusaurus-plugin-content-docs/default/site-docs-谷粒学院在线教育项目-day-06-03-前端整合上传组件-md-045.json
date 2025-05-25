@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day06/前端整合上传组件",
+  "title": "前端整合上传组件",
+  "description": "一、前端整合图片上传组件",
+  "source": "@site/docs/谷粒学院在线教育项目/day06/03-前端整合上传组件.md",
+  "sourceDirName": "谷粒学院在线教育项目/day06",
+  "slug": "/谷粒学院在线教育项目/day06/前端整合上传组件",
+  "permalink": "/docs/谷粒学院在线教育项目/day06/前端整合上传组件",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day06/03-前端整合上传组件.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、新建云存储微服务",
+    "permalink": "/docs/谷粒学院在线教育项目/day06/后端集成OSS"
+  },
+  "next": {
+    "title": "一、Excel导入导出的应用场景",
+    "permalink": "/docs/谷粒学院在线教育项目/day06/EasyExcel读写Excel的基本使用"
+  }
+}

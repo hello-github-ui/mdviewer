@@ -1,0 +1,25 @@
+{
+  "id": "Python基础/类型转换深浅复制/类型转换",
+  "title": "类型转换",
+  "description": "类型转换",
+  "source": "@site/docs/Python基础/08-类型转换深浅复制/01-类型转换.md",
+  "sourceDirName": "Python基础/08-类型转换深浅复制",
+  "slug": "/Python基础/类型转换深浅复制/类型转换",
+  "permalink": "/docs/Python基础/类型转换深浅复制/类型转换",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Python基础/08-类型转换深浅复制/01-类型转换.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "列表推导式",
+    "permalink": "/docs/Python基础/字典元组集合/列表推导式"
+  },
+  "next": {
+    "title": "什么是传递引用与复制",
+    "permalink": "/docs/Python基础/类型转换深浅复制/什么是传递引用与复制"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "个人博客/BIO-NIO-AIO",
+  "title": "java共支持三种网络编程模式：BIO，NIO，AIO",
+  "description": "三种IO模式适用场景",
+  "source": "@site/docs/个人博客/BIO-NIO-AIO.md",
+  "sourceDirName": "个人博客",
+  "slug": "/个人博客/BIO-NIO-AIO",
+  "permalink": "/docs/个人博客/BIO-NIO-AIO",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/BIO-NIO-AIO.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "AlmaLinux8安装PostgreSQL",
+    "permalink": "/docs/个人博客/AlmaLinux8安装PostgreSQL"
+  },
+  "next": {
+    "title": "<font color=#FF8C00>div中文字居中</font>",
+    "permalink": "/docs/个人博客/CSS基本样式设置"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "书签/收藏的网站",
+  "title": "收藏的网站",
+  "description": "17c44ba378324e35b7b94abd3902fa70",
+  "source": "@site/docs/书签/01-收藏的网站.md",
+  "sourceDirName": "书签",
+  "slug": "/书签/收藏的网站",
+  "permalink": "/docs/书签/收藏的网站",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/书签/01-收藏的网站.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "面试题泛谈",
+    "permalink": "/docs/个人博客/面试题泛谈"
+  },
+  "next": {
+    "title": "禁用自动更新设置-auto",
+    "permalink": "/docs/书签/Mac禁用自动更新设置"
+  }
+}

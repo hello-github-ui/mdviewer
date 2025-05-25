@@ -1,0 +1,25 @@
+{
+  "id": "Python基础/字典元组集合/元组",
+  "title": "元组",
+  "description": "10",
+  "source": "@site/docs/Python基础/07-字典元组集合/01-元组.md",
+  "sourceDirName": "Python基础/07-字典元组集合",
+  "slug": "/Python基础/字典元组集合/元组",
+  "permalink": "/docs/Python基础/字典元组集合/元组",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Python基础/07-字典元组集合/01-元组.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "列表推导式",
+    "permalink": "/docs/Python基础/字符串列表/列表推导式"
+  },
+  "next": {
+    "title": "元组的常见操作",
+    "permalink": "/docs/Python基础/字典元组集合/元组的常见操作"
+  }
+}

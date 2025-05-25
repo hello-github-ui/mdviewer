@@ -1,0 +1,24 @@
+{
+  "id": "个人博客/多线程安全学习之售票案例",
+  "title": "多线程安全学习之售票案例",
+  "description": "在说多线程之前，先说两个概念：并行和并发。",
+  "source": "@site/docs/个人博客/多线程安全学习之售票案例.md",
+  "sourceDirName": "个人博客",
+  "slug": "/个人博客/多线程安全学习之售票案例",
+  "permalink": "/docs/个人博客/多线程安全学习之售票案例",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/多线程安全学习之售票案例.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "合并多个有序数组",
+    "permalink": "/docs/个人博客/合并多个有序数组"
+  },
+  "next": {
+    "title": "精确搜索：双引号",
+    "permalink": "/docs/个人博客/更好地使用搜索引擎"
+  }
+}

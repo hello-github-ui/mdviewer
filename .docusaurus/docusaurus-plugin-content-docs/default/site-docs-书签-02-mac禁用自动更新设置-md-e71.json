@@ -1,0 +1,25 @@
+{
+  "id": "书签/Mac禁用自动更新设置",
+  "title": "禁用自动更新设置-auto",
+  "description": "Human",
+  "source": "@site/docs/书签/02-Mac禁用自动更新设置.md",
+  "sourceDirName": "书签",
+  "slug": "/书签/Mac禁用自动更新设置",
+  "permalink": "/docs/书签/Mac禁用自动更新设置",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/书签/02-Mac禁用自动更新设置.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "收藏的网站",
+    "permalink": "/docs/书签/收藏的网站"
+  },
+  "next": {
+    "title": "ChatGPT 对话记录",
+    "permalink": "/docs/书签/使用ffmpeg下载抖音视频"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "个人博客/全局异常处理",
+  "title": "前言",
+  "description": "在Java web 项目中，我们经常需要自己去实现一些异常处理的代码。随着Spring框架的不断升级，也给我们带来了更多的选择。下面说一下可行性比较好的两个方式吧：",
+  "source": "@site/docs/个人博客/全局异常处理.md",
+  "sourceDirName": "个人博客",
+  "slug": "/个人博客/全局异常处理",
+  "permalink": "/docs/个人博客/全局异常处理",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/全局异常处理.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "You-get 介绍",
+    "permalink": "/docs/个人博客/使用python的you-get下载视频"
+  },
+  "next": {
+    "title": "大数据基础",
+    "permalink": "/docs/个人博客/初识大数据(一)"
+  }
+}

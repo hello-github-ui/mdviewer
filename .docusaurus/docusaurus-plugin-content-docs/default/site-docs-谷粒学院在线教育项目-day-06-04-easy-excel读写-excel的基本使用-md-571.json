@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day06/EasyExcel读写Excel的基本使用",
+  "title": "一、Excel导入导出的应用场景",
+  "description": "1、数据导入：减轻录入工作量",
+  "source": "@site/docs/谷粒学院在线教育项目/day06/04-EasyExcel读写Excel的基本使用.md",
+  "sourceDirName": "谷粒学院在线教育项目/day06",
+  "slug": "/谷粒学院在线教育项目/day06/EasyExcel读写Excel的基本使用",
+  "permalink": "/docs/谷粒学院在线教育项目/day06/EasyExcel读写Excel的基本使用",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day06/04-EasyExcel读写Excel的基本使用.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "前端整合上传组件",
+    "permalink": "/docs/谷粒学院在线教育项目/day06/前端整合上传组件"
+  },
+  "next": {
+    "title": "一、创建项目，实现EasyExcel对Excel写操作",
+    "permalink": "/docs/谷粒学院在线教育项目/day06/Excel写"
+  }
+}

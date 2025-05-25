@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day07/随堂笔记",
+  "title": "随堂笔记",
+  "description": "1",
+  "source": "@site/docs/谷粒学院在线教育项目/day07/09-随堂笔记.md",
+  "sourceDirName": "谷粒学院在线教育项目/day07",
+  "slug": "/谷粒学院在线教育项目/day07/随堂笔记",
+  "permalink": "/docs/谷粒学院在线教育项目/day07/随堂笔记",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day07/09-随堂笔记.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 9,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、后端实现",
+    "permalink": "/docs/谷粒学院在线教育项目/day07/更新课程信息"
+  },
+  "next": {
+    "title": "一、后端实现",
+    "permalink": "/docs/谷粒学院在线教育项目/day08/课程大纲列表显示"
+  }
+}

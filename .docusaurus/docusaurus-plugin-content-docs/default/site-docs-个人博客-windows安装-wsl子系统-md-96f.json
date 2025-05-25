@@ -1,0 +1,24 @@
+{
+  "id": "个人博客/Windows安装WSL子系统",
+  "title": "Windows安装WSL子系统",
+  "description": "1. 控制面板，程序和功能，启用功能，勾选 适用于linux的windows子系统  和 虚拟机平台 选项。",
+  "source": "@site/docs/个人博客/Windows安装WSL子系统.md",
+  "sourceDirName": "个人博客",
+  "slug": "/个人博客/Windows安装WSL子系统",
+  "permalink": "/docs/个人博客/Windows安装WSL子系统",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/Windows安装WSL子系统.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Win10开启上帝模式",
+    "permalink": "/docs/个人博客/Win10开启上帝模式"
+  },
+  "next": {
+    "title": "新建Vue3前端项目",
+    "permalink": "/docs/个人博客/springboot-vue-demo-01"
+  }
+}

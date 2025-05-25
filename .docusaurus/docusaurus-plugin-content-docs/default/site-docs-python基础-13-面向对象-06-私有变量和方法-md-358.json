@@ -1,0 +1,25 @@
+{
+  "id": "Python基础/面向对象/私有变量和方法",
+  "title": "私有变量和方法",
+  "description": "在 Python 中，类的属性和方法默认是公有的（public），但可以通过 私有（private） 机制 限制外部访问。",
+  "source": "@site/docs/Python基础/13-面向对象/06-私有变量和方法.md",
+  "sourceDirName": "Python基础/13-面向对象",
+  "slug": "/Python基础/面向对象/私有变量和方法",
+  "permalink": "/docs/Python基础/面向对象/私有变量和方法",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Python基础/13-面向对象/06-私有变量和方法.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "继承",
+    "permalink": "/docs/Python基础/面向对象/继承和封装"
+  },
+  "next": {
+    "title": "多态",
+    "permalink": "/docs/Python基础/面向对象/多态"
+  }
+}

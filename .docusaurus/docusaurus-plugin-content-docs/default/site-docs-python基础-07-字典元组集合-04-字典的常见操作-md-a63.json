@@ -1,0 +1,25 @@
+{
+  "id": "Python基础/字典元组集合/字典的常见操作",
+  "title": "字典的常见操作",
+  "description": "{'name' 18, 'gender': '女'}",
+  "source": "@site/docs/Python基础/07-字典元组集合/04-字典的常见操作.md",
+  "sourceDirName": "Python基础/07-字典元组集合",
+  "slug": "/Python基础/字典元组集合/字典的常见操作",
+  "permalink": "/docs/Python基础/字典元组集合/字典的常见操作",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Python基础/07-字典元组集合/04-字典的常见操作.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "字典的定义及应用场景",
+    "permalink": "/docs/Python基础/字典元组集合/字典的定义及应用场景"
+  },
+  "next": {
+    "title": "集合",
+    "permalink": "/docs/Python基础/字典元组集合/集合"
+  }
+}

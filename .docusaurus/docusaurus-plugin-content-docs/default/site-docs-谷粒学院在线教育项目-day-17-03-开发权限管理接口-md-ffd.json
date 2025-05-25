@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day17/开发权限管理接口",
+  "title": "一、创建权限管理服务",
+  "description": "1、在service模块下创建子模块service-acl",
+  "source": "@site/docs/谷粒学院在线教育项目/day17/03-开发权限管理接口.md",
+  "sourceDirName": "谷粒学院在线教育项目/day17",
+  "slug": "/谷粒学院在线教育项目/day17/开发权限管理接口",
+  "permalink": "/docs/谷粒学院在线教育项目/day17/开发权限管理接口",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day17/03-开发权限管理接口.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、权限管理需求描述",
+    "permalink": "/docs/谷粒学院在线教育项目/day17/权限管理需求描述"
+  },
+  "next": {
+    "title": "随堂笔记",
+    "permalink": "/docs/谷粒学院在线教育项目/day17/随堂笔记"
+  }
+}

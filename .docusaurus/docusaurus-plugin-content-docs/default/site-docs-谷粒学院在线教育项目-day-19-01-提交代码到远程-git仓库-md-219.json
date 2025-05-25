@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day19/提交代码到远程Git仓库",
+  "title": "提交代码到远程Git仓库",
+  "description": "1. 准备 Git 仓库",
+  "source": "@site/docs/谷粒学院在线教育项目/day19/01-提交代码到远程Git仓库.md",
+  "sourceDirName": "谷粒学院在线教育项目/day19",
+  "slug": "/谷粒学院在线教育项目/day19/提交代码到远程Git仓库",
+  "permalink": "/docs/谷粒学院在线教育项目/day19/提交代码到远程Git仓库",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day19/01-提交代码到远程Git仓库.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "课堂笔记",
+    "permalink": "/docs/谷粒学院在线教育项目/day18/课堂笔记"
+  },
+  "next": {
+    "title": "项目部署",
+    "permalink": "/docs/谷粒学院在线教育项目/day19/项目部署"
+  }
+}

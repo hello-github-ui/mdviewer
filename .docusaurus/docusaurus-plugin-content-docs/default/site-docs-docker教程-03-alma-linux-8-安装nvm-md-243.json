@@ -1,0 +1,25 @@
+{
+  "id": "Docker教程/AlmaLinux8安装NVM",
+  "title": "AlmaLinux8安装NVM",
+  "description": "不使用科学方式。",
+  "source": "@site/docs/Docker教程/03-AlmaLinux8安装NVM.md",
+  "sourceDirName": "Docker教程",
+  "slug": "/Docker教程/AlmaLinux8安装NVM",
+  "permalink": "/docs/Docker教程/AlmaLinux8安装NVM",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Docker教程/03-AlmaLinux8安装NVM.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "AlmaLinux8安装Python+Java",
+    "permalink": "/docs/Docker教程/AlmaLinux8安装Python+Java"
+  },
+  "next": {
+    "title": "Ubuntu离线安装Docker",
+    "permalink": "/docs/Docker教程/Ubuntu安装和使用1Panel"
+  }
+}

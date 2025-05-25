@@ -1,0 +1,25 @@
+{
+  "id": "Python基础/函数进阶/内置函数",
+  "title": "内置函数",
+  "description": "常用的内置函数如下；",
+  "source": "@site/docs/Python基础/10-函数进阶/04-内置函数.md",
+  "sourceDirName": "Python基础/10-函数进阶",
+  "slug": "/Python基础/函数进阶/内置函数",
+  "permalink": "/docs/Python基础/函数进阶/内置函数",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Python基础/10-函数进阶/04-内置函数.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "匿名函数",
+    "permalink": "/docs/Python基础/函数基础/匿名函数"
+  },
+  "next": {
+    "title": "拆包",
+    "permalink": "/docs/Python基础/函数进阶/拆包"
+  }
+}

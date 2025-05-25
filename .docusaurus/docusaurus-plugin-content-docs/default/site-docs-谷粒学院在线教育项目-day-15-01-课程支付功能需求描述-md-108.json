@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day15/课程支付功能需求描述",
+  "title": "一、课程支付需求描述",
+  "description": "1、课程支付说明",
+  "source": "@site/docs/谷粒学院在线教育项目/day15/01-课程支付功能需求描述.md",
+  "sourceDirName": "谷粒学院在线教育项目/day15",
+  "slug": "/谷粒学院在线教育项目/day15/课程支付功能需求描述",
+  "permalink": "/docs/谷粒学院在线教育项目/day15/课程支付功能需求描述",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day15/01-课程支付功能需求描述.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "随堂笔记",
+    "permalink": "/docs/谷粒学院在线教育项目/day14/随堂笔记"
+  },
+  "next": {
+    "title": "一、创建支付模块和准备",
+    "permalink": "/docs/谷粒学院在线教育项目/day15/创建支付模块和开发订单接口"
+  }
+}

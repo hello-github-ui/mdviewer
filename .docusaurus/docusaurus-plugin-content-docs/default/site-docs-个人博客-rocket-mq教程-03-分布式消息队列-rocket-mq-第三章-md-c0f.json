@@ -1,0 +1,25 @@
+{
+  "id": "个人博客/RocketMQ教程/分布式消息队列RocketMQ-第三章",
+  "title": "分布式消息队列RocketMQ学习文档",
+  "description": "本文资料来源：尚硅谷 | 本文发表时RocketMQ的版本：v4.9.2 | 本资料是第三章内容，本文档总共有四章。",
+  "source": "@site/docs/个人博客/RocketMQ教程/03-分布式消息队列RocketMQ-第三章.md",
+  "sourceDirName": "个人博客/RocketMQ教程",
+  "slug": "/个人博客/RocketMQ教程/分布式消息队列RocketMQ-第三章",
+  "permalink": "/docs/个人博客/RocketMQ教程/分布式消息队列RocketMQ-第三章",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/RocketMQ教程/03-分布式消息队列RocketMQ-第三章.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "分布式消息队列RocketMQ学习文档",
+    "permalink": "/docs/个人博客/RocketMQ教程/分布式消息队列RocketMQ-第二章"
+  },
+  "next": {
+    "title": "分布式消息队列RocketMQ学习文档",
+    "permalink": "/docs/个人博客/RocketMQ教程/分布式消息队列RocketMQ-第四章"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "intro",
+  "title": "介绍",
+  "description": "你可以在左侧选择系列文档或单篇文章进行阅读。",
+  "source": "@site/docs/intro.md",
+  "sourceDirName": ".",
+  "slug": "/intro",
+  "permalink": "/docs/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "intro",
+    "title": "介绍"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "独立文章",
+    "permalink": "/docs/single-article"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day14/视频播放测试",
+  "title": "一、获取播放地址播放",
+  "description": "获取播放地址",
+  "source": "@site/docs/谷粒学院在线教育项目/day14/07-视频播放测试.md",
+  "sourceDirName": "谷粒学院在线教育项目/day14",
+  "slug": "/谷粒学院在线教育项目/day14/视频播放测试",
+  "permalink": "/docs/谷粒学院在线教育项目/day14/视频播放测试",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day14/07-视频播放测试.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、vo对象的定义",
+    "permalink": "/docs/谷粒学院在线教育项目/day14/课程详情页"
+  },
+  "next": {
+    "title": "**一、后端获取播放凭证**",
+    "permalink": "/docs/谷粒学院在线教育项目/day14/整合阿里云视频播放器"
+  }
+}

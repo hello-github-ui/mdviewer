@@ -1,0 +1,24 @@
+{
+  "id": "个人博客/Vim配置备份",
+  "title": "Vim配置备份",
+  "description": "Vim是我非常喜欢的一款文本编辑器，它虽然没有Emacs那么华丽，但是也有自己的情迷粉丝。由于Vim每次安装都需要大量的个性化配置，这实在是有点浪费时间和精力，因此这里做一下备份。",
+  "source": "@site/docs/个人博客/Vim配置备份.md",
+  "sourceDirName": "个人博客",
+  "slug": "/个人博客/Vim配置备份",
+  "permalink": "/docs/个人博客/Vim配置备份",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/Vim配置备份.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "安装及配置网络",
+    "permalink": "/docs/个人博客/VMware安装AlmaLinux8"
+  },
+  "next": {
+    "title": "Win10开启上帝模式",
+    "permalink": "/docs/个人博客/Win10开启上帝模式"
+  }
+}

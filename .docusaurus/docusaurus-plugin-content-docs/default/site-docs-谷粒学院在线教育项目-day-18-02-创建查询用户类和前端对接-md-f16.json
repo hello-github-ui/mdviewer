@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day18/创建查询用户类和前端对接",
+  "title": "***\\**\\*\\*\\*\\*\\*\\*\\*一、创建自定义查询用户类\\*\\*\\*\\*\\*\\*\\*\\*\\****",
+  "description": "（1）在service_acl模块创建，因为其他模板不会用到",
+  "source": "@site/docs/谷粒学院在线教育项目/day18/02-创建查询用户类和前端对接.md",
+  "sourceDirName": "谷粒学院在线教育项目/day18",
+  "slug": "/谷粒学院在线教育项目/day18/创建查询用户类和前端对接",
+  "permalink": "/docs/谷粒学院在线教育项目/day18/创建查询用户类和前端对接",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day18/02-创建查询用户类和前端对接.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、Spring Security介绍",
+    "permalink": "/docs/谷粒学院在线教育项目/day18/整合Spring Security"
+  },
+  "next": {
+    "title": "一、配置中心介绍",
+    "permalink": "/docs/谷粒学院在线教育项目/day18/Nacos配置中心"
+  }
+}

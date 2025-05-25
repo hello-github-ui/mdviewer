@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day18/整合Spring Security",
+  "title": "一、Spring Security介绍",
+  "description": "1、框架介绍",
+  "source": "@site/docs/谷粒学院在线教育项目/day18/01-整合Spring Security.md",
+  "sourceDirName": "谷粒学院在线教育项目/day18",
+  "slug": "/谷粒学院在线教育项目/day18/整合Spring Security",
+  "permalink": "/docs/谷粒学院在线教育项目/day18/整合Spring Security",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day18/01-整合Spring Security.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "随堂笔记",
+    "permalink": "/docs/谷粒学院在线教育项目/day17/随堂笔记"
+  },
+  "next": {
+    "title": "***\\**\\*\\*\\*\\*\\*\\*\\*一、创建自定义查询用户类\\*\\*\\*\\*\\*\\*\\*\\*\\****",
+    "permalink": "/docs/谷粒学院在线教育项目/day18/创建查询用户类和前端对接"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "个人博客/更好地使用搜索引擎",
+  "title": "精确搜索：双引号",
+  "description": "精确搜索就是在你要搜索的词上，加上双引号，这时google就会完全的匹配你所要搜索的字符串",
+  "source": "@site/docs/个人博客/更好地使用搜索引擎.md",
+  "sourceDirName": "个人博客",
+  "slug": "/个人博客/更好地使用搜索引擎",
+  "permalink": "/docs/个人博客/更好地使用搜索引擎",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/个人博客/更好地使用搜索引擎.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "多线程安全学习之售票案例",
+    "permalink": "/docs/个人博客/多线程安全学习之售票案例"
+  },
+  "next": {
+    "title": "用爱发电的Google镜像",
+    "permalink": "/docs/个人博客/用爱发电的Google镜像"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day11/首页静态效果整合和NUXT路由",
+  "title": "一、页面布局",
+  "description": "1、复制静态资源",
+  "source": "@site/docs/谷粒学院在线教育项目/day11/02-首页静态效果整合和NUXT路由.md",
+  "sourceDirName": "谷粒学院在线教育项目/day11",
+  "slug": "/谷粒学院在线教育项目/day11/首页静态效果整合和NUXT路由",
+  "permalink": "/docs/谷粒学院在线教育项目/day11/首页静态效果整合和NUXT路由",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day11/02-首页静态效果整合和NUXT路由.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、服务端渲染技术NUXT",
+    "permalink": "/docs/谷粒学院在线教育项目/day11/服务端渲染技术NUXT-初始化NUXT"
+  },
+  "next": {
+    "title": "一、列表页面",
+    "permalink": "/docs/谷粒学院在线教育项目/day11/名师页面静态效果整合"
+  }
+}

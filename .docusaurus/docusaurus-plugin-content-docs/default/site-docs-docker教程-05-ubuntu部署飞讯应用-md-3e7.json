@@ -1,0 +1,25 @@
+{
+  "id": "Docker教程/Ubuntu部署飞讯应用",
+  "title": "Ubuntu部署飞讯应用",
+  "description": "前言：已经将 webPortals-0.0.1-SNAPSHOT.jar jar包上传到目标机器上了。该应用程序的目标端口使用 9090",
+  "source": "@site/docs/Docker教程/05-Ubuntu部署飞讯应用.md",
+  "sourceDirName": "Docker教程",
+  "slug": "/Docker教程/Ubuntu部署飞讯应用",
+  "permalink": "/docs/Docker教程/Ubuntu部署飞讯应用",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Docker教程/05-Ubuntu部署飞讯应用.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Ubuntu离线安装Docker",
+    "permalink": "/docs/Docker教程/Ubuntu安装和使用1Panel"
+  },
+  "next": {
+    "title": "Git_Tutorial",
+    "permalink": "/docs/Git教程/基础"
+  }
+}

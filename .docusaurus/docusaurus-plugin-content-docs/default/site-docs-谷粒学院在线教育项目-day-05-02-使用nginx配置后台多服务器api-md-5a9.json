@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day05/使用nginx配置后台多服务器api",
+  "title": "**一、项目中的****Easy Mock**",
+  "description": "config/dev.env.js 中BASE_API 为项目的easymock地址，目前具有模拟登录、登出、获取用户信息的功能",
+  "source": "@site/docs/谷粒学院在线教育项目/day05/02-使用nginx配置后台多服务器api.md",
+  "sourceDirName": "谷粒学院在线教育项目/day05",
+  "slug": "/谷粒学院在线教育项目/day05/使用nginx配置后台多服务器api",
+  "permalink": "/docs/谷粒学院在线教育项目/day05/使用nginx配置后台多服务器api",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day05/02-使用nginx配置后台多服务器api.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、后台系统路由实现分析",
+    "permalink": "/docs/谷粒学院在线教育项目/day05/项目中的路由"
+  },
+  "next": {
+    "title": "一、分页列表",
+    "permalink": "/docs/谷粒学院在线教育项目/day05/讲师管理列表组件"
+  }
+}

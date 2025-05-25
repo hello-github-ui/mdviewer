@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day08/章节管理后端接口开发",
+  "title": "一、新增章节",
+  "description": "web层",
+  "source": "@site/docs/谷粒学院在线教育项目/day08/02-章节管理后端接口开发.md",
+  "sourceDirName": "谷粒学院在线教育项目/day08",
+  "slug": "/谷粒学院在线教育项目/day08/章节管理后端接口开发",
+  "permalink": "/docs/谷粒学院在线教育项目/day08/章节管理后端接口开发",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day08/02-章节管理后端接口开发.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、后端实现",
+    "permalink": "/docs/谷粒学院在线教育项目/day08/课程大纲列表显示"
+  },
+  "next": {
+    "title": "一、定义api",
+    "permalink": "/docs/谷粒学院在线教育项目/day08/章节管理前端页面实现"
+  }
+}

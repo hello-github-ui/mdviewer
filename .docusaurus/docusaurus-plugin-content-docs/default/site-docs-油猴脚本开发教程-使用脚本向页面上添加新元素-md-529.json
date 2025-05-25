@@ -1,0 +1,24 @@
+{
+  "id": "油猴脚本开发教程/使用脚本向页面上添加新元素",
+  "title": "使用脚本向页面上添加新元素",
+  "description": "插入新元素",
+  "source": "@site/docs/油猴脚本开发教程/使用脚本向页面上添加新元素.md",
+  "sourceDirName": "油猴脚本开发教程",
+  "slug": "/油猴脚本开发教程/使用脚本向页面上添加新元素",
+  "permalink": "/docs/油猴脚本开发教程/使用脚本向页面上添加新元素",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/油猴脚本开发教程/使用脚本向页面上添加新元素.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "万能视频倍速播放",
+    "permalink": "/docs/油猴脚本开发教程/万能视频倍速播放"
+  },
+  "next": {
+    "title": "一、在线教育简介",
+    "permalink": "/docs/谷粒学院在线教育项目/day01/在线教育行业介绍"
+  }
+}

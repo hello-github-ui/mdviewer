@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day05/讲师管理列表组件",
+  "title": "一、分页列表",
+  "description": "1、定义api",
+  "source": "@site/docs/谷粒学院在线教育项目/day05/03-讲师管理列表组件.md",
+  "sourceDirName": "谷粒学院在线教育项目/day05",
+  "slug": "/谷粒学院在线教育项目/day05/讲师管理列表组件",
+  "permalink": "/docs/谷粒学院在线教育项目/day05/讲师管理列表组件",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day05/03-讲师管理列表组件.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "**一、项目中的****Easy Mock**",
+    "permalink": "/docs/谷粒学院在线教育项目/day05/使用nginx配置后台多服务器api"
+  },
+  "next": {
+    "title": "一、新增",
+    "permalink": "/docs/谷粒学院在线教育项目/day05/讲师管理表单组件"
+  }
+}

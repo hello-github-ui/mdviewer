@@ -1,0 +1,25 @@
+{
+  "id": "Python基础/面向对象/类和对象",
+  "title": "类和对象",
+  "description": "类的属性和方法",
+  "source": "@site/docs/Python基础/13-面向对象/02-类和对象.md",
+  "sourceDirName": "Python基础/13-面向对象",
+  "slug": "/Python基础/面向对象/类和对象",
+  "permalink": "/docs/Python基础/面向对象/类和对象",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Python基础/13-面向对象/02-类和对象.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "面向对象概念",
+    "permalink": "/docs/Python基础/面向对象/面向对象概念"
+  },
+  "next": {
+    "title": "析构函数",
+    "permalink": "/docs/Python基础/面向对象/析构函数"
+  }
+}

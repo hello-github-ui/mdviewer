@@ -1,0 +1,25 @@
+{
+  "id": "谷粒学院在线教育项目/day07/更新课程信息",
+  "title": "一、后端实现",
+  "description": "1、业务层",
+  "source": "@site/docs/谷粒学院在线教育项目/day07/08-更新课程信息.md",
+  "sourceDirName": "谷粒学院在线教育项目/day07",
+  "slug": "/谷粒学院在线教育项目/day07/更新课程信息",
+  "permalink": "/docs/谷粒学院在线教育项目/day07/更新课程信息",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/谷粒学院在线教育项目/day07/08-更新课程信息.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 8,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一、后端实现",
+    "permalink": "/docs/谷粒学院在线教育项目/day07/课程信息回显"
+  },
+  "next": {
+    "title": "随堂笔记",
+    "permalink": "/docs/谷粒学院在线教育项目/day07/随堂笔记"
+  }
+}

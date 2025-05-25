@@ -1,0 +1,25 @@
+{
+  "id": "Python基础/面向对象/继承和封装",
+  "title": "继承",
+  "description": "Python 中的继承（Inheritance）是面向对象编程（OOP）中最重要的概念之一，它允许一个类（子类）从另一个类（父类）继承属性和方法，从而提高代码的复用性和可扩展性。",
+  "source": "@site/docs/Python基础/13-面向对象/05-继承和封装.md",
+  "sourceDirName": "Python基础/13-面向对象",
+  "slug": "/Python基础/面向对象/继承和封装",
+  "permalink": "/docs/Python基础/面向对象/继承和封装",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/你的github用户名/my-docs/edit/main/docs/Python基础/13-面向对象/05-继承和封装.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "魔术方法",
+    "permalink": "/docs/Python基础/面向对象/魔术方法"
+  },
+  "next": {
+    "title": "私有变量和方法",
+    "permalink": "/docs/Python基础/面向对象/私有变量和方法"
+  }
+}
