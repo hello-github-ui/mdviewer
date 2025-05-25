@@ -8,7 +8,7 @@ const config = {
     baseUrl: '/mdviewer/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
-    favicon: '/system/logo.png',
+    favicon: '/mdviewer/system/logo.png',
     organizationName: 'hello-github-ui', // GitHub 用户名
     projectName: 'mdviewer', // 仓库名
     presets: [
