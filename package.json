@@ -5,12 +5,17 @@
     "scripts": {
         "start": "docusaurus start --no-open",
         "build": "docusaurus build",
-        "serve": "docusaurus serve"
+        "serve": "docusaurus serve",
+        "build:render": "cross-env DOCUSAURUS_BASEURL=/ ALGOLIA_INDEXNAME=hello--uiio-render docusaurus build",
+        "build:gh": "cross-env DOCUSAURUS_BASEURL=/mdviewer/ ALGOLIA_INDEXNAME=hello--uiio-ghpages docusaurus build"
     },
     "dependencies": {
         "@docusaurus/core": "^3.2.1",
         "@docusaurus/preset-classic": "^3.2.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+        "cross-env": "^7.0.3"
     }
 }

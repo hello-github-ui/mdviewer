@@ -145,3 +145,21 @@ my-docs/
 ```
 
 3. 重启项目，右上角会自动出现搜索框。
+
+## 多环境构建与部署
+
+### Render 部署（根路径 `/`）
+
+```bash
+npm run build:render
+```
+- 构建产物适用于 Render 部署，baseUrl 为 `/`，Algolia 索引名为 `hello--uiio-render`。
+
+### GitHub Pages 部署（子路径 `/mdviewer/`）
+
+```bash
+npm run build:gh
+```
+- 构建产物适用于 GitHub Pages 部署，baseUrl 为 `/mdviewer/`，Algolia 索引名为 `hello--uiio-ghpages`。
+
+> Algolia 索引需分别用对应的站点 URL 生成和上传，确保搜索跳转路径正确。

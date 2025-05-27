@@ -5,11 +5,15 @@
 // 需要在 render 中部署时 的 环境变量中设置 RENDER=true
 const isRender = process.env.RENDER === 'true';
 
+// 用环境变量控制 baseUrl 和 Algolia indexName
+const baseUrl = process.env.DOCUSAURUS_BASEURL || '/mdviewer/';
+const algoliaIndexName = process.env.ALGOLIA_INDEXNAME || 'hello--uiio';
+
 const config = {
     title: '我的文档站',
     tagline: '个人知识库',
     url: 'https://hello-github-ui.github.io', // 修改为你的GitHub Pages地址
-    baseUrl: isRender ? '/' : '/mdviewer/',
+    baseUrl: baseUrl,
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'system/logo.png', // 注意：这里不要写成 /system/logo.pn，因为所有写成 / 开头的都表示是从 根目录开始查找，而此处是需要拼接 baseUrl 的
@@ -34,7 +38,7 @@ const config = {
         algolia: {
             appId: 'USTSQRVOIC',
             apiKey: '883c7e68caf11e7fe0d0edac924193fa',
-            indexName: 'hello--uiio',
+            indexName: algoliaIndexName,
             contextualSearch: true,
             // 其它可选配置
         },
