@@ -29,7 +29,16 @@ const config = {
                 },
             }),
         ],
-    ]
+    ],
+    themeConfig: {
+        algolia: {
+            appId: 'USTSQRVOIC',
+            apiKey: '883c7e68caf11e7fe0d0edac924193fa',
+            indexName: 'hello--uiio',
+            contextualSearch: true,
+            // 其它可选配置
+        },
+    },
 };
 
 module.exports = config; 
