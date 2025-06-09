@@ -675,8 +675,11 @@ function test(){
   
 </script>
 ```
+
 ### *  情况三
+
 监视`reactive`定义的【对象类型】数据，且默认开启了深度监视。
+
 ```vue
 <template>
   <div class="person">
@@ -729,6 +732,7 @@ function test(){
   })
 </script>
 ```
+
 ### * 情况四
 监视`ref`或`reactive`定义的【对象类型】数据中的**某个属性**，注意点如下：
 
@@ -792,6 +796,7 @@ function test(){
   },{deep:true})
 </script>
 ```
+
 ### * 情况五
 监视上述的多个数据
 ```vue
@@ -859,7 +864,7 @@ function test(){
 
 * 示例代码：
 
-  ```vue
+```vue
   <template>
     <div class="person">
       <h1>需求：水温达到50℃，或水位达到20cm，则联系服务器</h1>
@@ -908,7 +913,7 @@ function test(){
       }
     })
   </script>
-  ```
+```
   
   
 
@@ -1094,7 +1099,7 @@ function test(){
 
 * 示例代码：
 
-  ```vue
+```vue
   <template>
     <div class="person">
       <h2>当前求和为：{{ sum }}</h2>
@@ -1141,7 +1146,7 @@ function test(){
       console.log('卸载完毕')
     })
   </script>
-  ```
+```
 
 ## 3.14. 【自定义hook】
 
@@ -1153,7 +1158,7 @@ function test(){
 
 - `useSum.ts`中内容如下：
 
-  ```js
+```js
   import {ref,onMounted} from 'vue'
   
   export default function(){
@@ -1172,11 +1177,11 @@ function test(){
     //向外部暴露数据
     return {sum,increment,decrement}
   }		
-  ```
+```
   
 - `useDog.ts`中内容如下：
 
-  ```js
+```js
   import {reactive,onMounted} from 'vue'
   import axios,{AxiosError} from 'axios'
   
@@ -1205,11 +1210,11 @@ function test(){
     //向外部暴露数据
     return {dogList,getDog}
   }
-  ```
+```
 
 - 组件中具体使用：
 
-  ```vue
+```vue
   <template>
     <h2>当前求和为：{{sum}}</h2>
     <button @click="increment">点我+1</button>
@@ -1235,7 +1240,7 @@ function test(){
     let {sum,increment,decrement} = useSum()
     let {dogList,getDog} = useDog()
   </script>
-  ```
+```
 
     
 
@@ -1253,7 +1258,7 @@ function test(){
 
 - 路由配置文件代码如下：
 
-  ```js
+```js
   import {createRouter,createWebHistory} from 'vue-router'
   import Home from '@/pages/Home.vue'
   import News from '@/pages/News.vue'
@@ -1273,19 +1278,19 @@ function test(){
   	]
   })
   export default router
-  ```
+```
 * `main.ts`代码如下：
 
-  ```js
+```js
   import router from './router/index'
   app.use(router)
   
   app.mount('#app')
-  ```
+```
 
 - `App.vue`代码如下
 
-  ```vue
+```vue
   <template>
     <div class="app">
       <h2 class="title">Vue路由测试</h2>
@@ -1305,7 +1310,7 @@ function test(){
   <script lang="ts" setup name="App">
     import {RouterLink,RouterView} from 'vue-router'  
   </script>
-  ```
+```
 
 ## 4.3. 【两个注意点】
 
@@ -1395,7 +1400,7 @@ routes:[
 
 2. 配置路由规则，使用`children`配置项：
 
-   ```ts
+```ts
    const router = createRouter({
      history:createWebHistory(),
    	routes:[
@@ -1424,19 +1429,19 @@ routes:[
    	]
    })
    export default router
-   ```
+```
    
 3. 跳转路由（记得要加完整路径）：
 
-   ```vue
+```vue
    <router-link to="/news/detail">xxxx</router-link>
    <!-- 或 -->
    <router-link :to="{path:'/news/detail'}">xxxx</router-link>
-   ```
+```
 
 4. 记得去`Home`组件中预留一个`<router-view>`
 
-   ```vue
+```vue
    <template>
      <div class="news">
        <nav class="news-list">
@@ -1449,7 +1454,7 @@ routes:[
        </div>
      </div>
    </template>
-   ```
+```
 
    
 
@@ -1459,7 +1464,7 @@ routes:[
 
    1. 传递参数
 
-      ```vue
+```vue
       <!-- 跳转并携带query参数（to的字符串写法） -->
       <router-link to="/news/detail?a=1&b=2&content=欢迎你">
       	跳转
@@ -1479,23 +1484,23 @@ routes:[
       >
         {{news.title}}
       </RouterLink>
-      ```
+```
 
    2. 接收参数：
 
-      ```js
+```js
       import {useRoute} from 'vue-router'
       const route = useRoute()
       // 打印query参数
       console.log(route.query)
-      ```
+```
 
 
 ### params参数
 
    1. 传递参数
 
-      ```vue
+```vue
       <!-- 跳转并携带params参数（to的字符串写法） -->
       <RouterLink :to="`/news/detail/001/新闻001/内容001`">{{news.title}}</RouterLink>
       				
@@ -1512,16 +1517,16 @@ routes:[
       >
         {{news.title}}
       </RouterLink>
-      ```
+```
 
    2. 接收参数：
 
-      ```js
+```js
       import {useRoute} from 'vue-router'
       const route = useRoute()
       // 打印params参数
       console.log(route.params)
-      ```
+```
 
 > 备注1：传递`params`参数时，若使用`to`的对象写法，必须使用`name`配置项，不能用`path`。
 >
@@ -1561,9 +1566,9 @@ routes:[
 
   3. 开启`replace`模式：
 
-     ```vue
+```vue
      <RouterLink replace .......>News</RouterLink>
-     ```
+```
 
 ## 4.11. 【编程式导航】
 
@@ -1587,12 +1592,12 @@ console.log(router.replace)
 
 2. 具体编码：
 
-   ```js
+```js
    {
        path:'/',
        redirect:'/about'
    }
-   ```
+```
 
 
 
@@ -1636,7 +1641,7 @@ app.mount('#app')
 
 3. 具体编码：`src/store/count.ts`
 
-   ```ts
+```ts
    // 引入defineStore用于创建store
    import {defineStore} from 'pinia'
    
@@ -1653,11 +1658,11 @@ app.mount('#app')
      // 计算
      getters:{}
    })
-   ```
+```
 
 4. 具体编码：`src/store/talk.ts`
 
-   ```js
+```js
    // 引入defineStore用于创建store
    import {defineStore} from 'pinia'
    
@@ -1678,11 +1683,11 @@ app.mount('#app')
      // 计算
      getters:{}
    })
-   ```
+```
    
 5. 组件中使用`state`中的数据
 
-   ```vue
+```vue
    <template>
      <h2>当前求和为：{{ sumStore.sum }}</h2>
    </template>
@@ -1694,9 +1699,9 @@ app.mount('#app')
      // 调用useXxxxxStore得到对应的store
      const sumStore = useSumStore()
    </script>
-   ```
+```
 
-   ```vue
+```vue
    <template>
    	<ul>
        <li v-for="talk in talkStore.talkList" :key="talk.id">
@@ -1711,7 +1716,7 @@ app.mount('#app')
    
      const talkStore = useTalkStore()
    </script>
-   ```
+```
 
    
 
@@ -1719,22 +1724,22 @@ app.mount('#app')
 
 1. 第一种修改方式，直接修改
 
-   ```ts
+```ts
    countStore.sum = 666
-   ```
+```
 
 2. 第二种修改方式：批量修改
 
-   ```ts
+```ts
    countStore.$patch({
      sum:999,
      school:'atguigu'
    })
-   ```
+```
 
 3. 第三种修改方式：借助`action`修改（`action`中可以编写一些业务逻辑）
 
-   ```js
+```js
    import { defineStore } from 'pinia'
    
    export const useCountStore = defineStore('count', {
@@ -1756,17 +1761,17 @@ app.mount('#app')
      },
      /*************/
    })
-   ```
+```
 
 4. 组件中调用`action`即可
 
-   ```js
+```js
    // 使用countStore
    const countStore = useCountStore()
    
    // 调用对应action
    countStore.incrementOdd(n.value)
-   ```
+```
 
 
 ## 5.5.【storeToRefs】
@@ -1800,7 +1805,7 @@ app.mount('#app')
 
   2. 追加```getters```配置。
 
-     ```js
+```js
      // 引入defineStore用于创建store
      import {defineStore} from 'pinia'
      
@@ -1825,14 +1830,14 @@ app.mount('#app')
          }
        }
      })
-     ```
+```
 
   3. 组件中读取数据：
 
-     ```js
+```js
      const {increment,decrement} = countStore
      let {sum,school,bigSum,upperSchool} = storeToRefs(countStore)
-     ```
+```
 
      
 
@@ -1959,18 +1964,18 @@ export const useTalkStore = defineStore('talk',()=>{
 
 3. 示例：
 
-   ```html
+```html
    <!--在父组件中，给子组件绑定自定义事件：-->
    <Child @send-toy="toy = $event"/>
    
    <!--注意区分原生事件与自定义事件中的$event-->
    <button @click="toy = $event">测试</button>
-   ```
+```
 
-   ```js
+```js
    //子组件中，触发事件：
    this.$emit('send-toy', 具体数据)
-   ```
+```
 
 ## 6.3. 【mitt】
 
@@ -2052,7 +2057,7 @@ function sendToy(){
 
 2. 前序知识 —— `v-model`的本质
 
-   ```vue
+```vue
    <!-- 使用v-model指令 -->
    <input type="text" v-model="userName">
    
@@ -2062,21 +2067,21 @@ function sendToy(){
      :value="userName" 
      @input="userName =(<HTMLInputElement>$event.target).value"
    >
-   ```
+```
 
 3. 组件标签上的`v-model`的本质：`:moldeValue` ＋ `update:modelValue`事件。
 
-   ```vue
+```vue
    <!-- 组件标签上使用v-model指令 -->
    <AtguiguInput v-model="userName"/>
    
    <!-- 组件标签上v-model的本质 -->
    <AtguiguInput :modelValue="userName" @update:model-value="userName = $event"/>
-   ```
+```
 
    `AtguiguInput`组件中：
 
-   ```vue
+```vue
    <template>
      <div class="box">
        <!--将接收的value值赋给input元素的value属性，目的是：为了呈现数据 -->
@@ -2095,21 +2100,21 @@ function sendToy(){
      // 声明事件
      const emit = defineEmits(['update:model-value'])
    </script>
-   ```
+```
 
 4. 也可以更换`value`，例如改成`abc`
 
-   ```vue
+```vue
    <!-- 也可以更换value，例如改成abc-->
    <AtguiguInput v-model:abc="userName"/>
    
    <!-- 上面代码的本质如下 -->
    <AtguiguInput :abc="userName" @update:abc="userName = $event"/>
-   ```
+```
 
    `AtguiguInput`组件中：
 
-   ```vue
+```vue
    <template>
      <div class="box">
        <input 
@@ -2126,13 +2131,13 @@ function sendToy(){
      // 声明事件
      const emit = defineEmits(['update:abc'])
    </script>
-   ```
+```
 
 5. 如果`value`可以更换，那么就可以在组件标签上多次使用`v-model`
 
-   ```vue
+```vue
    <AtguiguInput v-model:abc="userName" v-model:xyz="password"/>
-   ```
+```
 
    
 
@@ -2232,7 +2237,7 @@ function sendToy(){
 
    【第一步】父组件中，使用`provide`提供数据
 
-   ```vue
+```vue
    <template>
      <div class="father">
        <h3>父组件</h3>
@@ -2261,13 +2266,13 @@ function sendToy(){
      provide('moneyContext',{money,updateMoney})
      provide('car',car)
    </script>
-   ```
+```
    
    > 注意：子组件中不用编写任何东西，是不受到任何打扰的
    
    【第二步】孙组件中使用`inject`配置项接受数据。
    
-   ```vue
+```vue
    <template>
      <div class="grand-child">
        <h3>我是孙组件</h3>
@@ -2283,7 +2288,7 @@ function sendToy(){
     let {money,updateMoney} = inject('moneyContext',{money:0,updateMoney:(x:number)=>{}})
      let car = inject('car')
 </script>
-   ```
+```
 
 
 ## 6.8. 【pinia】
@@ -2343,7 +2348,7 @@ function sendToy(){
 
 3. 具体编码：
 
-   ```vue
+```vue
    父组件中：
          <Game v-slot="params">
          <!-- <Game v-slot:default="params"> -->
@@ -2370,7 +2375,7 @@ function sendToy(){
              {id:'asgdytsa04',name:'斗罗大陆'}
            ])
          </script>
-   ```
+```
 
 
 
@@ -2384,9 +2389,9 @@ function sendToy(){
 
 2. 用法：
 
-   ```js
+```js
    let myVar = shallowRef(initialValue);
-   ```
+```
 
 3. 特点：只跟踪引用值的变化，不关心值内部的属性变化。
 
@@ -2396,9 +2401,9 @@ function sendToy(){
 
 2. 用法：
 
-   ```js
+```js
    const myObj = shallowReactive({ ... });
-   ```
+```
 
 3. 特点：对象的顶层属性是响应式的，但嵌套对象的属性不是。
 
@@ -2416,10 +2421,10 @@ function sendToy(){
 
 2. 用法：
 
-   ```js
+```js
    const original = reactive({ ... });
    const readOnlyCopy = readonly(original);
-   ```
+```
 
 3. 特点：
 
@@ -2436,10 +2441,10 @@ function sendToy(){
 
 2. 用法：
 
-   ```js
+```js
    const original = reactive({ ... });
    const shallowReadOnlyCopy = shallowReadonly(original);
-   ```
+```
 
 3. 特点：
 
@@ -2461,7 +2466,7 @@ function sendToy(){
 
 2. 具体编码：
 
-   ```js
+```js
    import { reactive,toRaw,markRaw,isReactive } from "vue";
    
    /* toRaw */
@@ -2484,7 +2489,7 @@ function sendToy(){
    console.log(isReactive(rawPerson))
    console.log(isReactive(citys))
    console.log(isReactive(citys2))
-   ```
+```
 
 ### `markRaw`
 
@@ -2494,7 +2499,7 @@ function sendToy(){
 
 2. 编码：
 
-   ```js
+```js
    /* markRaw */
    let citys = markRaw([
      {id:'asdda01',name:'北京'},
@@ -2504,7 +2509,7 @@ function sendToy(){
    ])
    // 根据原始对象citys去创建响应式对象citys2 —— 创建失败，因为citys被markRaw标记了
    let citys2 = reactive(citys)
-   ```
+```
 
 ## 7.4.【customRef】
 
