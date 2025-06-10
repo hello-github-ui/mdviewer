@@ -1,0 +1,17 @@
+.sidebar-collapsed {
+  width: 48px !important;
+  min-width: 48px !important;
+  overflow: hidden;
+  transition: width 0.3s;
+  position: relative;
+}
+.sidebar-collapsed .menu {
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.sidebar-expanded {
+  width: 240px !important;
+  min-width: 240px !important;
+  transition: width 0.3s;
+} 

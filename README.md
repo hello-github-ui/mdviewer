@@ -163,3 +163,91 @@ npm run build:gh
 - 构建产物适用于 GitHub Pages 部署，baseUrl 为 `/mdviewer/`，Algolia 索引名为 `hello--uiio-ghpages`。
 
 > Algolia 索引需分别用对应的站点 URL 生成和上传，确保搜索跳转路径正确。
+
+---
+
+## 自定义侧边栏收缩/展开功能
+
+### 实现思路
+
+1. **自定义按钮组件**：在 `src/components/SidebarToggle.js` 新增收缩/展开按钮，按钮使用 `position: fixed` 固定在页面左上角，始终可见。
+2. **自定义主题侧边栏**：在 `src/theme/DocSidebar/index.js` 覆盖 Docusaurus 默认侧边栏，使用 React 状态控制侧边栏的展开与收缩。
+3. **样式控制内容隐藏**：在 `src/theme/DocSidebar/style.css` 中，收缩时只隐藏侧边栏内容（通过 `.menu` 类），不影响按钮显示。
+
+### 主要代码与操作
+
+#### 1. 新建/修改 `src/components/SidebarToggle.js`
+```js
+import React from 'react';
+export default function SidebarToggle({ collapsed, onToggle }) {
+  return (
+    <button
+      onClick={onToggle}
+      style={{
+        position: 'fixed',
+        top: 20,
+        left: collapsed ? 0 : 240,
+        zIndex: 1000,
+        width: 32,
+        height: 32,
+        background: '#fff',
+        border: '1px solid #eee',
+        borderRadius: '50%',
+        cursor: 'pointer',
+        transition: 'left 0.3s',
+      }}
+      aria-label={collapsed ? '展开侧边栏' : '收起侧边栏'}
+    >
+      {collapsed ? '>' : '<'}
+    </button>
+  );
+}
+```
+
+#### 2. 新建/修改 `src/theme/DocSidebar/index.js`
+```js
+import React, { useState } from 'react';
+import SidebarToggle from '../../components/SidebarToggle';
+import OriginalDocSidebar from '@theme-original/DocSidebar';
+import './style.css';
+
+export default function DocSidebar(props) {
+  const [collapsed, setCollapsed] = useState(false);
+  return (
+    <>
+      <SidebarToggle collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)} />
+      <div className={collapsed ? 'sidebar-collapsed' : 'sidebar-expanded'} style={{height: '100%'}}>
+        <OriginalDocSidebar {...props} />
+      </div>
+    </>
+  );
+}
+```
+
+#### 3. 新建/修改 `src/theme/DocSidebar/style.css`
+```css
+.sidebar-collapsed {
+  width: 48px !important;
+  min-width: 48px !important;
+  overflow: hidden;
+  transition: width 0.3s;
+  position: relative;
+}
+.sidebar-collapsed .menu {
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.sidebar-expanded {
+  width: 240px !important;
+  min-width: 240px !important;
+  transition: width 0.3s;
+}
+```
+
+### 使用说明
+- 启动项目后，页面左上角会有一个收缩/展开按钮，点击即可整体收缩或展开侧边栏。
+- 收缩时，侧边栏内容完全隐藏，仅保留一个窄条和按钮。
+- 按钮始终可见，不会被隐藏。
+
+如需进一步美化或自定义按钮样式，可继续修改 `SidebarToggle.js` 和相关 CSS。
