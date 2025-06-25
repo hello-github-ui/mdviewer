@@ -1,6 +1,6 @@
 ---
 id: 04-AlmaLinux8安装软件
-title: 04-AlmaLinux8安装ES
+title: 04-AlmaLinux8安装软件
 tags: [书签, AlmaLinux, Linux, ES, ElasticSearch, Redis, MySQL]
 ---
 
@@ -249,8 +249,136 @@ sudo systemctl stop firewalld
 sudo systemctl disable firewalld
 ```
 
-# 三、AlmaLinux8安装MySQL
+# 三、AlmaLinux8在线安装MySQL
 
-> 安装MySQL，参考：https://www.cnblogs.com/hello-cnblogs/p/16545191.html
->
-> 或者：https://zhuanlan.zhihu.com/p/631562715
+## 第 1 步：卸载旧版本（可选）
+
+如果之前装过 `mariadb` 或 `mysql` 相关包，建议先卸载：
+
+```bash
+sudo yum remove -y mariadb* mysql*
+```
+
+## 第 2 步：添加 MySQL 官方 Yum 仓库
+
+```bash
+sudo dnf install -y wget
+```
+
+### 2.1、查看所有与 mysql 相关的模块：
+
+```bash
+dnf module list mysql
+```
+
+你应该会看到类似下面的输出：
+
+```bash
+Name  Stream  Profiles                   Summary
+mysql 8.0     client, server [d]         MySQL Module
+mysql 5.7     client, server             MySQL Module
+```
+
+其中 `8.0` 旁边有 `[d]` 表示默认启用的模块。
+
+### 2.2、禁用默认的 `mysql` 模块：
+
+```bash
+sudo dnf module disable -y mysql
+```
+
+### 2.3、继续安装
+
+```bash
+wget --no-check-certificate https://repo.mysql.com/mysql80-community-release-el8-1.noarch.rpm
+sudo dnf install -y mysql80-community-release-el8-1.noarch.rpm
+```
+
+然后验证是否启用了 8.0 源：
+
+```bash
+sudo dnf repolist enabled | grep mysql
+```
+
+输出应包含 `mysql80-community`。
+
+## 第 3 步：安装 MySQL 8.0
+
+```bash
+sudo dnf install -y mysql-community-server --nogpgcheck
+```
+
+## 第 4 步：启动并设置为开机启动
+
+```bash
+sudo systemctl start mysqld
+sudo systemctl enable mysqld
+```
+
+## 第 5 步：获取初始 root 密码
+
+```bash
+sudo grep 'temporary password' /var/log/mysqld.log
+```
+
+复制这个密码，比如：`f2qkkPc,qS>a`
+
+## 第 6 步：安全初始化（设置新密码）
+
+① 登录 MySQL（使用初始临时密码）：
+
+```bash
+sudo grep 'temporary password' /var/log/mysqld.log
+# 复制出来的临时密码后执行：
+mysql -uroot -p
+```
+
+② 登录成功后，依次执行以下 SQL：
+
+```bash
+-- 降低密码复杂度要求（只对当前会话生效）
+SET GLOBAL validate_password.policy = LOW;
+SET GLOBAL validate_password.length = 6;
+
+-- 修改 root 密码为 123456
+ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
+```
+
+③ 退出并用新密码测试登录：
+
+```bash
+exit
+mysql -uroot -p123456
+```
+
+## 第 7 步：开启root用户远程访问
+
+登录mysql后，使用 mysql database;
+
+```bash
+use mysql;
+update user set host='%' where user='root';
+flush privileges;
+```
+
+## ✅ （可选）第 8 步：修改配置文件（比如改端口、目录等）
+
+配置文件默认在：
+
+```bash
+/etc/my.cnf
+```
+
+日志文件：
+
+```bash
+/var/log/mysqld.log
+```
+
+数据目录：
+
+```bash
+/var/lib/mysql
+```
+
+如你确实想自定义 `datadir` 和 `logdir`，可以改配置 + 修改权限，我也可以单独帮你写。
