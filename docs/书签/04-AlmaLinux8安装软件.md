@@ -4,6 +4,8 @@ title: 04-AlmaLinux8安装软件
 tags: [书签, AlmaLinux, Linux, ES, ElasticSearch, Redis, MySQL]
 ---
 
+# AlmaLinux8安装软件
+
 > `ElasticSearch` 需要依赖到 `JDK`，由于我此次安装的是 `Elasticsearch 8.17.0` 版本，因此需要 `JDK17+`，包括 `JDK17`。
 >
 > 注意：`ElasticSearch` 的安装不能使用 `root`  用户，必须切换到  `普通用户` 。
@@ -30,21 +32,21 @@ tags: [书签, AlmaLinux, Linux, ES, ElasticSearch, Redis, MySQL]
 >
 > https://dev.mysql.com/downloads/mysql/
 
-# 一、AlmaLinux8安装JDK
+## 一、AlmaLinux8安装JDK
 
-## 1.1、上传到服务器
+### 1.1、上传到服务器
 
 将上述三个文件上传到 `/opt/software/` 目录下。
 
-## 1.2、安装JDK17
+### 1.2、安装JDK17
 
-### 1.2.1、解压
+#### 1.2.1、解压
 
 ```bash
 tar -zxvf /opt/software/jdk-17.0.12_linux-x64_bin.tar.gz -C /opt/module/
 ```
 
-### 1.2.2、配置环境变量
+#### 1.2.2、配置环境变量
 
 编辑文件：
 
@@ -60,41 +62,41 @@ export JAVA_HOME=/opt/module/jdk-17.0.12
 export PATH=$PATH:$JAVA_HOME/bin
 ```
 
-### 1.2.3、刷新环境配置
+#### 1.2.3、刷新环境配置
 
 `sudo source /etc/profile.d/my_env.sh` 
 
 查看版本：`java -version`
 
-# 二、AlmaLinux8安装 **Elasticsearch 8.17.0**
+## 二、AlmaLinux8安装 **Elasticsearch 8.17.0**
 
-## 2.1、解压缩
+### 2.1、解压缩
 
 ```bash
 tar -zxvf elasticsearch-8.17.0-linux-x86_64.tar.gz -C /opt/module/
 ```
 
-## 2.2、重命名
+### 2.2、重命名
 
 ```bash
 mv /opt/module/elasticsearch-8.17.0 /opt/module/elasticsearch
 ```
 
-## 2.3、创建数据和日志目录
+### 2.3、创建数据和日志目录
 
 ```bash
 sudo mkdir -p /var/lib/elasticsearch /var/log/elasticsearch
 ```
 
-## 2.4、**安装 IK 分词器**
+### 2.4、**安装 IK 分词器**
 
 ```bash
 unzip /opt/software/elasticsearch-analysis-ik-8.17.0.zip -d /opt/module/elasticsearch/plugins/analysis-ik
 ```
 
-## 2.5、配置**Elasticsearch**
+### 2.5、配置**Elasticsearch**
 
-### 2.5.1、修改 `elasticsearch.yml`
+#### 2.5.1、修改 `elasticsearch.yml`
 
 ```bash
 # 备份文件
@@ -119,7 +121,7 @@ discovery.type: single-node
 xpack.security.enabled: false  # 禁用安全认证
 ```
 
-### 2.5.2、设置权限
+#### 2.5.2、设置权限
 
 ```bash
 # 创建 普通用户，es 必须不能用 root 启动
@@ -129,7 +131,7 @@ sudo useradd elasticsearch
 sudo chown -R elasticsearch:elasticsearch /opt/module/elasticsearch /var/lib/elasticsearch /var/log/elasticsearch
 ```
 
-### 2.5.3、**创建 Systemd 服务**
+#### 2.5.3、**创建 Systemd 服务**
 
 ```bash
 sudo vim /etc/systemd/system/elasticsearch.service
@@ -155,7 +157,7 @@ LimitMEMLOCK=infinity
 WantedBy=multi-user.target
 ```
 
-### 2.5.4、调整JVM内存
+#### 2.5.4、调整JVM内存
 
 ```bash
 vim /opt/module/elasticsearch/config/jvm.options
@@ -168,7 +170,7 @@ vim /opt/module/elasticsearch/config/jvm.options
 -Xmx512m
 ```
 
-### 2.5.5、启动服务
+#### 2.5.5、启动服务
 
 ```bash
 sudo systemctl daemon-reload
@@ -177,7 +179,7 @@ sudo systemctl start elasticsearch
 sudo systemctl status elasticsearch  # 检查状态
 ```
 
-### 2.5.6、验证安装
+#### 2.5.6、验证安装
 
 ```bash
 curl -X GET "http://localhost:9200"
@@ -188,16 +190,16 @@ curl -X POST "http://localhost:9200/_analyze" -H 'Content-Type: application/json
 }'
 ```
 
-# 三、AlmaLinux8安装Redis
+## 三、AlmaLinux8安装Redis
 
-## 3.1、首先，让我们先确保您的系统是最新的。
+### 3.1、首先，让我们先确保您的系统是最新的。
 
 ```bash
 sudo dnf update
 sudo dnf install epel-release
 ```
 
-## 3.2、在 AlmaLinux 8 上安装 Redis。
+### 3.2、在 AlmaLinux 8 上安装 Redis。
 
 Redis 现在包含在 CentOS 8 AppStream 存储库中，安装它就像在公园里散步一样。只需运行以下命令：
 
@@ -218,7 +220,7 @@ sudo systemctl enable redis
 redis-cli ping
 ```
 
-## 3.3、配置 Redis。
+### 3.3、配置 Redis。
 
 默认安装只允许来自 localhost 或 Redis 服务器的连接并阻止任何外部连接。我们将为来自客户端机器的远程连接配置 Redis：
 
@@ -246,7 +248,7 @@ redis-cli
 
 使用命令行客户端从远程主机连接到 Redis 服务器：`redis-cli`
 
-## 3.4、配置防火墙。
+### 3.4、配置防火墙。
 
 打开防火墙端口以允许 Redis 传入流量：
 
@@ -259,9 +261,9 @@ sudo systemctl stop firewalld
 sudo systemctl disable firewalld
 ```
 
-# 四、AlmaLinux8在线安装MySQL
+## 四、AlmaLinux8在线安装MySQL
 
-## 4.1、卸载旧版本（可选）
+### 4.1、卸载旧版本（可选）
 
 如果之前装过 `mariadb` 或 `mysql` 相关包，建议先卸载：
 
@@ -269,13 +271,13 @@ sudo systemctl disable firewalld
 sudo yum remove -y mariadb* mysql*
 ```
 
-## 4.2、添加 MySQL 官方 Yum 仓库
+### 4.2、添加 MySQL 官方 Yum 仓库
 
 ```bash
 sudo dnf install -y wget
 ```
 
-## 4.3、查看所有与 mysql 相关的模块：
+### 4.3、查看所有与 mysql 相关的模块：
 
 ```bash
 dnf module list mysql
@@ -291,13 +293,13 @@ mysql 5.7     client, server             MySQL Module
 
 其中 `8.0` 旁边有 `[d]` 表示默认启用的模块。
 
-## 4.4、禁用默认的 `mysql` 模块：
+### 4.4、禁用默认的 `mysql` 模块：
 
 ```bash
 sudo dnf module disable -y mysql
 ```
 
-## 4.5、继续安装
+### 4.5、继续安装
 
 ```bash
 wget --no-check-certificate https://repo.mysql.com/mysql80-community-release-el8-1.noarch.rpm
@@ -312,20 +314,20 @@ sudo dnf repolist enabled | grep mysql
 
 输出应包含 `mysql80-community`。
 
-## 4.6、安装 MySQL 8.0
+### 4.6、安装 MySQL 8.0
 
 ```bash
 sudo dnf install -y mysql-community-server --nogpgcheck
 ```
 
-## 4.7、启动并设置为开机启动
+### 4.7、启动并设置为开机启动
 
 ```bash
 sudo systemctl start mysqld
 sudo systemctl enable mysqld
 ```
 
-## 4.8、获取初始 root 密码
+### 4.8、获取初始 root 密码
 
 ```bash
 sudo grep 'temporary password' /var/log/mysqld.log
@@ -333,9 +335,9 @@ sudo grep 'temporary password' /var/log/mysqld.log
 
 复制这个密码，比如：`f2qkkPc,qS>a`
 
-## 4.9、安全初始化（设置新密码）
+### 4.9、安全初始化（设置新密码）
 
-① 登录 MySQL（使用初始临时密码）：
+#### ① 登录 MySQL（使用初始临时密码）：
 
 ```bash
 sudo grep 'temporary password' /var/log/mysqld.log
@@ -343,7 +345,7 @@ sudo grep 'temporary password' /var/log/mysqld.log
 mysql -uroot -p
 ```
 
-② 登录成功后，依次执行以下 SQL：
+#### ② 登录成功后，依次执行以下 SQL：
 
 ```bash
 -- 降低密码复杂度要求（只对当前会话生效）
@@ -354,14 +356,14 @@ SET GLOBAL validate_password.length = 6;
 ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
 ```
 
-③ 退出并用新密码测试登录：
+#### ③ 退出并用新密码测试登录：
 
 ```bash
 exit
 mysql -uroot -p123456
 ```
 
-## 4.10、开启root用户远程访问
+### 4.10、开启root用户远程访问
 
 登录mysql后，使用 mysql database;
 
@@ -371,7 +373,7 @@ update user set host='%' where user='root';
 flush privileges;
 ```
 
-## 4.11、✅ （可选）第 8 步：修改配置文件（比如改端口、目录等）
+### 4.11、✅ （可选）第 8 步：修改配置文件（比如改端口、目录等）
 
 配置文件默认在：
 
