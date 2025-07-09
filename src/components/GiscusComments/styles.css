@@ -1,0 +1,39 @@
+.giscus-comments {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.giscus-comments h3 {
+  margin-bottom: 1rem;
+  color: var(--ifm-color-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .giscus-comments {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+  }
+  
+  .giscus-comments h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* 暗色模式适配 */
+[data-theme='dark'] .giscus-comments {
+  border-top-color: var(--ifm-color-emphasis-300);
+}
+
+/* 加载状态 */
+.giscus-comments .giscus-frame {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .giscus-comments .giscus-frame {
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+} 

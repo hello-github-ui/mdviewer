@@ -183,9 +183,18 @@ blockquote {
 /* 图片样式 */
 .markdown img {
     max-width: 100%;
-    border-radius: 4px;
+    height: auto;
+    border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     margin: 1em 0;
+    cursor: zoom-in;
+    /* 保持图片渲染质量 */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: auto;
+    /* 防止图片失真 */
+    object-fit: contain;
+    transition: box-shadow 0.2s ease;
 }
 
 /* 表格样式 */
